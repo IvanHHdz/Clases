@@ -1,0 +1,42 @@
+\usepackage[spanish]{babel}
+\usepackage{datetime}
+\newdateformat{mydateformat}{\THEDAY/\THEMONTH/\THEYEAR}
+
+\newcommand{\titlename}{Tarea Unidad III}
+\newcommand{\signature}{Física II (FS-200)}
+\newcommand{\seccion}{1900}
+\newcommand{\docente}{Ing. Jorgue Alberto Bonilla Cervantes}
+%Individual
+\newcommand{\alumno}{Lester Iván Hernández Hernandez}
+\newcommand{\cuenta}{20242000637}
+
+%Grupo
+%\newcommand{\grupo}{2}
+%\newcommand{\integrantes}{}
+
+\newcommand{\portada}{
+    \begin{titlepage}
+        \centering
+        \vspace*{-3cm}
+        \includegraphics[width=4.5cm]{Logo-unah.jpg}\\
+        \vspace*{0.5cm}
+        {\large\bfseries UNIVERSIDAD NACIONAL AUTÓNOMA DE HONDURAS EN EL VALLE DE SULA
+        \\UNAH-VS\par}
+        \vspace{1.5cm}
+        {\large \titlename\par}
+        \vspace{1cm}
+        {\large Asignatura: \signature\par}
+        {\large Sección: \seccion\par}
+        {\large Docente: \docente\par}
+        \vspace{1cm}
+        %Individual
+        {\large Alumno: \alumno\par}
+        {\large N. de cuenta: \cuenta\par}
+        %Grupo
+        %{\large Grupo: \grupo\par}
+        %{\large Integrantes: \integrantes\par}
+        \vfill
+        {\large \today\par}
+        \vspace*{1in}
+    \end{titlepage}
+}
