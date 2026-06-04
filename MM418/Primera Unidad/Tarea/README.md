@@ -41,14 +41,14 @@ ciclos o funciones creadas por usted.
 Utilice enumeraciones para clasificar valores generados aleatoriamente.
 
 1. Defina una enumeración llamada `Categoria` con los siguientes valores:
-  1. `BAJO`
-  2. `MEDIO`
-  3. `ALTO`
+   1. `BAJO`
+   2. `MEDIO`
+   3. `ALTO`
 2. Genere un arreglo de tamaño $n$ (solicitado al usuario) con números enteros aleatorios en el rango de 1 a 100.
 3. Clasifique cada número según las siguientes reglas:
-  1. Si el número es menor o igual a 33, pertenece a `BAJO`.
-  2. Si el número está entre 34 y 66, pertenece a `MEDIO`.
-  3. Si el número es mayor a 66, pertenece a `ALTO`.
+   1. Si el número es menor o igual a 33, pertenece a `BAJO`.
+   2. Si el número está entre 34 y 66, pertenece a `MEDIO`.
+   3. Si el número es mayor a 66, pertenece a `ALTO`.
 4. Muestre cada número junto con su categoría correspondiente.
 5. Al finalizar, muestre un resumen con la cantidad de elementos en cada categoría.
 
@@ -56,17 +56,25 @@ Utilice enumeraciones para clasificar valores generados aleatoriamente.
 
 Escriba un programa para simular el tiro de dos dados.
 
-1. Desarrolle una funcion llamada `lanzardado` , 
+1. Desarrolle una funcion llamada `lanzardado` ,
 lo que hara es devolver un numero aleatorio entre 1 y 6.
-2. Haga una funcion que devuelva la suma del lanzamiento de dos dados 
+2. Haga una funcion que devuelva la suma del lanzamiento de dos dados
 (esta funcion debe llamar la funcion `lanzardado`)
 3. En el `main` de prueba simulara una cantidad definida por el usuario de lanzamientos de
 dados. Dichos lanzamientos se guardaran en 3 arreglos, 2 que guarden cada dado y otro
 la suma.
 4. Haga un procedimiento que reciba los 3 arreglos con la informacion de los dados e
 imprima los siguiente:
-  1. Número de lanzamientos donde los dados fueron iguales.
-  2. Número de lanzamientos donde la suma fue par.
-  3. Porcentaje de lanzamientos donde la suma es 7.
+   1. Número de lanzamientos donde los dados fueron iguales.
+   2. Número de lanzamientos donde la suma fue par.
+   3. Porcentaje de lanzamientos donde la suma es 7.
 
+## Ejercicio 6
 
+Diseña un programa en C++ que construya una matriz triangular inferior utilizando memoria dinámica:
+
+1. Solicitar al usuario el tamaño n de la matriz cuadrada.
+2. Reservar memoria dinámica solo para los elementos necesarios de la triangular inferior (es decir, donde 𝑖 ≤ 𝑗).
+3. genere los datos de manera aleatoria.
+4. Mostrar la matriz completa en forma cuadrada, colocando ceros en las posiciones que no pertenecen a la parte triangular
+5. Liberar toda la memoria al finalizar.
