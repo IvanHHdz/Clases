@@ -69,7 +69,12 @@ imprima los siguiente:
    2. Número de lanzamientos donde la suma fue par.
    3. Porcentaje de lanzamientos donde la suma es 7.
 
+<<<<<<< Updated upstream
 ## Ejercicio 6
+=======
+##  Ejercicio 6
+
+>>>>>>> Stashed changes
 
 Diseña un programa en C++ que construya una matriz triangular inferior utilizando memoria dinámica:
 
