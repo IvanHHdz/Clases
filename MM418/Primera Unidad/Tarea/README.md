@@ -74,7 +74,9 @@ imprima los siguiente:
 Diseña un programa en C++ que construya una matriz triangular inferior utilizando memoria dinámica:
 
 1. Solicitar al usuario el tamaño n de la matriz cuadrada.
-2. Reservar memoria dinámica solo para los elementos necesarios de la triangular inferior (es decir, donde 𝑖 ≤ 𝑗).
+2. Reservar memoria dinámica solo para los elementos necesarios de la triangular inferior 
+(es decir, donde 𝑖 ≤ 𝑗).
 3. genere los datos de manera aleatoria.
-4. Mostrar la matriz completa en forma cuadrada, colocando ceros en las posiciones que no pertenecen a la parte triangular
+4. Mostrar la matriz completa en forma cuadrada, colocando ceros en las posiciones que no 
+pertenecen a la parte triangular
 5. Liberar toda la memoria al finalizar.
