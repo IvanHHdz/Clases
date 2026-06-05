@@ -38,5 +38,7 @@ int main() {
 
   imprimir_matriz_ti(matriz_t, n);
 
+  delete[] matriz_t;
+
   return 0;
 }
