@@ -1,0 +1,619 @@
+% ====== Tipo de archivo ======
+\documentclass{article}
+
+\input{Formato.tex}
+
+\begin{document}
+    \section{Introducción}
+
+    En esta práctica se hizo uso de diferentes instrumentos y elementos eléctricos con el objetivo de familiarizarse con las técnicas básicas de medición y con el comportamiento de los circuitos eléctricos. 
+    Para ello se trabajó principalmente con el multímetro, instrumento que permitió medir unidades como la resistencia, el voltaje y la corriente. 
+    Además, se emplearon una fuente de alimentación DC, una protoboard, resistencias y un diodo LED para la elaboración y análisis de distintos circuitos eléctricos.
+
+    Durante el desarrollo de la práctica se analizaron las características de las resistencias mediante el código de colores y se verificaron sus valores de resistencia y tolerancias mediante mediciones directas.
+    Asimismo, se construyeron circuitos con resistencias conectadas en serie y en paralelo para comparar los resultados teóricos con los obtenidos en el laboratorio.
+    De igual forma, se aplicaron conceptos fundamentales estudiados en clase, tales como corriente eléctrica, diferencia de potencial y resistencia, observando la relación existente entre estas magnitudes.
+
+    Por último, se utilizaron los datos obtenidos para comprobar el comportamiento descrito por la Ley de Ohm, analizando la relación entre el voltaje y la corriente en un circuito eléctrico. De esta manera se fortaleció la comprensión de los principios básicos de los circuitos eléctricos y del uso adecuado de los instrumentos de medición empleados en el laboratorio.
+
+
+
+    \section{Objetivos}
+
+    \begin{enumerate}
+        \item Calcular el valor del voltaje haciendo uso del multímetro en diferentes circuitos eléctricos.
+        \item Identificar la dirección del flujo de corriente a partir de la polaridad de voltaje observada mediante las mediciones realizadas.
+        \item Generar mediciones de corriente continua (DC) en circuitos energizados utilizando correctamente el multímetro.
+        \item Interpretar el código de colores de las resistencias para establecer sus valores nominales y tolerancias correspondientes.
+    \end{enumerate}
+
+    \section{Materiales e Instrumentos}
+
+    \begin{itemize}
+        \item Multímetro
+        \item Fuente de voltaje
+        \item Resistencias
+        \item Protoboard
+        \item Diodo LED
+    \end{itemize}
+
+    \section{Marco Teórico}
+    \imagenwrap{./Pictures/MarcoTeorico/img2.jpg}{Multímetro}{125px}{r}
+
+    \subsection*{Multímetro}
+    El multímetro también es conocido como “tester”, y consiste en un dispositivo eléctrico y portátil que permite medir las distintas magnitudes eléctricas que forman parte de un circuito, como ser corrientes, potencias, resistencias, capacitancias, etc. Sin lugar a dudas es uno de los instrumentos que más utiliza un electricista en su trabajo, debido a la multiplicidad de funciones que puede desempeñar. En términos generales, un multímetro se utiliza para medir distintas magnitudes en distintos rangos en un circuito eléctrico.
+
+
+    Algunas de las funciones mas comunes del multímetro son:
+    \begin{itemize}
+        \item Medición de resistencia.
+        \item Prueba de continuidad.
+        \item Mediciones de voltajes (AC Y DC).
+        \item Mediciones de intensidad de corriente (AC Y DC).
+        \item Medición de la capacitancia
+        \item Medición de la frecuencia.
+        \item Detección de energía eléctrica AC (con y sin contacto).
+        \item Medición de diodos. (Estado del diodo)
+        \item Medición de temperatura.
+    \end{itemize}
+
+    \subsection*{Medición de voltaje y resistencia con un multímetro}
+    \imagenwrap{./Pictures/MarcoTeorico/img7.jpg}{Medición de voltaje}{150px}{r}
+    Si bien nos enfocaremos en el uso de un multímetro para medir estos parámetros, es importante tener presente que este uso (método de medición) de igual forma es válido para un voltímetro y óhmetro analógico. En general, esta es la forma correcta de realizar estas mediciones.
+
+    Para medir el voltaje, posicionamos las puntas de medición en paralelo al elemento que deseamos medir.
+
+
+    Para medir la resistencia de un elemento también se posicionan las puntas en paralelo, pero ahora con el elemento des energizado. Importante evitar el contacto entre las puntas conductoras y nuestros dedos, ya que además de que evidentemente nos puede dar una descarga si el elemento está energizado, cuando medimos resistencia es como si tuviésemos el elemento a medir en paralelo con nuestra resistencia corporal que oscila en la escala de los \unit{\kilo\ohm} y nos dará una lectura errónea.
+
+    \subsection*{Medición de intensidad con un multímetro}
+    \imagenwrap{./Pictures/MarcoTeorico/img8.jpg}{Medición de corriente}{150px}{r}
+    Tener presente que este uso (método de medición) de igual forma es valido para un amperímetro analógico. En general, esta es la forma correcta de medir intensidad de corriente.
+
+    Para medir la intensidad de corriente, posicionamos las puntas de medición en serie al elemento que deseamos medir.
+
+
+    Antes de comenzar esta lección, usted debe conocer las unidades de medición de voltaje, intensidad de corriente y resistencia eléctrica, y debe saber cómo se elige la escala correcta del multímetro para medir cada una de dichas magnitudes:
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|} % chktex 44
+            \midrule
+            Magnitud Eléctrica & Unidad \\
+            \midrule
+            Voltaje     & Voltios (\unit{\volt}) \\
+            Corriente   & Amperios (\unit{\ampere}) \\
+            Resistencia & Ohmios (\unit{\ohm}) \\
+            Potencia    & Vatio (\unit{\watt}) \\
+            \midrule
+        \end{tabular}
+        \caption{Dimensiones y unidades eléctricas}
+    \end{table}
+
+    \subsection*{Placas de prueba Protoboard}
+    
+    Una Protoboard o placa de pruebas es una placa de plástico rectangular con una serie de pequeños agujeros. Estos orificios le permiten insertar fácilmente componentes en un circuito electrónico. Por lo general, se utilizan dos láminas de conductor grandes a cada lado (superior e inferior) para conectar una fuente de alimentación a la placa, Suelen denominarse rieles de potencia. Las otras láminas conductoras más reducidas que se extienden perpendicularmente a través del tablero se utilizan para conectar los componentes en su circuito. La siguiente imagen ayudará a visualizar este patrón de forma frontal a la placa.
+    
+    Es importante destacar que las conexiones en los orificios del rieles de potencia son en serie de forma horizontal independientes entre rieles (sección 1 y 2 de la figura 3) y los orificios de las columnas son en serie de forma vertical (sección 3 de la figura 3), de tal manera que entre columnas no hay conexión (Cada columna es un nodo).
+    
+    \subsubsection*{Elementos de la Protoboard}
+    
+    \begin{enumerate}
+        \item Línea de alimentación positiva.
+        \item Línea de alimentación negativa.
+        \item Puntos verticales (Nodo individual).
+        \item Puntos horizontales (Nodos independientes).
+    \end{enumerate}
+
+
+    \imagen{./Pictures/MarcoTeorico/img17.jpg}{Protoboard}{375px}
+
+    \subsection*{Fuente de voltaje}
+    
+    \imagenwrap{./Pictures/MarcoTeorico/img18.jpg}{Fuente DC}{90px}{r}
+    
+    Las fuentes de alimentación DC son dispositivos que, a partir del voltaje de red, son capaces de proporcionarnos una señal de voltaje continua para alimentar al circuito al que se conectan. Se utilizan para alimentar circuitos que requieren trabajar con voltajes continuos.
+    
+
+    \subsection*{Resistencias en serie y paralelo}
+
+    Si se conectan varias resistencias de forma que todos sean recorridos por una misma corriente, se dice que están conectados en serie. En dicho caso, es posible reemplazar a todos las resistencias por otro equivalente, sin que se modifique el funcionamiento del circuito. La ecuación para calcular la resistencia equivalente en serie es:
+
+    \[
+        R_s = R_1 + R_2 + R_3 + \cdots
+    \]
+
+    Dos o más resistencias están en paralelo cuando sus bornes están conectados a los dos mismos puntos de un circuito. En ese caso, todos tendrán el mismo voltaje. Es posible reemplazar un grupo de resistencias en paralelo por un resistor equivalente. En el caso de dos resistencias en paralelo, el resistor equivalente se calcula con:
+
+    \[
+        R_p = \frac{R_1\,R_2}{R_1 + R_2}
+    \]
+
+    Cuando son más de dos resistencias, se utiliza una fórmula distinta:
+
+    \[
+        R_p = \frac{1}{\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \cdots}
+    \]
+
+    \imagen{./Pictures/MarcoTeorico/img23.jpg}{Resistencias en serie y en paralelo}{300px}
+
+    \subsection*{Ley de Ohm}
+    \imagenwrap{./Pictures/MarcoTeorico/img29.jpg}{Ley de Ohm}{100px}{r}
+
+    La ley de Ohm, postulada por el físico y matemático alemán Georg Simon Ohm, es una ley básica para entender los fundamentos principales de los circuitos eléctricos. Establece que la diferencia de potencial $V$ que aplicamos entre los extremos de un conductor determinado es directamente proporcional a la intensidad de la corriente $I$ que circula por el citado conductor. La ley introduce la noción de resistencia eléctrica $R$, que es el factor de proporcionalidad que aparece en la relación entre $V$ e $I$.
+
+    La Ley de Ohm afirma que el voltaje sobre un resistor es igual al producto de su corriente por su resistencia. De ello se derivan tres importantes ecuaciones con las que puede calcular el valor de cualquier parámetro (voltaje, corriente y resistencia), siempre que usted conozca dos de ellos.
+
+    Las ecuaciones son:
+
+    \imagen{./Pictures/MarcoTeorico/img30.jpg}{Ecuaciones de la ley de Ohm}{200px}
+
+    La ley de Ohm se utiliza para dimensionar componentes, evitar sobrecargas, proteger dispositivos electrónicos, diseñar circuitos electrónicos y asegurar que un sistema funcione dentro de parámetros seguros. Por ejemplo, permite calcular qué resistencia se necesita para limitar la corriente en un LED.\@
+
+    \subsection*{Definición de los elementos en la ley de Ohm}
+
+    \subsubsection*{Corriente eléctrica}
+
+    La corriente eléctrica es el movimiento de cargas eléctricas a través de un material. En los circuitos, esas cargas suelen ser electrones que se desplazan por un conductor, como un cable. Al caudal de corriente (cantidad de carga por unidad de tiempo) se le denomina intensidad de corriente eléctrica (símbolo: $I$). En el Sistema Internacional de Unidades se expresa en coulombs por segundo (\unit[per-mode=symbol]{\coulomb\per\second}), unidad que se denomina amperio (\unit{\ampere}), en honor al físico francés André-Marie Ampère.
+
+    \subsubsection*{Resistencia eléctrica}
+    Se denomina resistencia a la oposición al flujo de corriente eléctrica a través de un conductor. La unidad de resistencia en el Sistema Internacional es el ohmio, que se representa con la letra griega \unit{\ohm}, en honor al físico alemán Georg Simon Ohm, quien descubrió el principio que hoy lleva su nombre.
+
+    \subsubsection*{Voltaje}
+    El voltaje, también conocido como diferencia de potencial eléctrico, fuerza electromotriz (fem) o tensión eléctrica, corresponde al trabajo necesario por unidad de carga para mover una carga a través de un material conductor de un punto a otro. En el Sistema Internacional de Unidades, la unidad derivada del voltaje es el voltio (\unit{\volt}) nombre que viene del físico italiano Alessandro Volta, quien fue uno de los pioneros en el estudio de la electricidad.
+
+    \subsection*{Código de colores para resistencias}
+
+    \imagen{./Pictures/MarcoTeorico/img38.jpg}{Código de Colores para resistencias}{250px}
+
+    Siendo la tolerancia teórica de la resistencia, el porcentaje que representa el rango de variacion que nos garantiza el fabricante. Para la obtención de los valores máximos y mínimos entre los cuales podrá oscilar el valor real del resistor, consideramos las siguientes fórmulas:
+
+    \[
+        V_{\text{max}} = V_{\text{teórico}} + V_{\text{teórico}} \cdot (\text{tolerancia})
+    \]
+
+    \[
+        V_{\text{min}} = V_{\text{teórico}} - V_{\text{teórico}} \cdot (\text{tolerancia})
+    \]
+
+    \subsection*{Diodo LED}
+    
+    \imagenwrap{./Pictures/MarcoTeorico/img45.jpg}{Diodo LED}{100px}{r}
+
+    Los diodos son componentes electrónicos que permiten el paso de la corriente en un solo sentido, en sentido contrario no dejan pasar la corriente.
+
+    En el sentido en que su conexión permite pasar la corriente se comporta como un interruptor cerrado y en el sentido contrario de conexión, como un interruptor abierto.
+
+    \imagen{./Pictures/MarcoTeorico/img44.jpg}{Diodo LED}{175px}
+    
+    
+    Cuando se conecta un diodo en el sentido que permite el paso de la corriente se dice que está polarizado directamente.
+    
+    Es importante mencionar que se pueden tener diferentes colores en los diodos, pero según sea su color este tendrá una menor o mayor caída de tensión con respecto a otros.
+    
+    En el lado derecho se muestra una tabla en donde se encuentra el color del diodo y su respectiva caída de tensión.
+    
+
+    \section{Procedimiento Experimental}
+
+    \begin{enumerate}
+        \subsection*{Medición de Resistencias}
+        \item Examine las resistencias $R_1$, $R_2$, $R_3$ utilizando el código de colores, determine los valores de resistencia y tolerancia de cada uno de las resistencias. Anotar los resultados. Adjunte imágenes de las resistencias analizadas.
+        
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|c|c|} % chktex 44
+                \midrule
+                Resistor & Valor de resistencia (\unit{\ohm}) & Tolerancia (\%) & Código de colores \\
+                \midrule
+                $R_1$   & $1000$    & $\pm1$    & \rcc{1}\rcc{0}\rcc{0}\rcc{1}\rcc{1} \\
+                $R_2$   & $470$    & $\pm1$    & \rcc{4}\rcc{7}\rcc{0}\rcc{0}\rcc{1} \\
+                $R_3$   & $2000$    & $\pm1$    & \rcc{2}\rcc{0}\rcc{0}\rcc{1}\rcc{1} \\
+                \midrule
+            \end{tabular}
+            \caption{Valor de las resistencias obtenido mediante el código de colores.}
+        \end{table}
+
+        \item Coloque el multímetro como óhmetro. Medir y anotar los valores de resistencia $R_1$, $R_2$, $R_3$.
+        
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule
+                Resistor & Valor de resistor (\unit{\ohm}) \\
+                \midrule
+                $R_1$   & $990$    \\
+                $R_2$   & $469$    \\
+                $R_3$   & $1954$   \\
+                \midrule
+            \end{tabular}
+            \caption{Valor de las resistencias medido.}
+        \end{table}
+
+        \item A continuación, calcular el valor mínimo y el valor máximo permitidos de cada resistencia utilizando los valores de tolerancia que nos dicen las bandas. Con los valores de resistencia medidos, especifique si las resistencias están dentro o fuera del rango de tolerancia.
+        
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|c|c|} % chktex 44
+                \midrule
+                Resistor & Valor Máx (\unit{\ohm}) & Valor Mín (\unit{\ohm}) & Dentro/Fuera \\
+                \midrule
+                $R_1$   & $1010$    & $990$    & Dentro \\
+                $R_2$   & $474.7$   & $465.3$  & Dentro \\
+                $R_3$   & $2020$    & $1980$   & Fuera  \\
+                \midrule
+            \end{tabular}
+            \caption{Valor de las resistencias obtenido mediante el código de colores.}
+        \end{table}
+
+        \subsubsection*{Medición de Resistencias en Serie}
+        \item Conectar en la Protoboard las resistencias $R_1$ y $R_2$ en serie como se indica en el montaje 1.
+
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img52.jpg}{./Pictures/ProcedimientoExperimental/img53.jpg}{Representación Gráfica --- Montaje 1}{0.60}
+
+        \item Utilizando el multímetro, medir y anotar el valor de las resistencias en serie y calcular de manera analítica el valor de las resistencias en serie posteriormente, tabule los datos obtenidos.
+        
+        Resistencias en Serie (medida): \SI{1459}{\ohm}\\
+        \hspace*{2.85cm} (calculada): \SI{1470}{\ohm}
+
+        \item Conectar en la Protoboard las resistencias $R_1$, $R_2$, $R_3$ en serie como se indica en el montaje 2.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img54.jpg}{./Pictures/ProcedimientoExperimental/img55.jpg}{Representación Gráfica --- Montaje 2}{0.60}
+
+        \item Utilizando el multímetro, medir y anotar el valor de las resistencias en serie y calcular de manera analítica el valor de las resistencias en serie posteriormente, tabule los datos obtenidos.
+        
+        Resistencias en Serie (medida): \SI{3410}{\ohm}\\
+        \hspace*{2.85cm} (calculada): \SI{3470}{\ohm}
+
+        \subsubsection*{Medición de Resistencias en Paralelo}
+        \item Conectar en la Protoboard las resistencias $R_1$ y $R_2$ en paralelo como se indica en el montaje 3.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img62.jpg}{./Pictures/ProcedimientoExperimental/img63.jpg}{Representación Gráfica --- Montaje 3}{0.60}
+
+        \item Utilizando el multímetro, medir y anotar el valor de la resistencia en paralelo y calcular de manera analítica el valor de la resistencia en paralelo posteriormente, tabule los datos obtenidos.
+        
+        Resistencias en Paralelo (medida): \SI{318.2}{\ohm}\\
+        \hspace*{3.35cm} (calculada): \SI{319.73}{\ohm}
+
+        \item Conectar en la Protoboard las resistencias $R_1$, $R_2$ y $R_3$ en paralelo, como se indica en el montaje 4
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img68.jpg}{./Pictures/ProcedimientoExperimental/img69.jpg}{Representación Gráfica --- Montaje 4}{0.60}
+
+        \item Utilizando el multímetro, medir y anotar el valor de la resistencia en paralelo y calcular de manera analítica el valor de la resistencia en paralelo posteriormente, tabule los datos obtenidos.
+
+        Resistencias en Paralelo (medida): \SI{273.6}{\ohm}\\
+        \hspace*{3.35cm} (calculada): \SI{275.66}{\ohm}
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|c|} % chktex 44
+                \midrule
+                Montaje & Medición Teórica (\unit{\ohm}) & Medición Experimental (\unit{\ohm}) \\
+                \midrule
+                Montaje 1   & $1459$    & $1470$    \\
+                Montaje 2   & $3410$    & $3470$    \\
+                Montaje 3   & $318.2$   & $319.73$  \\
+                Montaje 4   & $273.6$   & $275.66$  \\
+                \midrule
+            \end{tabular}
+            \caption{Recopilación de mediciones teóricas y experimentales}\label{tabla:4}
+        \end{table}
+
+        \subsubsection*{Medición de Voltaje}
+        \item Ajuste la fuente de voltaje en su valor mínimo \SI{0}{\volt}. Conectar la fuente de voltaje en serie con el diodo LED y una resistencia (Mayor a \SI{150}{\ohm}), como se muestra en el montaje 5.
+
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img74.jpg}{./Pictures/ProcedimientoExperimental/img75.jpg}{Representación Gráfica --- Montaje 5}{0.60}
+
+        \item Colocar el multímetro en posición para medir voltaje directo (DC). Aumentar el voltaje de la fuente al valor indicado por el instructor (\SI{12}{\volt} máx). Conectar el multímetro de la forma indicada. Medir el voltaje en el diodo LED y anotar el valor indicado en el multímetro.
+
+        Voltaje en el Diodo Led: \SI{2.013}{\volt}
+        
+        \item A continuación, disminuir el voltaje de la fuente hasta que en las terminales se tenga un voltaje menor al anterior (\SI{6}{\volt}). Volver a medir el voltaje y anotar su valor.
+        
+        Voltaje en el Diodo Led: \SI{1.9}{\volt}
+        
+        \item Reducir el voltaje de la fuente a \SI{0}{\volt}. Medir el voltaje y anotar el resultado.
+        
+        Voltaje en el Diodo Led: \SI{0}{\volt}
+
+        \subsection*{Ley de Ohm}
+        \subsubsection*{Medición de corriente}
+        \item Ajuste la fuente de voltaje en su voltaje mínimo, y luego conectar las resistencias $R_1$, $R_2$, $R_3$ a la fuente como se muestra en el montaje 6.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img80.jpg}{./Pictures/ProcedimientoExperimental/img81.jpg}{Representación Gráfica --- Montaje 6}{0.60}
+
+        \item Preparar el multímetro para medir voltaje directo y conectarlo en las terminales del conjunto en serie como se muestra en la figura posteriormente varíe el voltaje como se sugiere en la tabla y anote sus mediciones.
+        
+        \imagen{./Pictures/ProcedimientoExperimental/img82.jpg}{Medición de Voltaje del Montaje 6}{150px}
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule
+                Voltaje (\unit{\volt}) & Corriente medida (\unit{\milli\ampere}) \\
+                \midrule
+                $0$ & $0$       \\
+                $1$ & $0.28$    \\
+                $2$ & $0.63$    \\
+                $3$ & $0.9$     \\
+                $4$ & $1.15$    \\
+                $5$ & $1.48$    \\
+                \midrule
+            \end{tabular}
+            \caption{Mediciones de corriente en funcion de variación en el voltaje.}\label{tabla:5}
+        \end{table}
+
+        \item Ajustar la fuente de voltaje en su voltaje mínima, luego apagar la fuente y desconectar el circuito.
+        
+    \end{enumerate}
+
+
+    \section{Análisis y Resultados}
+
+    Una vez terminada la práctica, realice los siguientes análisis y responda a las interrogantes:
+
+    \begin{enumerate}[label=\alph*.-]
+        \item Utilice el error relativo porcentual para comparar el valor real (valor medido) con el valor teórico (código de colores) para cada resistencia (Paso 1 y 2). Explicar los resultados obtenidos con base en la teoría y lo experimental.
+        
+        Cálculo del error relativo porcentual:
+        \[
+            Error\% = \left|\frac{\text{Valor}_{\text{exp}} - \text{Valor}_{\text{teo}}}{\text{Valor}_{\text{teo}}}\right| \times 100\%
+        \]
+
+        Para cada uno:
+        \[
+            {R_1}_{\text{err}} = \left|\frac{990 - 1000}{1000}\right| \times 100\% = 1\%
+        \]
+        \[
+            {R_2}_{\text{err}} = \left|\frac{469 - 470}{470}\right| \times 100\% = 0.2\%
+        \]
+        \[
+            {R_3}_{\text{err}} = \left|\frac{1954 - 2000}{2000}\right| \times 100\% = 2.3\%
+        \]
+
+        \begin{quote}
+            Las diferencias observadas entre los valores medidos y los valores teóricos de las resistencias pueden ser por a diversas causas. Por ejemplo limitaciones propias de los instrumentos y materiales utilizados, como el desgaste de los multímetros o las tolerancias de fabricación de las resistencias. También, el medio ambiente, como la temperatura y la humedad, pudieron influir en las propiedades eléctricas de los componentes y afectar el comportamiento del circuito. El error humano, igual forma, es una fuente de incertidumbre, ya que pequeñas variaciones durante la medición o la interpretación de las lecturas pudieron generar ligeros cambios en los resultados obtenidos.
+        \end{quote}
+
+        \item Utilice el error relativo porcentual para comparar los valores reales con los valores teóricos obtenidos en el montaje 1, 2, 3 y 4. Realice esta comparación con los datos escritos en la tabla~\ref{tabla:4}. Explicar los resultados obtenidos con base en la teoría y lo experimental.
+        
+        Para cada montaje:
+        
+        \[
+            {R_1}_{\text{err}} = \left|\frac{1470 - 1459}{1459}\right| \times 100\% = 0.75\%
+        \]
+        \[
+            {R_2}_{\text{err}} = \left|\frac{3470 - 3410}{3410}\right| \times 100\% = 1.76\%
+        \]
+        \[
+            {R_3}_{\text{err}} = \left|\frac{319.73 - 318.2}{318.2}\right| \times 100\% = 0.48\%
+        \]
+        \[
+            {R_4}_{\text{err}} = \left|\frac{275.66 - 273.6}{273.6}\right| \times 100\% = 0.75\%
+        \]
+        
+        \item Entre los pasos 16 y 18, usted varió el voltaje y anotó la correspondiente corriente que pasaba a través de las resistencias. Haciendo uso de las anotaciones en la tabla~\ref{tabla:5}, dibujar el gráfico de la corriente en función del voltaje [$I(V)$]. ¿Es lineal?
+        
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            title={Corriente vs Voltaje},
+                            xlabel={Voltaje (V)},
+                            ylabel={Corriente (A)},
+                            grid=major,
+                            legend pos=north west,
+                            width=8cm,
+                            height=6cm
+                        ]
+                        \addplot[
+                            mark=*,
+                        ] coordinates {
+                            (0, 0)
+                            (1, 0.28)
+                            (2, 0.63)
+                            (3, 0.9)
+                            (4, 1.15)
+                            (5, 1.48)
+                        };
+                        \addlegendentry{$I(V)$}
+                    \end{axis}
+                \end{tikzpicture}
+            \end{center}
+            \caption{Corriente vs Voltaje}\label{fig:C}
+        \end{figure}
+
+        \begin{quote}
+            Sí, es lineal. La gráfica posee un comportamiento lineal.
+        \end{quote}
+        
+        \item Calcular el valor de la pendiente de la gráfica, estrictamente a través de regresión lineal.
+        
+        \begin{quote}
+            Buscamos una gráfica que aproxime los datos por regresión lineal tal que:
+            \[
+                y = mx + b
+            \]
+
+            En este caso $y = I$ y $x = V$.
+
+            \begin{table}[ht]
+                \centering
+                \begin{tabular}{|c|c|c|c|c|} % chktex 44
+                    \midrule    %0.0, 0.28, 1.26, 2.7, 4.6, 7.4, 
+                    $n$     & $x$   & $y$       & $x^2$ & $xy$      \\
+                    \midrule
+                    $1$     & $0$   & $0$       & $0$   & $0$       \\
+                    $2$     & $1$   & $0.28$    & $1$   & $0.28$    \\
+                    $3$     & $2$   & $0.63$    & $4$   & $1.26$    \\
+                    $4$     & $3$   & $0.9$     & $9$   & $2.7$     \\
+                    $5$     & $4$   & $1.15$    & $16$  & $4.6$     \\
+                    $6$     & $5$   & $1.48$    & $25$  & $7.4$     \\
+                    \midrule
+                    $\sum$  & $15$  & $4.44$    & $55$  & $16.24$   \\
+                    \midrule
+                \end{tabular}
+                \caption{Tabla de datos de la regresión lineal.}
+            \end{table}
+
+            Ahora:
+            \begin{align*}
+                m &= \frac{n \sum xy - \sum x \sum y}{n \sum x^2 - {\left(\sum x\right)}^2}\\[3px]
+                &= \frac{6 (16.24) - 15 (4.44)}{6 (55) - {\left(15\right)}^2}\\[3px]
+                &\approx 0.29371
+            \end{align*}
+
+            \[
+                \boxed{m \approx 0.29371}
+            \]
+        \end{quote}
+        
+        \item Ahora dibujar el gráfico del voltaje en función de la corriente [($I(V)$)]. ¿Es lineal?.
+        
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            title={Voltaje vs Corriente},
+                            xlabel={Corriente (A)},
+                            ylabel={Voltaje (V)},
+                            grid=major,
+                            legend pos=north west,
+                            width=8cm,
+                            height=6cm
+                        ]
+                        \addplot[
+                            mark=*,
+                        ] coordinates {
+                            (0, 0)
+                            (0.28, 1)
+                            (0.63, 2)
+                            (0.9, 3)
+                            (1.15, 4)
+                            (1.48, 5)
+                        };
+                        \addlegendentry{$V(I)$}\label{graph:R}
+                    \end{axis}
+                \end{tikzpicture}
+            \end{center}
+            \caption{Voltaje vs Corriente}\label{fig:R}
+        \end{figure}
+
+        \begin{quote}
+            Sí, también es lineal. Esta gráfica, al igual que la anterior, posee un comportamiento lineal.
+        \end{quote}
+        
+        \item Calcular el valor de la pendiente de la gráfica, estrictamente a través de regresión lineal.
+        
+        \begin{quote}
+            Buscamos ahora una gráfica que aproxime los nuevos datos por regresión lineal, con:
+            \[
+                y = mx + b
+            \]
+
+            En este caso $y = V$ y $x = I$.
+
+            \begin{table}[ht]
+                \centering
+                \begin{tabular}{|c|c|c|c|c|} % chktex 44
+                    \midrule    %0.0, 0.07840000000000001, 0.39690000000000003, 0.81, 1.3224999999999998, 2.1904,  
+                    $n$     & $x$   & $y$       & $x^2$ & $xy$      \\
+                    \midrule
+                    $1$     & $0$      & $0$    & $0$       & $0$       \\
+                    $2$     & $0.28$   & $1$    & $0.0784$  & $0.28$    \\
+                    $3$     & $0.63$   & $2$    & $0.3969$  & $1.26$    \\
+                    $4$     & $0.9$    & $3$    & $0.81$    & $2.7$     \\
+                    $5$     & $1.15$   & $4$    & $1.3225$  & $4.6$     \\
+                    $6$     & $1.48$   & $5$    & $2.1904$  & $7.4$     \\
+                    \midrule
+                    $\sum$  & $4.44$  & $15$    & $4.7982$  & $16.24$   \\
+                    \midrule
+                \end{tabular}
+                \caption{Tabla de datos de la regresión lineal.}
+            \end{table}
+
+            Ahora:
+            \begin{align*}
+                m &= \frac{n \sum xy - \sum x \sum y}{n \sum x^2 - {\left(\sum x\right)}^2}\\[3px]
+                m &= \frac{6 (16.24) - 4.44 (15)}{6 (4.7982) - {\left(4.44\right)}^2}\\[3px]
+                &\approx 3.398
+            \end{align*}
+
+            \[
+                \boxed{m \approx 3.398}
+            \]
+        \end{quote}
+        
+        \item De una respuesta amplia y explicativa de qué significado tienen las pendientes de los últimos gráficos realizados (Inciso c y e) y que relación tienen con la ley de Ohm.
+        
+        \begin{quote}
+            Las gráficas~\ref{fig:C} y~\ref{fig:R} relacionan de manera lineal el voltaje y la corriente del circuito. Esta es la misma relación que aparece en la Ley de Ohm. Esto debido a que, como ya sabemos, la ley de Ohm nos indica que el voltaje y la corriente dentro de un circuito se relacionan de manera lineal, sindo la constante de linealidad la resistencia.
+
+            Podemos notarlo al escribir la ecuación de la recta que anteriormente hemos utilizado, por ejemplo, con la gráfica~\ref{fig:R}. Es esta tenemos que:
+            \[
+                V = mI + b
+            \] 
+
+            Donde el intercepto $b$ tiene un valor despreciable (en realidad debería ser $0$, pero por los errores en las mediciones no es $0$ exacto). Así, el caso de esta gráfica tenemos que:
+            \[
+                m = R
+            \]
+
+            Es decir, la pendiente de la recta que encontramos en~\ref{fig:R} es la resistencia. Cosa que podemos confirmar, pues el valor de $m$ es el mismo de la resistencia. Pues $m = 3.398$, mientras que la resistencia vale, según medición,~\SI{3410}{\ohm}, y esto es~\SI{3.410}{\kilo\ohm}. La razón que la pendiente esté en \unit{\kilo\ohm} en lugar de \unit{\ohm}, es porque estamos utilizando la corriente en \unit{\milli\ampere} en lugar de \unit{\ampere}.
+
+            La gráfica~\ref{fig:C} es inversa a esta, y en lugar de obtener la resistencia obtenemos la conductancia, la cual es inversa a la resistencia. Y comparando con los datos medidos, la conductancia sería \SI{0.2933}{\milli\siemens}, siendo este un valor muy cercano al obtenido por regresión lineal.
+        \end{quote}
+
+    \end{enumerate}
+
+    \section{Preguntas propuestas}
+    \begin{itemize}
+        \item Al disminuir el voltaje de alimentación (DC) ¿El diodo LED disminuye o aumenta la intensidad de su luz? Explique a que se debe esto en base con la teoría.
+        \begin{quote}
+            Al disminuir el voltaje de la alimentación, la potencia que consume el diodo es menor, puesto que es menor la potencia suministrada. Es por esto que la intensidad de la luz del diodo disminuye drásticamente al disminuir el voltaje.
+        \end{quote}
+
+        \item ¿Es necesario colocar una resistencia en conjunto con el diodo LED en el montaje 5? En caso considerarlo necesario, explique la razón y las posibles ventajas que podría proporcionar este componente adicional.
+        
+        \begin{quote}
+            Sí, es necesario. Esto ya que los LEDs son delicados y si no colocáramos esta resistencia podría dañarse el LED.\@
+        \end{quote}
+
+        \item Caso hipotético: En el laboratorio de IE los estudiantes realizaron mediciones de la intensidad de corriente a un circuito que consta de 1 resistencia $R_1$,que está alimentada por una fuente de \SI{10}{\volt} y al visualizar el multímetro se percata de que el valor de la tensión es negativo. Explique a que se debe el signo negativo mostrado en el multímetro.
+        
+        \begin{quote}
+            El signo negativo se debe a que se ha medido el voltaje en sentido opusto. Es decir, se ha realizado la medición con la polaridad opuesta a la que se debía por la posición de la fuente.
+        \end{quote}
+
+        \item Investigue que nos dice el color del cuerpo de las resistencias (no las bandas) sobre las características que tiene y que ventajas tiene cada tipo, mencione al menos 4 tipos.
+        
+        \begin{quote}
+            Suele referirse al material del que está fabricada la resistencia. Podemos identificar 4 tipos:
+            \begin{enumerate}
+                \item \textbf{Beige/Marrón}, que significa que la resistencia es de composición de carbón.
+                \item \textbf{Azul}, que significa que la resistencia es de película de metálica.
+                \item \textbf{Verde}, que significa que la resistencia es de óxido metálica.
+                \item \textbf{Blanco}, que significa que la resistencia bobinada.
+            \end{enumerate}
+            Las resistencias de película metálica destacan por su precisión, las de carbón por su bajo costo, las de óxido metálico por su resistencia térmica y las bobinadas por su capacidad para manejar altas potencias.
+        \end{quote}
+    \end{itemize}
+
+    \section{Conclusiones}
+
+    \begin{enumerate}
+        \item Del análisis de los resultados obtenidos se concluye que el uso correcto del multímetro es fundamental para medir con precisión magnitudes eléctricas como resistencia, voltaje y corriente. A través de la práctica se logró comprender su funcionamiento y la manera adecuada de conectarlo según la magnitud a medir.
+        \item Por lo tanto, al comparar los valores teóricos y experimentales de las resistencias, tanto una por una como en serie y paralelo, se observó que las diferencias fueron mínimas y se mantuvieron dentro de márgenes aceptables de error. Esto demuestra que las ecuaciones de asociación de resistencias describen de forma confiable el comportamiento real de los circuitos eléctricos.
+        \item Del estudio de la relación entre voltaje y corriente se comprobó experimentalmente la validez de la Ley de Ohm, ya que las gráficas obtenidas mostraron un comportamiento lineal. Además, las pendientes calculadas mediante regresión lineal coincidieron con la resistencia y conductancia del circuito, fortaleciendo la comprensión de la relación entre estas magnitudes.
+        \item Finalmente, se identificó la importancia de elementos como la resistencia limitadora en circuitos con diodos LED, ya que estos componentes protegen al dispositivo de sobrecorrientes y aseguran un funcionamiento adecuado.
+    \end{enumerate}
+
+    \nocite{*}
+    \printbibliography{}
+
+    \section{Anexos}
+
+    \imagenparinline{./Pictures/Anexos/img3.jpg}{./Pictures/Anexos/img1.jpg}{Resistencias en serie --- Diodo LED}{0.6}
+    \imagen{./Pictures/Anexos/img2.jpg}{Diodo LED}{300px}
+
+\end{document} 

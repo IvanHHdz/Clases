@@ -1,0 +1,11 @@
+{
+    "latex-workshop.linting.chktex.exec.args": [
+        "-wall",
+        "-n22",
+        "-n30",
+        "-e16",
+        "-q",
+        "-44"
+    ],
+    "todo-tree.tree.scanMode": "workspace only"
+}
