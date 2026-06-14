@@ -1,0 +1,157 @@
+% ====== Tipo de archivo ======
+\documentclass{article}
+
+\input{Formato.tex}
+
+\begin{document}
+    \section{Introducción}
+
+    En el análisis de circuitos eléctricos, comprender cómo se distribuyen el voltaje y la corriente entre los distintos elementos es fundamental para interpretar su comportamiento. En esta práctica se estudiarán las Leyes de Kirchhoff, aplicadas a circuitos en serie y en paralelo, mediante el uso de resistencias, fuentes de voltaje y un multímetro para realizar mediciones experimentales.
+
+    Aunque la teoría establece que la suma de voltajes en un lazo cerrado y la suma de corrientes en un nodo deben cumplir relaciones específicas, estas leyes suelen abordarse de forma mayormente analítica, sin contrastarlas directamente con mediciones reales ni considerar posibles variaciones experimentales.
+
+    Por ello, esta práctica busca comprobar experimentalmente la validez de dichas leyes, comparar resultados teóricos y medidos, y analizar qué tan cercanos son ambos. Además, se pretende fortalecer el manejo del multímetro y la interpretación de circuitos eléctricos básicos.
+
+
+    \section{Objetivos}
+
+    % TODO objetivos
+
+    \section{Materiales e Instrumentos}
+
+    \begin{itemize}
+        \item Multímetro.
+        \item Fuente de voltaje.
+        \item Resistencias.
+        \item Protoboard.
+    \end{itemize}
+
+    \section{Marco Teórico}
+    
+    \subsection*{Ley de Voltajes de Kirchhoff}
+    
+    \imagenwrap{./Pictures/MarcoTeorico/img2.jpg}{Ley de voltaje de Kirchhoff}{100px}{r}
+    
+    Afirma que la suma algebraica de los voltajes en cualquier lazo cerrado de un circuito es nula.
+    
+    Para aplicar esta ley, se elige cualquier lazo del circuito con el fin de analizarlo. Partiendo de un punto cualquiera, se recorre una trayectoria cerrada a lo largo de todo el lazo hasta regresar al mismo punto de inicio. A medida que se avanza, se suman algebraicamente los voltajes de cada componente del lazo. Se considera positivo ($+$); si representa una caída de potencial, caso contrario se considera negativo ($-$); Si representa una elevación de potencial o de igual manera al completar el recorrido y regresar al punto de partida, la suma total de los voltajes es igual a cero, tal como establece la Ley de Kirchhoff de Voltajes. Para que se cumpla correctamente esta ley, es importante realizar todo el análisis siguiendo una misma dirección de recorrido en el lazo.
+    
+    \subsection*{La Ley Corrientes de Kirchhoff}
+    
+    \imagenwrap{./Pictures/MarcoTeorico/img3.jpg}{Ley de corrientes de Kirchhoff}{100px}{r}
+    
+    Afirma que la suma algebraica de las corrientes que circulan hacia cualquier nodo de un circuito es igual a cero.
+    
+    Se adopta la convención de que las corrientes que entran al nodo son negativas y las que salen son positivas. Para aplicar la ley, se mide el valor de cada una de las corrientes que fluyen hacia un nodo del circuito. Al buscar determinar una de estas la dirección de la corriente en cada resistor puede asumirse arbitrariamente; si al realizar los cálculos el resultado es negativo, esto indica que la corriente real circula en sentido contrario al asumido. En caso de no tener un amperímetro para determinar las corrientes, se puede medir el voltaje en cada resistor colocando la punta de prueba positiva ($+$) del instrumento en el nodo de interés y la punta negativa ($-$) en el otro terminal del componente. Luego, se aplica la Ley de Ohm para calcular la corriente correspondiente.
+    
+    \section{Procedimiento Experimental}
+
+    Considerar los siguientes valores a utilizar:
+
+    % TODO Completar los valores de las tablas
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|} % chktex 44
+            \midrule 
+            Resistor    & Valor (\unit{\ohm})   \\
+            \midrule
+            $R_1$       &                       \\
+            $R_2$       &                       \\
+            $R_3$       &                       \\
+            $R_4$       &                       \\
+            \midrule
+        \end{tabular}
+        \caption{Valores de resistencias}\label{tab:1}
+    \end{table}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|} % chktex 44
+            \midrule 
+            Fuente      & Valor (\unit{\volt})  \\
+            \midrule
+            $V_1$       &  $8$                  \\
+            $V_2$       &  $2$                  \\
+            \midrule
+        \end{tabular}
+        \caption{Fuentes de voltaje}\label{tab:2}
+    \end{table}
+
+    \begin{enumerate}
+        \item Conectar las fuentes de voltaje con las resistencias $R_1$, $R_2$, $R_3$ y $R_4$ en serie con la fuente $V_1$ (ver figura~\ref{img:1}), respetando los valores asignados en las tablas~\ref{tab:1} y~\ref{tab:2}.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img8.jpg}{./Pictures/ProcedimientoExperimental/img9.jpg}{Representación gráfica, montaje 1}{0.75}\label{img:1}
+
+        \item Comenzará las mediciones colocando el multímetro en posición para medir voltaje continuo.
+        
+        \item Conectar la punta de prueba positiva ($+$) del multímetro al terminal izquierdo de $R?1$ y la punta negativa ($-$) al terminal derecho. Medir el voltaje, cuidando de registrar la polaridad indicada por el multímetro como positiva o negativa según corresponda. Repetir el procedimiento para todas las resistencias del lazo, manteniendo la misma convención de polaridad en cada medición. Para completar el recorrido del lazo, medir el voltaje de la fuente de alimentación. Registrar todas las mediciones obtenidas.
+        
+        % TODO Colocar los valores del voltaje de la fuente y el voltaje de las resistencias
+        Fuente de Voltaje $V_1 =$~\SI{0}{\volt}. 
+
+        \begin{align*}
+            V_{R1} = 0~\unit{\volt}\\
+            V_{R2} = 0~\unit{\volt}\\
+            V_{R3} = 0~\unit{\volt}\\
+            V_{R4} = 0~\unit{\volt}\\
+        \end{align*}
+
+        \item Conectar el circuito indicado en el montaje 2 (ver figura~\ref{img:2}), respetando las polaridades de las fuentes. Ajustar la fuente de voltaje $V_1$ y la fuente de voltaje $V_2$ a los valores indicados en la tabla~\ref{tab:2}.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img16.jpg}{./Pictures/ProcedimientoExperimental/img17.jpg}{Representación gráfica, montaje 2}{0.75}\label{img:2}
+
+        \item Comenzando por el terminal izquierdo de $R_1$ y avanzando en sentido horario, como se indicó en el paso 4, medir y registrar los voltajes a lo largo del lazo formado por $R_1$, $R_2$, $R_5$, $R_6$ y las fuentes de voltaje $V_1$ y $V_2$.
+        
+        Fuente de Voltaje $V_1 =$~\SI{0}{\volt}.\\
+        Fuente de Voltaje $V_2 =$~\SI{0}{\volt}. 
+
+        \begin{align*}
+            V_{R1} = 0~\unit{\volt}\\
+            V_{R2} = 0~\unit{\volt}\\
+            V_{R3} = 0~\unit{\volt}\\
+            V_{R4} = 0~\unit{\volt}\\
+        \end{align*}
+
+        % TODO Terminar el procedimiento experimental
+        % -> CONTINUE HERE <-
+    \end{enumerate}
+
+    \subsection*{Datos experimentales --- Mediciones de montajes}
+
+    % TODO Terminar la tabla
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|} % chktex 44
+            \midrule 
+            Resistencias    & Montaje 1 &&& \\
+            \midrule
+            $R_1$           &           &&& \\
+            \midrule
+            Fuentes         &           &&& \\
+            \midrule
+            $R_1$           &           &&& \\
+            \midrule
+        \end{tabular}
+        \caption{Fuentes de voltaje}\label{tab:3}
+    \end{table}
+
+    \section{Análisis y Resultados}
+
+    Analice los resultados.
+
+    \section{Conclusiones}
+
+    \begin{enumerate}
+        \item Por lo que
+        \item Se concluye
+        \item Algo
+    \end{enumerate}
+
+    \nocite{*}
+    \printbibliography{}
+
+    \section{Anexos}
+
+    ANEXOS AQUÍ
+
+\end{document} 
