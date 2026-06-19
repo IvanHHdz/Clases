@@ -1,0 +1,311 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/apasortcite//global/global/global}
+    \entry{alexander2018fundamentos}{book}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=38f17d4baab84e2e893ad24888815193}{%
+           family={Alexander},
+           familyi={A\bibinitperiod},
+           given={Charles\bibnamedelima K.},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=acd2910fdff85c25e324e4401e07500d}{%
+           family={Sadiku},
+           familyi={S\bibinitperiod},
+           given={Matthew\bibnamedelimb N.\bibnamedelimi O.},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b022566f00c69f7adc71fddf9b3de237}{%
+           family={Cordero\bibnamedelima Pedraza},
+           familyi={C\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={Carlos\bibnamedelima R.},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill Interamericana}%
+      }
+      \strng{namehash}{b7d1b4f7d1bcf81e1bf14035b408315d}
+      \strng{fullhash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{fullhashraw}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{bibnamehash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{authorbibnamehash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{authornamehash}{b7d1b4f7d1bcf81e1bf14035b408315d}
+      \strng{authorfullhash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{authorfullhashraw}{daef3b34fe96f0363d8321d11d45c3d9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{6}
+      \field{title}{Fundamentos de Circuitos Eléctricos}
+      \field{year}{2018}
+      \true{nocite}
+    \endentry
+    \entry{valkenburg1999analisis}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=31dd44799adb7efe59d86869449e4e89}{%
+           family={Valkenburg},
+           familyi={V\bibinitperiod},
+           given={Mac\bibnamedelimb E.\bibnamedelimi Van},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {México D.F.}%
+      }
+      \list{publisher}{1}{%
+        {Limusa}%
+      }
+      \strng{namehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{fullhash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{fullhashraw}{31dd44799adb7efe59d86869449e4e89}
+      \strng{bibnamehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authorbibnamehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authornamehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authorfullhash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authorfullhashraw}{31dd44799adb7efe59d86869449e4e89}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Análisis de Redes}
+      \field{year}{1999}
+      \true{nocite}
+    \endentry
+    \entry{ramirez2023lab}{manual}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=81d509894303c91b6fd6b66df5ed59b1}{%
+           family={Ramírez},
+           familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IPAC}%
+      }
+      \strng{namehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{fullhash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{fullhashraw}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{bibnamehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authorbibnamehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authornamehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authorfullhash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authorfullhashraw}{81d509894303c91b6fd6b66df5ed59b1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{title}{Manual de Laboratorio de Circuitos Eléctricos I}
+      \field{year}{2023}
+      \true{nocite}
+    \endentry
+    \entry{valeriano2026lab}{manual}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1ce2ef4151325866a13aceb55f78362c}{%
+           family={Valeriano},
+           familyi={V\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IPAC}%
+      }
+      \strng{namehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{fullhash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{fullhashraw}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{bibnamehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authorbibnamehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authornamehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authorfullhash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authorfullhashraw}{1ce2ef4151325866a13aceb55f78362c}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{title}{Manual de Laboratorio de Circuitos Eléctricos I}
+      \field{year}{2026}
+      \true{nocite}
+    \endentry
+  \enddatalist
+  \datalist[entry]{none/global//global/global/global}
+    \entry{alexander2018fundamentos}{book}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=38f17d4baab84e2e893ad24888815193}{%
+           family={Alexander},
+           familyi={A\bibinitperiod},
+           given={Charles\bibnamedelima K.},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=acd2910fdff85c25e324e4401e07500d}{%
+           family={Sadiku},
+           familyi={S\bibinitperiod},
+           given={Matthew\bibnamedelimb N.\bibnamedelimi O.},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b022566f00c69f7adc71fddf9b3de237}{%
+           family={Cordero\bibnamedelima Pedraza},
+           familyi={C\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={Carlos\bibnamedelima R.},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill Interamericana}%
+      }
+      \strng{namehash}{b7d1b4f7d1bcf81e1bf14035b408315d}
+      \strng{fullhash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{fullhashraw}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{bibnamehash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{authorbibnamehash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{authornamehash}{b7d1b4f7d1bcf81e1bf14035b408315d}
+      \strng{authorfullhash}{daef3b34fe96f0363d8321d11d45c3d9}
+      \strng{authorfullhashraw}{daef3b34fe96f0363d8321d11d45c3d9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{6}
+      \field{title}{Fundamentos de Circuitos Eléctricos}
+      \field{year}{2018}
+      \true{nocite}
+    \endentry
+    \entry{valkenburg1999analisis}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=31dd44799adb7efe59d86869449e4e89}{%
+           family={Valkenburg},
+           familyi={V\bibinitperiod},
+           given={Mac\bibnamedelimb E.\bibnamedelimi Van},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {México D.F.}%
+      }
+      \list{publisher}{1}{%
+        {Limusa}%
+      }
+      \strng{namehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{fullhash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{fullhashraw}{31dd44799adb7efe59d86869449e4e89}
+      \strng{bibnamehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authorbibnamehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authornamehash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authorfullhash}{31dd44799adb7efe59d86869449e4e89}
+      \strng{authorfullhashraw}{31dd44799adb7efe59d86869449e4e89}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Análisis de Redes}
+      \field{year}{1999}
+      \true{nocite}
+    \endentry
+    \entry{ramirez2023lab}{manual}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=81d509894303c91b6fd6b66df5ed59b1}{%
+           family={Ramírez},
+           familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IPAC}%
+      }
+      \strng{namehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{fullhash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{fullhashraw}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{bibnamehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authorbibnamehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authornamehash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authorfullhash}{81d509894303c91b6fd6b66df5ed59b1}
+      \strng{authorfullhashraw}{81d509894303c91b6fd6b66df5ed59b1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{title}{Manual de Laboratorio de Circuitos Eléctricos I}
+      \field{year}{2023}
+      \true{nocite}
+    \endentry
+    \entry{valeriano2026lab}{manual}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1ce2ef4151325866a13aceb55f78362c}{%
+           family={Valeriano},
+           familyi={V\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IPAC}%
+      }
+      \strng{namehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{fullhash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{fullhashraw}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{bibnamehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authorbibnamehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authornamehash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authorfullhash}{1ce2ef4151325866a13aceb55f78362c}
+      \strng{authorfullhashraw}{1ce2ef4151325866a13aceb55f78362c}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{title}{Manual de Laboratorio de Circuitos Eléctricos I}
+      \field{year}{2026}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

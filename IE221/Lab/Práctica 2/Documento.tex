@@ -6,7 +6,7 @@
 \begin{document}
     \section{Introducción}
 
-    En el análisis de circuitos eléctricos, comprender cómo se distribuyen el voltaje y la corriente entre los distintos elementos es fundamental para interpretar su comportamiento. En esta práctica se estudiarán las Leyes de Kirchhoff, aplicadas a circuitos en serie y en paralelo, mediante el uso de resistencias, fuentes de voltaje y un multímetro para realizar mediciones experimentales.
+    En el análisis de circuitos eléctricos, comprender cómo se distribuyen el voltaje y la corriente entre los distintos elementos es fundamental para interpretar su comportamiento. En esta práctica se estudiarán las Leyes de Kirchhoff, aplicadas a circuitos en serie y en paralelo, mediante el uso de resistencias, fuentes de voltaje y un multímetro para realizar mediciones experimentales. 
 
     Aunque la teoría establece que la suma de voltajes en un lazo cerrado y la suma de corrientes en un nodo deben cumplir relaciones específicas, estas leyes suelen abordarse de forma mayormente analítica, sin contrastarlas directamente con mediciones reales ni considerar posibles variaciones experimentales.
 
@@ -15,7 +15,12 @@
 
     \section{Objetivos}
 
-    % TODO objetivos
+    \begin{itemize}
+        \item Analizar el comportamiento de los voltajes en circuitos eléctricos en serie para comprobar que cumple la Ley de Voltajes de Kirchhoff.
+        \item Demostrar la conservación de la corriente en nodos de circuitos en paralelo, verificando la Ley de Corrientes de Kirchhoff.
+        \item Calcular los valores teóricos de voltaje y corriente en los distintos montajes del circuito aplicando las leyes de Kirchhoff y la Ley de Ohm.
+        \item Comparar los resultados experimentales con los valores teóricos obtenidos para identificar posibles diferencias y estimar el error porcentual de las mediciones.
+    \end{itemize}
 
     \section{Materiales e Instrumentos}
 
@@ -48,17 +53,16 @@
 
     Considerar los siguientes valores a utilizar:
 
-    % TODO Completar los valores de las tablas
     \begin{table}[ht]
         \centering
         \begin{tabular}{|c|c|} % chktex 44
             \midrule 
             Resistor    & Valor (\unit{\ohm})   \\
             \midrule
-            $R_1$       &                       \\
-            $R_2$       &                       \\
-            $R_3$       &                       \\
-            $R_4$       &                       \\
+            $R_1$       & 120                   \\
+            $R_2$       & 220                   \\
+            $R_3$       & 330                   \\
+            $R_4$       & 470                   \\
             \midrule
         \end{tabular}
         \caption{Valores de resistencias}\label{tab:1}
@@ -86,14 +90,13 @@
         
         \item Conectar la punta de prueba positiva ($+$) del multímetro al terminal izquierdo de $R?1$ y la punta negativa ($-$) al terminal derecho. Medir el voltaje, cuidando de registrar la polaridad indicada por el multímetro como positiva o negativa según corresponda. Repetir el procedimiento para todas las resistencias del lazo, manteniendo la misma convención de polaridad en cada medición. Para completar el recorrido del lazo, medir el voltaje de la fuente de alimentación. Registrar todas las mediciones obtenidas.
         
-        % TODO Colocar los valores del voltaje de la fuente y el voltaje de las resistencias
-        Fuente de Voltaje $V_1 =$~\SI{0}{\volt}. 
+        Fuente de Voltaje $V_1 =$~\SI{8.1}{\volt}. 
 
         \begin{align*}
-            V_{R1} = 0~\unit{\volt}\\
-            V_{R2} = 0~\unit{\volt}\\
-            V_{R3} = 0~\unit{\volt}\\
-            V_{R4} = 0~\unit{\volt}\\
+            V_{R1} &= 0.865~\unit{\volt}\\
+            V_{R2} &= 1.572~\unit{\volt}\\
+            V_{R3} &= 2.324~\unit{\volt}\\
+            V_{R4} &= 3.339~\unit{\volt}\\
         \end{align*}
 
         \item Conectar el circuito indicado en el montaje 2 (ver figura~\ref{img:2}), respetando las polaridades de las fuentes. Ajustar la fuente de voltaje $V_1$ y la fuente de voltaje $V_2$ a los valores indicados en la tabla~\ref{tab:2}.
@@ -102,49 +105,266 @@
 
         \item Comenzando por el terminal izquierdo de $R_1$ y avanzando en sentido horario, como se indicó en el paso 4, medir y registrar los voltajes a lo largo del lazo formado por $R_1$, $R_2$, $R_5$, $R_6$ y las fuentes de voltaje $V_1$ y $V_2$.
         
-        Fuente de Voltaje $V_1 =$~\SI{0}{\volt}.\\
-        Fuente de Voltaje $V_2 =$~\SI{0}{\volt}. 
+        Fuente de Voltaje $V_1 =$~\SI{8}{\volt}.\\
+        Fuente de Voltaje $V_2 =$~\SI{2}{\volt}. 
 
         \begin{align*}
-            V_{R1} = 0~\unit{\volt}\\
-            V_{R2} = 0~\unit{\volt}\\
-            V_{R3} = 0~\unit{\volt}\\
-            V_{R4} = 0~\unit{\volt}\\
+            V_{R1} &= 1.061~\unit{\volt}\\
+            V_{R2} &= 1.923~\unit{\volt}\\
+            V_{R3} &= 2.839~\unit{\volt}\\
+            V_{R4} &= 4.07~\unit{\volt}\\
         \end{align*}
 
-        % TODO Terminar el procedimiento experimental
-        % -> CONTINUE HERE <-
+        \item Conectar el circuito indicado en el montaje 3 (ver figura~\ref{img:3}), respetando las polaridades de la fuentes.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img18.jpg}{./Pictures/ProcedimientoExperimental/img19.jpg}{Representación gráfica, montaje 3}{0.75}\label{img:3}
+
+        \item Medir y registrar las corrientes que ingresan al nodo a través de $R_1$, $R_2$, $R_3$ y $R_4$, así como la corriente suministrada por la fuente de voltaje $V_1$, mantener en todo momento la misma orientación en las puntas de medición.
+        
+        Fuente de Voltaje $V_1 =$~\SI{8}{\volt}.
+
+        \begin{align*}
+            V_{R1} &= 64~\unit{\volt}\\
+            V_{R2} &= 35.2~\unit{\volt}\\
+            V_{R3} &= 22.33~\unit{\volt}\\
+            V_{R4} &= 16~\unit{\volt}\\
+        \end{align*}
+
+        \item Conectar el circuito indicado en el montaje 4 (ver figura~\ref{img:4}), respetando las polaridades de las fuentes.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img26.jpg}{./Pictures/ProcedimientoExperimental/img27.jpg}{Representación gráfica, montaje 4}{0.75}\label{img:4}
+
+        \item Medir y registrar las corrientes que ingresan al nodo a través de $R_1$, $R_2$, $R_3$ y $R_4$, así como la corriente suministrada por la fuente de voltaje $V_1$, mantener en todo momento la misma orientación en las puntas de medición.
+        
+        Fuente de Voltaje $V_1 =$~\SI{8}{\volt}.\\
+        Fuente de Voltaje $V_2 =$~\SI{2}{\volt}.
+
+        \begin{align*}
+            V_{R1} &= 64~\unit{\volt}\\
+            V_{R2} &= 35.2~\unit{\volt}\\
+            V_{R3} &= 22.33~\unit{\volt}\\
+            V_{R4} &= 18~\unit{\volt}\\
+        \end{align*}
+
     \end{enumerate}
 
     \subsection*{Datos experimentales --- Mediciones de montajes}
 
-    % TODO Terminar la tabla
     \begin{table}[ht]
         \centering
         \begin{tabular}{|c|c|c|c|c|} % chktex 44
             \midrule 
-            Resistencias    & Montaje 1 &&& \\
+            Resistencias    & Montaje 1 (\unit{\volt}) & Montaje 2 (\unit{\volt})   & Montaje 3 (\unit{\milli\ampere})    & Montaje 4 (\unit{\milli\ampere})    \\
             \midrule
-            $R_1$           &           &&& \\
+            $R_1$           & 0.865 & 1.061 & 64    & 64    \\
+            $R_2$           & 1.572 & 1.923 & 35.2  & 35.2  \\
+            $R_3$           & 2.324 & 2.839 & 22.33 & 22.33 \\
+            $R_4$           & 3.339 & 4.07  & 16    & 18    \\
             \midrule
-            Fuentes         &           &&& \\
+            Fuentes         & Montaje 1 (\unit{\volt}) & Montaje 2 (\unit{\volt})   & Montaje 3 (\unit{\milli\ampere})    & Montaje 4 (\unit{\milli\ampere})    \\
             \midrule
-            $R_1$           &           &&& \\
+            $V_1$           & 8.1   & 8 & 8     & 8 \\
+            $V_2$           & - - - & 2 & - - - & 2 \\ % chktex 8
             \midrule
         \end{tabular}
-        \caption{Fuentes de voltaje}\label{tab:3}
+        \caption{Recopilación de las mediciones experimentales}\label{tab:3}
     \end{table}
 
     \section{Análisis y Resultados}
 
-    Analice los resultados.
+    Una vez terminada la práctica, realice los siguientes análisis y responda a las interrogantes:
+    \begin{enumerate}[label=\alph*.-]
+        \subsection*{Ley de voltaje de Kirchhoff}
+        \item Realice la suma algebraica de los 5 voltajes obtenidos en el montaje 1, haciendo uso de la tabla~\ref{tab:3}.
+        
+        \begin{align*}
+            V_{R_1} + V_{R_2} + V_{R_3} + V_{R_4} - V_1 &= 0.865 + 1.572 + 2.324 + 3.3339 - 8.1\\
+            &= -0.0051
+        \end{align*}
+        
+        \item Calcule el voltaje en las resistencias del circuito del montaje 1 y la suma de los voltajes del lazo de forma analítica (desarrollando la LVK).
+        
+        \begin{quote}
+            Tenemos el circuito del montaje 1. Al reducirlo podemos encontrar la corriente que pasa por todas las resistencias por ley de Ohm: $I_T = \SI{7.105}{\milli\ampere}$.
+
+            Así obtenemos la corriente, y al aplicar LVK en el lazo (en la dirección de la corriente) tenemos que:
+            
+            \begin{align*}
+                &-8.1 + 120 (7.105 \times 10^{-3}) + 220 (7.105 \times 10^{-3}) + 330 (7.105 \times 10^{-3}) + 470 (7.105 \times 10^{-3})\\
+                &= -8.1 + 0.8526 + 1.5631 + 2.3447 + 3.3394\\
+                &= -0.0002\\
+                &\approx 0
+            \end{align*}
+
+            Nos da \SI{-0.0002}{\volt} por el redondeo del valor de la corriente.
+
+            Podemos ver que el valor teórico del voltaje de las resistencias $R_1$, $R_2$, $R_3$ y $R_4$ es aproximadamente \SI{0.8526}{\volt}, \SI{1.5631}{\volt}, \SI{2.3447}{\volt} y \SI{3.3394}{\volt} respectivamente.
+        \end{quote}
+        
+        \item Realice la suma algebraica de los 6 voltajes obtenidos en el montaje 2, haciendo uso de la tabla~\ref{tab:3}.
+        
+        \begin{align*}
+            V_{R_1} + V_{R_2} + V_{R_3} + V_{R_4} - V_1 - V_2 &= 1.061 + 1.923 + 2.839 + 4.07 - 8 - 2\\
+            &= -0.107
+        \end{align*}
+        
+        \item Calcule el voltaje en las resistencias del circuito del montaje 2 y la suma de los voltajes del lazo de forma analítica (desarrollando la LVK).
+        
+        \begin{quote}
+            Partiendo del circuito del montaje 2, al simplificar podemos obtener la corriente tal que: $I_T = \SI{8.772}{\milli\ampere}$. Así obtenemos la corriente, y al aplicar LVK en el lazo (en la dirección de la corriente) tenemos que:
+            
+            \begin{align*}
+                &-8 + 120 (8.772 \times 10^{-3}) + 220 (8.772 \times 10^{-3}) + 330 (8.772 \times 10^{-3}) + 470 (8.772 \times 10^{-3}) - 2\\
+                &= -10 + 1.0526 + 1.9298 + 2.8947 + 4.1228\\
+                &= -0.00001\\
+                &\approx 0
+            \end{align*}
+
+            Nos da \SI{-0.01}{\milli\volt} por el redondeo del valor de la corriente.
+
+            Podemos ver que el valor teórico del voltaje de las resistencias $R_1$, $R_2$, $R_3$ y $R_4$ es aproximadamente \SI{1.0526}{\volt}, \SI{1.9298}{\volt}, \SI{2.8947}{\volt} y \SI{4.1228}{\volt} respectivamente.
+
+        \end{quote}
+        
+        \item Compare las mediciones teóricas y experimentales de cada elemento del montaje 2 a través del error teórico porcentual.
+        
+        \begin{quote}
+            Utilizaremos la fórmula:
+
+            \[
+                E_{\%} = \frac{\left|V_{aprx} - V_{teor}\right|}{V_{teor}} \times 100\%
+            \]
+
+            Por lo cual, tenemos los siguientes resultados:
+            
+            \begin{table}[ht]
+                \centering
+                \begin{tabular}{|c|c|c|c|} % chktex 44
+                    \midrule 
+                    Resistencias    & Valor medido del voltaje (\unit{\volt})   & Valor teórico del voltaje (\unit{\volt})  & Error porcentual (\%)\\
+                    \midrule
+                    $R_1$           & 1.061 & 1.0526    & 0.80  \\
+                    $R_2$           & 1.923 & 1.9298    & 0.35  \\
+                    $R_3$           & 2.839 & 2.8947    & 1.92  \\
+                    $R_4$           & 4.07  & 4.1228    & 1.28  \\
+                    \midrule
+                \end{tabular}
+            \end{table}
+            
+        \end{quote}
+        
+        \subsection*{Ley de corriente de Kirchhoff}
+        \item Realice la suma algebraica de las corrientes que fluyen a través del nodo superior del montaje 3, haciendo uso de la tabla~\ref{tab:3}.
+        
+        \begin{align*}
+            I_{R_1} + I_{R_2} + I_{R_3} + I_{R_4} - I_{V_1} &= 0\\
+            I_{V_1} &= 64 + 35.2 + 22.33 + 16\\
+            I_{V_1} &= \SI{137.53}{\ampere}
+        \end{align*}
+        
+        \item Calcule las corrientes de cada elemento en el circuito del montaje 3 y la suma de las corrientes en el mismo nodo antes mencionado de forma analítica (desarrollando la LCK).
+        
+        \begin{quote}
+            Como tenemos todas las corrientes que entran en el nodo superior, excepto la corriente de la fuente, podemos calcular esta analíticamente.
+
+            Note que es muy sencillo conocer el voltaje de todas las resistencias: debe ser~\SI{8}{\volt}, pues las resistencias están en paralelo a la fuente de dicho valor.
+
+            Así pues:
+
+            \begin{align*}
+                -I_{V_1} + I_{R_1} + I_{R_2} + I_{R_3} + I_{R_4} &= 0\\
+                -I_{V_1} + \frac{V_1}{R_1} + \frac{V_1}{R_2} + \frac{V_1}{R_3} + \frac{V_1}{R_4} &= 0\\
+                -I_{V_1} + V_1\left(\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \frac{1}{R_4}\right) &= 0\\
+                I_{V_1} &= 8\left(\frac{1}{120} + \frac{1}{220} + \frac{1}{330} + \frac{1}{470}\right)\\
+                I_{V_1} &= 0.06667 + 0.03636 + 0.02424 + 0.01702\\
+                I_{V_1} &= 0.14429\\
+            \end{align*}
+
+            Por lo que sabemos que la corriente en la fuente es \SI{144.29}{\milli\ampere}. Y en las resistencias $R_1$, $R_2$, $R_3$ y $R_4$ es aproximadamente \SI{66.67}{\milli\ampere}, \SI{36.36}{\milli\ampere}, \SI{24.24}{\milli\ampere} y \SI{17.02}{\milli\ampere} respectivamente.
+        \end{quote}
+        
+        \item Realice la suma algebraica de las corrientes que fluyen a través del nodo superior del montaje 4, haciendo uso de la tabla~\ref{tab:3}.
+        
+        \begin{align*}
+            I_{R_1} + I_{R_2} + I_{R_3} + I_{R_4} - I_{V_1} &= 0\\
+            I_{V_1} &= 64 + 35.2 + 22.33 + 18 \\
+            I_{V_1} &= 139.53
+        \end{align*}
+        
+        \item Calcule las corrientes de cada elemento en el circuito del montaje 4 y la suma de las corrientes en el mismo nodo antes mencionado de forma analítica (desarrollando la LCK).
+        
+        \begin{quote}
+            Como tenemos todas las corrientes que entran en el nodo superior, excepto la corriente de la fuente, podemos calcular esta analíticamente.
+
+            Note que otra vez es muy sencillo conocer el voltaje de todas las resistencias: debe ser~\SI{8}{\volt}, pues las resistencias están en paralelo a la fuente de dicho valor. Con excepción de la resistencia $R_4$, que tendrá un voltaje de~\SI{10}{\volt}, por tener otra fuente a la par.
+
+            Así pues:
+
+            \begin{align*}
+                -I_{V_1} + I_{R_1} + I_{R_2} + I_{R_3} + I_{R_4} &= 0\\
+                -I_{V_1} + \frac{V_1}{R_1} + \frac{V_1}{R_2} + \frac{V_1}{R_3} + \frac{V_1 + V_2}{R_4} &= 0\\
+                -I_{V_1} + V_1\left(\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}\right) + \frac{V_1 + V_2}{R_4} &= 0\\
+                I_{V_1} &= 8\left(\frac{1}{120} + \frac{1}{220} + \frac{1}{330}\right) + \frac{10}{470}\\
+                I_{V_1} &= 0.06667 + 0.03636 + 0.02424 + 0.02128\\
+                I_{V_1} &= 0.14855\\
+            \end{align*}
+
+            Por lo que sabemos que la corriente en la fuente de~\SI{8}{\volt} es \SI{148.55}{\milli\ampere}. Y en las resistencias $R_1$, $R_2$, $R_3$ y $R_4$ es aproximadamente \SI{66.67}{\milli\ampere}, \SI{36.36}{\milli\ampere}, \SI{24.24}{\milli\ampere} y \SI{21.28}{\milli\ampere} respectivamente.
+        \end{quote}
+        
+        \item Compare las mediciones teóricas y experimentales obtenidos de cada elemento del montaje 4 a través del error teórico porcentual.
+        
+        \begin{quote}
+            Utilizaremos la misma fórmula del inciso $e$:
+
+            \[
+                E_{\%} = \frac{\left|V_{aprx} - V_{teor}\right|}{V_{teor}} \times 100\%
+            \]
+
+            Por lo cual, tenemos los siguientes resultados:
+            
+            \begin{table}[ht]
+                \centering
+                \begin{tabular}{|c|c|c|c|} % chktex 44
+                    \midrule 
+                    Elemento        & Valor medido de corriente (\unit{\milli\ampere})   & Valor teórico de corriente (\unit{\milli\ampere})  & Error porcentual (\%)\\
+                    \midrule
+                    $R_1$           & 64        & 66.67     & 4.00  \\
+                    $R_2$           & 35.2      & 36.36     & 3.19  \\
+                    $R_3$           & 22.33     & 24.24     & 7.88  \\
+                    $R_4$           & 18        & 21.28     & 15.4  \\
+                    $V_1$           & 131.53    & 148.55    & 6.07  \\
+                    \midrule
+                \end{tabular}
+            \end{table}
+            
+        \end{quote}
+    \end{enumerate}
+
+    \section{Preguntas Propuestas}
+    \begin{itemize}
+        \item ¿Quedó verificada la Ley de Voltajes de Kirchhoff con las mediciones y cálculos realizados? Explique:
+        
+        \begin{quote}
+            Sí, la LVK quedó verificada. En los incisos $a$ y $c$ pudimos ver las cómo las sumas algebráicas de los voltajes daban valores relativamente cercanos a $0$. La desviación que tenían, al ser pequeña, queda justificada como error de medición; pudiendo deberse por errores en la medición con el multímetro, calentamiento de las resistencias u otros factores externos.
+
+            De la misma forma, podemos apreciar con el análisis teórico la comparación de dichos voltajes teóricos con los voltajes medidos.
+        \end{quote}
+        
+        \item ¿Quedó verificada la Ley de Corrientes de Kirchhoff con las mediciones y cálculos realizados? Explique:
+        
+        \begin{quote}
+            De la misma forma, queda confirmada la LCK, viendo cómo el valor que obtenemos al aplicar LCK con los valores medidos de la corriente de la fuente se asemeja mucho al valor que podemos calcular teóricamente aplicando dicha ley.
+        \end{quote}
+        
+    \end{itemize}
 
     \section{Conclusiones}
 
     \begin{enumerate}
-        \item Por lo que
-        \item Se concluye
-        \item Algo
+        \item En primer lugar, podemos concluir que la Ley de Voltajes de Kirchhoff se cumple a la perfección en mediciones experimentales de circuitos. Lo que se corresponde de la forma esperada con los resultados analíticos que obtenemos.
+        \item Lo mismo ocurre con la Ley de Corrientes de Kirchhoff, la cual es confirmada al comparar los resultados obtenidos del valor de la corriente de la fuente, que coinciden tanto en el análisis teórico como en el resultado experimental.
+        \item Por último, se muestra en esta práctica, una vez más, la importancia que tienen las correctas mediciones para que los resultados experimentales coincidan con los teóricos. Pues las diferencias que estos tienen, en esta práctica y en particular en la sección de LCK, se deben principalmente a errores en las mediciones. Errores o problemas como el calentamiento de las resistencias, errores en las mediciones de las corrientes con el multímetro, u otros factores externos al propio circuito, contribuyen a los errores vistos en la práctica.
     \end{enumerate}
 
     \nocite{*}
@@ -152,6 +372,7 @@
 
     \section{Anexos}
 
-    ANEXOS AQUÍ
+    \imagen{./Pictures/Anexos/photo1.jpg}{}{300px}
+    \imagen{./Pictures/Anexos/photo2.jpg}{}{150px}
 
 \end{document} 
