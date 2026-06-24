@@ -7,6 +7,10 @@ Adelante un índice de las clases.
 
 ## Ingeniería Eléctrica Industrial
 
+### Departamento de Ingeniería Eléctrica
+
+- [IE-211 / Circuitos Eléctricos I](./IE221/README.md).
+
 ### Departamento de Ingeniería Industrial
 
 - [II-411 / Organización y Métodos](./II411/README.md).
