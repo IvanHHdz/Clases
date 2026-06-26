@@ -6,53 +6,640 @@
 \begin{document}
     \section{Introducción}
 
-    Elabore una introducción.
-    Esta debe servir para inaugurar el resto del informe.
-    Su función debe ser ofrecer al lector una panorámica con respecto a la totalidad del escrito y explicar de manera sencilla por qué se realiza la práctica.
-    Para realizarla, pregúntese: ``¿Cuál es el tema principal y su importancia? ¿Qué parte de la teoría está relacionada con la práctica? '' Entre otras.
-    No utilice definiciones literales del texto ni la bibliografía.
-    Asegúrese que el texto contenga entre 120 y 150 palabras, con menos de tres párrafos.
-    Se deben identificar tres partes sintéticas e íntegras dentro de la introducción. Estas son: La descripción del tema, que permita al lector señalar claramente de qué se trata el texto; Un reporte de vacío de conocimiento, haciendo referencia a lo que otros autores han mencionado del tema que vamos a abordar, identificando aquellos aspectos que no se han visto previamente; Y proponer preguntas u objetivos, señalando algunos logros que queremos alcanzar con esta práctica.
-    Utilice lenguaje sencillo, evite tecnicismos innecesarios y básese completamente en el manual proporcionado para realizar la introducción.
+    En el estudio de los circuitos eléctricos, analizar cómo se distribuyen la energía y las contribuciones de distintas fuentes resulta fundamental para comprender el comportamiento del sistema completo. En esta práctica abordaremos el teorema de Tellegen y el principio de superposición, dos herramientas que permiten estudiar la conservación de potencia y el efecto individual de cada fuente dentro de un circuito eléctrico.
+
+    Aunque la teoría describe que la potencia suministrada debe equilibrar la potencia absorbida y que la respuesta de circuitos lineales puede obtenerse sumando aportes individuales, estos principios suelen estudiarse de forma analítica, dejando menos explorado su comportamiento bajo mediciónes reales y errores experimentales.
+
+    Por ello, esta práctica busca verificar experimentalmente ambos principios mediante mediciónes de voltaje y corriente, identificar elementos que absorben o suministran potencia y comparar resultados teóricos con experimentales para evaluar la validez de los modelos estudiados.
+
 
     \section{Objetivos}
 
-    Escriba los objetivos.
-    Estos deben reflejar el propósito de realizar la práctica siempre ligados a la teoría que ésta involucra.
-    Deben diferenciarse los medios con los que se realizan los objetivos, con los objetivos per se.
-    Proporcione entre 3 y 5 objetivos que expongan los puntos clave de la práctica. No cite textualmente los que incluye el manual.
-    Utilice las siguientes palabras para iniciar cada objetivo: Advertir, Analizar, Analizar, Basar, Calcular, Calcular, Calificar, Categorizar, Categorizar, Comparar, Comparar, Compilar, Componer, Conceptuar, Concretar, Considerar, Contrastar, Contrastar, Crear, Deducir, Definir, Definir, Demostrar, Demostrar, Desarrollar, Descomponer, Descubrir, Describir, Designar, Detallar, Determinar, Diagnosticar, Discriminar, Discriminar, Diseñar, Distinguir, Efectuar, Enumerar, Enumerar, Enunciar, Especificar, Establecer, Establecer, Estimar, Evaluar, Examinar, Examinar, Exlicar, Explicar, Exponer, Formular, Fraccionar, Fundamentar, Generar, Identificar, Identificar, Indicar, Inferir, Interpretar, Justificar, Mencionar, Mostrar, Mostrar, Operacionalizar, Oponer, Orientar, Organizar, Planear, Presentar, Probar, Producir, Proponer, Reconstruir, Registrar, Relatar, Relacionar, Replicar, Reproducir, Resumir, Revelar, Seleccionar, Separar, Sintetizar, Situar, Sugerir, Tasar, Trazar, Valuar.
-    Utilice lenguaje sencillo, evite tecnicismos innecesarios y básese completamente en el manual proporcionado para realizar los objetivos.
+    \begin{itemize}
+        \item Analizar el comportamiento de la potencia en los elementos de un circuito eléctrico mediante los valores de voltaje y corriente obtenidos experimentalmente.
+        \item Determinar la relación entre las potencias absorbidas y suministradas dentro de un circuito para comprobar el cumplimiento del Teorema de Tellegen.
+        \item Comparar los resultados obtenidos mediante mediciones prácticas con los valores calculados teóricamente para evaluar las diferencias presentes en el circuito.
+        \item Demostrar el principio de superposición en un circuito eléctrico mediante el análisis individual de las fuentes de alimentación y la combinación de sus efectos.
+
+    \end{itemize}
 
     \section{Materiales e Instrumentos}
 
-    <Agrege los materiales e instrumentos utilizados>
+    \begin{itemize}
+        \item Multímetro
+        \item Fuente de voltaje
+        \item Resistencias
+        \item Protoboard
+    \end{itemize}
 
     \section{Marco Teórico}
 
-    <Inserte marco teórico>
+    \subsection{Teorema de Tellegen}
+
+    La potencia que absorbe o suministra un elemento a determinado circuito eléctrico, es el producto de su voltaje por su intensidad de corriente. La unidad de medición de potencia son los watts (\unit{\watt}). Al conocer el valor resistencia del elemento, haciendo uso de algunas transformaciones algebraicas y combinando la ecuación anterior con la Ley de Ohm, se obtienen las ecuaciones de la potencia en función de la resistencia:
+
+    \[
+        P = VI \qquad\qquad P = \frac{V^2}{R} \qquad\qquad P = I^2 R
+    \]
+
+    El teorema de Tellegen nos afirma que la suma de las potencias absorbidas (La potencia de elementos pasivos) es igual a la suma de las potencias suministradas al circuito (La potencia de elementos activos) o dicho de otra manera; que la resta de ambas es igual a cero. El teorema de Tellegen es extremadamente general; es válido para cualquier red concentrada que contenga cualquier elemento, lineal o no lineal, pasivo o activo, variable en el tiempo o invariante en el tiempo.
+
+    \[
+        \sum P_{\text{absorbida}} = \sum P_{\text{suministrada}}
+    \]
+
+    Esto significa que la potencia generada es igual a la potencia consumida. Se relaciona estrechamente con el principio de la conservación de la energía.
+
+    \subsection{Principio de Superposición}
+
+    En la práctica el principio de la superposición es eliminar toda la fuente de energía, excepto una, dentro de un circuito. Luego, utilizamos técnicas básicas determinamos un parámetro en particular dentro de la red modificada, este mismo se analiza para cada fuente de alimentación por separado, solo aplica para las fuentes independientes.
+
+    \imagen{./Pictures/MarcoTeorico/img2.jpg}{Fuentes de corriente y voltaje apagadas}{200px}
+
+    Este proceso se repite secuencialmente evaluando individualmente el circuito para cada fuente de tensión o corriente en el sistema a la vez. Después de que se ha completado cada análisis individual, los aportes individuales de cada fuente a ese parámetro se “superponen” uno encima del otro (se suman algebraicamente) para encontrar el parámetro real con todas las fuentes operando.
+    
+    Lo antes mencionado es posible gracias al principio de linealidad de los circuitos eléctricos.
+
+    \subsubsection{Principio de Linealidad}
+    El principio de superposición se basa en la propiedad de linealidad de los sistemas eléctricos. Un sistema es lineal si cumple las siguientes propiedades:
+
+    Aditividad:
+    \[
+        f(V_1 + V_2) = f(V_1) + f(V_2)
+    \]
+
+    Homogeneidad o proporcionalidad:
+    \[
+        f(kV_1) = kf(V_1)
+    \]
+
+    Combinando ambas propiedades, se que obtiene:
+    \[
+        f(k_1V_1 + k_2 V_2) = k_1 f(V_1) + k_2 f(V_2)
+    \]
+
+    En resumen: 
+    Esto implica que la salida, parametro o también llamada respuesta $y$ del circuito (ya sea un voltaje o una corriente) es una combinación lineal de las contribuciones debidas a cada fuente independiente.
+
+    Por lo tanto, la salida $y$ total puede expresarse como:
+    \[
+        y = C_1 S_1 + C_2 S_2
+    \]
+
+    donde $S$ es una fuente independiente en el circuito, por cada fuente de este tipo que haya, habrá un aporte más a la salida, donde $C_1$ y $C_2$ son constantes de proporcionalidad que dependen únicamente de los parámetros del circuito.
+
+    Para determinar estas constantes desarrollamos el siguiente análisis.
+
+    Si $y = y_{S_1} + y_{S_2}$ (Donde $y_{S_1}$ y $y_{S_2}$ es la salida con una fuente a la vez) y al mismo tiempo $y = C_1S_1 + C_2S_2$ entonces:
+
+    \begin{align*}
+        y_{S_1} = C_1 S_1\\
+        C_1 = \frac{y_{S_1}}{S_1}
+    \end{align*}
 
     \section{Procedimiento Experimental}
 
-    <Inserte el procedimiento experimental>
+    Considerar los siguientes valores a utilizar:
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|} % chktex 44
+            \midrule 
+            Resistor    & Valor (\unit{\ohm})   \\
+            \midrule
+            $R_1$       & 120                   \\
+            $R_2$       & 220                   \\
+            $R_3$       & 330                   \\
+            $R_4$       & 390                   \\
+            $R_5$       & 470                   \\
+            \midrule
+        \end{tabular}
+        \caption{Valores de resistencias}\label{tab:1}
+    \end{table}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|} % chktex 44
+            \midrule 
+            Fuente      & Valor (\unit{\volt})  \\
+            \midrule
+            $V_1$       & 8                     \\
+            $V_2$       & 12                    \\
+            \midrule
+        \end{tabular}
+        \caption{Fuentes de voltaje}\label{tab:2}
+    \end{table}
+
+    
+    \begin{enumerate}
+        \subsection{Teorema de Tellegen}
+
+        \item Conectar las fuentes de voltaje con las resistencias $R_1$, $R_2$, $R_3$ y $R_4$ como se muestra en el montaje 1, respetando los valores asignados en las tablas~\ref{tab:1} y~\ref{tab:2}.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img12.jpg}{./Pictures/ProcedimientoExperimental/img13.jpg}{Representación gráfica, montaje 1}{0.7}
+
+        \item Utilizando el multímetro como voltímetro, medir y anotar el voltaje en todos los elementos del circuito.
+        
+        \begin{align*}
+            V_{R_1} = \SI{2.018}{\volt}\\
+            V_{R_2} = \SI{3.775}{\volt}\\
+            V_{R_3} = \SI{2.178}{\volt}\\
+            V_{R_4} = \SI{4.063}{\volt}
+        \end{align*}
+
+        Y las fuentes de voltaje:
+        \begin{align*}
+            V_{1} = \SI{8}{\volt}\\
+            V_{2} = \SI{2}{\volt}
+        \end{align*}
+
+        \item Utilizando el multímetro como amperímetro, medir y anotar la corriente en todos los elementos del circuito.
+        
+        \begin{align*}
+            I_{R_1} = \SI{17.30}{\milli\ampere}\\
+            I_{R_2} = \SI{17.30}{\milli\ampere}\\
+            I_{R_3} = \SI{6.57}{\milli\ampere}\\
+            I_{R_4} = \SI{10.67}{\milli\ampere}
+        \end{align*}
+
+        Y las fuentes de voltaje:
+        \begin{align*}
+            I_{V_1} = \SI{17.30}{\milli\ampere}\\
+            I_{V_2} = \SI{10.67}{\milli\ampere}
+        \end{align*}
+
+        \item Utilizando los valores de voltaje y de corriente en los pasos 2 y 3 calcular la potencia de los elementos del circuito y determine si este absorbe o suministra potencia al mismo.
+        
+        \begin{align*}
+            P_{R_1} = \SI{0.03491}{\watt}\\
+            P_{R_2} = \SI{0.06531}{\watt}\\
+            P_{R_3} = \SI{0.01431}{\watt}\\
+            P_{R_4} = \SI{0.04335}{\watt}
+        \end{align*}
+
+        Y las fuentes de voltaje:
+        \begin{align*}
+            P_{V_1} = \SI{0.13840}{\watt}\\
+            P_{V_2} = \SI{0.02134}{\watt}
+        \end{align*}
+
+        \item Sumar algebraicamente las potencias (teniendo en cuenta si son absorbidas ($+$) o suministradas ($-$)):
+        
+        Suma de potencias del circuito: \SI{0.00186}{\watt}.
+
+        \subsection{Principio de Superposición}
+
+        \item Conectar las fuentes de voltaje con las resistencias $R_1$, $R_2$, $R_3$, $R_4$ y $R_5$ como se indica en el montaje 2.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img18.jpg}{./Pictures/ProcedimientoExperimental/img19.jpg}{Representación gráfica, montaje 2}{0.7}
+
+        \item Utilizando el multímetro como voltímetro, medir y anotar el voltaje en la resistencia $R_3$.
+        
+        Voltaje de $R_3$ (medido): \SI{1.561}{\volt}
+
+        \item Cortocircuite la fuente de voltaje $V_2$ haciendo un puente entre sus terminales (apague la fuente). Conectar el multímetro como voltímetro en las terminales de la resistencia $R_3$. Medir y anotar el voltaje en la resistencia $R_3$.
+        
+        Voltaje de $R_3$ (medido): \SI{2.314}{\volt}
+
+        \item  continuación, reemplace el cortocircuito por la fuente de voltaje $V_2$.
+
+        \item Cortocircuite la fuente de voltaje $V_1$ haciendo un puente entre sus terminales (apague la fuente). Conectar el multímetro como voltímetro en las terminales de la resistencia $R_3$. Medir y anotar el voltaje en la resistencia $R_3$.
+        
+        Voltaje de $R_3$ (medido): \SI{-0.737}{\volt}
+
+        \item A continuación, reemplace el cortocircuito por la fuente de voltaje $V_1$.
+        
+        \item A continuación, utilizando el multímetro como amperímetro, medir y anotar la corriente en la resistencia $R_3$.
+        
+        Corriente de $R_3$ (medido): \SI{5}{\milli\ampere}
+
+        \item Cortocircuite la fuente de voltaje $V_2$ haciendo un puente entre sus terminales (apague la fuente). Conectar el multímetro como amperímetro para medir la corriente por la resistencia $R_3$. Medir y anotar la corriente en la resistencia $R_3$.
+        
+        Corriente de $R_3$ (medido): \SI{6.95}{\milli\ampere}
+
+        \item A continuación, reemplace el cortocircuito por la fuente de voltaje $V_2$.
+        
+        \item Cortocircuite la fuente de voltaje $V_1$ haciendo un puente entre sus terminales (apague la fuente). Conectar el multímetro como amperímetro para medir la corriente por la resistencia $R_3$. Medir y anotar la corriente en la resistencia $R_3$.
+        
+        Corriente de $R_3$ (medido): \SI{-2.24}{\milli\ampere}
+
+        \subsubsection*{Datos experimentales --- Mediciónes de montajes 2}
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|c|c|} % chktex 44
+                \midrule 
+                Datos       & $V_1$ y $V_2$ & Solo $V_1$    & Solo $V_1$    \\
+                \midrule
+                $V_{R_3}$   & 1.561         & 2.314         & -0.737        \\
+                $I_{R_3}$   & 5             & 6.95          & -2.24         \\
+                \midrule
+            \end{tabular}
+            \caption{Recopilación de las mediciónes experimentales}\label{tab:3}
+        \end{table}
+
+        \item Ahora ajuste el voltaje de ambas fuentes a \SI{6}{\volt}, ya realizado el cambio mida nuevamente el voltaje de la resistencia $R_3$.
+        
+        Voltaje de $R_3$ (medido): \SI{0.4}{\volt}
+    \end{enumerate}
 
     \section{Análisis y Resultados}
 
-    Analice los resultados.
+    Una vez terminada la práctica, realice los siguientes análisis y responda a las interrogantes:
+
+    \begin{enumerate}[label=\alph*.-]
+        \subsection{Potencia}
+
+        \item Calcular la potencia de forma analítica en cada uno de los elementos en el montaje 1.
+        
+        Tenemos el circuito:
+        
+        \begin{quote}
+            \begin{center}
+                \begin{circuitikz}[american voltages, transform shape, scale=0.7]
+                    \draw%
+                    (0, 0)  to [V, l=\SI{8}{\volt}, invert] (0, 3)
+                            to [R, l=\SI{220}{\ohm}, f>_=$I_1$] (3,3)
+                            to [R, l=\SI{330}{\ohm}, f=$I_1 + I_2$] (3,0)
+                            to [R, l=\SI{120}{\ohm}] (0,0)
+                    -- (0,0);% chktex 8
+                    \draw%
+                    (3,3)   to [R, l=\SI{390}{\ohm}, f<_=$I_2$] (6,3)
+                            to [V, l=\SI{2}{\volt}, invert] (6,0)
+                    -- (3,0);% chktex 8
+                \end{circuitikz}
+            \end{center}
+
+            Donde $I_1$ e $I_2$ son las corriente de las mallas $1$ y $2$ respectivamente. Así, siguiendo el análisis de mallas, aplicamos LVK sobre la primera malla:
+
+            \begin{align*}
+                220 I_1 + 330(I_1 + I_2) + 120 I_1 - 8 &=0\\
+                220 I_1 + 330 I_1 + 330 I_2 + 120 I_1 &= 8\\
+                670 I_1 + 330 I_2 &= 8
+            \end{align*}
+
+            Y en la segunda malla:
+            \begin{align*}
+                390 I_2 + 330 (I_1 + I_2) + 2 &= 0\\
+                390 I_2 + 330 I_1 + 330 I_2 &= -2\\
+                330 I_1 + 720 I_2 &= -2
+            \end{align*}
+
+            Por lo que tenemos:
+            \[
+                \begin{cases}
+                    670 I_1 + 330 I_2 &= 8\\
+                    330 I_1 + 720 I_2 &= -2
+                \end{cases}
+            \]
+
+            Al resolverlo obtenemos que:
+            \begin{align*}
+                I_1 = \SI{0.017189}{\ampere}    \\
+                I_2 = \SI{-0.010656}{\ampere}
+            \end{align*}
+
+            Ahora, calculamos la potencia usando:
+            \[
+                P = I^2 R
+            \]
+
+            Para las resistencias y:
+            \[
+                P = IV
+            \]
+
+            Para los voltajes, obteniendo:
+
+            \begin{align*}
+                P_{R_1} = \SI{0.035455}{\watt}  \\
+                P_{R_2} = \SI{0.065002}{\watt}  \\
+                P_{R_3} = \SI{0.014084}{\watt}  \\
+                P_{R_4} = \SI{0.044285}{\watt}  \\
+                P_{V_1} = \SI{-0.137510}{\watt} \\
+                P_{V_2} = \SI{-0.021312}{\watt} 
+            \end{align*}
+
+        \end{quote}
+        
+        \item Realice la suma algebraica de las potencias calculadas anteriormente tomando en cuenta los elementos que absorben y los que suministran.
+        
+        \begin{quote}
+            Al realizar la suma algebraica obtenemos:
+
+            \begin{align*}
+                0.035455 + 0.065002 + 0.014084 + 0.044285 -0.137510 -0.021312 = 0.000004 \approx 0
+            \end{align*}
+        \end{quote}
+        
+        \item Compare los datos teóricos y experimentales obtenidos de cada elemento del montaje 1 a través del error teórico porcentual.
+        
+        \begin{quote}
+            Utilizaremos la fórmula:
+
+            \[
+                E_{\%} = \frac{\left|V_{aprx} - V_{teor}\right|}{V_{teor}} \times 100\%
+            \]
+
+            Por lo cual, tenemos los siguientes resultados:
+            
+            \begin{table}[ht]
+                \centering
+                \begin{tabular}{|c|c|c|c|} % chktex 44
+                    \midrule 
+                    Resistencia     & Valor experimental de potencia (\unit{\watt})   & Valor teórico de potencia (\unit{\watt})  & Error porcentual (\%)\\
+                    \midrule
+                    $R_1$           & 0.03491   & 0.035455  & 1.54  \\
+                    $R_2$           & 0.06531   & 0.065002  & 0.47  \\
+                    $R_3$           & 0.01431   & 0.014084  & 1.60  \\
+                    $R_4$           & 0.04335   & 0.044285  & 2.11  \\
+                    \midrule
+                    Fuente          & Valor experimental de potencia (\unit{\watt})   & Valor teórico de potencia (\unit{\watt})  & Error porcentual (\%)\\
+                    \midrule
+                    $V_1$           & 0.13840   & 0.137510  & 0.65  \\
+                    $V_2$           & 0.02134   & 0.021312  & 0.13  \\
+                    \midrule
+                \end{tabular}
+            \end{table}
+
+        \end{quote}
+        
+        \item Se verifica el Teorema de Tellegen con lo realizado en la práctica? Explique a que se debe el error.
+        
+        \begin{quote}
+            Sí, el teorema de Tellegen se cumple. Esto ya que, como pudimos ver, la suma algebraica de las potencias medidas, tento teórica como experimentalmente, son prácticamente $0$. Las pequeñas desviaciones que se observan pueden deverse perfectamente a errores en la medición, ser relacionados con el redodneo de cifras, o deberse a factores externos como la temperatura del medio ambiente o la propia temperatura de las resistencias.
+        \end{quote}
+    \end{enumerate}
+
+    \begin{enumerate}[label=\alph*.-]
+        \subsection{Superposición}
+
+        \item Realizar la suma algebraica de los voltajes medidos en el paso 8 y 10 del procedimiento experimental. Luego compare este resultado con el medido en el paso 7 a través del error teórico porcentual. ¿Qué se puede concluir con estos resultados? ¿A qué se debe este error? De una explicación amplia.
+        
+        \begin{quote}
+            Al sumar los voltajes obtenidos en el paso 8 y 10 tenemos:
+            \begin{align*}
+                2.314 - 0.737 = 1.577
+            \end{align*}
+
+            El voltaje medido en el paso 7 es~\SI{1.561}{\volt}.
+
+            Ahora, aplicando la misma ecuación del paso c, obtenemos un error porcentual del $1.01\%$.
+
+            La conclusión a la que se llega es que estos valores, los medidos en los pasos 8 y 10, son los valores de los respectivos aportes de las fuentes. Esta es la razón por la que al sumarlos obtenemos el valor del voltaje que se midió en el paso 7.
+            
+            Por otro lado, el pequeño error porcentual que obtenemos, inferior al $2\%$, es posiblemente ocasionado por errores leves en el redondeo, en las mediciones o demás factores.
+        \end{quote}
+
+        \item Realizar la suma algebraica de las corrientes medidas en el paso 13 y 15 del procedimiento experimental. Luego compare este resultado con el medido en el paso 12 a través del error teórico porcentual. ¿Qué se puede concluir con estos resultados? ¿A qué se debe este error? De una explicación amplia.
+        
+        \begin{quote}
+            Al sumar los voltajes obtenidos en el paso 13 y 15 tenemos:
+            \begin{align*}
+                0.00695 - 0.00224 = 0.00471
+            \end{align*}
+
+            El voltaje medido en el paso 12 es~\SI{5}{\milli\ampere}.
+
+            Ahora, aplicando la misma ecuación del paso anterior, obtenemos un error porcentual del $6.157\%$.
+
+            La conclusión a la que se puede llegar a este resultado es prácticamente la misma que en el anterior. Los valores medidos en los pasos 13 y 15 son los aportes de la corriente de cada una de las fuentes. Mientras que el valor medido en el paso 12 es el valor completo.
+
+            La diferencia principal con el inciso anterior radica en que ahora el error porcentual es mucho mayor. Esto puede deberse a que se midió con menor exactitud los valores de las corrientes en estos incisos, en que las resistencias ya estaban calientes (y por lo tanto se pedía cierta potencia por causa del calor) o deberse sencillamente al hecho que la medición de la corriente daba valores mucho más pequeñs, lo que lo hacía más vulnerable a errores por pequeñas desviaciones.
+        \end{quote}
+        
+        \item Partiendo del montaje 2, determine el voltaje de $R_3$ de forma analítica a través del principio de superposición así como las constantes de linealidad y compare su respuesta con la medición del paso 7.
+        
+        \begin{quote}
+            Partimos ahora del circuito:
+
+            \begin{center}
+                \begin{circuitikz}[american voltages, transform shape, scale=0.7]
+                    \draw%
+                    (0, 0)  to [V, l=$V_y$, invert] (0, 3)
+                            to [R, l=\SI{220}{\ohm}] (3,3)
+                            to [R, l=\SI{330}{\ohm}, v=$V_{R_3}$] (3,0)
+                            to [R, l=\SI{120}{\ohm}] (0,0)
+                    -- (0,0);% chktex 8
+                    \draw%
+                    (3,3)   to [R, l=\SI{390}{\ohm}] (6,3)
+                            to [V, l=$V_x$, invert] (6,0)
+                    -- (3,0);% chktex 8
+                    \draw%
+                    (0, 3)  to [short] (0,4.5)
+                            to [R, l=\SI{470}{\ohm}] (6,4.5)
+                    -- (6,3);% chktex 8
+                \end{circuitikz}
+            \end{center}
+
+            Dejaremos las fuentes en valores arbitrarios $V_x$ y $V_y$ por ahora. Comenzamos cortocircuitando la fuente $V_x$. Llegamos a:
+
+            \begin{center}
+                \begin{circuitikz}[american voltages, transform shape, scale=0.7]
+                    \draw%
+                    (0, 0)  to [V, l=$V_y$, invert] (0, 3)
+                            to [R, l=\SI{220}{\ohm}] (3,3)
+                            to [R, l=\SI{330}{\ohm}, v=$V_{{R_3}_1}$] (3,0)
+                            to [R, l=\SI{120}{\ohm}] (0,0)
+                    -- (0,0);% chktex 8
+                    \draw%
+                    (3,3)   to [R, l=\SI{390}{\ohm}] (6,3)
+                            to [short] (6,0)
+                    -- (3,0);% chktex 8
+                    \draw%
+                    (0, 3)  to [short] (0,4.5)
+                            to [R, l=\SI{470}{\ohm}] (6,4.5)
+                    -- (6,3);% chktex 8
+                    \node[circ] at (6,2){};
+                    \node[circ] at (6,1){};
+                \end{circuitikz}
+            \end{center}
+
+            Que al reducir un poco las fuentes llegamos al circuito:
+
+            \begin{center}
+                \begin{circuitikz}[american voltages, transform shape, scale=0.7]
+                    \draw%
+                    (0,0)   to [V, l=$V_y$, invert] ++ (0, 3)
+                            to [short] ++ (2, 0)
+                            to [R, l=\SI{470}{\ohm}] ++ (0, -3)
+                            to [R, l=\SI{120}{\ohm}] (0,0);
+                    \draw%
+                    (2,3)   to [short] ++ (2,0)
+                            to [R, l=\SI{398.75}{\ohm}, f=$I$] ++ (0, -3)
+                            to (2, 0);
+                \end{circuitikz}
+            \end{center}
+
+            Donde $V_{{R_3}_1} = 178.75\,I$.
+
+            Transformamos la fuente con la resistencia de~\SI{120}{\ohm}:
+
+            \begin{center}
+                \begin{circuitikz}[american currents, transform shape, scale=0.7]
+                    \draw%
+                    (0,0)   to [I, l=$\frac{V_y}{120}$] ++ (0, 3)
+                            to [short] ++ (2, 0)
+                            to [R, l=\SI{120}{\ohm}] ++ (0, -3)
+                            to (0,0);
+                    \draw%
+                    (2,3)   to [short] ++ (2,0)
+                            to [R, l=\SI{398.75}{\ohm}, f=$I$] ++ (0, -3)
+                            to (2, 0);
+                    \draw%
+                    (2,3)   to [short] ++ (4,0)
+                            to [R, l=\SI{470}{\ohm}] ++ (0, -3)
+                            to (4, 0);
+                \end{circuitikz}
+            \end{center}
+
+            Y aplicando un divisor de corriente tenemos que:
+
+            \begin{align*}
+                I &= \frac{\frac{1}{398.75}}{\frac{1}{398.75} + \frac{1}{120} + \frac{1}{470}} \,\frac{V_y}{120}\\
+                I &= \frac{188}{116665}\, V_y
+            \end{align*}
+
+            Por lo cual:
+            \[
+                \boxed{V_{{R_3}_1} = \frac{6721}{23333}\, V_y}
+            \]
+
+            Siendo $\frac{6721}{23333}$ la primera constante de linealidad.
+
+            Ahora hacemos lo mismo pero cortocircuitando la fuente $V_y$. Obtenemos el circuito:
+
+            \begin{center}
+                \begin{circuitikz}[american voltages, transform shape, scale=0.7]
+                    \draw%
+                    (0, 0)  to [short] (0, 3)
+                            to [R, l=\SI{220}{\ohm}] (3,3)
+                            to [R, l=\SI{330}{\ohm}, v=$V_{{R_3}_2}$] (3,0)
+                            to [R, l=\SI{120}{\ohm}] (0,0)
+                    -- (0,0);% chktex 8
+                    \draw%
+                    (3,3)   to [R, l=\SI{390}{\ohm}] (6,3)
+                            to [V, l=$V_x$, invert] (6,0)
+                    -- (3,0);% chktex 8
+                    \draw%
+                    (0, 3)  to [short] (0,4.5)
+                            to [R, l=\SI{470}{\ohm}] (6,4.5)
+                    -- (6,3);% chktex 8
+                    \node[circ] at (0,2){};
+                    \node[circ] at (0,1){};
+                \end{circuitikz}
+            \end{center}
+
+            Para este caso no podremos reducirlo por técnicas básicas. Por lo que encontraremos el voltaje por medio de análisis nodal.
+            
+            Marcamos los nodos:
+
+            \begin{center}
+                \begin{circuitikz}[american voltages, transform shape, scale=0.7]
+                    \draw%
+                    (0, 0)  to [R, l=\SI{120}{\ohm}] (0, 3)
+                            to [R, l=\SI{220}{\ohm}] (3,3)
+                            to [R, l=\SI{330}{\ohm}, v=$V_{{R_3}_2}$] (3,0)
+                            to [short] (0,0)
+                    -- (0,0);% chktex 8
+                    \draw%
+                    (3,3)   to [R, l=\SI{390}{\ohm}] (6,3)
+                            to [V, l=$V_x$, invert] (6,0)
+                    -- (3,0);% chktex 8
+                    \draw%
+                    (0, 3)  to [short] (0,4.5)
+                            to [R, l=\SI{470}{\ohm}] (6,4.5)
+                    -- (6,3);% chktex 8
+                    \node[circ, label=above:$V_{{R_3}_2}$] at (3,3){};
+                    \node[circ, label=left:$V_1$] at (0,3){};
+                    \node[circ, label=right:$-V_x$] at (6,3){};
+                    \node[ground] at (6,0){};
+                \end{circuitikz}
+            \end{center}
+
+            Ahora aplicamos LCK en los nodos de voltaje $V_1$ y $V_{{R_3}_2}$.
+
+            \begin{align*}
+                \frac{V_1}{120} + \frac{V_1 - V_{{R_3}_2}}{220} + \frac{V_1 + V_x}{470} &= 0\\
+                517\, V_1 + 282\, V_1 - 282\, V_{{R_3}_2} + 132\, V_1 + 132\, V_x &= 0\\
+                931\, V_1 - 282\, V_{{R_3}_2} &= -132\, V_x
+            \end{align*}
+
+            \begin{align*}
+                \frac{V_{{R_3}_2} - V_1}{220} + \frac{V_{{R_3}_2} + V_x}{390} + \frac{V_{{R_3}_2}}{330} &=0\\
+                39\, V_{{R_3}_2} - 39\, V_1 + 22\, V_{{R_3}_2} + 22\, V_x + 26\, V_{{R_3}_2} &= 0\\
+                -39\, V_1 + 87\, V_{{R_3}_2} &= -22\, V_x\\
+                39\, V_1 - 87\, V_{{R_3}_2} &= 22\, V_x
+            \end{align*}
+
+            Resolvemos el sistema:
+            \[
+                \begin{cases}
+                    931\, V_1 - 282\, V_{{R_3}_2} &= -132\, V_x\\
+                    39\, V_1 - 87\, V_{{R_3}_2} &= 22\, V_x
+                \end{cases}
+            \]
+
+            Obtenemos que:
+            \[
+                \boxed{V_{{R_3}_2} = -\frac{25630}{69999}\, V_x}
+            \]
+
+            Siendo $-\frac{25630}{69999}$ la segunda constante de linealidad.
+
+            Así obtenemos la expresión para el voltaje $V_{R_3}$ de forma general por superposición:
+
+            \[
+                V_{R_3} = \frac{6721}{23333}\, V_y - \frac{25630}{69999}\, V_x
+            \]
+
+            Que al evaluar con los valores de las fuentes obtenemos:
+
+            \[
+                V_{R_3} = \SI{1.572}{\volt}
+            \]
+
+            Al aplicar la fórmula antes usada del error porcentual, tomando en cuenta el voltaje medido en el paso 7 (\SI{1.561}{\volt}), se obtiene un error relativo porcentual de $0.700\%$. Lo cual es extremadamente preciso.
+
+        \end{quote}
+        
+        \item Ahora determine su $V_{R_3}$ si ambas fuentes tienen un valor de \SI{6}{\volt} a través de las constantes de linealidad y compare este resultado con el obtenido en el paso 16 del procedimiento experimental
+        
+        \begin{quote}
+            Al sustituir el valor de las fuentes por~\SI{6}{\volt} en cada una, obtenemos que el voltaje en la resistencia $R_3$ es~\SI{-0.469}{\volt}.
+        \end{quote}
+        
+        \item Compare a través del error teórico porcentual el valor medido en el paso 16 del procedimiento experimental con el teórico calculado en el inciso anterior.
+        \begin{quote}
+            En el paso 16 obtuvimos experimentalmente que el valor de este voltaje era~\SI{-0.4}{\volt}. Obteniendo así un error porcentual de $14.713\%$. Este error es significativamente algo, sin embargo es muy probable que dicho error se deba a un redondeo en las cifras medidas, pues solamente se tiene medición de una cifra significativa. Por lo que es probable que se omitieran las demás cifras significativas, haciendo que eso origine error.
+        \end{quote}
+    \end{enumerate}
+
+    \section{Preguntas Propuestas}
+
+    \begin{itemize}
+        \item ¿Se verifica el principio de superposición con lo realizado en la práctica? ¿Por qué?
+        
+        \begin{quote}
+            Sí, por medio del montaje 2 se pudo verificar por completo el principio de superposición. Esto ya que todas las mediciones concuerdan entre sí. Tanto las mediciones experimentales completas, en donde al cortocircuitar las fuentes podemos medir las respectivas contribuiciones que sumadas igualan el voltaje medidio con ambas fuentes encendidas; como al resolver el circuito de manera analítica, en donde podemos comprobar nuestro resultado teórico con el experimental, obteniendo resultados extremadamente precisos.
+        \end{quote}
+    \end{itemize}
 
     \section{Conclusiones}
 
     \begin{enumerate}
-        \item Por lo que
-        \item Se concluye
-        \item Algo
+        \item En la práctica se pudo confirmar de manera experimental el teorema de Tellegen, uno de los principales teoremas en el análisis de circuitos eléctricos. Con esto podemos no solo confirmar que lo visto en clase concuerda a la perfección con la realidad, sino tener un entendimiento más profundo sobre dicho teorema y de cómo el mismo refleja el principio físico de la conservación de la energía.
+        \item También pudimos verificar el principio de superposición, clave para muchos análisis de circuitos y técnicas. Con esta práctica no solo pusimos en práctica los conocimientos teóricos relativos al principio de superposición, sino también vimos sus aplicaciones; como por ejemplo, el hecho que dicho principio nos da la facilidad de poder calcular un cierto parámetro una vez y poder obtener su valor luego con solo evaluarlo nuevamente.
+        \item Por último, en el laboratorio, pudimos practicar el uso del multímetro para realizar las mediciones de manera correcta, teniendo las consideraciones y cuidados pertinentes. De esta forma, pudimos afianzar mejor nuestra habilidad para realizar mediciones, tanto de voltaje como de corriente, haciendo uso del multímetro.
     \end{enumerate}
     
-    %\nocite{*}
-    %\printbibliography{}
+    \nocite{*}
+    \printbibliography{}
 
     \section{Anexos}
 
-    ANEXOS AQUÍ
+    \imagen{./Pictures/Anexos/photo1.jpg}{Montaje 1}{200px}
+
+    \imagenparinline{./Pictures/Anexos/photo2.jpg}{./Pictures/Anexos/photo3.jpg}{Montaje 2}{0.7}
 
 \end{document} 

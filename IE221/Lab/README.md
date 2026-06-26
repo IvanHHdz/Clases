@@ -20,19 +20,21 @@ flowchart TD
     K --> L
     L --> M
     M --> N
+    N --> O
 
     A[Descargar el manual de la práctica]
     B[Copiar el formato para informes]
-    C{¿El manual tiene imágenes en el marco teórico?}
+    C{¿El manual tiene imágenes en el marco teórico o en el procedimiento experimental?}
     D[Extraer las imágenes del manual]
     E[Guardar las imágenes en la carpeta correspondiente del formato]
     F[Escribir los _Materiales e Instrumentos_ del manual]
     G[Hacer la _Introducción_ con ChatGPT]
     H[Copiar el _Marco Teórico_ del manual]
     I[Copiar el _Procedimiento Experimental_]
-    J[Copiar el _Análisis y Resultados_]
-    K[Resolver el _Análisis y Resultados_]
-    L[Hacer los _Objetivos_ con ChatGPT]
-    M[Redactar las _Conclusiones_]
-    N[Pegar todas las fotos disponibles en los _Anexos_]
+    J[Rellenar el _Procedimiento Experimental_]
+    K[Copiar el _Análisis y Resultados_]
+    L[Resolver el _Análisis y Resultados_]
+    M[Hacer los _Objetivos_ con ChatGPT]
+    N[Redactar las _Conclusiones_]
+    O[Pegar todas las fotos disponibles en los _Anexos_]
 ```
