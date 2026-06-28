@@ -10,10 +10,15 @@ Adelante un índice de las clases.
 ### Departamento de Ingeniería Eléctrica
 
 - [IE-211 / Circuitos Eléctricos I](./IE221/README.md).
+- [IE-313 / Métodos Matemáticos para Ingeniería](./IE313/README.md).
 
 ### Departamento de Ingeniería Industrial
 
 - [II-411 / Organización y Métodos](./II411/README.md).
+
+### Departamento de Química Industrial
+
+- [QQ-100 / Química General](/README.md).
 
 ## Matemáticas
 
