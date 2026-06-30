@@ -6,11 +6,11 @@ using namespace std;
 
 bool sonAnagramas(string palabra1, string palabra2) {
     // ? Convertir a minúsculas para ignorar mayúsculas y minúsculas
-    for (char &c : palabra1) {
-        c = tolower(c); 
+    for (int i = 0; i < palabra1.length(); i++) {
+        palabra1[i] = tolower(palabra1[i]);
     }
-    for (char &c : palabra2) {
-        c = tolower(c); 
+    for (int i = 0; i < palabra2.length(); i++) {
+        palabra2[i] = tolower(palabra2[i]);
     }
 
     // ? Verificar si las palabras tienen la misma longitud
@@ -19,7 +19,8 @@ bool sonAnagramas(string palabra1, string palabra2) {
     }
 
     // ? Verificar si las palabras son anagramas
-    for (char c : palabra1) {
+    for (int i = 0; i < palabra1.length(); i++) {
+        char c = palabra1[i];
         int pos = palabra2.find(c);
         if (pos == -1) {
             return false;
