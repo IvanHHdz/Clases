@@ -1,0 +1,295 @@
+% ====== Tipo de archivo ======
+\documentclass{article}
+
+\input{Formato.tex}
+
+\begin{document}
+    \section{Introducción}
+
+    El análisis de circuitos eléctricos permite comprender cómo interactúan elementos como resistencias y fuentes de voltaje dentro de una red. En esta práctica se emplearán simuladores electrónicos para estudiar el comportamiento de distintos montajes y comparar resultados teóricos con mediciones obtenidas de forma virtual. Además, se aplicarán los equivalentes de Thévenin y Norton para simplificar circuitos y analizar su respuesta ante diferentes cargas.
+
+    Diversos autores han demostrado que estos teoremas facilitan el estudio de redes complejas al reemplazarlas por modelos equivalentes más simples. Sin embargo, en cursos introductorios no siempre se profundiza en la comparación entre los cálculos analíticos y los resultados experimentales obtenidos mediante simulación, ni en las posibles diferencias causadas por errores de medición o aproximaciones del software. Por ello, esta práctica busca determinar los parámetros equivalentes del circuito, verificar la validez de ambos modelos y evaluar la precisión de las simulaciones realizadas.
+
+    \section{Objetivos}
+
+    \begin{itemize}
+        \item Analizar el comportamiento de circuitos resistivos en configuraciones en serie y en paralelo, relacionando los resultados experimentales con los principios teóricos de análisis de circuitos.
+        \item Determinar los parámetros equivalentes de una red eléctrica, incluyendo el voltaje de Thévenin, la corriente de Norton y la resistencia equivalente, a partir del análisis del circuito.
+        \item Comparar los valores teóricos y experimentales obtenidos durante la práctica mediante el cálculo del error relativo porcentual, para evaluar la precisión de los resultados.
+        \item Demostrar la equivalencia entre los modelos de Thévenin y Norton al verificar que ambos producen el mismo comportamiento sobre una carga conectada
+        \item Evaluar la utilidad de los simuladores electrónicos en el estudio de circuitos, considerando sus ventajas, limitaciones y su aporte al análisis práctico.
+    \end{itemize}
+
+    \section{Materiales e Instrumentos}
+
+    Se utilizaron los siguientes materiales dentro de los simuladores de Multisim y Tinkercad:
+
+    \begin{itemize}
+        \item Multímetro
+        \item Vatímetro
+        \item Fuente de voltaje
+        \item Resistencias
+        \item Diodo LED
+        \item Protoboard
+    \end{itemize}
+
+    \section{Marco Teórico}
+
+    \subsection{Multisim}
+
+    \imagenwrap{./Pictures/MarcoTeorico/img2.jpg}{Multisim}{100px}{r}
+
+    Multisim es un software de simulación de circuitos electrónicos basado en SPICE y desarrollado por National Instruments que permite diseñar, analizar y probar circuitos eléctricos de manera virtual mediante herramientas avanzadas de medición y análisis; es ampliamente utilizado en ingeniería y educación porque facilita la validación de diseños antes de implementarlos físicamente, incluyendo el estudio de voltajes, corrientes y comportamiento en diferentes condiciones.
+
+    Es útil para diseñar circuitos como los vistos en las prácticas anteriores en donde podrá conectar resistencias, capacitores, inductores y otro tipo de elementos; al igual que diferentes tipos de fuentes, podrá generar ondas senoidales a partir de un generador de funciones y poder observarlas en un osciloscopio de igual manera podrá hacer mediciones de voltaje, corriente, resistencia y potencia activa y factor de potencia entre otros.
+
+    \subsection{TinkerCad}
+
+    \imagenwrap{./Pictures/MarcoTeorico/img4.jpg}{TinkerCad}{100px}{r}
+
+    Tinkercad es una plataforma en línea desarrollada por Autodesk que permite diseñar modelos en 3D, simular circuitos electrónicos y programar dispositivos como Arduino de forma interactiva y sencilla; es ampliamente utilizada en educación porque facilita el aprendizaje práctico al permitir crear, probar y visualizar proyectos sin necesidad de hardware físico.
+
+    \subsection{Teorema de Thévenin/Norton}
+
+    El teorema de Thévenin/Norton establece que cualquier circuito eléctrico lineal, compuesto por fuentes dependientes, independientes y elementos pasivos, puede ser reemplazado por un circuito equivalente de manera que al conectarle una carga tendremos la misma potencia brindada por la red original, todo esto visto desde dos terminales preestablecidos. Equivalente el cual consiste en una fuente de voltaje en serie con una resistencia o una fuente de corriente en paralelo con la misma resistencia.
+
+    \imagen{./Pictures/MarcoTeorico/img11.jpg}{Equivalente de Thévenin y de Norton}{200px}
+
+    \subsection{Voltaje de Thévenin}
+
+    El voltaje de Thévenin, denotado como $V_{Th}$, se define como el voltaje en circuito abierto entre los terminales de salida del circuito. Para su determinación, se retira la carga y se calcula el voltaje presente entre los terminales.
+
+    \subsection{Corriente de Norton}
+
+    La corriente de Norton, denotado como $I_N$, se define como la corriente de cortocircuito entre los terminales de salida del circuito. Para su determinación, se retira la carga y se calcula la corriente que pasa por los terminales al estar en corto.
+
+    \subsection{Resistencia de Thévenin}
+
+    La resistencia de Thévenin, denotada como $R_{Th}$, corresponde a la resistencia equivalente vista desde los terminales del circuito, en este proceso las fuentes de voltaje se reemplazan por cortocircuitos y las fuentes de corriente por circuitos abiertos. Una vez que todas las fuentes independientes han sido desactivadas, se reduce todo el diagrama a una sola resistencia equivalente.
+
+    Alternativamente, la resistencia de Thévenin puede determinarse mediante la relación:
+
+    \[
+        R_{Th} = \frac{V_{Th}}{I_N}
+    \]
+
+    En caso de haber una fuente dependiente en el circuito se complica el cálculo de $R_{Th}$, para determinarla apagamos todas las fuentes y entre los terminales de salida se conecta una fuente de \SI{1}{\volt} o \SI{1}{\ampere} (Por conveniencia, aunque puede ser de cualquier valor) para excitar la red y luego mediante técnicas básicas se analiza el circuito para poder determinarla $R_{Th}$ por ley de Ohm $R = V /I$, siendo este voltaje y corriente los de la fuente conectada entre los terminales.
+
+    \section{Procedimiento Experimental}
+
+    Considerar los siguientes valores a utilizar:
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|} % chktex 44
+            \midrule 
+            Resistor    & Valor (\unit{\ohm})   \\
+            \midrule
+            $R_1$       & \SI{1}{\kilo\ohm}     \\
+            $R_2$       & \SI{12}{\kilo\ohm}    \\
+            $R_3$       & \SI{150}{\ohm}        \\
+            $R_4$       & \SI{470}{\ohm}        \\
+            \midrule
+        \end{tabular}
+        \caption{Valores de resistencias}
+    \end{table}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|} % chktex 44
+            \midrule 
+            Fuente      & Valor (\unit{\volt})  \\
+            \midrule
+            $V_1$       & \SI{8}{\volt}         \\
+            $V_2$       & \SI{2}{\volt}         \\
+            \midrule
+        \end{tabular}
+        \caption{Fuentes de voltaje}
+    \end{table}
+
+    
+    \begin{enumerate}
+        \subsection{TinkerCad}
+        
+        \item Con la ayuda del simulador Tinkercad montaremos el siguiente diagrama en una protoboard. Para ubicar los componentes a utilizar en el montaje ir a la esquina superior derecha y ubicar el apartado de Componente -> Todos. Buscar:
+        
+        \begin{itemize}
+            \item Placa de pruebas pequeña
+            \item Fuente de alimentación
+            \item Multímetro, Resistencia ($R_3$) y LED
+        \end{itemize}
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img14.jpg}{./Pictures/ProcedimientoExperimental/img15.jpg}{Representación Gráfica --- Montaje 1}{0.75}
+        
+        Aquí el enlace: \href{https://www.tinkercad.com/things/chY8fM75SH5-practica41?sharecode=90YL5oCHnwQ_MQJhmHVnnGpzegIlfVVufIDYtoEFfxI}{ENLACE}.
+
+        \item Configure el voltaje de la fuente a \SI{8}{\volt} y utilice el multímetro para medir el voltaje en el LED.\@ Anote los datos en la tabla~\ref{tab:3} y repita esto para \SI{8}{\volt}, \SI{4}{\volt}, \SI{2}{\volt}, y \SI{0}{\volt}.
+        
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule 
+                Voltaje de la fuente (\unit{\volt}) & Voltaje en el LED (\unit{\volt})  \\
+                \midrule
+                $8$                                 & $2.22$                            \\
+                $6$                                 & $2.12$                            \\
+                $4$                                 & $2.02$                            \\
+                $2$                                 & $1.83$                            \\
+                $0$                                 & $0.00$                            \\
+                \midrule
+            \end{tabular}
+            \caption{Mediciones de voltaje en el LED}\label{tab:3}
+        \end{table}
+
+        \item Conectar en la Protoboard las resistencias $R_1$, $R_2$, $R_3$ en serie como se indica en el montaje 2.
+    
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img20.jpg}{./Pictures/ProcedimientoExperimental/img21.jpg}{Representación Gráfica --- Montaje 2}{0.75}
+
+        Aquí el enlace: \href{https://www.tinkercad.com/things/5Gkyvkg7GTq-practica42?sharecode=7xpEv2MLhaQ7olfOGs4_5N-SzfJAf3cd6AgHGgxkaG0}{ENLACE}.
+
+        \item Utilizando el multímetro, medir y anotar el valor de las resistencias en serie y calcular de manera analítica el valor de las resistencias en serie posteriormente.
+        
+        Resistencias en Serie (medida): \SI{13.2}{\kilo\ohm}\\
+        (calculado): \SI{13.15}{\kilo\ohm}
+
+        \item Conectar en la Protoboard las resistencias $R_1$, $R_2$ y $R_3$ en paralelo.como se indica en el montaje 3.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img26.jpg}{./Pictures/ProcedimientoExperimental/img27.jpg}{Representación Gráfica --- Montaje 3}{0.75}
+
+        Aquí el enlace: \href{https://www.tinkercad.com/things/hbra4j5y2LK-practica43?sharecode=wAP4cVVpaAJvN-eEfLwczJ2s_iEZLyozqS59bgLS_6s}{ENLACE}.
+
+        \item Utilizando el multímetro, medir y anotar el valor de la resistencia en paralelo y calcular de manera analítica el valor de la resistencia en paralelo posteriormente. 
+        
+        Resistencias en Paralelo (medida): \SI{129}{\ohm}\\
+        (calculado): \SI{129.032}{\ohm}
+
+        \subsection{Multisim --- Thévenin y Norton}
+
+        \item Haciendo uso de Multisim conectar el circuito indicado en el montaje 4, respetando las polaridades de las fuentes y el uso del punto como nodo de conexión (Donde hay una intersección sin punto las líneas solo se cruzan).
+
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img28.jpg}{./Pictures/ProcedimientoExperimental/img29.jpg}{Representación Gráfica --- Montaje 4}{0.75}
+
+        \item Primero apagamos la fuente independiente (al ser de voltaje la sustituimos por un corto) y acto seguido medimos la resistencia entre los terminales a-b en el montaje 4.
+        
+        $R_{Th}$ (medida)$=$~\SI{2.342}{\ohm}
+
+        \item Ya realizadas la medición de resistencia encendemos nuevamente la fuente.
+        
+        \item Acto seguido medimos voltaje y corriente entre los terminales, a-b.
+        
+        $V_{Th}$ (medida)$=$~\SI{-1.225}{\volt}\\
+        $I_{N}$ (medida)$=$~\SI{523.013}{\milli\ampere}
+
+        \item Ahora, desconectamos el multímetro y conectamos a los terminales una carga de \SI{100}{\ohm}.
+        
+        \item Con la carga conectada medimos la potencia consumida por ella con la ayuda de un vatímetro.
+        
+        Potencia medida: \SI{15.726}{\milli\watt}.
+
+        \item Ya obtenida la potencia disipada por la carga acoplada a la red original, realizar ambos equivalentes (Thévenin y Norton) con los datos experimentales medidos en el paso 8 y 10 y la carga conectada. De igual manera medimos la potencia en ambos arreglos con la ayuda del vatímetro.
+        
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img45.jpg}{./Pictures/ProcedimientoExperimental/img46.jpg}{Diagrama --- Montaje 5}{0.5}
+
+        Potencia medida: \SI{15.735}{\milli\watt}.
+
+        \imagenparinline{./Pictures/ProcedimientoExperimental/img47.jpg}{./Pictures/ProcedimientoExperimental/img48.jpg}{Diagrama --- Montaje 6}{0.5}
+
+        Potencia medida: \SI{15.735}{\milli\watt}.
+        
+    \end{enumerate}
+    
+    \section{Análisis y Resultados}
+
+    Una vez terminada la práctica, realice los siguientes análisis y responda a las interrogantes:
+    
+    \begin{enumerate}[label=\alph*.-]
+        \item Mediante el uso del error relativo porcentual, comparar los resultados teóricos experimentales de los arreglos de resistencias del Montaje 2.
+        
+        \begin{quote}
+            Utilizaremos la fórmula del error relativo porcentual para comparar los resultados teóricos y experimentales de las resistencias en serie del Montaje 2. La fórmula es:
+            \[
+                E_{\%} = \frac{\left|V_{aprx} - V_{teor}\right|}{V_{teor}} \times 100\%
+            \]
+
+            Al reemplazar los valores obtenidos, tenemos:
+            \[
+                E_{\%} = \frac{\left|13.2 - 13.15\right|}{13.15} \times 100\% \approx 0.38\%
+            \]
+        \end{quote}
+
+        \item Mediante el uso del error relativo porcentual, comparar los resultados teóricos experimentales de los arreglos de resistencias del Montaje 3.
+        
+        \begin{quote}
+            Utilizaremos la misma fórmula que en el inciso anterior, obteniendo:
+            \[
+                E_{\%} = \frac{\left|129 - 129.032\right|}{129.032} \times 100\% \approx 0.025\%
+            \]
+        \end{quote}
+
+        \item Desarrolle de forma analítica el equivalente de Thevenin/Norton para el montaje 4, determine $V_{Th}$, $I_N$ y $R_{Th}$.
+        
+        \item Compare a través del error teórico porcentual los datos teóricos calculados en el inciso anterior con los medidos en el paso 8 y 10 del procedimiento experimental.
+        
+        \item Determine de forma analítica la potencia teórica disipada por una carga de \SI{100}{\ohm} si es conectada a los terminales a-b del montaje 4.
+        
+        \item Compare a través del error teórico porcentual el dato teóricos calculado en el inciso anterior con el medido en el paso 12 y 13 del procedimiento experimental.
+    \end{enumerate}
+
+    \section{PREGUNTAS PROPUESTAS}
+
+    \begin{enumerate}[label=\alph*.-]
+        \item ¿Tienen sentido las mediciones en el montaje 1?, ¿Diría usted que hay incertidumbre en las mediciones o es ideal? De su opinión de forma amplia.
+        
+        \begin{quote}
+            Sí, las mediciones del montaje 1 tienen sentido, esto ya que a medida que vamos disminuyendo el voltaje de la fuente, el voltaje de la LED va también disminuyendo.
+
+            La incertidumbre en las mediciones resulta extremadamente baja, esto ya que se han realizado haciendo uso de un simulador. Y en el simulador muchas veces se omiten muchos de aquellos factores que afectan las mediciones reales: errores de medición con el multímetro, aumento en la temperatura de los componentes, la temperatura ambiental, etc. Por lo que en muchas ocasiones se puede considerar perfectamente que las mediciones obtenidas son ideales.
+
+            Esto puede llegar a resultar muy útil para analizar circuitos o para verificar los análisis realizados de manera analítica.
+        \end{quote}
+
+        \item A través de las mediciones realizadas en el paso 12 y 13, ¿Usted diría que son válidas ambas formas de representar el equivalente de la red? De su opinión de forma amplia.
+        
+        \begin{quote}
+            Sí, ambas formas son equivalentes. Y esto lo podemos comprobar con mucha presición, pues los resultados obtenidos en el paso 13 (iguales entre ellos) son extremadamente precisos y cercanos al valor medido en el paso 12. Por lo que es perfectamente válido considerar que ambas formas son equivalentes y que se puede utilizar cualquiera de ellas para representar el circuito.
+        \end{quote}
+
+        \item ¿Ha sido comprobado el teorema de Thévenin y Norton a través de los distintos montajes realizados en Multisim? De su opinión de forma amplia.
+        
+        \begin{quote}
+            Sí, tanto el teorema de Thévenin como el de Norton han quedado comprobados a través de los montajes. Un ejemplo claro de esto es durante el paso 12 y 13, en donde se pudo comprobar la equivalencia de ambos equivalentes para obtener la potencia, obteniendo en ambos casos exactamente el mismo valor, valor muy cercano al valor obtenido durante el paso 12.
+        \end{quote}
+
+        \item ¿Qué ventajas percibe usted sobre el uso de los simuladores y cuáles son los puntos fuertes de cada uno? Exprese cuál preferiría usted.
+        
+        \begin{quote}
+            Los simuladores resultan ser herramientas muy útiles para el análisis de circuitos, pues permiten realizar mediciones en condiciones que pueden ser consideradas ideales, facilitando muchas partes de los análisis.
+
+            Un ejemplo claro de esta parte es el hecho que el cálculo de la resistencia de Thévenin, el voltaje de Thévenin y la corriente de Norton se pudo realizar en tres simples mediciones.
+
+            Por otro lado, los puntos fuertes que considero que tiene cada uno de los simuladores utilizados en esta práctica son: en el caso de Tinkercad, la faciliadad de su uso, su accesiilidad, y lo visual e intuitivo que resulta.
+        \end{quote}
+
+        \item Investigue al menos 3 simuladores más que pueden ser de utilidad en el desarrollo del curso.
+        
+        \begin{quote}
+            Algunos de los simuladores que podrían resultar útiles son:
+            
+            \begin{enumerate}
+                \item LTspice: Es un simulador de circuitos electrónicos basado en SPICE desarrollado por Linear Technology. Es ampliamente utilizado en la industria y la academia para el análisis de circuitos analógicos y digitales, ofreciendo capacidades avanzadas de simulación y modelado.
+                \item Ngspice: Es un simulador de circuitos de código abierto basado en SPICE que permite analizar circuitos electrónicos de manera precisa y flexible. Es compatible con una amplia gama de modelos de componentes y es utilizado tanto en investigación como en educación.
+                \item KiCad: Es un software de diseño de circuitos electrónicos de código abierto que incluye herramientas para la creación de esquemáticos, diseño de PCB y simulación de circuitos. Aunque su enfoque principal es el diseño de PCB, también ofrece capacidades de simulación mediante la integración con simuladores como Ngspice.
+            \end{enumerate}
+        \end{quote}
+    \end{enumerate}
+    
+    \nocite{*}
+    \printbibliography{}
+
+    \section{Anexos}
+
+    \imagenparinline{./Pictures/Anexos/photo1.jpg}{./Pictures/Anexos/photo2.jpg}{Anexos}{0.5}
+
+    \imagen{./Pictures/Anexos/photo3.jpg}{Anexos}{150px}
+
+\end{document} 

@@ -1,0 +1,164 @@
+% ====== Paquetes básicos ======
+\usepackage[utf8]{inputenc}    % Codificación UTF-8
+\usepackage[T1]{fontenc}       % Acentos correctos
+\usepackage[spanish,es-nodecimaldot]{babel}    % Traducción al español
+\usepackage{csquotes}          % Recomendado para biblatex con babel
+\usepackage{hyperref}          % Hipervínculos
+\usepackage{amsmath,amssymb}   % Matemáticas
+\usepackage{graphicx}          % Imágenes
+\usepackage{caption}           % Mejor control de captions
+\usepackage{geometry}          % Márgenes
+\usepackage{fancyhdr}          % Encabezados y pies
+\usepackage{parskip}           % Mejor separación entre párrafos
+\usepackage{siunitx}           % Unidades del SI
+\usepackage{booktabs}          % Tablas
+\usepackage{wrapfig}           % Algo de imágenes
+\usepackage{xcolor}            % Letras de colores
+\usepackage{subcaption}        % Imágenes
+\usepackage{enumitem}          % Enumeraciones
+\usepackage{pgfplots}          % Gráficas
+\usepackage{circuitikz}        % Circuitos
+
+% ====== Circuitos ======
+% Puedes dibujarlos usando circuitikz
+% por comodidad, visita: https://www.circuit2tikz.tf.fau.de/designer/
+%
+% o aquí un ejemplo:
+% ====== Circuitos ======
+% Ejemplo
+% \begin{center}
+%     \begin{circuitikz}[american voltages, transform shape, scale=0.7]
+%         \draw%
+%         (0, 0)  to [V, l=\SI{8.1}{\volt}, invert] (0, 3)
+%                 to [short, f_=\SI{7.105}{\milli\ampere}] (3,3)
+%                 to [R, l=\SI{1140}{\ohm}] (3,0)
+%         -- (0,0);% chktex 8
+%     \end{circuitikz}
+% \end{center}
+
+% ====== Gráficas ======
+\pgfplotsset{compat=1.18}
+
+% Ejemplo de gráfica
+% \begin{figure}[ht]
+%     \begin{center}
+%         \begin{tikzpicture}
+%             \begin{axis}[
+%                     title={Corriente vs Voltaje},
+%                     xlabel={Voltaje (V)},
+%                     ylabel={Corriente (A)},
+%                     grid=major,
+%                     legend pos=north west,
+%                     width=8cm,
+%                     height=6cm
+%                 ]
+%                 \addplot[
+%                     mark=*,
+%                 ] coordinates {
+%                     (0, 0)
+%                     (1, 0.28)
+%                     (2, 0.63)
+%                     (3, 0.9)
+%                     (4, 1.15)
+%                     (5, 1.48)
+%                 };
+%                 \addlegendentry{$I(V)$}
+%             \end{axis}
+%         \end{tikzpicture}
+%     \end{center}
+% \end{figure}
+
+% ====== Referencias ======
+\usepackage[
+    backend=biber,
+    style=apa,     % cambie a APA de ser necesario
+    sorting=none
+]{biblatex} 
+\bibliography{references}
+
+% agrege `\printbibliography{}` para las referencias
+% cite con `\cite{}`
+% agregue las referencias a un `references.bib`
+
+% ====== Configuración ======
+\geometry{margin=2.25cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\setlength{\headheight}{13pt}
+\lhead{\leftmark}
+
+% ====== Comandos personalizados para imágenes ======
+
+% Una imagen centrada
+% Uso: \imagen{ruta}{Texto del pie de figura}{200px}
+\newcommand{\imagen}[3]{
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width={#3}]{#1}
+        \caption{#2}
+    \end{figure}
+}
+
+% Una imagen a la par del texto
+% Uso: \imagenwrap{ruta}{texto del pie de figura}{200px}{r}
+\newcommand{\imagenwrap}[4]{
+    \begin{wrapfigure}{#4}{#3} % l - r
+        \centering
+        \includegraphics[width=\linewidth]{#1}
+        \caption{#2}
+    \end{wrapfigure}
+}
+
+% Una imagen al par de otra
+% Uso:\imagenparinline{img1}{img2}{texto}{0.45}
+\newcommand{\imagenparinline}[4]{%
+    \noindent\makebox[\linewidth][c]{%
+        \begin{minipage}{#4\linewidth}
+            \centering
+            \begin{minipage}{0.49\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{#1}
+            \end{minipage}\hfill
+            \begin{minipage}{0.49\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{#2}
+            \end{minipage}
+            \vspace{2mm}
+            {\small #3}
+        \end{minipage}%
+    }%
+}
+
+% ====== Código de colores de las resistencias ======
+\newcommand{\rcc}[1]{
+    \ifcase#1
+        \textcolor{black}{N}% 0
+    \or%
+        \textcolor{brown}{M}% 1
+    \or%
+        \textcolor{red}{R}% 2
+    \or%
+        \textcolor{orange}{N}% 3
+    \or%
+        \textcolor{yellow}{A}% 4
+    \or%
+        \textcolor{green}{V}% 5
+    \or%
+        \textcolor{blue}{A}% 6
+    \or%
+        \textcolor{violet}{V}% 7
+    \or%
+        \textcolor{gray}{G}% 8
+    \or%
+        \textcolor{white}{B}% 9
+    \or%
+        \textcolor{yellow!70!orange}{O} % 10
+    \or%
+        \textcolor{lightgray}{P}  % 11
+    \fi
+}
+
+% ====== Datos del artículo ======
+\title{Portada}
+\author{Lester Iván Hernández Hernandez}
