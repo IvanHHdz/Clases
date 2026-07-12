@@ -4,22 +4,24 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 29a40656-727a-11f1-0dbb-aba42e8c2b2f
+# ╔═╡ 09c972bd-2b5d-4214-99b3-1a0ca5166ba5
 using Plots
 
-# ╔═╡ f8d33b2b-4363-4a9d-9917-776b850849ea
+# ╔═╡ 88bd5cba-7e39-11f1-84ff-85fa3458ca32
 md"""
-# Graficador de Serie de Fourier Compleja
+# Graficador de Serie de Fourier
 
-Este notebook tiene lo necesario para graficar una función, tanto en su forma exacta como en su representación en serie de fourier compleja.
+Este notebook tiene lo necesario para graficar una función, tanto en su forma exacta como en su representación en serie de fourier.
+
+Note que aquí usamos la versión real de la función, no la compleja. Para la compleja, consulte el `notebook1.jl`.
 """
 
-# ╔═╡ 56968393-b6e6-4e52-b2e8-1381bc03cd7f
+# ╔═╡ b2f18e3e-1b96-4b2c-99b9-b6019498b35b
 md"""
 Esta función se encarga de mantener los valores entre los valores definidos. Es decir, volver cíclicos los valores. Análogo a funciones trigonométricas y su periodo de $2\pi$. El valor es $x$, los valores $a$ y $b$ son los límites del intervalo.
 """
 
-# ╔═╡ dd1ae762-4ac4-4820-a312-8ac6509a76ad
+# ╔═╡ 12d62b8b-bf16-40a2-aea7-bb99f041d1e3
 function cicle(x, a, b)
 	T = b - a
 	if x ≤ a
@@ -35,92 +37,115 @@ function cicle(x, a, b)
 	end
 end
 
-# ╔═╡ 74079a06-2421-4699-b428-b9df2fa1a485
+# ╔═╡ 244666c2-71b3-4ff0-a551-0408275e7525
 md"""
 Esta es la definición usual de la función que se busca obtener. En este caso tenemos:
 
 ```math
 f(x) = \begin{cases} 
-0 & x < 0\\
-x & x \geq 0
+-1 & x < 0\\
+1 & x \geq 0
 \end{cases}
 ```
 """
 
-# ╔═╡ 53ef36f6-0e05-4d2d-b35b-3e3d263cfc2b
+# ╔═╡ 81426867-180a-4b7c-acb7-87ee0a1cc026
 function f(x)
 	x = cicle(x, -pi, pi)
 	if x < 0
-		return 0
+		return -1
 	else
-		return x
+		return 1
 	end
 end
 
-# ╔═╡ f8075fce-b1a5-4072-a8a6-323549daf912
+# ╔═╡ d6286cd4-765e-4a5b-aa2e-c9d4ad3d9d11
 md"""
-Esta es la constante compleja. Es el resultado obtenido tras resolver la integral respectiva. En esta ocasión se obtuvo:
+Esta es la constante externa, $a_0$. En nuestro caso:
 
 ```math
-c_n = \begin{cases}
-\frac{\pi}{4} & n=0\\
-\frac{i}{2n} & 2\mid n\\
--\frac{i n\pi + 2}{2 \pi n^2} & 2\nmid n
+a_0 = 0
+```
+"""
+
+# ╔═╡ 5ff760e9-c739-4b19-bf76-2b3203c65321
+a0 = 0
+
+# ╔═╡ 23335b4e-ec32-435f-86b5-976cab776fd8
+md"""
+Esta es la constante de coseno. Es el resultado obtenido tras resolver la integral respectiva. En esta ocasión se obtuvo:
+
+```math
+a_n = 0
+```
+"""
+
+# ╔═╡ 67b229a3-3212-4c46-abe7-5394ee2e478f
+function a(n)
+	return 0
+end
+
+# ╔═╡ 9289748d-f3cd-42a7-b648-d6c9863427b8
+md"""
+Esta es la constante de coseno. Es el resultado obtenido tras resolver la integral respectiva. En esta ocasión se obtuvo:
+
+```math
+b_n = \begin{cases}
+0 & 2 \mid n\\
+\frac{4}{\pi n} & 2\nmid n
 \end{cases}
 ```
 """
 
-# ╔═╡ 35f84af2-ed1e-4adf-8ebe-d774467a4c58
-function c(n)
-    if n == 0
-        return pi/4
-    elseif isodd(n)
-        return -(im*n*pi + 2)/(2*pi*n^2)
-    else
-        return (im)/(2*n)
-    end
+# ╔═╡ 2cfa6d97-229a-4f14-95aa-f2bc999987d5
+function b(n)
+	if isodd(n)
+		return 4/(pi*n)
+	else
+		return 0
+	end
 end
 
-# ╔═╡ 1dc47074-ad1b-44bc-8872-07af8ee00dba
+# ╔═╡ d7420003-2702-41e6-b570-3f9e833eace6
 md"""
-Esta es la definición de la serie compleja de Fourier, o bueno, parte de ella. Usa los primeros $N$ valores.
+Esta es la definición de la serie de Fourier, o bueno, parte de ella. Usa los primeros $N$ valores.
 """
 
-# ╔═╡ aa5ab093-8cde-4a09-a2c2-76b9cea9b550
+# ╔═╡ 370ee0fa-9d45-4e65-ba0f-83e3c67d1e44
 function fourier(x, N)
-    suma = 0 + 0im
+    suma = a0
     
-    for n in -N:N
-        suma += c(n)*exp(im*n*x)
+    for n in 1:N
+        suma += a(n) * cos(n*x) + b(n) * sin(n*x)
     end
     
-    return real(suma)
+    return suma
 end
 
-# ╔═╡ 5f0a1aa3-71a4-4dcd-b563-c619d7a4dd86
+# ╔═╡ 1db95460-4b82-40b7-975c-fc06f0252ad1
 md"""
 Definimos algunos valores más y listo.
 """
 
-# ╔═╡ e772214b-bfd8-4d30-836e-c53e827fb260
-x = range(-2*pi, 2*pi, length=1000)
+# ╔═╡ 64394e94-5fcd-47b9-852d-e2bff5a18122
+x = range(-2*pi, 2*pi, length=1000) 
 
-# ╔═╡ 6d91948a-6231-4ef7-9181-03190305db2b
+# ╔═╡ 61ab6b87-a29a-469f-bb4f-0db8bf3a0663
 N = 10000
 
-# ╔═╡ 749337f7-14ad-42aa-aa2d-71e1e9f759fe
+# ╔═╡ ab001d04-5eb4-4389-9491-51be3990b530
 y = [fourier(t,N) for t in x]
 
-# ╔═╡ 7eef3409-5410-4d0d-b1e5-a33c78d2bf41
+# ╔═╡ 22d4850d-7e62-4a0a-a510-e600df3be163
 Y = [f(t) for t in x]
 
-# ╔═╡ 7043508a-3a20-47bb-970f-dcbf20ad2c88
+# ╔═╡ 6e0c6793-fc69-45f9-a18a-add37fc37540
 plot(x, y,
-     label="Serie de Fourier Compleja",
+     label="Serie de Fourier",
      xlabel="x",
      ylabel="f(x)");
 
-# ╔═╡ 9fea09d3-e17c-4c82-b7e5-6d5001e589e9
+# ╔═╡ 8de7ecd7-e340-4740-a6d9-c289cc5ef1f9
 plot!(x, Y,
 	  label="f(x)"
 )
@@ -161,9 +186,9 @@ uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 version = "1.11.0"
 
 [[deps.BitFlags]]
-git-tree-sha1 = "0691e34b3bb8be9307330f88d1a3c3f25466c24d"
+git-tree-sha1 = "bbe1079eecf9c9fbb52765193ad2bae27ae09bc8"
 uuid = "d1d4a3ce-64b1-5f1a-9ba4-7e7e69966f35"
-version = "0.1.9"
+version = "0.1.10"
 
 [[deps.Bzip2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
@@ -224,9 +249,9 @@ version = "1.3.0+1"
 
 [[deps.ConcurrentUtilities]]
 deps = ["Serialization", "Sockets"]
-git-tree-sha1 = "d9d26935a0bcffc87d2613ce14c527c99fc543fd"
+git-tree-sha1 = "21d088c496ea22914fe80906eb5bce65755e5ec8"
 uuid = "f0e56b4a-5159-44fe-b623-3e5288b988bb"
-version = "2.5.0"
+version = "2.5.1"
 
 [[deps.Contour]]
 git-tree-sha1 = "439e35b0b36e2e5881738abc8857bd92ad6ff9a8"
@@ -383,9 +408,9 @@ version = "1.0.2"
 
 [[deps.HTTP]]
 deps = ["Base64", "CodecZlib", "ConcurrentUtilities", "Dates", "ExceptionUnwrapping", "Logging", "LoggingExtras", "MbedTLS", "NetworkOptions", "OpenSSL", "PrecompileTools", "Random", "SimpleBufferStream", "Sockets", "URIs", "UUIDs"]
-git-tree-sha1 = "ed5e9c58612c4e081aecdb6e1a479e18462e041e"
+git-tree-sha1 = "51059d23c8bb67911a2e6fd5130229113735fc7e"
 uuid = "cd3eb016-35fb-5094-929b-558a96fad6f3"
-version = "1.10.17"
+version = "1.11.0"
 
 [[deps.HarfBuzz_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "Graphite2_jll", "JLLWrappers", "Libdl", "Libffi_jll"]
@@ -411,9 +436,9 @@ version = "0.1.11"
 
 [[deps.JLLWrappers]]
 deps = ["Artifacts", "Preferences"]
-git-tree-sha1 = "0533e564aae234aff59ab625543145446d8b6ec2"
+git-tree-sha1 = "7204148362dafe5fe6a273f855b8ccbe4df8173e"
 uuid = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
-version = "1.7.1"
+version = "1.8.0"
 
 [[deps.JSON]]
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
@@ -571,9 +596,9 @@ version = "1.11.0"
 
 [[deps.LoggingExtras]]
 deps = ["Dates", "Logging"]
-git-tree-sha1 = "f02b56007b064fbfddb4c9cd60161b6dd0f40df3"
+git-tree-sha1 = "f00544d95982ea270145636c181ceda21c4e2575"
 uuid = "e6f89c97-d47a-5376-807f-9c37f3926c36"
-version = "1.1.0"
+version = "1.2.0"
 
 [[deps.MacroTools]]
 git-tree-sha1 = "1e0228a030642014fe5cfe68c2c0a818f9e3f522"
@@ -587,15 +612,15 @@ version = "1.11.0"
 
 [[deps.MbedTLS]]
 deps = ["Dates", "MbedTLS_jll", "MozillaCACerts_jll", "NetworkOptions", "Random", "Sockets"]
-git-tree-sha1 = "c067a280ddc25f196b5e7df3877c6b226d390aaf"
+git-tree-sha1 = "8785729fa736197687541f7053f6d8ab7fc44f92"
 uuid = "739be429-bea8-5141-9913-cc70e7f3736d"
-version = "1.1.9"
+version = "1.1.10"
 
 [[deps.MbedTLS_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
-git-tree-sha1 = "926c6af3a037c68d02596a44c22ec3595f5f760b"
+git-tree-sha1 = "ff69a2b1330bcb730b9ac1ab7dd680176f5896b8"
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
-version = "2.28.6+0"
+version = "2.28.1010+0"
 
 [[deps.Measures]]
 git-tree-sha1 = "c13304c81eec1ed3af7fc20e75fb6b26092a1102"
@@ -643,10 +668,10 @@ uuid = "05823500-19ac-5b8b-9628-191a04bc5112"
 version = "0.8.7+0"
 
 [[deps.OpenSSL]]
-deps = ["BitFlags", "Dates", "MozillaCACerts_jll", "OpenSSL_jll", "Sockets"]
-git-tree-sha1 = "f1a7e086c677df53e064e0fdd2c9d0b0833e3f6e"
+deps = ["BitFlags", "Dates", "MozillaCACerts_jll", "NetworkOptions", "OpenSSL_jll", "Sockets"]
+git-tree-sha1 = "1d1aaa7d449b58415f97d2839c318b70ffb525a0"
 uuid = "4d8831e6-92b7-49fb-bdf8-b643e874388c"
-version = "1.5.0"
+version = "1.6.1"
 
 [[deps.OpenSSL_jll]]
 deps = ["Artifacts", "Libdl"]
@@ -660,9 +685,9 @@ uuid = "91d4177d-7536-5919-b921-800302f37372"
 version = "1.5.2+0"
 
 [[deps.OrderedCollections]]
-git-tree-sha1 = "05868e21324cede2207c6f0f466b4bfef6d5e7ee"
+git-tree-sha1 = "94ba93778373a53bfd5a0caaf7d809c445292ff4"
 uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
-version = "1.8.1"
+version = "1.8.2"
 
 [[deps.PCRE2_jll]]
 deps = ["Artifacts", "Libdl"]
@@ -730,15 +755,15 @@ version = "1.41.1"
 
 [[deps.PrecompileTools]]
 deps = ["Preferences"]
-git-tree-sha1 = "5aa36f7049a63a1528fe8f7c3f2113413ffd4e1f"
+git-tree-sha1 = "edbeefc7a4889f528644251bdb5fc9ab5348bc2c"
 uuid = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
-version = "1.2.1"
+version = "1.3.4"
 
 [[deps.Preferences]]
 deps = ["TOML"]
-git-tree-sha1 = "0f27480397253da18fe2c12a4ba4eb9eb208bf3d"
+git-tree-sha1 = "8b770b60760d4451834fe79dd483e318eee709c4"
 uuid = "21216c6a-2e73-6563-6e65-726566657250"
-version = "1.5.0"
+version = "1.5.2"
 
 [[deps.Printf]]
 deps = ["Unicode"]
@@ -1209,22 +1234,26 @@ version = "1.9.2+0"
 """
 
 # ╔═╡ Cell order:
-# ╟─f8d33b2b-4363-4a9d-9917-776b850849ea
-# ╟─29a40656-727a-11f1-0dbb-aba42e8c2b2f
-# ╟─56968393-b6e6-4e52-b2e8-1381bc03cd7f
-# ╟─dd1ae762-4ac4-4820-a312-8ac6509a76ad
-# ╟─74079a06-2421-4699-b428-b9df2fa1a485
-# ╟─53ef36f6-0e05-4d2d-b35b-3e3d263cfc2b
-# ╟─f8075fce-b1a5-4072-a8a6-323549daf912
-# ╟─35f84af2-ed1e-4adf-8ebe-d774467a4c58
-# ╟─1dc47074-ad1b-44bc-8872-07af8ee00dba
-# ╟─aa5ab093-8cde-4a09-a2c2-76b9cea9b550
-# ╟─5f0a1aa3-71a4-4dcd-b563-c619d7a4dd86
-# ╟─e772214b-bfd8-4d30-836e-c53e827fb260
-# ╟─6d91948a-6231-4ef7-9181-03190305db2b
-# ╟─749337f7-14ad-42aa-aa2d-71e1e9f759fe
-# ╟─7eef3409-5410-4d0d-b1e5-a33c78d2bf41
-# ╟─7043508a-3a20-47bb-970f-dcbf20ad2c88
-# ╟─9fea09d3-e17c-4c82-b7e5-6d5001e589e9
+# ╟─88bd5cba-7e39-11f1-84ff-85fa3458ca32
+# ╟─09c972bd-2b5d-4214-99b3-1a0ca5166ba5
+# ╟─b2f18e3e-1b96-4b2c-99b9-b6019498b35b
+# ╟─12d62b8b-bf16-40a2-aea7-bb99f041d1e3
+# ╟─244666c2-71b3-4ff0-a551-0408275e7525
+# ╟─81426867-180a-4b7c-acb7-87ee0a1cc026
+# ╟─d6286cd4-765e-4a5b-aa2e-c9d4ad3d9d11
+# ╟─5ff760e9-c739-4b19-bf76-2b3203c65321
+# ╟─23335b4e-ec32-435f-86b5-976cab776fd8
+# ╟─67b229a3-3212-4c46-abe7-5394ee2e478f
+# ╟─9289748d-f3cd-42a7-b648-d6c9863427b8
+# ╟─2cfa6d97-229a-4f14-95aa-f2bc999987d5
+# ╟─d7420003-2702-41e6-b570-3f9e833eace6
+# ╟─370ee0fa-9d45-4e65-ba0f-83e3c67d1e44
+# ╟─1db95460-4b82-40b7-975c-fc06f0252ad1
+# ╟─64394e94-5fcd-47b9-852d-e2bff5a18122
+# ╟─61ab6b87-a29a-469f-bb4f-0db8bf3a0663
+# ╟─ab001d04-5eb4-4389-9491-51be3990b530
+# ╟─22d4850d-7e62-4a0a-a510-e600df3be163
+# ╟─6e0c6793-fc69-45f9-a18a-add37fc37540
+# ╟─8de7ecd7-e340-4740-a6d9-c289cc5ef1f9
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
