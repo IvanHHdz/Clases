@@ -14,6 +14,8 @@ md"""
 Este notebook tiene lo necesario para graficar una función, tanto en su forma exacta como en su representación en serie de fourier.
 
 Note que aquí usamos la versión real de la función, no la compleja. Para la compleja, consulte el `notebook1.jl`.
+
+> **Nota**: Es muy probable que las ecuaciones que aparezcan no reflejen la realidad del código. Esto se debe a que me dio pereza reescribir las ecuaciones en el markdown, y preferí solo colocar esta advertencia.
 """
 
 # ╔═╡ b2f18e3e-1b96-4b2c-99b9-b6019498b35b
@@ -37,25 +39,38 @@ function cicle(x, a, b)
 	end
 end
 
+# ╔═╡ 2f76a934-181e-4657-912e-416a75562efc
+md"""
+Un par de constantes útiles, $\omega$ y $T$.
+"""
+
+# ╔═╡ 1aa61759-a3db-4e2a-9922-7fd16217912d
+begin
+	T = 2π
+	ω = 2π/T
+	t₀ = -π
+end;
+
 # ╔═╡ 244666c2-71b3-4ff0-a551-0408275e7525
 md"""
 Esta es la definición usual de la función que se busca obtener. En este caso tenemos:
 
 ```math
-f(x) = \begin{cases} 
--1 & x < 0\\
-1 & x \geq 0
+f(t) = \begin{cases} 
+t^2 & -\frac{\pi}{2} < t < \frac{\pi}{2}\\
+\frac{\pi^2}{4} & \frac{\pi}{2} < t < \frac{3\pi}{2}
 \end{cases}
 ```
 """
 
 # ╔═╡ 81426867-180a-4b7c-acb7-87ee0a1cc026
 function f(x)
-	x = cicle(x, -pi, pi)
-	if x < 0
-		return -1
+	x = cicle(x, t₀, t₀+T)
+	return 3-2x
+	if x < π/2 && x > -π/2
+		return x^2
 	else
-		return 1
+		return (π^2)/4
 	end
 end
 
@@ -64,12 +79,12 @@ md"""
 Esta es la constante externa, $a_0$. En nuestro caso:
 
 ```math
-a_0 = 0
+a_0 = \frac{\pi^2}{6}
 ```
 """
 
 # ╔═╡ 5ff760e9-c739-4b19-bf76-2b3203c65321
-a0 = 0
+a0 = 3
 
 # ╔═╡ 23335b4e-ec32-435f-86b5-976cab776fd8
 md"""
@@ -82,7 +97,13 @@ a_n = 0
 
 # ╔═╡ 67b229a3-3212-4c46-abe7-5394ee2e478f
 function a(n)
-	return 0
+	return 0		
+	
+	if iseven(n)
+		return (ℯ^π - 1)/(π*(1+n^2))
+	else
+		return -(ℯ^π + 1)/(π*(1+n^2))
+	end
 end
 
 # ╔═╡ 9289748d-f3cd-42a7-b648-d6c9863427b8
@@ -91,18 +112,19 @@ Esta es la constante de coseno. Es el resultado obtenido tras resolver la integr
 
 ```math
 b_n = \begin{cases}
-0 & 2 \mid n\\
-\frac{4}{\pi n} & 2\nmid n
+\frac{n-ne^\pi}{\pi(1+n^2)} & 2 \mid n\\
+\frac{1}{\pi}\left(\frac{1+ne^\pi}{1+n^2}-\frac{2}{n}\right) & 2\nmid n
 \end{cases}
 ```
 """
 
 # ╔═╡ 2cfa6d97-229a-4f14-95aa-f2bc999987d5
 function b(n)
-	if isodd(n)
-		return 4/(pi*n)
+	return (4*(-1)^n)/n
+	if iseven(n)
+		return (n-n*ℯ^π)/(π*(1+n^2))
 	else
-		return 0
+		return (1/π)*((n+n*ℯ^π)/(1+n^2) - 2/n)
 	end
 end
 
@@ -116,7 +138,7 @@ function fourier(x, N)
     suma = a0
     
     for n in 1:N
-        suma += a(n) * cos(n*x) + b(n) * sin(n*x)
+        suma += a(n) * cos(ω*n*x) + b(n) * sin(ω*n*x)
     end
     
     return suma
@@ -128,7 +150,7 @@ Definimos algunos valores más y listo.
 """
 
 # ╔═╡ 64394e94-5fcd-47b9-852d-e2bff5a18122
-x = range(-2*pi, 2*pi, length=1000) 
+x = range(-2*T, 2*T, length=1000) 
 
 # ╔═╡ 61ab6b87-a29a-469f-bb4f-0db8bf3a0663
 N = 10000
@@ -139,16 +161,16 @@ y = [fourier(t,N) for t in x]
 # ╔═╡ 22d4850d-7e62-4a0a-a510-e600df3be163
 Y = [f(t) for t in x]
 
-# ╔═╡ 6e0c6793-fc69-45f9-a18a-add37fc37540
-plot(x, y,
+# ╔═╡ 8de7ecd7-e340-4740-a6d9-c289cc5ef1f9
+begin
+	plot(x, y,
      label="Serie de Fourier",
      xlabel="x",
      ylabel="f(x)");
-
-# ╔═╡ 8de7ecd7-e340-4740-a6d9-c289cc5ef1f9
-plot!(x, Y,
-	  label="f(x)"
-)
+	plot!(x, Y,
+	  	label="f(x)"
+	)
+end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1238,22 +1260,23 @@ version = "1.9.2+0"
 # ╟─09c972bd-2b5d-4214-99b3-1a0ca5166ba5
 # ╟─b2f18e3e-1b96-4b2c-99b9-b6019498b35b
 # ╟─12d62b8b-bf16-40a2-aea7-bb99f041d1e3
+# ╟─2f76a934-181e-4657-912e-416a75562efc
+# ╠═1aa61759-a3db-4e2a-9922-7fd16217912d
 # ╟─244666c2-71b3-4ff0-a551-0408275e7525
-# ╟─81426867-180a-4b7c-acb7-87ee0a1cc026
+# ╠═81426867-180a-4b7c-acb7-87ee0a1cc026
 # ╟─d6286cd4-765e-4a5b-aa2e-c9d4ad3d9d11
-# ╟─5ff760e9-c739-4b19-bf76-2b3203c65321
+# ╠═5ff760e9-c739-4b19-bf76-2b3203c65321
 # ╟─23335b4e-ec32-435f-86b5-976cab776fd8
-# ╟─67b229a3-3212-4c46-abe7-5394ee2e478f
+# ╠═67b229a3-3212-4c46-abe7-5394ee2e478f
 # ╟─9289748d-f3cd-42a7-b648-d6c9863427b8
-# ╟─2cfa6d97-229a-4f14-95aa-f2bc999987d5
+# ╠═2cfa6d97-229a-4f14-95aa-f2bc999987d5
 # ╟─d7420003-2702-41e6-b570-3f9e833eace6
-# ╟─370ee0fa-9d45-4e65-ba0f-83e3c67d1e44
+# ╠═370ee0fa-9d45-4e65-ba0f-83e3c67d1e44
 # ╟─1db95460-4b82-40b7-975c-fc06f0252ad1
 # ╟─64394e94-5fcd-47b9-852d-e2bff5a18122
 # ╟─61ab6b87-a29a-469f-bb4f-0db8bf3a0663
 # ╟─ab001d04-5eb4-4389-9491-51be3990b530
 # ╟─22d4850d-7e62-4a0a-a510-e600df3be163
-# ╟─6e0c6793-fc69-45f9-a18a-add37fc37540
-# ╟─8de7ecd7-e340-4740-a6d9-c289cc5ef1f9
+# ╠═8de7ecd7-e340-4740-a6d9-c289cc5ef1f9
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
