@@ -1,0 +1,423 @@
+% ====== Tipo de archivo ======
+\documentclass{article}
+
+\input{Formato.tex}
+
+\begin{document}
+    \section{Introducción}
+
+    Los circuitos de segundo orden permiten analizar fenómenos transitorios en sistemas que almacenan energía tanto en un capacitor como en un inductor. En esta práctica se estudia el comportamiento de circuitos LC y RLC, prestando especial atención a la resonancia y al efecto que tiene la resistencia sobre la respuesta del circuito. Estos conceptos forman parte de la teoría de circuitos y son fundamentales para comprender el intercambio de energía y la evolución temporal de las señales.
+
+    Aunque la teoría describe la frecuencia de resonancia, la frecuencia de amortiguamiento y los distintos tipos de respuesta, es necesario comprobar experimentalmente cómo estos parámetros cambian al modificar la resistencia y si las formas de onda obtenidas coinciden con lo esperado.
+
+    Por ello, esta práctica tiene como objetivo determinar teórica y experimentalmente las frecuencias características del circuito, identificar el tipo de amortiguamiento en diferentes configuraciones y comparar los resultados analíticos con las mediciones obtenidas mediante el osciloscopio.
+
+
+    \section{Objetivos}
+
+    \begin{enumerate}
+        \item Determinar la frecuencia angular de resonancia y la frecuencia de amortiguamiento en circuitos de segundo orden, a partir de las relaciones teóricas correspondientes.
+        \item Comparar el comportamiento teórico de los circuitos con las respuestas obtenidas durante la práctica, identificando las semejanzas y diferencias observadas.
+        \item Evaluar la influencia de la resistencia sobre la respuesta transitoria de los circuitos, distinguiendo los diferentes tipos de amortiguamiento que pueden presentarse.
+        \item Explicar el intercambio de energía entre el capacitor y el inductor, relacionándolo con el fenómeno de resonancia y con el efecto disipativo introducido por la resistencia.
+    \end{enumerate}
+
+    \section{Materiales e Instrumentos}
+
+    \begin{enumerate}
+        \item Multímetro.
+        \item Fuente de voltaje.
+        \item Resistencias.
+        \item Capacitores.
+        \item Inductores.
+        \item Protoboard.
+    \end{enumerate}
+
+    \section{Marco Teórico}
+
+    \subsection{Circuitos de segundo orden}
+
+    Los circuitos de segundo orden se caracterizan por tener una ecuación diferencial de segundo orden y como consecuencia, poseen dos elementos almacenadores de energía. Existen múltiples tipos de circuitos de segundo orden: Entre ellos los RLC, LC.\@ No obstante la única regla es que sean 2 elementos almacenadores.
+
+    \subsection{Circuitos LC}
+
+    
+    Un Circuito LC es la forma más fundamental de los circuitos de segundo orden, también denominado circuito resonante u oscilador LC, es un circuito eléctrico formado por un inductor L y un capacitor C, los cuales se encuentran conectados entre sí. Un circuito LC es un modelo idealizado, ya que se asume que no hay disipación de energía debido a que no hay resistencia eléctrica. Cualquier implementación práctica de un LC siempre tendrá pérdidas debido a una pequeña resistencia (que no es igual a cero), entre los componentes. A pesar de que los circuitos en la vida real tendrán pérdidas, es importante estudiar este modelo.
+    
+    \imagenwrap{./Pictures/MarcoTeorico/img2.jpg}{Circuito LC}{100px}{r}
+    
+    En un circuito LC, la energía pasa continuamente entre el condensador y la bobina: el condensador la almacena como campo eléctrico y la bobina como campo magnético, el circuito actúa como un resonador eléctrico, basado en el almacenamiento y liberación de la energía de forma oscilante a la frecuencia de resonancia del circuito. Este intercambio produce una oscilación electromagnética donde, cuando uno de los campos es máximo, el otro es cero.
+
+    \subsubsection{Frecuencia angular de resonancia}
+
+    La frecuencia angular de resonancia tiene como unidades los [Rad/seg], es la velocidad con que fluye y regresa la energía desde el condensador a la bobina o viceversa, se produce con una propia frecuencia f en [Hz], denominada frecuencia de resonancia, que depende de los valores del condensador y de la bobina, está dado por la siguiente expresión:
+
+    \[
+        \omega = \frac{1}{\sqrt{LC}} = 2\pi f
+    \]
+
+    \subsection{Circuitos RLC}
+
+    Estos circuitos tienen como característica que incluyen un elemento resistivo. Existen dos tipos de circuitos RLC, en serie o en paralelo, según la interconexión de los tres tipos de componentes. El comportamiento de un circuito RLC se describe generalmente por una ecuación diferencial de segundo orden.
+
+    \subsubsection{Frecuencia de amortiguamiento}
+
+    \imagenparinline{./Pictures/MarcoTeorico/img8.jpg}{./Pictures/MarcoTeorico/img9.jpg}{Circuito LC no amortiguado y amortiguado}{1.0}
+
+    Al incluir un elemento resistivo surge un nuevo margen de amortiguamiento en las gráficas resultantes. La frecuencia de amortiguamiento denotada por $\alpha$ tiene como unidades él [\unit{\hertz}] y denota el grado de reducción exponencial en la respuesta resonante, a este borde de reducción se le llama envolvente.
+
+    \subsubsection{Fórmulas dependiendo del arreglo}
+
+    Circuito RLC en paralelo:
+
+    \[
+        \alpha = \frac{1}{2RC}
+    \]
+
+    Circuito RLC en serie:
+
+    \[
+        \alpha = \frac{R}{2L}
+    \]
+
+    \subsubsection{Tipos de amortiguamiento en circuitos de segundo orden}
+
+    El comportamiento transitorio de un circuito RLC depende de la relación entre la frecuencia de amortiguamiento ($\alpha$) y la frecuencia angular natural ($\omega$). Esta relación determina la forma en que la respuesta del circuito evoluciona en el tiempo:
+
+    \begin{itemize}
+        \item \textbf{Subamortiguado $\alpha < \omega$:} Cuando la frecuencia de amortiguamiento es menor que la frecuencia natural, el circuito presenta oscilaciones cuya amplitud disminuye progresivamente con el tiempo debido a la disipación de energía en la resistencia. Este comportamiento genera una respuesta oscilatoria amortiguada.
+        \item \textbf{Criticamente amortiguado $\alpha = \omega$:} En este caso, el sistema retorna al equilibrio en el menor tiempo posible sin presentar oscilaciones. Representa la condición límite entre una respuesta oscilatoria y una sobreamortiguada.
+        \item \textbf{Sobreamortiguado $\alpha > \omega$:} Cuando la frecuencia de amortiguamiento supera la frecuencia natural, el circuito no presenta oscilaciones y la respuesta decae lentamente hasta alcanzar el estado estable. La disipación de energía domina completamente el comportamiento del sistema.
+    \end{itemize}
+
+    \section{Procedimiento Experimental}
+
+    \begin{enumerate}
+        \item Realizar el montaje 1, con los valores que aparecen en la tabla~\ref{tab:1}. Además, también haremos uso del osciloscopio y un interruptor temporizado (\texttt{T D\_SWT}) con los datos de la tabla~\ref{tab:2}.
+        
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule 
+                Componentes & Valores                   \\
+                \midrule
+                $R_1$       & ---                       \\
+                $C$         & \SI{0.5}{\milli\farad}    \\
+                $L$         & \SI{100}{\milli\henry}    \\
+                $V_s$       & \SI{5}{\volt}             \\
+                \midrule
+            \end{tabular}
+            \caption{Valores de los componentes del circuito}\label{tab:1}
+        \end{table}
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule 
+                Osciloscopio    & 2 Canales                 \\
+                \midrule
+                Tiempo/Div      & \SI{50}{\milli\second}/Div    \\
+                Voltio/Div      & \SI{2}{\volt}/Div         \\
+                \texttt{T\_ON}  & \SI{0}{\second}           \\
+                \texttt{T\_OFF} & \SI{0.01}{\second}        \\
+                \midrule
+            \end{tabular}
+            \caption{Configuración de los dispositivos}\label{tab:2}
+        \end{table}
+
+        \imagen{./Pictures/ProcedimientoExperimental/img24.jpg}{Diagrama del montaje 1}{200px}
+        
+        \item Posteriormente, conecte los canales del osciloscopio como se muestra en la figura.
+        
+        \imagen{./Pictures/ProcedimientoExperimental/img25.jpg}{Conexión del osciloscopio}{200px}
+        
+        \item Ahora varíe el valor de la resistencia $R_1$ y tome captura del gráfico obtenido para cada valor de resistencia.
+        
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule 
+                Resistencia $R_1$   & \unit{\ohm}   \\
+                \midrule
+                $1_{ra}$            & 50            \\
+                $2_{da}$            & 7.071         \\
+                $3_{ra}$            & 3             \\
+                \midrule
+            \end{tabular}
+            \caption{Configuración de los dispositivos}\label{tab:3}
+        \end{table}
+        
+        \item Finalmente, remueva la resistencia $R_1$, ajuste a $10\,\mathrm{V/Div}$ y tome captura de la medición donde se pueda apreciar el uso de los cursores horizontales para obtener el período $\Delta T$ del gráfico, tomando en cuenta las mismas normativas del inciso anterior.
+        
+        \item Realizar el montaje 2, con los valores que aparecen en la tabla~\ref{tab:4}. Además, también haremos uso del osciloscopio y un interruptor temporizado (\texttt{TD\_SW\_T}) con los datos de la tabla~\ref{tab:5} (configure todos los canales de la misma manera).
+        
+        \imagen{./Pictures/ProcedimientoExperimental/img30.jpg}{Diagrama del montaje 2}{200px}
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule 
+                Componentes & Valores                   \\
+                \midrule
+                $R_1$       & ---                       \\
+                $R_2$       & \SI{0.5}{\ohm}            \\
+                $C$         & \SI{1}{\milli\farad}    \\
+                $L$         & \SI{10}{\milli\henry}    \\
+                $V_s$       & \SI{3}{\volt}             \\
+                \midrule
+            \end{tabular}
+            \caption{Valores de los componentes del circuito}\label{tab:4}
+        \end{table}
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule 
+                Osciloscopio    & 4 Canales                 \\
+                \midrule
+                Tiempo/Div      & \SI{20}{\milli\second}/Div    \\
+                Voltio/Div      & \SI{5}{\volt}/Div         \\
+                \texttt{T\_ON}  & \SI{0}{\second}           \\
+                \texttt{T\_OFF} & \SI{0.01}{\second}        \\
+                \midrule
+            \end{tabular}
+            \caption{Configuración de los dispositivos}\label{tab:5}
+        \end{table}
+
+        \item Posteriormente, conecte los canales del osciloscopio como se muestra en la figura.
+        
+        \imagen{./Pictures/ProcedimientoExperimental/img31.jpg}{Conexión del osciloscopio}{200px}
+
+        \item Ahora varíe el valor de la resistencia $R_1$ y tome captura del gráfico obtenido para cada valor de resistencia.
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{|c|c|} % chktex 44
+                \midrule 
+                Resistencia $R_1$   & \unit{\ohm}   \\
+                \midrule
+                $1_{ra}$            & 15            \\
+                $2_{da}$            & 6.32          \\
+                $3_{ra}$            & 0.5           \\
+                \midrule
+            \end{tabular}
+            \caption{Configuración de los dispositivos}\label{tab:6}
+        \end{table}
+        
+        \item Finalmente, remueva la resistencia $R_1$ y tome captura de la medición donde se pueda apreciar el uso de los cursores horizontales para obtener el período $\Delta T$ del gráfico, tomando en cuenta las mismas normativas del inciso anterior.
+
+    \end{enumerate}
+
+    \section{Análisis de Resultados}
+
+    Una vez terminada la práctica, realice los siguientes análisis y responda a las interrogantes:
+
+    \begin{enumerate}[label=\alph*.-] % chktex 10
+        \item Determine teóricamente las frecuencias $\alpha$ y $\omega$, así como el tipo de amortiguamiento que tiene el montaje 1 al tener asignado el primer valor de resistencia.
+        
+        \begin{quote}
+            Como el circuito está en paralelo, se tiene que $\alpha = \frac{1}{2RC}$ y $\omega = \frac{1}{\sqrt{LC}}$. Sustituyendo los valores de la tabla~\ref{tab:1} y el primer valor de resistencia de la tabla~\ref{tab:3}, se obtiene:
+
+            \[
+                \alpha = \frac{1}{2(50)(0.5\times10^{-3})} = 20\,\si{\per\second}
+            \]
+
+            \[
+                \omega = \frac{1}{\sqrt{(100\times10^{-3})(0.5\times10^{-3})}} = 100\sqrt{2}\approx 141.42\,\si{\per\second}
+            \]
+
+            Como $\alpha < \omega$, el circuito presenta un comportamiento subamortiguado.
+        \end{quote}
+
+        \item Repita lo desarrollado en el inciso anterior con cada uno de los siguientes valores de $R_1$.
+        
+        \begin{quote}
+            Note que la frecuencia angular de resonancia no depende del valor de la resistencia, por lo que el valor de $\omega$ es el mismo para todos los casos. Es decir:
+
+            \[
+                \omega = 100\sqrt{2}\approx 141.42\,\si{\per\second}
+            \]
+
+            Ahora, el valor de la frecuencia de amortiguamiento para cada valor de resistencia es:
+
+            Resistencia $R_1 = 7.071\,\unit{\ohm}$:
+            \[
+                \alpha = 100\sqrt{2}\approx 141.423\,\si{\per\second}
+            \]
+
+            Este caso es el criticamente amortiguado, ya que $\alpha = \omega$.
+
+            Resistencia $R_1 = 0.5\,\unit{\ohm}$:
+            \[
+                \alpha = 2000\,\si{\per\second}
+            \]
+
+            Este último caso es el sobreamortiguado, ya que $\alpha > \omega$.
+            
+        \end{quote}
+
+        \item Compare con las capturas tomadas el tipo de amortiguamiento determinado anteriormente en cada caso y explique por qué es coherente o no.
+        
+        \begin{quote}
+            Sí, es coherente, ya que al tener un valor de resistencia menor, la frecuencia de amortiguamiento es menor que la frecuencia angular de resonancia, lo que indica un comportamiento subamortiguado. Por otro lado, al aumentar el valor de la resistencia, la frecuencia de amortiguamiento se acerca a la frecuencia angular de resonancia, lo que indica un comportamiento críticamente amortiguado. Finalmente, al tener un valor de resistencia mayor, la frecuencia de amortiguamiento es mayor que la frecuencia angular de resonancia, lo que indica un comportamiento sobreamortiguado.
+
+            Las gráficas de cada uno de los casos muestran claramente estas características, ya que en el caso subamortiguado se observan oscilaciones que disminuyen con el tiempo, en el caso críticamente amortiguado se observa una respuesta rápida sin oscilaciones y en el caso sobreamortiguado se observa una respuesta lenta sin oscilaciones.
+        \end{quote}
+
+        \item Compare, a través del error teórico porcentual, la frecuencia angular de resonancia obtenida experimentalmente en el inciso 4 con la calculada en el inciso a de este análisis de resultados.
+        
+        \begin{quote}
+            La frecuencia angular de resonancia obtenida de manera teórica fue $\omega = 141.42\,\si{\per\second}$.
+
+            De acuerdo con la captura tomada en el inciso 4, se obtuvo un período de $\Delta T = 44.508\,\unit{\milli\second} = 0.044508\,\unit{\second}$, por lo que la frecuencia angular de resonancia obtenida experimentalmente es:
+            \[
+                \omega = \frac{2\pi}{\Delta T} = \frac{2\pi}{0.044508} = 141.17\,\unit{\per\second}
+            \]
+
+            Ahora utilizaremos la fórmula del error relativo porcentual para comparar los resultados teóricos y experimentales. La fórmula es:
+            \[
+                E_{\%} = \frac{\left|V_{aprx} - V_{teor}\right|}{V_{teor}} \times 100\%
+            \]
+
+            Al reemplazar los valores obtenidos, tenemos:
+            \[
+                E_{\%} = \frac{\left|141.17 - 141.42\right|}{141.42} \times 100\% \approx 0.18\%
+            \]
+        \end{quote}
+
+        \item Determine teóricamente las frecuencias $\alpha$ y $\omega$, así como el tipo de amortiguamiento que tiene el montaje 2 al tener asignado el primer valor de resistencia.
+        
+        \begin{quote}
+            Como el circuito está en serie, se tiene que $\alpha = \frac{R}{2L}$ y $\omega = \frac{1}{\sqrt{LC}}$. Sustituyendo los valores de la tabla~\ref{tab:4} y el primer valor de resistencia de la tabla~\ref{tab:6}, se obtiene:
+
+            \[
+                \alpha = \frac{15}{2(10\times10^{-3})} = 750\,\si{\per\second}
+            \]
+
+            \[
+                \omega = \frac{1}{\sqrt{(10\times10^{-3})(1\times10^{-3})}} = 316.23\,\si{\per\second}
+            \]
+
+            Como $\alpha > \omega$, el circuito presenta un comportamiento sobreamortiguado.
+        \end{quote}
+
+        \item Repita lo desarrollado en el inciso anterior con cada uno de los siguientes valores de $R_1$.
+        
+        \begin{quote}
+            Note que la frecuencia angular de resonancia no depende del valor de la resistencia, por lo que el valor de $\omega$ es el mismo para todos los casos. Es decir:
+
+            \[
+                \omega = 316.23\,\si{\per\second}
+            \]
+
+            Ahora, el valor de la frecuencia de amortiguamiento para cada valor de resistencia es:
+
+            Resistencia $R_1 = 6.32\,\unit{\ohm}$:
+            \[
+                \alpha = 316\,\si{\per\second}
+            \]
+
+            Este caso es el criticamente amortiguado, ya que $\alpha = \omega$.
+
+            Resistencia $R_1 = 0.5\,\unit{\ohm}$:
+            \[
+                \alpha = 25\,\si{\per\second}
+            \]
+
+            Este último caso es el subamortiguado, ya que $\alpha < \omega$.
+        \end{quote}
+
+        \item Compare con las capturas tomadas el tipo de amortiguamiento determinado anteriormente en cada caso y explique por qué es coherente o no.
+        
+        \begin{quote}
+            Sí, es coherente, ya que al tener un valor de resistencia menor, la frecuencia de amortiguamiento es menor que la frecuencia angular de resonancia, lo que indica un comportamiento subamortiguado. Por otro lado, al aumentar el valor de la resistencia, la frecuencia de amortiguamiento se acerca a la frecuencia angular de resonancia, lo que indica un comportamiento críticamente amortiguado. Finalmente, al tener un valor de resistencia mayor, la frecuencia de amortiguamiento es mayor que la frecuencia angular de resonancia, lo que indica un comportamiento sobreamortiguado.
+
+            Las gráficas de cada uno de los casos muestran claramente estas características, ya que en el caso subamortiguado se observan oscilaciones que disminuyen con el tiempo, en el caso críticamente amortiguado se observa una respuesta rápida sin oscilaciones y en el caso sobreamortiguado se observa una respuesta lenta sin oscilaciones.
+        \end{quote}
+
+        \item Compare, a través del error teórico porcentual, la frecuencia angular de resonancia obtenida experimentalmente en el inciso 8 con la calculada en el inciso e de este análisis de resultados.
+        
+        \begin{quote}
+            La frecuencia angular de resonancia obtenida de manera teórica fue $\omega = 316.23\,\si{\per\second}$.
+
+            De acuerdo con la captura tomada en el inciso 8, se obtuvo un período de $\Delta T = 20.069\,\unit{\milli\second} = 0.020069\,\unit{\second}$, por lo que la frecuencia angular de resonancia obtenida experimentalmente es:
+            \[
+                \omega = \frac{2\pi}{\Delta T} = \frac{2\pi}{0.020069} = 313.08\,\unit{\per\second}
+            \]
+
+            Ahora utilizaremos otra vez la fórmula del error relativo porcentual para comparar los resultados teóricos y experimentales. Al reemplazar los valores obtenidos, tenemos:
+            \[
+                E_{\%} = \frac{\left|313.08 - 316.23\right|}{316.23} \times 100\% = 1\%
+            \]
+        \end{quote}
+    \end{enumerate}
+
+    \section{Preguntas propuestas}
+
+    \begin{enumerate}
+        \item ¿Por qué la resistencia modifica la rapidez con la que disminuye la amplitud de las oscilaciones en un circuito de segundo orden?
+        
+        \begin{quote}
+            Analíticamente porque la frecuencia de amortiguamiento depende de la resistencia. 
+
+            Eléctricamente porque la resistencia disipa energía en forma de calor, lo que reduce la energía disponible para mantener las oscilaciones, reduciendo las mismas a medida se pierde la energía.
+
+            Matemáticamente porque la ecuación diferencial que describe el circuito incluye un término proporcional a la resistencia, lo que afecta la solución de la ecuación y, por ende, la evolución temporal de la amplitud de las oscilaciones.
+        \end{quote}
+
+        \item ¿Por qué en un circuito LC ideal las oscilaciones pueden mantenerse indefinidamente, mientras que en un circuito RLC real estas disminuyen con el tiempo?
+        
+        \begin{quote}
+            Como mencionamos en el inciso anterior, eléctricamente la resistencia disipa la energía en forma de calor, haciendo que cada oscilación tenga menos energía que la anterior, hasta que finalmente se detienen. En un circuito LC ideal no hay resistencia, por lo que no hay disipación de energía y las oscilaciones pueden mantenerse indefinidamente.
+        \end{quote}
+
+        \item ¿Cómo afecta la configuración del circuito (serie o paralelo) en la respuesta transitoria observada al variar la resistencia?
+        
+        \begin{quote}
+            Eléctricamente al estar en serie la corriente que pasa por todos los elementos es la misma. Por lo que suele hacer que el voltaje de la resistencia sea más alto, se caliente más, y disipe mayor cantidad de energía. En paralelo, la corriente se divide entre los elementos, por lo que la resistencia disipa menos energía y el efecto de amortiguamiento es menor.
+
+            Además de cambiar su proporcionalidad. Pues si bien en serie mayor resistencia implica mayor amortiguamiento, en paralelo mayor resistencia implica menor amortiguamiento, por el hecho que a mayor resistencia en paralelo será menor la corriente que pasa por el circuito, y por ende menor la disipación de energía.
+        \end{quote}
+
+        \item Idealmente, ¿el valor de la frecuencia angular de resonancia depende del tipo de arreglo RLC (serie o paralelo)?
+        
+        \begin{quote}
+            No. Pues depende únicamente de los valores de los elementos almacenadores (inductor y capacitor).
+        \end{quote}
+
+        \item En sus propias palabras, explique ampliamente por qué el que haya más de un elemento almacenador de energía le da cualidades resonantes al circuito.
+
+        \begin{quote}
+            Porque la resonancia consiste en que la energía fluya de un elemento almacenador a otro. Haciendo que al haber más de uno estos se compartan mutuamente la energía, y que esta fluya de uno a otro, generando oscilaciones. Por lo que al haber más de un elemento almacenador de energía, el circuito puede presentar resonancia.
+
+            Un solo elemento no puede lograr esto ya que no tendría otro elemento almacenador al que compartirle energía, que la almacene y se la devuelva.
+        \end{quote}
+    \end{enumerate}
+
+    \section{Conclusiones}
+
+    \begin{enumerate}
+        \item La práctica permitió comprobar que la resistencia influye directamente en el comportamiento transitorio de los circuitos de segundo orden, ya que modifica la frecuencia de amortiguamiento y, por consiguiente, el tipo de respuesta observada. En los casos analizados, la disminución de la resistencia favoreció un comportamiento subamortiguado, mientras que el aumento de la misma condujo hacia un estado críticamente amortiguado o sobreamortiguado.
+
+        \item Los resultados obtenidos de manera teórica y experimental mostraron una buena concordancia, lo que permite afirmar que las ecuasiones usadas y vistas en clase para determinar la frecuencia angular de resonancia y la frecuencia de amortiguamiento son adecuadas para describir el comportamiento de los circuitos LC y RLC.\@ La diferencia porcentual observada entre ambos resultados fue pequeña, lo que confirma la validez del análisis realizado.
+
+        \item Asimismo, se comprobó que la resonancia en los circuitos de segundo orden surge del intercambio de energía entre el capacitor y el inductor, mientras que la resistencia introduce una disipación que reduce la amplitud de las oscilaciones. Este comportamiento permite comprender mejor el papel de cada elemento en la respuesta transitoria y en la estabilidad del sistema.
+    \end{enumerate}
+    
+    \nocite{*}
+    \printbibliography{}
+
+    \newpage
+    \section{Anexos}
+
+    \imagen{./Pictures/ProcedimientoExperimental/sc01.png}{Captura de pantalla n.1\\Procedimiento Experimental inciso 3}{475px}
+    \imagen{./Pictures/ProcedimientoExperimental/sc02.png}{Captura de pantalla n.2\\Procedimiento Experimental inciso 3}{475px}
+    \imagen{./Pictures/ProcedimientoExperimental/sc03.png}{Captura de pantalla n.3\\Procedimiento Experimental inciso 3}{475px}
+    \imagen{./Pictures/ProcedimientoExperimental/sc04.png}{Captura de pantalla n.4\\Procedimiento Experimental inciso 4}{475px}
+    \imagen{./Pictures/ProcedimientoExperimental/sc05.png}{Captura de pantalla n.5\\Procedimiento Experimental inciso 7}{475px}
+    \imagen{./Pictures/ProcedimientoExperimental/sc06.png}{Captura de pantalla n.6\\Procedimiento Experimental inciso 7}{475px}
+    \imagen{./Pictures/ProcedimientoExperimental/sc07.png}{Captura de pantalla n.7\\Procedimiento Experimental inciso 7}{475px}
+    \imagen{./Pictures/ProcedimientoExperimental/sc08.png}{Captura de pantalla n.8\\Procedimiento Experimental inciso 8}{475px}
+
+
+\end{document} 
