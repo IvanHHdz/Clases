@@ -1,0 +1,46 @@
+% ====== Paquetes básicos ======
+\usepackage[utf8]{inputenc}    % Codificación UTF-8
+\usepackage[T1]{fontenc}       % Acentos correctos
+\usepackage[spanish]{babel}    % Traducción al español
+\usepackage{csquotes}          % Recomendado para biblatex con babel
+\usepackage{hyperref}          % Hipervínculos
+\usepackage{amsmath,amssymb}   % Matemáticas
+\usepackage{graphicx}          % Imágenes
+\usepackage{caption}           % Mejor control de captions
+\usepackage{geometry}          % Márgenes
+\usepackage{fancyhdr}          % Encabezados y pies
+\usepackage{parskip}           % Mejor separación entre párrafos
+
+% ====== Referencias ======
+\usepackage[
+    backend=biber,
+    style=apa,
+    sorting=none
+]{biblatex}
+\addbibresource{references.bib}
+
+% agrege `\printbibliography{}` para las referencias
+% cite con `\cite{}`
+% agregue las referencias a un `references.bib`
+
+% ====== Configuración ======
+\geometry{margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\setlength{\headheight}{13pt}
+\lhead{\leftmark}
+
+% ====== Comando personalizado para imágenes ======
+% Uso: \imagen{ruta}{Texto del pie de figura}
+\newcommand{\imagen}[2]{
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=200px]{#1}
+        \caption{#2}
+    \end{figure}
+}
+
+% ====== Datos del artículo ======
+\title{Portada}
+\author{Lester Iván Hernández Hernandez}
