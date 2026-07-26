@@ -3,21 +3,16 @@
 \subsection{Cadenas de Markov}
 
 Es un proceso estocástico $\{X_1, X_2 \cdots X_n\}$ en tiempo discreto. Este cumple con la propiedad de Markov:
-
 \begin{align*}
     &P(X_{n+1} = e_j \mid X_n = e_i, \cdots X_0 = e_{0}) = P(X_{n+1} = e_j \mid X_n = e_i)
 \end{align*}
-
 Donde el espacio de estados es $E = \{e_1, e_2\cdots e_m\}$ finito o numerable.
 
 Aquí, la probabilidad de pasar de un estado $e_i$ a un estado $e_j$ en un solo paso está dado por:
-
 \begin{align*}
     p_{ij} = P(X_{n+1} = e_j \mid X_n = e_i)
 \end{align*}
-
 Estas son las probabilidades de transición, usualmente organizadas en la matriz de transición $P$:
-
 \begin{align*}
     P = \begin{bmatrix}
         p_{11} & p_{12} & \cdots & p_{1m}\\
@@ -26,49 +21,37 @@ Estas son las probabilidades de transición, usualmente organizadas en la matriz
         p_{m1} & p_{m2} & \cdots & p_{mm}
     \end{bmatrix}
 \end{align*}
-
 Donde las filas son el estado actual, y las columnas el estado siguiente. La suma de los elementos de cada fila deben sumar $1$.
 
 Para $n$ pasos, se utiliza la matriz $P^{(n)}$ y se encuentra el respectivo elemento $p^{(n)}_{ij}$. La matriz $P^{(n)}$ se calcula multiplicando $n$ veces la matriz $P$ por sí misma.
 
 También tenemos la distribución de probabilidad del sistema $\pi$. La distribución de probabiliadad del sistema tras $n$ pasos está dada por:
-
 \begin{align*}
     \pi^{(n)} = (\pi^{(n)}_1,\ldots,\pi^{(n)}_m)
 \end{align*}
-
 Donde 
-
 \begin{align*}
     \pi^{(n)}_j = P(X_n = e_j)
 \end{align*}
-
 Es la probabilidad de que el sistema se encuentre en el estado $e_j$ en el instante $n$ o después de $n$ pasos.
 
 Note que esta va evolucionando, donde cada paso modifica las probabilidades con
-
 \begin{align*}
     \pi^{(n+1)} = \pi^{(n)} P
 \end{align*}
-
 Y de forma más general se cumple que:
-
 \begin{align*}
     \pi^{(n)} = \pi^{(0)} P^{(n)}
 \end{align*}
-
 Siendo $\pi^{(0)}$ la distribución de probabilidades inicial.
 
 Tras cierta cantidad de pasos, se alcanza una estabilidad en el sistema en el que se cumple que:
-
 \begin{align*}
     \pi = \pi P
 \end{align*}
-
 Es decir, el vector de distribución de probabilidad del sistema no cambia.
 
 Note a todo esto que los elementos de $\pi$ cumplen que:
-
 \begin{align*}
     \sum_i^m \pi_i = 1
 \end{align*}
@@ -76,7 +59,6 @@ Note a todo esto que los elementos de $\pi$ cumplen que:
 \subsection{Teoría de Colas: Modelo M/M/1}
 
 Caracterizado por:
-
 \begin{itemize}
     \item Llegadas aleatorias de entidades al sistema.
     \item Tiempos de servicio variables
@@ -84,15 +66,12 @@ Caracterizado por:
 \end{itemize}
 
 Para que el sistema sea estable, se debe cumplir que:
-
 \begin{align*}
     \lambda < \mu
 \end{align*}
-
 Donde $\lambda$ es la tasa promedio de llegada de entidades al sistema y $\mu$ es la tasa promedio de servicio del sistema.
 
 Ahora, con esta condición se tienen las siguientes medidas:
-
 \begin{align*}
     L &= \frac{\lambda}{\mu - \lambda}\\
     L_q &= \frac{\lambda^2}{\mu(\mu - \lambda)}\\
@@ -101,7 +80,6 @@ Ahora, con esta condición se tienen las siguientes medidas:
     \rho &= \frac{\lambda}{\mu}\\
     \frac{1}{\mu} &= W - W_q
 \end{align*}
-
 Donde:
 \begin{itemize}
     \item $L$ es el número promedio de entidades en el sistema (en cola + en servicio).

@@ -1,0 +1,33 @@
+\section{Métodos Matemáticos para Ingeniería}
+
+\subsection{Serie de Fourier}
+Se cumple que para cualquier función $f$ continua por partes y periódica con $T$ como periódo, esta se puede expresar en forma de serie de Fourier, esto es:
+\begin{align*}
+    f(t) = \frac{1}{2} a_0 + \sum_{n =1}^{\infty} \left[a_n \cos(n\omega_0t) + b_n \sin(n\omega_0t)\right]
+\end{align*}
+Donde:
+\begin{align*}
+    \omega_0 &= \frac{2\pi}{T}\\
+    a_0 &= \frac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t)\,dt\\
+    a_n &= \frac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t)\,\cos(n\omega_0t)\,dt\\
+    b_n &= \frac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t)\,\sin(n\omega_0t)\,dt
+\end{align*}
+Donde lógicamente $n\in\mathbb{N}$.
+
+En caso que $f(t)$ no tenga el centro de uno de sus periodos al rededor de $0$, entonces de hace un cambio de variable para que el centro de uno de sus periódos sea $0$. Pues esta forma de la serie de Fourier asume que uno de los periódos de la función va de $-\frac{T}{2}$ a $\frac{T}{2}$.
+
+Existen además dos casos especiales para funciones pares e impares que facilitan la evaluación. Para conocer la paridad de una función se tiene que:
+\begin{itemize}
+    \item Si $f(t) = f(-t)$ entonces es par.
+    \item Si $f(t) = -f(-t)$ entonces es impar.
+    \item Si no cumple ninguna de estas condiciones entonces no es ni par ni impar.
+\end{itemize}
+Una forma sencilla de evaluarlo es:
+\begin{align*}
+    \frac{f(t)}{f(-t)} = \begin{cases}
+        1 & \text{función par}\\
+        -1 & \text{función impar}\\
+        \text{otro} & \text{ni par ni impar}
+    \end{cases}
+\end{align*}
+La utilidad de la paridad es que si la función es par basta con evaluar $a_0$ y $a_n$ en el intervalo $\left[0, \frac{T}{2}\right]$ y multiplicarlo por $2$, pues $b_n = 0$. Lo opuesto pasa para las impares, en donde $a_0 = a_n = 0$ y $b_n$ se evalua entre $\left[0, \frac{T}{2}\right]$ y se multiplica por 2.
