@@ -5,8 +5,7 @@
 Es un proceso estocástico $\{X_1, X_2 \cdots X_n\}$ en tiempo discreto. Este cumple con la propiedad de Markov:
 
 \begin{align*}
-    &P(X_{n+1} = e_j \mid X_n = e_i, \cdots X_0 = e_{0}) \\
-    &= P(X_{n+1} = e_j \mid X_n = e_i)
+    &P(X_{n+1} = e_j \mid X_n = e_i, \cdots X_0 = e_{0}) = P(X_{n+1} = e_j \mid X_n = e_i)
 \end{align*}
 
 Donde el espacio de estados es $E = \{e_1, e_2\cdots e_m\}$ finito o numerable.
@@ -59,3 +58,56 @@ Y de forma más general se cumple que:
 \end{align*}
 
 Siendo $\pi^{(0)}$ la distribución de probabilidades inicial.
+
+Tras cierta cantidad de pasos, se alcanza una estabilidad en el sistema en el que se cumple que:
+
+\begin{align*}
+    \pi = \pi P
+\end{align*}
+
+Es decir, el vector de distribución de probabilidad del sistema no cambia.
+
+Note a todo esto que los elementos de $\pi$ cumplen que:
+
+\begin{align*}
+    \sum_i^m \pi_i = 1
+\end{align*}
+
+\subsection{Teoría de Colas: Modelo M/M/1}
+
+Caracterizado por:
+
+\begin{itemize}
+    \item Llegadas aleatorias de entidades al sistema.
+    \item Tiempos de servicio variables
+    \item Un solo servidor
+\end{itemize}
+
+Para que el sistema sea estable, se debe cumplir que:
+
+\begin{align*}
+    \lambda < \mu
+\end{align*}
+
+Donde $\lambda$ es la tasa promedio de llegada de entidades al sistema y $\mu$ es la tasa promedio de servicio del sistema.
+
+Ahora, con esta condición se tienen las siguientes medidas:
+
+\begin{align*}
+    L &= \frac{\lambda}{\mu - \lambda}\\
+    L_q &= \frac{\lambda^2}{\mu(\mu - \lambda)}\\
+    W &= \frac{1}{\mu - \lambda}\\
+    W_q &= \frac{\lambda}{\mu(\mu - \lambda)}\\
+    \rho &= \frac{\lambda}{\mu}\\
+    \frac{1}{\mu} &= W - W_q
+\end{align*}
+
+Donde:
+\begin{itemize}
+    \item $L$ es el número promedio de entidades en el sistema (en cola + en servicio).
+    \item $L_q$ es el número promedio de entidades esperando en la cola.
+    \item $W$ es el tiempo promedio que una entidad pasa en el sistema.
+    \item $W_q$ es el tiempo promedio que una entidad pasa esperando en la cola.
+    \item $\rho$ es la proporción de tiempo que una entidad está ocupando.
+    \item $\frac{1}{\mu}$ es el tiempo promedio en servicio de una entidad.
+\end{itemize}
