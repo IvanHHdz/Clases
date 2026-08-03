@@ -1,0 +1,75 @@
+% ====== Tipo de archivo ======
+%\documentclass[journal]{IEEEtran}
+\documentclass{article}
+
+\input{Formato.tex}
+
+\input{Portada.tex}
+
+\begin{document}
+    \portada{}
+    \newpage
+    
+    \section{Proceso de Electrodeposición de Metales}
+
+Un proceso industrial que integra de manera natural los tres tipos de compuestos solicitados es el \textbf{recubrimiento electrolítico de metales} (por ejemplo, niquelado o cromado de una pieza de acero). Se emplea para proteger piezas metálicas de la corrosión o para darles un acabado decorativo. A continuación se describen sus etapas.
+
+\subsection{Desengrase alcalino (uso de una base)}
+
+Antes de recubrir la pieza, es necesario eliminar grasas, aceites y residuos de manufactura de su superficie.
+
+\begin{itemize}
+    \item Se sumerge la pieza en una solución alcalina caliente, típicamente hidróxido de sodio (NaOH) o carbonato de sodio (Na$_2$CO$_3$).
+    \item La base saponifica las grasas (las convierte en jabones solubles en agua) mediante hidrólisis alcalina, dejando la superficie metálica limpia y libre de compuestos orgánicos.
+\end{itemize}
+
+Reacción general (con una grasa tipo éster):
+\begin{equation}
+    \text{Grasa (éster)} + \text{NaOH} \rightarrow \text{Jabón (sal soluble)} + \text{Glicerina}
+\end{equation}
+
+\subsection{Decapado o activado (uso de un ácido)}
+
+Después del enjuague, la pieza pasa por un baño ácido.
+
+\begin{itemize}
+    \item Se emplea ácido clorhídrico (HCl) o ácido sulfúrico (H$_2$SO$_4$) diluido.
+    \item Su función es disolver la capa de óxido metálico (herrumbre u óxidos naturales) formada sobre la superficie, dejando el metal ``activado'' y listo para que el recubrimiento se adhiera correctamente.
+\end{itemize}
+
+Reacción representativa (óxido de hierro):
+\begin{equation}
+    \text{Fe}_2\text{O}_3 + 6\text{HCl} \rightarrow 2\text{FeCl}_3 + 3\text{H}_2\text{O}
+\end{equation}
+
+\subsection{Enjuague intermedio}
+
+Entre cada etapa se enjuaga la pieza con agua para evitar que los reactivos de un baño contaminen el siguiente.
+
+\subsection{Electrodeposición (uso de una sal metálica)}
+
+Esta es la etapa central del proceso.
+
+\begin{itemize}
+    \item La pieza (cátodo) se sumerge en una celda electrolítica que contiene una sal metálica disuelta, como sulfato de níquel (NiSO$_4\cdot$6H$_2$O) para niquelado, o sulfato de cobre (CuSO$_4$) para cobreado.
+    \item Un ánodo del mismo metal (por ejemplo, níquel puro) se conecta al polo positivo de una fuente de corriente directa.
+\end{itemize}
+
+Al pasar la corriente:
+
+En el cátodo (la pieza), los iones metálicos se reducen y se depositan como metal sólido:
+\begin{equation}
+    \text{Ni}^{2+} + 2e^- \rightarrow \text{Ni (s)}
+\end{equation}
+
+En el ánodo, el metal se oxida y repone los iones metálicos en la solución, manteniendo constante la concentración de la sal:
+\begin{equation}
+    \text{Ni (s)} \rightarrow \text{Ni}^{2+} + 2e^-
+\end{equation}
+
+\subsection{Enjuague final y secado}
+
+Se retira la pieza, se enjuaga y se seca, quedando con una capa metálica uniforme, brillante y resistente a la corrosión.
+
+
+\end{document} 
