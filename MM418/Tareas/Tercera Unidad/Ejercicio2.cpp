@@ -32,9 +32,9 @@ private:
 public:
   Cilindro(double alt, double rad) : Figura3D(alt) { set_radio(rad); }
 
-  void set_radio(double alt) {
-    if (radio > 0) {
-      radio = alt;
+  void set_radio(double rad) {
+    if (rad > 0) {
+      radio = rad;
     } else {
       cout << "Radio inválida, asignando valor por defecto: 1" << endl;
       radio = 1;
