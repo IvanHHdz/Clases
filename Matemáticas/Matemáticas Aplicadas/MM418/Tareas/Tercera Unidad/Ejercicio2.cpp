@@ -20,7 +20,7 @@ public:
 
   double get_altura() { return altura; }
 
-  virtual double calcularVolumen() { return 0; };
+  virtual double calcularVolumen() = 0;
 
   virtual void imprimirDatos() { cout << "Altura:\t" << altura << endl; }
 };

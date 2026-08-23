@@ -1,0 +1,138 @@
+% ====== Tipo de archivo ======
+%\documentclass[journal]{IEEEtran}
+\documentclass{article}
+
+\input{Formato.tex}
+
+\input{Portada.tex}
+
+\begin{document}
+    \portada{}
+    \newpage
+    
+    % =========================================================
+    %  PROCESOS DE PRODUCCIÓN DE GASES
+    % =========================================================
+
+    \section{Producción de Hidrógeno (H\textsubscript{2})}
+
+    El hidrógeno es el elemento más abundante del universo, pero en la Tierra
+    prácticamente no se encuentra en estado libre. Para obtenerlo es necesario
+    separarlo de los compuestos que lo contienen, como el agua o el gas natural.
+    El método industrial dominante es el \textbf{reformado de vapor de metano}
+    (\textit{Steam Methane Reforming}, SMR), responsable de más del 90\% de la
+    producción mundial.
+
+    El proceso comienza con una etapa de \textbf{desulfuración}: el gas natural
+    (cuyo componente principal es el metano, CH\textsubscript{4}) se hace pasar
+    por un lecho de material absorbente que elimina los compuestos de azufre. Este
+    paso es indispensable porque el azufre envenena los catalizadores metálicos
+    usados en las etapas siguientes, reduciendo drásticamente su vida útil.
+
+    A continuación, el gas limpio se mezcla con vapor de agua sobrecalentado y se
+    introduce en un reactor tubular a temperaturas de entre 700 y 1\,000\,°C, en
+    presencia de un catalizador de níquel. Bajo estas condiciones, el metano
+    reacciona con el vapor produciendo hidrógeno y monóxido de carbono (CO):
+    \begin{equation}
+        \text{CH}_4 + \text{H}_2\text{O} \;\rightarrow\; \text{CO} + 3\,\text{H}_2
+    \end{equation}
+
+    El CO resultante no se descarta: reacciona con vapor adicional en dos reactores
+    en serie —uno a alta temperatura y otro a baja temperatura— en la llamada
+    \textbf{reacción de desplazamiento de agua} (\textit{Water-Gas Shift}), que
+    genera más hidrógeno y convierte el CO en dióxido de carbono:
+    \begin{equation}
+        \text{CO} + \text{H}_2\text{O} \;\rightarrow\; \text{CO}_2 + \text{H}_2
+    \end{equation}
+
+    Finalmente, la corriente gaseosa pasa por una unidad de \textbf{adsorción por
+    variación de presión} (PSA), donde las impurezas quedan retenidas en un
+    material sólido poroso y el hidrógeno sale con una pureza superior al 99.9\%.
+    El producto se emplea en la fabricación de fertilizantes, el refinado de
+    petróleo y, cada vez más, como combustible limpio en celdas de combustible.
+
+    % ---------------------------------------------------------
+
+    \section{Producción de Amoniaco (NH\textsubscript{3})}
+
+    El amoniaco es una molécula compuesta por nitrógeno e hidrógeno que tiene un
+    olor fuerte y característico. Es la base de la mayoría de los fertilizantes
+    nitrogenados y, por tanto, uno de los productos químicos más importantes para
+    la agricultura moderna. Se sintetiza industrialmente mediante el
+    \textbf{proceso Haber-Bosch}, desarrollado a principios del siglo XX y
+    considerado uno de los avances tecnológicos más influyentes de la historia, ya
+    que permitió producir alimentos para una población mundial en rápido crecimiento.
+
+    Las materias primas son el nitrógeno molecular (N\textsubscript{2}), obtenido
+    directamente del aire por destilación criogénica, y el hidrógeno
+    (H\textsubscript{2}), proveniente generalmente del proceso SMR descrito
+    anteriormente. Ambos gases se purifican con cuidado para eliminar trazas de
+    oxígeno, agua y CO que desactivarían el catalizador, y se mezclan en una
+    proporción molar de 1:3.
+
+    La mezcla se comprime hasta presiones de entre 150 y 300 atmósferas y se
+    hace circular a través de un reactor que contiene un catalizador de hierro
+    promovido con pequeñas cantidades de potasio y aluminio, operando a una
+    temperatura de 400--500\,°C:
+    \begin{equation}
+        \text{N}_2 + 3\,\text{H}_2 \;\rightleftharpoons\; 2\,\text{NH}_3
+    \end{equation}
+
+    Esta combinación de alta presión y temperatura moderada es un compromiso
+    deliberado: la presión alta favorece la formación de amoniaco, mientras que
+    la temperatura no puede ser demasiado elevada porque, a mayor temperatura,
+    el equilibrio se desplaza hacia los reactivos. El catalizador de hierro
+    permite alcanzar velocidades de reacción aceptables sin necesidad de
+    temperaturas excesivas. Aun así, solo entre el 15 y el 25\% del gas se
+    convierte en amoniaco por pasada, de modo que la mezcla se enfría para
+    licuar el amoniaco producido y los gases no reaccionados se recirculan al
+    reactor. El amoniaco líquido resultante se almacena en tanques refrigerados
+    a $-33$\,°C. Su principal destino es la producción de urea y otros
+    fertilizantes, aunque también se usa como refrigerante industrial y en la
+    síntesis de explosivos y plásticos.
+
+    % ---------------------------------------------------------
+
+    \section{Producción de Cloro (Cl\textsubscript{2})}
+
+    El cloro es un gas de color amarillo-verdoso con un olor fuerte e irritante.
+    Es fundamental para desinfectar el agua potable, fabricar plásticos como el
+    PVC y producir una amplia variedad de productos farmacéuticos y agroquímicos.
+    El proceso industrial dominante para obtenerlo es la \textbf{electrólisis de
+    la salmuera}, conocido como \textbf{proceso cloroalcalino}.
+
+    La materia prima es una solución saturada de cloruro de sodio (NaCl) en agua,
+    llamada \textit{salmuera}. Antes de ingresar a la celda electrolítica, la
+    salmuera se purifica exhaustivamente para eliminar iones de calcio, magnesio
+    y sulfato, que deteriorarían la membrana selectiva del reactor.
+
+    La celda está dividida en dos compartimentos por una \textbf{membrana de
+    Nafion\textregistered{}}, un polímero que permite el paso de iones
+    Na\textsuperscript{+} de un lado al otro, pero no el de cloro ni hidróxido.
+    Al aplicar corriente eléctrica, ocurren dos reacciones simultáneas en los
+    electrodos:
+    \begin{equation}
+        \text{Ánodo (+): } 2\,\text{Cl}^- \;\rightarrow\; \text{Cl}_2 + 2\,e^-
+    \end{equation}
+    \begin{equation}
+        \text{Cátodo (-): } 2\,\text{H}_2\text{O} + 2\,e^- \;\rightarrow\;
+        \text{H}_2 + 2\,\text{OH}^-
+    \end{equation}
+
+    En el ánodo, los iones cloruro son oxidados y se libera gas cloro. En el
+    cátodo, el agua se reduce produciendo gas hidrógeno e iones hidróxido. Los
+    iones Na\textsuperscript{+} que cruzan la membrana se combinan con los
+    OH\textsuperscript{-} del cátodo para formar hidróxido de sodio (NaOH) en
+    solución. De esta manera, un solo proceso genera simultáneamente tres
+    productos de valor comercial: cloro, sosa cáustica e hidrógeno.
+
+    El gas cloro que sale del ánodo se enfría para condensar el agua que arrastra,
+    se seca con ácido sulfúrico concentrado y finalmente se comprime y licua para
+    facilitar su transporte. El hidrógeno se usa como combustible dentro de la
+    misma planta o se vende, y el NaOH en solución se concentra por evaporación.
+    Este proceso consume grandes cantidades de electricidad, por lo que las plantas
+    cloroalcalinas generalmente se ubican cerca de fuentes de energía económica.
+
+
+
+\end{document} 
