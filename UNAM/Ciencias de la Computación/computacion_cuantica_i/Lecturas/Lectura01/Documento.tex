@@ -1,0 +1,23 @@
+% ====== Tipo de archivo ======
+%\documentclass[journal]{IEEEtran}
+\documentclass{article}
+
+\input{Formato.tex}
+
+\begin{document}
+    \maketitle
+    \newpage
+    
+    \section*{\textit{On Computable Numbers}}
+
+    Como tal, el artículo tiene como propósito central el definir y estudiar los números computables, así como las máquinas que los computan (las que llamamos máquinas de Turing). Esto con el objetivo de dar solución al problema de decisión (\textit{Entscheidungsproblem}) propuesto por Hilbert. 
+    
+    Para lograr darle respuesta a este problema, Turing define lo que ahora llamamos una máquina de Turing, la cual es un modelo matemático que formaliza el concepto de algoritmo o procedimiento mecánico. Partiendo de dichas máquinas Turing define los números computables como aquellos números que pueden ser calculados por una máquina de Turing. En palabras sencillas un número es computable si existe un algoritmo que pueda producir su representación decimal (o binaria) hasta cualquier número de dígitos deseado; o completo, si se usa una máquina \textit{circle-free}. Luego, haciendo uso de dichas máquinas, construye la máquina universal. Que es aquella capaz de ejecutar (simular) cualquier otra máquina de Turing. Esto es, que puede ejecutar cualquier algoritmo. Y pasa a analizar una máquina que puede determinar si otra máquina es \textit{circle-free} o no. Y con esto, demuestra que no existe dicha máquina y en consecuencia, no existe un procedimiento mecánico para determinar si una máquina de Turing es \textit{circle-free} o no. Esto es, que no existe un algoritmo que pueda determinar si otro algoritmo se detiene o no.
+
+    De esta forma Turing demuestra que el problema de decisión es irresoluble, y que no existe un procedimiento mecánico para determinar si una proposición matemática es verdadera o falsa.
+
+    Personalmente me pareció especialmente interesante la forma en que construye las máquinas. Ya que se puede entrever una analogía con lo que actualmente sería la programación. Por ejemplo, una máquina universal, aquella que es capaz de ejecutar cualquier algoritmo, es análoga a una computadora moderna. De igual manera, las \textit{abbreviated table} que utiliza Turing para poder reutilizar partes de la máquina ya definidas es una analogía a lo que luego serían las funciones y subrutinas en programación. Y la forma en que luego hace la sustitución, pasando de una abstracción cómoda para programar (con abbreviated table) a una máquina que puede ser ejecutada (con la tabla completa) es análoga a lo que sería la compilación de un programa.
+
+    De igual manera, me pareció muy bella la forma que utiliza para demostrar que los números computables son enumerables. Y puesto que ya sabemos que los números reales no son enumerables, nos indica que no solo existen números reales que no podemos computar, sino que además, la gran mayoría de los números reales no son computables.
+
+\end{document} 
