@@ -1,0 +1,182 @@
+\documentclass[10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamersize{text margin left=1em, text margin right=1em}
+\makeatletter
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+\makeatother
+
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\tiny}
+\setbeamerfont{date}{size=\tiny}
+\setbeamerfont{normal text}{size=\footnotesize}
+
+\title[Igualdad de Parseval]{\fontsize{18}{20}\selectfont Igualdad de Parseval}
+\author[\fontsize{5}{6}\selectfont Lester Hernández \and Emilio Reyes]{\fontsize{11}{13}\selectfont Lester Iván Hernández Hernández - 20242000637 \\ Emilio Gabriel Reyes Pérez - 20242000121}
+\institute[MM-415]{\fontsize{12}{14}\selectfont Ecuaciones Diferenciales Parciales (MM-415)}
+\date[\today]{\fontsize{10}{12}\selectfont \today}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \maketitle
+\end{frame}
+
+\begin{frame}{Enunciado del problema}
+Sea $f(x) \in L^2[-p,p] \longrightarrow \mathbb{R}$ cuyo desarrollo de Fourier está dado por
+\[
+  f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left(a_n \cos\frac{n\pi}{p}x + b_n \sin\frac{n\pi}{p}x\right).
+\]
+
+Probar la igualdad de Parseval:
+\[
+  \langle f,f\rangle = \|f\|^2 = \int_{-p}^{p} f(x)^2\,dx
+  = p\left(\frac{a_0^2}{2} + \sum_{n=1}^{\infty}(a_n^2+b_n^2)\right).
+\]
+\end{frame}
+
+\begin{frame}{Definición de convergencia en $L^2$}
+Una sucesión de funciones $\{f_n\}$ converge a una función $f$ en la norma $L^2$ si
+\[
+  \lim_{n\to\infty} \int_{-p}^{p} |f_n(x)-f(x)|^2\,dx = 0.
+\]
+
+Esto significa que la energía o la norma cuadrática de la diferencia tiende a cero.
+
+En este caso, la norma de $f$ se define como
+\[
+  \|f\|^2 = \int_{-p}^{p} f(x)^2\,dx.
+\]
+\end{frame}
+
+\begin{frame}{Solución}
+Siguiendo la definición de norma con función peso $1$,
+\[
+  \|f\|^2 = \int_{-p}^{p} f(x)^2\,dx
+  = \int_{-p}^{p} \left(\frac{a_0}{2} + \sum_{n=1}^{\infty}\left(a_n\cos\frac{n\pi}{p}x + b_n\sin\frac{n\pi}{p}x\right)\right)^2 dx.
+\]
+
+Ahora expandimos el cuadrado.
+\end{frame}
+
+\begin{frame}{Paso 1: desarrollo del cuadrado}
+\[
+\small
+\begin{aligned}
+\int_{-p}^{p} f(x)^2\,dx
+= \int_{-p}^{p} \Bigg[ &\frac{a_0^2}{4}
++ a_0\sum_{n=1}^{\infty}\left(a_n\cos\frac{n\pi}{p}x+b_n\sin\frac{n\pi}{p}x\right) \\
+&+ \left(\sum_{n=1}^{\infty}\left(a_n\cos\frac{n\pi}{p}x+b_n\sin\frac{n\pi}{p}x\right)\right)^2 \Bigg] dx.
+\end{aligned}
+\]
+
+Aplicando la linealidad de la integral:
+\[
+\small
+\int_{-p}^{p} \frac{a_0^2}{4}\,dx
++ \int_{-p}^{p} a_0\sum_{n=1}^{\infty}\left(\cdots\right)dx
++ \int_{-p}^{p}\left(\sum_{n=1}^{\infty}\left(\cdots\right)\right)^2 dx.
+\]
+\end{frame}
+
+\begin{frame}{Paso 2: primer término}
+\[
+\int_{-p}^{p} \frac{a_0^2}{4}\,dx
+= \frac{a_0^2}{4}\int_{-p}^{p}dx
+= \frac{a_0^2}{4}(2p)
+= \frac{a_0^2}{2}p.
+\]
+
+Además,
+\[
+\int_{-p}^{p} a_0\sum_{n=1}^{\infty}\left(a_n\cos\frac{n\pi}{p}x+b_n\sin\frac{n\pi}{p}x\right)dx = 0,
+\]
+porque
+\[
+\int_{-p}^{p} \cos\frac{n\pi}{p}x\,dx = 0,
+\qquad
+\int_{-p}^{p} \sin\frac{n\pi}{p}x\,dx = 0.
+\]
+\end{frame}
+
+\begin{frame}{Paso 3: ortogonalidad de senos y cosenos}
+Consideremos ahora el término cuadrático:
+\[
+\begin{aligned}
+&\int_{-p}^{p}\left(\sum_{n=1}^{\infty} a_n\cos\frac{n\pi}{p}x + b_n\sin\frac{n\pi}{p}x\right)^2dx \\
+&= \int_{-p}^{p}\sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\bigg(
+  a_n a_m \cos\frac{n\pi}{p}x\cos\frac{m\pi}{p}x
+  + a_n b_m \cos\frac{n\pi}{p}x\sin\frac{m\pi}{p}x \\
+&\hspace{3.2cm}+ b_n a_m \sin\frac{n\pi}{p}x\cos\frac{m\pi}{p}x
+  + b_n b_m \sin\frac{n\pi}{p}x\sin\frac{m\pi}{p}x\bigg)dx.
+\end{aligned}
+\]
+
+Por ortogonalidad,
+\[
+\int_{-p}^{p}\cos\frac{n\pi}{p}x\cos\frac{m\pi}{p}x\,dx = 0 \quad (n\neq m),
+\]
+\[
+\int_{-p}^{p}\sin\frac{n\pi}{p}x\sin\frac{m\pi}{p}x\,dx = 0 \quad (n\neq m),
+\]
+\[
+\int_{-p}^{p}\cos\frac{n\pi}{p}x\sin\frac{m\pi}{p}x\,dx = 0,
+\qquad
+\int_{-p}^{p}\sin\frac{n\pi}{p}x\cos\frac{m\pi}{p}x\,dx = 0.
+\]
+\end{frame}
+
+\begin{frame}{Paso 4: simplificación final}
+Entonces solo sobreviven los términos con $n=m$:
+\[
+\begin{aligned}
+&\int_{-p}^{p}\left(\sum_{n=1}^{\infty} a_n\cos\frac{n\pi}{p}x + b_n\sin\frac{n\pi}{p}x\right)^2dx \\
+&= \sum_{n=1}^{\infty}\left(a_n^2\int_{-p}^{p}\cos^2\frac{n\pi}{p}x\,dx + b_n^2\int_{-p}^{p}\sin^2\frac{n\pi}{p}x\,dx\right).
+\end{aligned}
+\]
+
+Usando que
+\[
+\int_{-p}^{p}\cos^2\frac{n\pi}{p}x\,dx = p,
+\qquad
+\int_{-p}^{p}\sin^2\frac{n\pi}{p}x\,dx = p,
+\]
+obtenemos
+\[
+\sum_{n=1}^{\infty}\left(a_n^2p+b_n^2p\right)=p\sum_{n=1}^{\infty}(a_n^2+b_n^2).
+\]
+\end{frame}
+
+\begin{frame}{Conclusión}
+Reuniendo todos los términos:
+\[
+\begin{aligned}
+\|f\|^2 &= \int_{-p}^{p} f(x)^2dx \\
+&= \frac{a_0^2}{2}p + 0 + p\sum_{n=1}^{\infty}(a_n^2+b_n^2) \\
+&= p\left(\frac{a_0^2}{2} + \sum_{n=1}^{\infty}(a_n^2+b_n^2)\right).
+\end{aligned}
+\]
+
+Por lo tanto,
+\[
+\boxed{\langle f,f\rangle = \|f\|^2 = p\left(\frac{a_0^2}{2} + \sum_{n=1}^{\infty}(a_n^2+b_n^2)\right)}
+\]
+que es exactamente la igualdad de Parseval.
+\end{frame}
+
+\end{document}
