@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+
+\title{Exposición 1: Igualdad de Parseval}
+\author{Lester Iván Hernández Hernández (20242000637)\\
+        Emilio Gabriel Reyes Pérez (20242000121)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Enunciado del problema}
+
+Sea $f(x) \in L^2[-p,p] \longrightarrow \mathbb{R}$ cuyo desarrollo de Fourier está dado por
+\[
+f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos \frac{n\pi}{p}x + b_n \operatorname{sen} \frac{n\pi}{p}x
+\]
+
+Probar la igualdad de Parseval
+\[
+\langle f,f\rangle = \|f\|^2 = \int_{-p}^{p} (f(x))^2\,dx = p\left(\frac{a_0^2}{2} + \sum_{n=1}^{\infty} (a_n^2 + b_n^2)\right)
+\]
+
+\section{Definición de L2}
+Una sucesión de funciones $\{f_n\}$ converge a una función $f$ en la norma $L^2$ si la integral de la diferencia al cuadrado tiende a cero cuando $n$ tiende a infinito, es decir,
+\[
+\lim_{n \to \infty} \int_{-p}^{p} |f_n(x) - f(x)|^2 \, dx = 0
+\]
+
+\section{Solución}
+
+Siguiendo la definción de norma con función peso $1$, 
+
+\begin{align*}
+\|f\|^2 &= \int_{-p}^{p} (f(x))^2 \, dx \\
+&= \int_{-p}^{p} \left( \frac{a_0}{2} + \sum_{n=1}^{\infty} \left(a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right)\right)^2 \, dx 
+\end{align*}
+
+Utilizando la identidad del cuadrado de un binomio,
+
+\begin{align*}
+\int_{-p}^{p} \left(\frac{a_0^2}{4} + a_0\sum_{n=1}^{\infty} \left(a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right) + \left(\sum_{n=1}^{\infty} a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right)^2 \right) \, dx
+\end{align*}
+
+Ahora, aplicando la linealidad de la integral obtenemos:
+
+\begin{align*}
+\int_{-p}^{p} \frac{a_0^2}{4} \, dx + \int_{-p}^{p} a_0\sum_{n=1}^{\infty} \left(a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right) \, dx + \int_{-p}^{p} \left(\sum_{n=1}^{\infty} a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right)^2 \, dx
+\end{align*}
+
+Y ahora resolvemos una por una las integrales:
+
+\begin{align*}
+\int_{-p}^{p} \frac{a_0^2}{4} \, dx &= \frac{a_0^2}{4} \int_{-p}^{p} dx = \frac{a_0^2}{4} (2p) = \frac{a_0^2}{2} p
+\end{align*}
+
+\begin{align*}
+\int_{-p}^{p} a_0\sum_{n=1}^{\infty} \left(a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right) \, dx &= a_0 \sum_{n=1}^{\infty} \left( a_n \int_{-p}^{p} \cos \frac{n\pi}{p}x \, dx + b_n \int_{-p}^{p} \sin \frac{n\pi}{p}x \, dx \right) = 0
+\end{align*}
+
+\begin{align*}
+&\int_{-p}^{p} \left(\sum_{n=1}^{\infty} a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right)^2 \, dx 
+\\& = \int_{-p}^{p} \left(\sum_{n=1}^{\infty} a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x\right)\left(\sum_{n=1}^{\infty} a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x\right)\, dx
+\\& = \int_{-p}^{p} \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} \Bigg(a_n a_m \cos \frac{n\pi}{p}x \cos \frac{m\pi}{p}x + a_n b_m \cos \frac{n\pi}{p}x \sin \frac{m\pi}{p}x + \\&b_n a_m \sin \frac{n\pi}{p}x \cos \frac{m\pi}{p}x + b_n b_m \sin \frac{n\pi}{p}x \sin \frac{m\pi}{p}x\Bigg) \, dx
+\\& = \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} \Bigg(a_n a_m \int_{-p}^{p} \cos \frac{n\pi}{p}x \cos \frac{m\pi}{p}x \, dx + a_n b_m \int_{-p}^{p} \cos \frac{n\pi}{p}x \sin \frac{m\pi}{p}x \, dx + \\&b_n a_m \int_{-p}^{p} \sin \frac{n\pi}{p}x \cos \frac{m\pi}{p}x \, dx + b_n b_m \int_{-p}^{p} \sin \frac{n\pi}{p}x \sin \frac{m\pi}{p}x\, dx\Bigg)
+\end{align*}
+
+Por ortogonalidad de las funciones seno y coseno, sus integrales se vuelven cero, cuando $n \neq m$. Al igual que las integrales de los productos cruzados, por lo que nos queda:
+
+\begin{align*}
+&\sum_{n=1}^{\infty} \sum_{m=1}^{\infty} \Bigg(a_n a_m \int_{-p}^{p} \cos \frac{n\pi}{p}x \cos \frac{m\pi}{p}x \, dx + b_n b_m \int_{-p}^{p} \sin \frac{n\pi}{p}x \sin \frac{m\pi}{p}x\, dx\Bigg) 
+\\&= \sum_{n=1}^{\infty} \left(a_n^2 \int_{-p}^{p} \cos^2 \frac{n\pi}{p}x \, dx + b_n^2 \int_{-p}^{p} \sin^2 \frac{n\pi}{p}x\, dx\right)
+\\&= \sum_{n=1}^{\infty} \left(a_n^2 p + b_n^2 p\right) 
+\\&= p \sum_{n=1}^{\infty} (a_n^2 + b_n^2)
+\end{align*}
+
+Por lo cual, se obtiene que:
+
+\begin{align*}
+&\int_{-p}^{p} \frac{a_0^2}{4} \, dx + \int_{-p}^{p} a_0\sum_{n=1}^{\infty} \left(a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right) \, dx + \int_{-p}^{p} \left(\sum_{n=1}^{\infty} a_n \cos \frac{n\pi}{p}x + b_n \sin \frac{n\pi}{p}x \right)^2 \, dx\\
+&= \frac{a_0^2}{2} p + 0 + p \sum_{n=1}^{\infty} (a_n^2 + b_n^2)\\
+&= p\left(\frac{a_0^2}{2} + \sum_{n=1}^{\infty} (a_n^2 + b_n^2)\right)
+\end{align*}
+
+Que era lo que se quería demostrar, por lo que se concluye que la igualdad de Parseval es verdadera.
+
+\end{document}
