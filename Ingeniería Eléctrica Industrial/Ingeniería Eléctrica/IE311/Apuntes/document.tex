@@ -1,0 +1,177 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Configuración básica
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+% Datos de la clase
+\title{Apuntes de clase\\[0.3em]
+	\large Circuitos Eléctricos II}
+\author{Catedrática: Glenda Molina\\Estudiante: Lester Iván Hernández Hernández}
+\date{III PAC 2026}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{Unidad 1: Primer parcial}
+
+\subsection{Frecuencia compleja}
+
+La frecuencia suele ser un número complejo $z$ tal que $z = \sigma + j\omega$ con $\sigma,\omega\in\mathbb{R}$. Estos valores suelen salir de resolver el circuito en el dominio de la frecuencia al aplicar la transformada de Laplace. Tras lo cual siempre se obtiene un cociente de dos polinomios, mismos que al factorizar nos brindan las frecuencias (las raíces del polinomio del denominador). Al regresar la respuesta al dominio del tiempo se obtiene un resultado tal que:
+
+\[
+    y(t) = \sum_{i=1}^{n} A_i e^{z_i t}
+\]
+
+De la misma forma, las respuestas en el dominio del tiempo nos muestran las frecuencias:
+
+\begin{itemize}
+    \item Para $z = 0$, la respuesta es de tipo constante.
+    \item Para $z = \sigma$ con $\sigma < 0$, la respuesta es de tipo exponencial decreciente.
+    \item Para $z = j\omega$, la respuesta es de tipo sinusoidal.
+    \item Para $z = \sigma + j\omega$ con $\sigma < 0$, la respuesta es de tipo sinusoidal amortiguada.
+\end{itemize}
+
+Para aquellos casos en los que $\sigma > 0$, la respuesta es de tipo exponencial creciente y no es estable. Las frecuencias con parte compleja siempre incluyen su conjugado, por lo que la respuesta siempre será real.
+
+Además, si bien lo normal en los casos con sinusoidales sería hacer una suma de coseno y seno, lo común es simplemente utilizar un coseno con un ángulo de desfase, ya que la suma de coseno y seno puede representarse como un coseno con un ángulo de desfase.
+
+En cuanto a los nombres, $\sigma$, la parte real, es la frecuencia neperiana. Mientras que $\omega$, la parte imaginaria, es la frecuencia angular. La frecuencia angular es la que se utiliza para determinar la frecuencia de oscilación de un sistema, mientras que la frecuencia neperiana determina la velocidad de amortiguamiento del sistema.
+
+\subsection{Circuitos Transformados}
+
+Aquí solo una nota, las condiciones iniciales siempre se asumirán nulas. Por lo que las transformaciones de los capacitores $C$ e inductores $L$ serán $\frac{1}{sC}$ y $sL$ respectivamente. Mientras que las resistencias $R$ mantendrán su transformación como $R$ (o sea, no cambian). Estos elementos pasan a ser impedancias $Z$.
+
+Al resto, como fuentes de voltaje o corriente, se les aplicará la transformada de Laplace. 
+
+\subsection{Funciones de Red}
+
+Se imagina al circuito o red eléctrica como una caja negra. De la cuál solo salen las fuentes independientes (ahora llamadas entradas) y los lugares donde se realizan mediciones (ahora conocidos como salidas). Para eso, se extienden terminales y demás, formando los llamados puertos, que son dos terminales que salen del circuito (caja negra). Cada puerto está enumerado y corresponde a una entrada o salida.
+
+Las funciones de red son relaciones entre estas entradas y salidas. Entre estas tenemos:
+
+\begin{enumerate}
+    \item Funciones de punto impulsor: Son medidas en un solo puerto. Por ejemplo, en el puerto $1$ es posible medir $Z_{11}$ y $Y_{11}$.
+    
+    A la primera se le llama impedancia de entrada, impedancia de punto impulsor o impedancia entre las terminales del puerto $1$. La segunda se le llama admitancia de entrada, admitancia de punto impulsor o admitancia entre las terminales del puerto $1$.
+
+    Y se calculan con:
+
+    \[
+        Z_{11} = \frac{V_1}{I_1} = \frac{1}{Y_{11}}
+    \]
+
+    Teniendo los otros puertos en circuito abierto (o cortocircuito, dependerá del circuito). Usualmente se calcularán en el dominio de la frecuencia, por lo que $Z_{11}$ y $Y_{11}$ serán funciones de $s$.
+
+    \item Funciones de transferencia: Son medidas entre un puerto de entrada y otro de salida. Por ejemplo, entre el puerto $1$ y el puerto $2$ es posible medir $Z_{12}$ y $Y_{12}$ cuando consideramos el puerto $2$ como salida y el puerto $1$ como entrada.
+    
+    A la primera se le llama impedancia de transferencia o impedancia entre las terminales del puerto $2$ cuando el puerto $1$ es la entrada. La segunda se le llama admitancia de transferencia o admitancia entre las terminales del puerto $2$ cuando el puerto $1$ es la entrada.
+
+    Y se calculan con:
+
+    \[
+        Z_{12} = \frac{V_2}{I_1}\qquad,\qquad Y_{12} = \frac{I_2}{V_1}
+    \]
+
+    Note dos cosas, primero, que no son recíprocas como las de punto impulsor. Segundo, que la salida siempre va arriba y es la que su número va al final en el subíndice. De igual forma, estas son funciones de $s$.
+
+    \item Funciones de ganancia: Son medidas entre un puerto de entrada y otro de salida. En este caso, calculando la proporción del valor de entrada con el de salida. Siendo estas $G_{12}$ y $\alpha_{12}$, llamadas ganancia de voltaje y ganancia de corriente respectivamente.
+    
+    Estas funciones se calculan con:
+
+    \[
+        G_{12} = \frac{V_2}{V_1}\qquad,\qquad \alpha_{12} = \frac{I_2}{I_1}
+    \]
+
+    Y tienen las mismas consideraciones que las de transferencia (de hecho, se les suele considerar funciones de transferencia también). Estas también son funciones de $s$.
+\end{enumerate}
+
+Uno de los métodos más comunes para resolver estas funciones es por medio de análisis de nodos y mallas. Sin embargo, hay que considerar una cosa, y es que para lograr hacer esto de forma correcta, debemos plantear el sistema de forma distinta a como usualmente se plantearía. Por ejemplo, si se aplica análisis nodal para calcular el valor de un voltaje de salida, entonces se debe de considerar una corriente como la entrada, aunque para resolverlo sea más sencillo hacerlo con una de voltaje.
+
+El objetivo como tal al hacer el análisis nodal es obtener un sistema de la forma:
+\begin{align*}
+    \begin{bmatrix}
+        Y_{11} & Y_{12} & \cdots \\
+        Y_{21} & Y_{22} & \cdots \\
+        \vdots & \vdots & \ddots
+    \end{bmatrix}
+    \begin{bmatrix}
+        V_{in} \\
+        V_{out} \\
+        \vdots
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        I_{in} \\
+        I_{out} \\
+        \vdots
+    \end{bmatrix}
+\end{align*}
+
+Y para el análisis de mallas, un sistema de la forma:
+\begin{align*}
+    \begin{bmatrix}
+        Z_{11} & Z_{12} & \cdots \\
+        Z_{21} & Z_{22} & \cdots \\
+        \vdots & \vdots & \ddots
+    \end{bmatrix}
+    \begin{bmatrix}
+        I_{in} \\
+        I_{out} \\
+        \vdots
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        V_{in} \\
+        V_{out} \\
+        \vdots
+    \end{bmatrix}
+\end{align*}
+
+Note que se cumple el análisis dimensional. Y que, al tenerlo de la forma:
+
+\[
+    A\vec{x} = \vec{b}
+\]
+
+Todos los elementos de $A$ son del mismo tipo (impedancias o admitancias), todos los elementos de $\vec{x}$ son del mismo tipo (voltajes o corrientes) y todos los elementos de $\vec{b}$ son del mismo tipo (corrientes o voltajes). Al igual que los elementos de $A$ son funciones de $s$, los elementos de $\vec{x}$ son incógnitas que incluye los valores de los puertos, y que los valores de $\vec{b}$ son las entradas del sistema.
+
+\newpage
+\section{Unidad 2: Segundo parcial}
+Escribe aquí los apuntes correspondientes al segundo parcial.
+
+\subsection{Conceptos importantes}
+Anota definiciones, explicaciones y observaciones.
+
+\subsection{Fórmulas y ejemplos}
+Escribe las fórmulas y el procedimiento de los ejercicios.
+
+\subsection{Dudas y tareas}
+Anota aquí las dudas y tareas pendientes.
+
+\newpage
+\section{Unidad 3: Tercer parcial}
+Escribe aquí los apuntes correspondientes al tercer parcial.
+
+\subsection{Conceptos importantes}
+Anota definiciones, explicaciones y observaciones.
+
+\subsection{Fórmulas y ejemplos}
+Escribe las fórmulas y el procedimiento de los ejercicios.
+
+\subsection{Dudas y tareas}
+Anota aquí las dudas y tareas pendientes.
+
+\end{document}
