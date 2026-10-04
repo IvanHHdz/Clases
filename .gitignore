@@ -10,6 +10,8 @@
 *.bcf
 *.bbl
 *.blg
+*.nav
+*.snm
 
 # QUCS-S
 *.dat.ngspice
