@@ -21,6 +21,8 @@ Es para usarlo cuando se trabaja en el dominio de la frecuencia, pues la soluci�
 Al final está el cálculo directo de una de las funciones de red (de transferencia o ganancia). Si hay errores en esa última parte, es probable que asegurarse que los `simplify` están bien colocados. Porque puede hacer _overflow_ si no se colocan para ciertos sistemas.
 
 Si hay error en otra parte no sé porqué podría ser. Verificar los datos ingresados es lo único que se me ocurre. Eso y probar con valores constantes si sigue fallando. Pues, en teoría, no debería fallar con solo constantes numéricas.
+
+En ciertos sistemas puede también que llegue a ocurrir un `OverflowError` a causa de los coeficientes. Es decir, los coeficientes son tan altos que provocan un desbordamiento mientras se resuelve el sistema. Para ese caso, solo es necesario convertir un coeficientes a `BigInt` usando `big()`. Eso basta, pues `BigInt` es de presición arbitraria. Aunque puede volver más lenta la resolución del sistema.
 """
 
 # ╔═╡ 87f78c44-f500-4f89-9507-3568f60eb8a9
@@ -28,10 +30,10 @@ Si hay error en otra parte no sé porqué podría ser. Verificar los datos ingre
 
 # ╔═╡ b06015fc-5ffc-4e9b-8623-7cadfd1778f9
 A = [
-	1 		-1 					0 					0;
-	-100s  	s^2+100s+10_000 	-10_000 			-s^2;
-    0		-20_000 			s^2+100s+20_000 	-100s;
-	0 		-s 					-50 				s+100
+	1 		-1 						0 						0;
+	-100s  	s^2+100s+10_000 		-big(10_000) 			-s^2;
+    0		-big(20_000) 			s^2+100s+big(20_000) 	-100s;
+	0 		-s 						-50 					s+100
 ]
 
 # ╔═╡ 134292e1-8977-4086-95ec-b29ba6961818
