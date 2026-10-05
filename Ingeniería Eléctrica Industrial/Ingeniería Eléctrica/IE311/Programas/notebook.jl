@@ -26,21 +26,19 @@ En ciertos sistemas puede también que llegue a ocurrir un `OverflowError` a cau
 """
 
 # ╔═╡ 87f78c44-f500-4f89-9507-3568f60eb8a9
-@variables s, Vᵢₙ, Iᵢₙ, V₀, V₁, V₂ 
+@variables s, Vᵢₙ, V₀, V₁, V₂, Vₓ, Iᵢₙ, I₀
 
 # ╔═╡ b06015fc-5ffc-4e9b-8623-7cadfd1778f9
 A = [
-	1 		-1 						0 						0;
-	-100s  	s^2+100s+10_000 		-big(10_000) 			-s^2;
-    0		-big(20_000) 			s^2+100s+big(20_000) 	-100s;
-	0 		-s 						-50 					s+100
+	(15s^2+27s+10)/(10s*(2+5s))		-(25s+4)/(15*(2+5s));
+	-4s 							9s+2
 ]
 
 # ╔═╡ 134292e1-8977-4086-95ec-b29ba6961818
-x = [Vᵢₙ, V₀, V₁, V₂]
+x = [V₀, Vₓ]
 
 # ╔═╡ c7424e43-b05d-483b-a914-ccc52f2b7d81
-b = [Iᵢₙ, 0, 0, 0]
+b = [I₀, 0]
 
 # ╔═╡ dba893fc-9e91-4b7c-8787-d64e0ebfc794
 system = A * x .~ b
@@ -48,8 +46,8 @@ system = A * x .~ b
 # ╔═╡ 9eb6aaae-d9ee-4736-866e-b86cb011c650
 sol = simplify.(solve_for(system, x), expand=true)
 
-# ╔═╡ 0013558b-6b75-4c3d-a45b-532edef3a81e
-G₁₂ = simplify(sol[2] / sol[1]; expand=true)
+# ╔═╡ 1c6e1820-76ed-4cbe-8cfc-8ac9286d3b7a
+Z₂₂ = simplify(sol[1]/I₀; expand=true)
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -776,6 +774,6 @@ version = "17.4.0+2"
 # ╠═c7424e43-b05d-483b-a914-ccc52f2b7d81
 # ╠═dba893fc-9e91-4b7c-8787-d64e0ebfc794
 # ╠═9eb6aaae-d9ee-4736-866e-b86cb011c650
-# ╠═0013558b-6b75-4c3d-a45b-532edef3a81e
+# ╠═1c6e1820-76ed-4cbe-8cfc-8ac9286d3b7a
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
