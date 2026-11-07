@@ -1,0 +1,130 @@
+% ============================================================================
+% Plantilla de informe -- Laboratorio de Circuitos Eléctricos II (LIE-311)
+% La portada se agrega aparte; este archivo comienza después de ella.
+%
+% Reglas de entrega del sílabo: PDF con todos los apartados; en prácticas
+% virtuales o híbridas, adjuntar también los montajes .ms14 dentro del .zip o
+% .rar. El nombre solicitado es LNIE221_NOMBRE_APELLIDO_NUMEROCUENTA.pdf.
+% Reemplace todos los marcadores \rellenar{...} antes de entregar.
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+\input{Formato.tex}
+
+% Cambie estos dos valores para cada práctica.
+\renewcommand{\numeroPractica}{1}
+\renewcommand{\nombrepractica}{Osciloscopio, generador de funciones y voltaje senoidal}
+
+\begin{document}
+
+% La portada debe contener: institución/logo, título de la práctica, clase
+% teórica y sección, catedrático, sección del laboratorio, instructor,
+% estudiante, número de cuenta y fecha de entrega.
+
+\section{Introducción}
+% Escriba una introducción propia (no la del manual) de 120--150 palabras.
+% Presente el tema, su importancia y su conexión con el marco teórico; revise
+% redacción y ortografía.
+\rellenar{introducción de 120--150 palabras}
+
+\section{Objetivos}
+% Incluya como mínimo tres objetivos. Se pueden usar los del manual, pero deben
+% corresponder a lo que efectivamente se realizó.
+\begin{itemsinforme}
+    \item \rellenar{objetivo específico 1}
+    \item \rellenar{objetivo específico 2}
+    \item \rellenar{objetivo específico 3}
+\end{itemsinforme}
+
+\section{Materiales y equipo}
+% Liste todos los materiales, instrumentos, componentes, software y equipo
+% utilizados. Añada lo que no aparezca en el manual; incluya modelo, rango o
+% valor nominal cuando ayude a repetir la práctica.
+\begin{itemize}
+    \item \rellenar{material, instrumento o componente}
+    \item \rellenar{material, instrumento o componente}
+    \item \rellenar{software o simulador, si aplica}
+\end{itemize}
+
+\section{Marco teórico}
+% Desarrolle el marco teórico completo indicado en el manual: conceptos, leyes,
+% ecuaciones y condiciones de operación. Explique variables y unidades; no lo
+% reduzca a una lista de fórmulas. Cite las fuentes utilizadas.
+\subsection{Conceptos fundamentales}
+\rellenar{teoría relevante de la práctica, con citas}
+
+\subsection{Ecuaciones y relaciones utilizadas}
+\begin{equation}
+    \text{\rellenar{ecuación principal}}
+    \label{eq:principal}
+\end{equation}
+\rellenar{definición de variables, unidades y condiciones de aplicación}
+
+\section{Procedimiento experimental}
+% Describa en orden cada paso, conexión, configuración y condición de medición.
+% Incluya capturas claras de montajes, mediciones y procedimientos. En trabajo
+% virtual, las capturas deben mostrar fecha y hora.
+\subsection{Montaje y configuración}
+\begin{enumerate}
+    \item \rellenar{paso de montaje o configuración 1}
+    \item \rellenar{paso de montaje o configuración 2}
+    \item \rellenar{paso de montaje o configuración 3}
+\end{enumerate}
+
+% Ejemplo: \imagen[fig:montaje]{imagenes/montaje.png}{Montaje experimental.}
+
+\subsection{Mediciones}
+% Use unidades en los encabezados y documente cualquier condición especial.
+\begin{table}[H]
+    \centering
+    \caption{Registro de mediciones experimentales.}
+    \label{tab:mediciones}
+    \begin{tabular}{@{}c c c c@{}}
+        \toprule
+        Ensayo & Magnitud 1 & Magnitud 2 & Observaciones \\
+        \midrule
+        1 & \rellenar{valor} & \rellenar{valor} & \rellenar{nota} \\
+        2 & \rellenar{valor} & \rellenar{valor} & \rellenar{nota} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Análisis de resultados}
+% Es la sección con mayor ponderación (50%). Desarrolle todos los apartados y
+% preguntas del manual; muestre cálculos completos, sustitución de valores y
+% unidades. Compare teoría, simulación y medición, explique diferencias y cite
+% las investigaciones solicitadas.
+\subsection{Cálculos y desarrollo matemático}
+\begin{align}
+    \text{\rellenar{cálculo completo, con unidades}}
+    \label{eq:calculo}
+\end{align}
+
+\subsection{Comparación y discusión}
+\rellenar{comparación de resultados teóricos, simulados y experimentales}
+
+\subsection{Respuestas a las preguntas del manual}
+\begin{enumerate}
+    \item \textbf{Pregunta 1.} \rellenar{respuesta justificada}
+    \item \textbf{Pregunta 2.} \rellenar{respuesta justificada}
+\end{enumerate}
+
+\section{Conclusiones}
+% Escriba como mínimo tres conclusiones amplias y coherentes. Relaciónelas con
+% los objetivos y la evidencia experimental; no repita simplemente el método.
+\begin{itemsinforme}
+    \item \rellenar{conclusión relacionada con el objetivo 1 y los resultados}
+    \item \rellenar{conclusión relacionada con el objetivo 2 y los resultados}
+    \item \rellenar{conclusión relacionada con el objetivo 3 y los resultados}
+\end{itemsinforme}
+
+\section{Bibliografía}
+% Registre el manual y todas las fuentes en APA o IEEE. Cite dentro del texto
+% con \cite{clave}; las claves deben existir en references.bib.
+\IfFileExists{references.bib}{
+    \printbibliography[heading=none]
+}{
+    \textit{Agregue references.bib y sus fuentes antes de entregar.}
+}
+
+\end{document}

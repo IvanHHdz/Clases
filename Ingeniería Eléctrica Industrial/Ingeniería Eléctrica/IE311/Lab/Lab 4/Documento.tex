@@ -1,0 +1,320 @@
+% Informe de la práctica 4. La portada se agrega por separado.
+\documentclass[12pt,a4paper]{article}
+\input{Formato.tex}
+\usepackage{circuitikz}
+\renewcommand{\numeroPractica}{4}
+\renewcommand{\nombrepractica}{Diagramas de Bode y filtros}
+
+\begin{document}
+
+\section{Introducción}
+La práctica caracterizó la respuesta en frecuencia de varios circuitos pasivos mediante mediciones y diagramas de Bode. La función de transferencia relacionó la señal de salida con la señal de entrada y permitió estudiar cómo la ganancia y la fase variaron cuando cambió la frecuencia. Esta representación resultó útil para reconocer las regiones de paso, atenuación y transición de un filtro. Se analizaron un circuito RC con salida en el capacitor, un circuito RL con salida en el inductor y dos configuraciones RLC con comportamiento pasa-banda y rechaza-banda. Para cada montaje se consideraron las frecuencias de corte, la ganancia expresada en decibelios y las diferencias entre los resultados teóricos, simulados y experimentales. El análisis permitió relacionar el comportamiento de los componentes reactivos con aplicaciones de selección y rechazo de frecuencias en sistemas eléctricos y de comunicación.
+
+\section{Objetivos}
+\begin{itemsinforme}
+    \item Estudiar los diagramas de Bode y su importancia en el análisis de la respuesta en frecuencia de sistemas.
+    \item Obtener y representar la magnitud y la fase de una función de transferencia.
+    \item Analizar el comportamiento de filtros pasivos pasa-bajos, pasa-altos, pasa-banda y rechaza-banda.
+    \item Comparar las ganancias obtenidas mediante medición, simulación y cálculo teórico.
+\end{itemsinforme}
+
+\section{Materiales y equipo}
+\begin{itemize}
+    \item Software Multisim.
+    \item Generador de funciones.
+    \item Osciloscopio.
+    \item Multímetro digital.
+    \item Bode Plotter.
+    \item Resistencias.
+    \item Capacitores.
+    \item Inductores.
+\end{itemize}
+
+\section{Marco teórico}
+\subsection{Función de transferencia}
+La función de transferencia ``\(H(\omega)\)'', también llamada función de red, fue una herramienta analítica útil para determinar la respuesta a la frecuencia de un circuito. La respuesta a la frecuencia de un circuito fue la gráfica de la función de transferencia de este mismo \(H(\omega)\), donde \(\omega\) varió desde \(\omega=0\) hasta \(\omega=\infty\).
+
+Una función de transferencia fue la relación entre una función forzada \(Y(\omega)\) y una función de excitación \(X(\omega)\), o entre una salida y una entrada, dependiente de la frecuencia. Su expresión fue
+\begin{equation}
+    H(\omega)=\frac{Y(\omega)}{X(\omega)}.
+    \label{eq:transferencia}
+\end{equation}
+
+Suponiendo las condiciones iniciales iguales a cero, puesto que la entrada y salida pudieron ser una señal de tensión o de corriente en cualquier parte del circuito, existieron cuatro posibles funciones de transferencia: ganancia de voltaje \(H(\omega)=V_{out}(\omega)/V_{in}(\omega)\), ganancia de corriente \(H(\omega)=I_{out}(\omega)/I_{in}(\omega)\), transferencia de impedancia \(H(\omega)=V_{out}(\omega)/I_{in}(\omega)\) y transferencia de admitancia \(H(\omega)=I_{out}(\omega)/V_{in}(\omega)\).
+
+Para obtener la función de transferencia, primero se obtuvo el equivalente en el dominio de la frecuencia del circuito, sustituyendo las resistencias, inductores y capacitores por los circuitos transformados correspondientes en función de la frecuencia. Después se utilizó cualquier técnica de circuitos para obtener la función de transferencia a analizar.
+
+La función de transferencia pudo expresarse en términos de sus polinomios numerador \(N(\omega)\) y denominador \(D(\omega)\):
+\begin{equation}
+    H(\omega)=\frac{N(\omega)}{D(\omega)}.
+    \label{eq:numeradordenominador}
+\end{equation}
+Las raíces de \(N(\omega)\) fueron los ceros de la función de transferencia y las raíces de \(D(\omega)\) fueron los polos. Un cero, como raíz del polinomio del numerador, fue un valor que produjo un valor cero de la función. Un polo, como raíz del polinomio del denominador, fue un valor para el cual la función fue infinita.
+
+En el dominio de la frecuencia, la resistencia permaneció como \(R\), el inductor se representó mediante \(j\omega L\) y el capacitor mediante \(1/(j\omega C)\). Con estas impedancias se obtuvo la función de transferencia aplicando las leyes de circuitos.
+
+En el dominio de la frecuencia, la resistencia permaneció como \(R\), el inductor se representó mediante \(j\omega L\) y el capacitor mediante \(1/(j\omega C)\). Con estas impedancias se obtuvo la función de transferencia aplicando las leyes de circuitos.
+
+\subsection{Decibelios y diagramas de Bode}
+Una forma más sistemática de obtener la respuesta a la frecuencia consistió en utilizar los diagramas de Bode. Estos se basaron en logaritmos y decibelios para expresar la ganancia. Las propiedades empleadas fueron \(\log(P_1P_2)=\log P_1+\log P_2\), \(\log(P_1/P_2)=\log P_1-\log P_2\), \(\log(P^n)=n\log P\) y \(\log 1=0\).
+
+En los sistemas de comunicación, la ganancia se midió en bels. El bel se utilizó para medir la relación entre dos niveles de potencia o la ganancia de potencia \(G\), mientras que el decibelio correspondió a una décima parte de un bel:
+\begin{equation}
+    G_{\mathrm{dB}}=10\log_{10}\left(\frac{P_2}{P_1}\right).
+    \label{eq:potenciadb}
+\end{equation}
+De manera alterna, la ganancia pudo expresarse en términos de la relación entre tensiones o corrientes. Para resistencias iguales se obtuvo la ganancia de tensión y de corriente como
+\begin{equation}
+    G_{\mathrm{dB}}=20\log_{10}\left|\frac{V_{\mathrm{o}}}{V_{\mathrm{i}}}\right|.
+    \label{eq:db}
+\end{equation}
+También se pudo calcular la ganancia de corriente mediante \(G_{\mathrm{dB}}=20\log_{10}|I_2/I_1|\). Se utilizó el factor 20 para tensión o corriente debido a la relación al cuadrado entre potencia y dichas variables. El valor en dB fue una medición logarítmica de la relación entre dos variables del mismo tipo; por ello se aplicó a la ganancia de voltaje o corriente, pero no directamente a las expresiones de admitancia o impedancia de transferencia. Solo se utilizaron las magnitudes de la tensión y la corriente.
+
+\subsection{Filtros y frecuencia de corte}
+La respuesta a la frecuencia de un circuito fue la variación de su comportamiento al cambiar la frecuencia de la señal. El análisis de la respuesta a la frecuencia tuvo gran importancia en sistemas de comunicaciones y de control. Una aplicación fue el uso de filtros eléctricos, que bloquearon o eliminaron señales a frecuencias no deseadas y dejaron pasar señales a frecuencias deseadas.
+
+Los diagramas de Bode fueron gráficas semilogarítmicas de la magnitud y de la fase de una función de transferencia en función de la frecuencia. La magnitud en decibelios se graficó contra el logaritmo de la frecuencia y, en un diagrama aparte, la fase en grados contra el logaritmo de la frecuencia. Al elaborar un diagrama de Bode se graficó cada factor por separado y luego se combinaron gráficamente, debido a los logaritmos implicados. La gráfica de magnitud dependió de la frecuencia, que se midió en rad/s y se ubicó en el eje horizontal logarítmico; el eje vertical presentó la magnitud en decibelios. La gráfica de fase utilizó la misma escala horizontal y presentó la fase en grados.
+
+Un filtro pasivo atenuó o rechazó determinadas frecuencias utilizando resistencias, capacitores e inductores, sin aportar ganancia de potencia. Los filtros activos también utilizaron estos componentes, pero añadieron elementos como amplificadores operacionales, por lo que pudieron ser más fáciles de ajustar y aportar amplificación.
+
+El filtro pasa-altos permitió el paso de frecuencias por encima de una frecuencia de corte \(f_c\) y atenuó las inferiores. El filtro pasa-bajos permitió el paso de frecuencias inferiores a \(f_c\) y atenuó las superiores. El filtro pasa-banda dejó pasar únicamente las frecuencias comprendidas entre una frecuencia inferior \(f_1\) y una superior \(f_2\). El filtro rechaza-banda atenuó las frecuencias comprendidas entre \(f_1\) y \(f_2\) y permitió el paso de las frecuencias externas.
+
+La frecuencia de corte \(f_c\), también denominada frecuencia de \(-3\) dB o de media potencia, fue el valor de frecuencia en el que la amplitud de la señal de salida disminuyó a \(1/\sqrt{2}\approx0.707\) de su valor máximo, equivalente a una caída de 3 dB:
+\begin{equation}
+    A(f_c)=\frac{A_{\max}}{\sqrt{2}}.
+    \label{eq:fc}
+\end{equation}
+Para filtros pasa-banda y rechaza-banda se definieron dos frecuencias de corte, \(f_1\) y \(f_2\), que delimitaron el ancho de banda:
+\begin{equation}
+    BW=f_2-f_1,\qquad f_0=\sqrt{f_1f_2},
+    \label{eq:ancho}
+\end{equation}
+donde \(BW\) fue el ancho de banda y \(f_0\) la frecuencia central.
+
+\section{Procedimiento experimental}
+\subsection{Montaje 1}
+\begin{enumerate}
+    \item Proceda a montar el circuito de la Figura~\ref{fig:montaje1}. Se utiliza el generador de funciones. Utilice los datos de la Tabla~\ref{tab:montaje1}.
+    \item Prepare el Multímetro para realizar mediciones en la señal de entrada y de salida (siendo la señal de salida el voltaje del capacitor).
+    \item Utilizando el multímetro realice las mediciones del voltaje de entrada y de salida con la señal de entrada calibrada al valor de la frecuencia 1.
+    \item Utilizando el multímetro realice las mediciones del voltaje de entrada y de salida con la señal de entrada calibrada al valor de la frecuencia 2.
+    \item Utilizando el multímetro realice las mediciones del voltaje de entrada y de salida con la señal de entrada calibrada al valor de la frecuencia 3.
+    \item Utilizando los valores medidos anteriormente calcule la ganancia de voltaje en decibelios. Utilice la ecuación (3).
+    \item Haciendo uso del Bode Plotter obtenga las ganancias de voltaje, según el diagrama de bode del montaje 1 que en este se ilustra, para las frecuencias que se muestran en la Tabla~\ref{tab:montaje1}.
+\end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{circuitikz}[scale=1.2, transform shape]
+    \draw(0,0) to[sinusoidal voltage source, l=$V_S$] (0,3);
+    \draw(0,3) -- (1,3) to[R, l=R] (4,3) -- (5,3);
+    \draw(5,3) to[C, l=$C$] (5,0);
+    \draw(5,0) -- (0,0);
+    \draw(2.5,0) node[ground]{};
+  \end{circuitikz}
+  \caption{Montaje 1. Circuito RC en serie.}
+  \label{fig:montaje1}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Datos Montaje 1.}
+\label{tab:montaje1}
+\begin{tabular}{@{}lc@{}}\toprule
+Voltaje pico & \SI{10}{\volt}\\ Capacitancia & \SI{47}{\nano\farad}\\ Resistencia & \SI{4.7}{\kilo\ohm}\\ Frecuencia 1 & \SI{159}{\hertz}\\ Frecuencia 2 & \SI{1.59}{\kilo\hertz}\\ Frecuencia 3 & \SI{15.9}{\kilo\hertz}\\\bottomrule
+\end{tabular}
+\end{table}
+
+% TODO: Rellenar datos aquí
+% -> Descripción de los voltajes eficaces de entrada y salida y de las ganancias de voltaje para las tres frecuencias.
+
+\subsection{Montaje 2}
+\begin{enumerate}
+    \item Proceda a montar el circuito de la Figura~\ref{fig:montaje2}. Se utiliza el generador de funciones. Utilice los datos de la Tabla~\ref{tab:montaje2}.
+    \item Prepare el Multímetro para realizar mediciones en la señal de entrada y de salida (siendo la señal de salida el voltaje del inductor).
+    \item Utilizando el multímetro realice las mediciones del voltaje de entrada y de salida con la señal de entrada calibrada al valor de la frecuencia 1.
+    \item Utilizando el multímetro realice las mediciones del voltaje de entrada y de salida con la señal de entrada calibrada al valor de la frecuencia 2.
+    \item Utilizando el multímetro realice las mediciones del voltaje de entrada y de salida con la señal de entrada calibrada al valor de la frecuencia 3.
+    \item Utilizando los valores medidos anteriormente calcule la ganancia de voltaje en decibelios. Utilice la ecuación (3).
+    \item Haciendo uso del Bode Plotter obtenga las ganancias de voltaje, según el diagrama de bode del montaje 2 que en este se ilustra, para las frecuencias que se muestran en Tabla~\ref{tab:montaje2}.
+\end{enumerate}
+
+\begin{figure}[H]\centering
+\begin{circuitikz}[scale=1.2, transform shape]
+\draw(0,0) to[sinusoidal voltage source, l=$V_S$] (0,3) -- (1,3) to[R, l=$R$] (4,3) to[L, l=$L$] (5,3) -- (5,0) -- (0,0);
+\draw(2.5,0) node[ground]{};
+\end{circuitikz}
+\caption{Montaje 2. Circuito RL.}\label{fig:montaje2}
+\end{figure}
+\begin{table}[H]\centering\caption{Datos Montaje 2.}\label{tab:montaje2}
+\begin{tabular}{@{}lc@{}}\toprule Voltaje pico & \SI{10}{\volt}\\ Inductor & \SI{100}{\milli\henry}\\ Resistencia & \SI{1}{\kilo\ohm}\\ Frecuencia 1 & \SI{159}{\hertz}\\ Frecuencia 2 & \SI{1.59}{\kilo\hertz}\\ Frecuencia 3 & \SI{15.9}{\kilo\hertz}\\\bottomrule\end{tabular}\end{table}
+% TODO: Rellenar datos aquí
+% -> Descripción de los voltajes eficaces de entrada y salida y de las ganancias de voltaje para las tres frecuencias.
+
+\subsection{Montaje 3}
+\begin{enumerate}
+    \item Proceda a montar el circuito de la Figura~\ref{fig:montaje3}. Se utiliza el generador de funciones en lugar de una fuente de voltaje (Obligatorio). Utilice los datos de la Tabla~\ref{tab:montaje3}.
+    \item Ir a Place, luego a Instruments y elegir Bode Plotter. Conectar los terminales: Input (+) al nodo de entrada del circuito Vs, Input (-) a referencia (tierra). Luego Output (+) nodo donde se mide Vo y finalmente Output (-) a referencia (tierra).
+    \item Abrir el panel del instrumento y configurar el modo en Magnitude. En el eje horizontal seleccionar barrido Logarítmico (Log) con frecuencia inicial de 1 Hz y frecuencia final de 100 kHz. En el eje vertical seleccionar escala Log (dB) y establecer un rango de -50 dB a 0 dB.
+    \item Tome una captura del diagrama identificando con el cursor las frecuencias de corte superior e inferior.
+\end{enumerate}
+\begin{figure}[H]\centering
+\begin{circuitikz}[scale=1.05, transform shape]
+\draw(0,0) to[sinusoidal voltage source, l=$V_S$] (0,3) -- (1,3) to[R, l=$R_1$] (3,3) to[L, l=$L$] (5,3) -- (6,3) to[R, l=$R_2$] (6,0) -- (0,0);
+\draw(5,3) to[C, l=$C$] (5,0); \draw(3,0) node[ground]{};
+\end{circuitikz}\caption{Montaje 3. Circuito RLC pasa-banda.}\label{fig:montaje3}\end{figure}
+\begin{table}[H]\centering\caption{Datos Montaje 3.}\label{tab:montaje3}
+\begin{tabular}{@{}lc@{}}\toprule Voltaje pico & \SI{10}{\volt}\\ Frecuencia & \SI{60}{\hertz}\\ Capacitancia & \SI{33}{\micro\farad}\\ Inductancia & \SI{10}{\milli\henry}\\ Resistencia 1 & \SI{50}{\ohm}\\ Resistencia 2 & \SI{100}{\ohm}\\\bottomrule\end{tabular}\end{table}
+% TODO: Rellenar datos aquí
+% -> Descripción: agregar las frecuencias de corte superior e inferior obtenidas del Bode Plotter.
+
+\subsection{Montaje 4}
+\begin{enumerate}
+    \item Proceda a montar el circuito de la Figura~\ref{fig:montaje4}. Se utiliza el generador de funciones en lugar de una fuente de voltaje (Obligatorio). Utilice los datos de la Tabla~\ref{tab:montaje4}.
+    \item Ir a Place, luego a Instruments y elegir Bode Plotter. Conectar los terminales: Input (+) al nodo de entrada del circuito Vs, Input (-) a referencia (tierra). Luego Output (+) nodo donde se mide Vo y finalmente Output (-) a referencia (tierra).
+    \item Abrir el panel del instrumento y configurar el modo en Magnitude. En el eje horizontal seleccionar barrido Logarítmico (Log) con frecuencia inicial de 10 Hz y frecuencia final de 100 kHz. En el eje vertical seleccionar escala Log (dB) y establecer un rango de -30 dB a 5 dB.
+    \item Tome una captura del diagrama identificando con el cursor las frecuencias de corte superior e inferior.
+\end{enumerate}
+\begin{figure}[H]\centering
+\begin{circuitikz}[scale=1.05, transform shape]
+\draw(0,0) to[sinusoidal voltage source, l=$V_S$] (0,3) -- (1,3) to[R, l=$R$] (3,3) to[L, l=$L$] (5,3) to[C, l=$C$] (6,3) -- (6,0) -- (0,0); \draw(3,0) node[ground]{};
+\end{circuitikz}\caption{Montaje 4. Circuito RLC rechaza-banda.}\label{fig:montaje4}\end{figure}
+\begin{table}[H]\centering\caption{Datos Montaje 4.}\label{tab:montaje4}
+\begin{tabular}{@{}lc@{}}\toprule Voltaje pico & \SI{10}{\volt}\\ Frecuencia & \SI{60}{\hertz}\\ Capacitancia & \SI{2.2}{\micro\farad}\\ Inductancia & \SI{10}{\milli\henry}\\ Resistencia & \SI{5}{\ohm}\\\bottomrule\end{tabular}\end{table}
+% TODO: Rellenar datos aquí
+% -> Descripción: agregar las frecuencias de corte superior e inferior obtenidas del Bode Plotter.
+
+\subsection{Mediciones}
+\begin{table}[H]
+    \centering
+    \caption{Registro de mediciones de los montajes RC y RL.}
+    \label{tab:mediciones}
+    \begin{tabular}{@{}llccc@{}}
+        \toprule
+        Montaje & Frecuencia & Entrada (V eficaz) & Salida (V eficaz) & Ganancia (dB)\\
+        \midrule
+        RC & \SI{159}{\hertz} & & & \\
+        RC & \SI{1.59}{\kilo\hertz} & & & \\
+        RC & \SI{15.9}{\kilo\hertz} & & & \\
+        RL & \SI{159}{\hertz} & & & \\
+        RL & \SI{1.59}{\kilo\hertz} & & & \\
+        RL & \SI{15.9}{\kilo\hertz} & & & \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+% TODO: Rellenar datos aquí
+% -> Descripción: introducir los seis voltajes eficaces medidos y calcular cada ganancia con la ecuación \ref{eq:db}.
+
+\section{Análisis de resultados}
+\subsection{1. Del circuito del montaje 2, (Mismos valores de R y L) obtenga la función de transferencia de ganancia de voltaje, esto es: $G=V_o/V_i=V_L/V_S$.}
+Para el circuito RL se tomó como salida el voltaje del inductor. Como la impedancia del inductor fue \(j\omega L\), la función de transferencia resultó
+\begin{equation}
+    G(\omega)=\frac{V_o}{V_i}=\frac{V_L}{V_S}=\frac{j\omega L}{R+j\omega L}.
+    \label{eq:rl}
+\end{equation}
+Al dividir entre \(R\), se obtuvo la forma normalizada
+\begin{equation}
+    G(\omega)=\frac{j\omega/\omega_c}{1+j\omega/\omega_c},
+    \qquad \omega_c=\frac{R}{L}.
+    \label{eq:rlnormalizada}
+\end{equation}
+La función tuvo un cero en el origen y un polo en \(s=-R/L\). Su magnitud y fase fueron
+\begin{equation}
+    |G(\omega)|=\frac{\omega L}{\sqrt{R^2+(\omega L)^2}},
+    \qquad \angle G(\omega)=90^\circ-\tan^{-1}\left(\frac{\omega L}{R}\right).
+    \label{eq:rlmagnitudfase}
+\end{equation}
+Por tanto, el montaje 2 correspondió a un filtro pasa-altos. Para \(R=\SI{1}{\kilo\ohm}\) y \(L=\SI{100}{\milli\henry}\), la frecuencia de corte teórica fue \(f_c=R/(2\pi L)\).
+
+% TODO: Rellenar datos aquí
+% -> Descripción: calcular y escribir el valor numérico de fc, las ganancias teóricas a las tres frecuencias y sus fases.
+
+\subsection{2. A partir de la función de transferencia anterior obtenga el diagrama de magnitud y fase haciendo:}
+\begin{itemize}
+    \item Simplificando la expresión.
+    \item Identificando \(K_{dB}\).
+    \item Identificando los polos y ceros existentes.
+    \item Gráfico de magnitud a partir de los gráficos parciales.
+    \item Gráfico de fase a partir de los gráficos parciales.
+\end{itemize}
+La expresión simplificada, los polos y el cero se presentaron en las ecuaciones \ref{eq:rlnormalizada} y \ref{eq:rlmagnitudfase}. La ganancia constante fue \(K_{dB}=0\) dB, porque el cociente no tuvo una constante multiplicativa distinta de uno.
+
+% TODO: Agregar una imagen aquí
+% -> Descripción: diagramas de magnitud y fase del montaje 2 construidos a partir de los gráficos parciales.
+% -> Justificación: completar la representación solicitada en el análisis.
+
+\subsection{3. A partir del grafico de ganancia del inciso 2 obtenga la ganancia de voltaje en decibelios a las frecuencias de la tabla 2.}
+% TODO: Rellenar datos aquí
+% -> Descripción: escribir las tres ganancias teóricas obtenidas del gráfico de ganancia del montaje 2.
+
+\subsection{4. Compare los valores de ganancia de voltaje obtenidos en los incisos 6 del procedimiento experimental, con los valores de ganancia de voltajes obtenidos en el inciso 7 del procedimiento experimental. Compare mediante error relativo porcentual. Opine al respecto.}
+La comparación se realizó entre la ganancia calculada con los voltajes eficaces y la ganancia obtenida con el Bode Plotter. Para cada frecuencia se aplicó el error relativo porcentual
+\begin{equation}
+    \text{Error relativo (\%)}=\left|\frac{G_{\mathrm{medida}}-G_{\mathrm{simulada}}}{G_{\mathrm{simulada}}}\right|100.
+    \label{eq:error}
+\end{equation}
+
+% TODO: Rellenar datos aquí
+% -> Descripción: agregar las ganancias del Bode Plotter, calcular los errores de las seis comparaciones y discutir las diferencias.
+
+\begin{table}[H]
+    \centering
+    \caption{Comparación entre ganancias medidas y simuladas.}
+    \label{tab:comparacion}
+    \begin{tabular}{@{}llccc@{}}
+        \toprule
+        Montaje & Frecuencia & Medida (dB) & Bode Plotter (dB) & Error (\%) \\
+        \midrule
+        RC & \SI{159}{\hertz} & & & \\
+        RC & \SI{1.59}{\kilo\hertz} & & & \\
+        RC & \SI{15.9}{\kilo\hertz} & & & \\
+        RL & \SI{159}{\hertz} & & & \\
+        RL & \SI{1.59}{\kilo\hertz} & & & \\
+        RL & \SI{15.9}{\kilo\hertz} & & & \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{5. A partir de los barridos de frecuencia (gráfico y frecuencia de corte) de los montajes 1, 2, 3 y 4 identifique el tipo de filtro pasivo que representa la configuración.}
+\begin{itemize}
+    \item El montaje 1 fue un filtro RC pasa-bajos porque la salida se tomó en el capacitor.
+    \item El montaje 2 fue un filtro RL pasa-altos porque la salida se tomó en el inductor.
+    \item El montaje 3 fue un filtro RLC pasa-banda, con límites inferior y superior determinados por \(f_1\) y \(f_2\).
+    \item El montaje 4 fue un filtro RLC rechaza-banda, con atenuación concentrada entre \(f_1\) y \(f_2\).
+\end{itemize}
+
+% TODO: Rellenar datos aquí
+% -> Descripción: extraer de las gráficas de los montajes 3 y 4 las frecuencias de corte f1 y f2, y calcular BW y f0 con la ecuación \ref{eq:ancho}.
+
+\begin{table}[H]
+\centering
+\caption{Frecuencias de corte y parámetros de los filtros RLC.}
+\label{tab:cortes}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Montaje & $f_1$ (Hz) & $f_2$ (Hz) & $BW$ (Hz) & $f_0$ (Hz)\\
+\midrule
+3: pasa-banda & & & & \\
+4: rechaza-banda & & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{6. Investigue la aplicación de cada uno los filtros que identificó en el inciso anterior.}
+El filtro pasa-bajos se utilizó para eliminar ruido de alta frecuencia y suavizar señales. El filtro pasa-altos se aplicó para eliminar componentes de continua y ruido de baja frecuencia, por ejemplo en acoplamiento de audio. El filtro pasa-banda se empleó para seleccionar un canal o una banda específica en sistemas de radio y comunicaciones. El filtro rechaza-banda se aplicó para suprimir una interferencia localizada, como una frecuencia de red, sin eliminar las frecuencias que se encontraban fuera de la banda rechazada.
+
+\section{Conclusiones}
+\begin{itemsinforme}
+    \item Se comprobó que los diagramas de Bode permitieron representar la magnitud y la fase de una función de transferencia en un intervalo amplio de frecuencias.
+    \item Se determinó que la ubicación de la salida definió el comportamiento del filtro: el capacitor produjo un pasa-bajos en el montaje 1 y el inductor produjo un pasa-altos en el montaje 2.
+    \item Se identificaron las configuraciones RLC de los montajes 3 y 4 como filtros pasa-banda y rechaza-banda, respectivamente, a partir de sus regiones de paso y atenuación.
+    \item Se estableció que la comparación entre medición y simulación mediante el error relativo permitió evaluar la precisión del modelo y reconocer el efecto de las tolerancias y de los instrumentos.
+\end{itemsinforme}
+
+\section{Bibliografía}
+\begin{itemize}
+    \item Alexander, C. K., Sadiku, M. N. O., y Cordero Pedraza, C. R. (2018). \textit{Fundamentos de circuitos eléctricos} (6.ª ed.). McGraw-Hill/Interamericana.
+    \item \textit{Manual de la práctica n.° 4: Diagramas de Bode y filtros}. Laboratorio de Circuitos Eléctricos II, LIE-311.
+\end{itemize}
+
+\end{document}

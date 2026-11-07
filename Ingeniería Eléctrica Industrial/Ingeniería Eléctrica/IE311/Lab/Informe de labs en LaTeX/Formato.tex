@@ -1,0 +1,90 @@
+% ============================================================================
+% Formato.tex: configuración común de los informes del Laboratorio de
+% Circuitos Eléctricos II (LIE-311). Se incluye desde Documento.tex.
+% La portada se omite intencionalmente y se agrega por separado.
+% ============================================================================
+
+% Codificación, idioma y tipografía. inputenc mantiene compatibilidad con
+% pdfLaTeX; en LuaLaTeX/XeLaTeX puede omitirse.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+
+% Matemáticas, unidades, tablas e imágenes.
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}                 % Ej.: \SI{10}{\volt}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{xcolor}
+
+% Diseño de página, separación de párrafos y enlaces.
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
+
+% El estilo numérico produce citas compactas, apropiadas para IEEE. Para APA,
+% cambie style=numeric-comp por style=apa (y agregue el paquete correspondiente
+% si su instalación de biblatex no lo incluye).
+\usepackage[
+    backend=biber,
+    style=numeric-comp,
+    sorting=none
+]{biblatex}
+
+% La comprobación permite compilar la plantilla antes de crear references.bib.
+% Al entregar, ese archivo debe contener el manual y todas las fuentes usadas.
+\IfFileExists{references.bib}{\addbibresource{references.bib}}{}
+
+\geometry{a4paper, margin=2.5cm, headheight=15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist{itemsep=2pt, topsep=3pt}
+\captionsetup{font=small, labelfont=bf}
+\sisetup{locale=DE, per-mode=symbol, detect-all}
+
+% Datos editables. Se redefinen en Documento.tex con \renewcommand. Se declaran
+% antes del encabezado porque este último los utiliza.
+\newcommand{\numeroPractica}{N}
+\newcommand{\nombrepractica}{Título de la práctica}
+
+% Encabezado y pie. Los valores de la práctica se definen en Documento.tex.
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{LIE-311 -- Laboratorio de Circuitos Eléctricos II}
+\rhead{Práctica \numeroPractica}
+\cfoot{\thepage}
+
+% Inserta una figura centrada y numerada.
+% Uso: \imagen[etiqueta]{archivo}{pie de figura}
+% Las capturas virtuales deben mostrar fecha y hora; el archivo puede ser PNG,
+% JPG o PDF. Una etiqueta permite referenciar la figura con \ref{fig:montaje}.
+\newcommand{\imagen}[3][]{%
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.88\textwidth]{#2}
+        \caption{#3}
+        \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+    \end{figure}%
+}
+
+% Entorno reutilizable para objetivos y conclusiones numerados.
+\newenvironment{itemsinforme}
+    {\begin{enumerate}[label=\arabic*., leftmargin=*]}
+    {\end{enumerate}}
+
+% Marcador visible para localizar contenido pendiente. Debe reemplazarse o
+% eliminarse antes de entregar el informe final.
+\newcommand{\rellenar}[1]{\textcolor{red}{\textbf{[Completar: #1]}}}
+
+\hypersetup{
+    pdftitle={Informe de laboratorio -- \nombrepractica},
+    pdfauthor={Nombre del estudiante},
+    pdfsubject={Laboratorio de Circuitos Eléctricos II -- LIE-311}
+}
