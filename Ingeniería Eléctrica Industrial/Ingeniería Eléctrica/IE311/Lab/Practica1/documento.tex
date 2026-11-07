@@ -29,22 +29,29 @@
 % Espacio en blanco para un dato por llenar. Uso: \vacio  o  \vacio[3cm]
 \newcommand{\vacio}[1][2cm]{\underline{\hspace{#1}}}
 
-% Recuadro de captura pendiente (pantalla de 8 x 6 divisiones).
-% Uso: \capturapendiente{Pie de figura}{Texto dentro del recuadro}{fig:etiqueta}
-% Cuando tengas la captura real, reemplaza la llamada por:
-%   \imagen{./Pictures/Practica1/nombre.png}{Pie de figura}{475px}
-% (y agrega \label{fig:etiqueta} dentro del pie si necesitas referenciarla)
-\newcommand{\capturapendiente}[3]{%
-    \begin{figure}[ht!]
-        \centering
-        \begin{tikzpicture}[scale=0.85]
-            \draw[step=1cm, gray!60, very thin] (0,0) grid (8,6);
-            \draw[thick] (0,0) rectangle (8,6);
-            \node[align=center, text=gray] at (4,3) {\textit{Captura pendiente}\\[2pt] \small #2};
-        \end{tikzpicture}
-        \caption{#1}\label{#3}
-    \end{figure}%
-}
+% Recuadro de captura pendiente (DESACTIVADO: las figuras se reemplazaron por comentarios).
+% Se deja comentado por si quieres reactivar los recuadros vacíos de captura.
+% % Uso: \capturapendiente{Pie de figura}{Texto dentro del recuadro}{fig:etiqueta}
+% % Cuando tengas la captura real, reemplaza la llamada por:
+% %   \imagen{./Pictures/Practica1/nombre.png}{Pie de figura}{475px}
+% % (y agrega \label{fig:etiqueta} dentro del pie si necesitas referenciarla)
+% \newcommand{\capturapendiente}[3]{%
+%     \begin{figure}[ht!]
+%         \centering
+%         \begin{tikzpicture}[scale=0.85]
+%             \draw[step=1cm, gray!60, very thin] (0,0) grid (8,6);
+%             \draw[thick] (0,0) rectangle (8,6);
+%             \node[align=center, text=gray] at (4,3) {\textit{Captura pendiente}\\[2pt] \small #2};
+%         \end{tikzpicture}
+%         \caption{#1}\label{#3}
+%     \end{figure}%
+% }
+
+% Marcador visible para las referencias a figuras que están pendientes.
+% Cuando restaures una figura, vuelve a usar figura~\ref{fig:etiqueta} en su lugar:
+%   fig:montaje -> circuito de los montajes 1 y 2 | fig:cap-m1, fig:cap-m2 -> capturas de los montajes 1 y 2
+%   fig:cap-m3 -> CH1 y CH2 simultáneos | fig:cap-m3-suma -> señal resultante CH1 + CH2
+\newcommand{\figpend}{figura~\textbf{[N.º pendiente]}}
 
 \begin{document}
     \section{Introducción}
@@ -78,7 +85,7 @@
 
     \subsection{Osciloscopio}
 
-    Un osciloscopio es un instrumento de visualización electrónico para la representación gráfica de señales eléctricas que pueden variar en el tiempo. Presenta los valores de las señales en forma de coordenadas en una pantalla, en la que normalmente el eje horizontal representa el tiempo y el eje vertical representa la tensión. La imagen así obtenida se denomina oscilograma~\cite{tektronix2009xyz}.
+    Un osciloscopio es un instrumento de visualización electrónico para la representación gráfica de señales eléctricas que pueden variar en el tiempo. Presenta los valores de las señales en forma de coordenadas en una pantalla, en la que normalmente el eje horizontal representa el tiempo y el eje vertical representa la tensión. La imagen así obtenida se denomina oscilograma.
 
     A partir de una medición con el osciloscopio se puede obtener:
 
@@ -103,7 +110,7 @@
 
     \subsection{Señales senoidales}
 
-    Las señales senoidales son las más empleadas en circuitos eléctricos porque satisfacen las siguientes propiedades~\cite{alexander2018fundamentos}:
+    Las señales senoidales son las más empleadas en circuitos eléctricos porque satisfacen las siguientes propiedades:
 
     \begin{itemize}
         \item Una red eléctrica lineal excitada por una fuente de tensión o intensidad senoidal muestra, en todas las partes de la red, tensiones e intensidades senoidales (pasado un corto período transitorio). Estas tienen la misma frecuencia del generador, pudiendo variar en fase y/o amplitud.
@@ -122,29 +129,36 @@
 
     donde $X_p = A$ es la amplitud o valor pico, $\omega$ es la pulsación o frecuencia angular y $\theta$ es el ángulo de fase.
 
-    \begin{figure}[ht!]
-        \centering
-        \begin{tikzpicture}
-            \begin{axis}[
-                    width=11cm, height=5.5cm,
-                    axis lines=middle,
-                    xlabel={$t$}, ylabel={$X(t)$},
-                    xtick={0.5,1,1.5}, xticklabels={$T/2$,$T$,$3T/2$},
-                    ytick={-1,1}, yticklabels={$-X_p$,$X_p$},
-                    ymin=-1.5, ymax=1.5, xmin=0, xmax=1.65,
-                    every axis x label/.style={at={(ticklabel* cs:1.02)}, anchor=west},
-                    every axis y label/.style={at={(ticklabel* cs:1.02)}, anchor=south},
-                    clip=false
-                ]
-                \addplot[thick, domain=0:1.6, samples=200] {sin(deg(2*pi*x))};
-                \addplot[dashed, domain=0:1.6, samples=2] {0.7071};
-                \node[anchor=south west, font=\small] at (axis cs:1.2,0.72) {$X_{RMS}$};
-                \draw[<->] (axis cs:0.25,-1) -- (axis cs:0.25,1);
-                \node[anchor=east, font=\small] at (axis cs:0.25,0.5) {$X_{pp}$};
-            \end{axis}
-        \end{tikzpicture}
-        \caption{Señal senoidal con $\theta = 0$, valor pico $X_p$, valor pico a pico $X_{pp}$ y valor eficaz $X_{RMS}$}\label{fig:senoide}
-    \end{figure}
+    % >>> TODO (FIGURA): Gráfica de una señal senoidal X(t) = Xp sin(ωt) con θ = 0, dibujada durante 1.5 períodos.
+    % Debe mostrar: eje horizontal t con marcas T/2, T y 3T/2; eje vertical con +Xp y -Xp;
+    % una línea punteada horizontal en el valor eficaz X_RMS (≈ 0.707 Xp); y una flecha vertical
+    % entre -Xp y +Xp rotulada X_pp (valor pico a pico).
+    % Pie de figura: «Señal senoidal con θ = 0, valor pico Xp, valor pico a pico Xpp y valor eficaz X_RMS».
+    % Etiqueta: \label{fig:senoide}. Puede ser el tikz/pgfplots original o una imagen (p. ej. ./Pictures/Practica1/senoide.png).
+    % Código original (descomenta para restaurar):
+    % \begin{figure}[ht!]
+    %     \centering
+    %     \begin{tikzpicture}
+    %         \begin{axis}[
+    %                 width=11cm, height=5.5cm,
+    %                 axis lines=middle,
+    %                 xlabel={$t$}, ylabel={$X(t)$},
+    %                 xtick={0.5,1,1.5}, xticklabels={$T/2$,$T$,$3T/2$},
+    %                 ytick={-1,1}, yticklabels={$-X_p$,$X_p$},
+    %                 ymin=-1.5, ymax=1.5, xmin=0, xmax=1.65,
+    %                 every axis x label/.style={at={(ticklabel* cs:1.02)}, anchor=west},
+    %                 every axis y label/.style={at={(ticklabel* cs:1.02)}, anchor=south},
+    %                 clip=false
+    %             ]
+    %             \addplot[thick, domain=0:1.6, samples=200] {sin(deg(2*pi*x))};
+    %             \addplot[dashed, domain=0:1.6, samples=2] {0.7071};
+    %             \node[anchor=south west, font=\small] at (axis cs:1.2,0.72) {$X_{RMS}$};
+    %             \draw[<->] (axis cs:0.25,-1) -- (axis cs:0.25,1);
+    %             \node[anchor=east, font=\small] at (axis cs:0.25,0.5) {$X_{pp}$};
+    %         \end{axis}
+    %     \end{tikzpicture}
+    %     \caption{Señal senoidal con $\theta = 0$, valor pico $X_p$, valor pico a pico $X_{pp}$ y valor eficaz $X_{RMS}$}\label{fig:senoide}
+    % \end{figure}
 
     \subsubsection{Frecuencia angular}
 
@@ -190,8 +204,6 @@
         V_p = \sqrt{3}\,V_{RMS}
     \]
 
-    La demostración analítica de estas relaciones a partir de la ecuación~\eqref{eq:rms} se incluye en el Anexo~\ref{anexo:demostracion}.
-
     \subsubsection{Valor promedio}
 
     El valor promedio es un valor constante que representa la «media» de la onda, y para cualquier forma de onda está definido por:
@@ -207,22 +219,28 @@
     \subsection{Montaje 1}
 
     \begin{enumerate}
-        \item Montar el circuito de la figura~\ref{fig:montaje} utilizando el generador de funciones en lugar de una fuente de voltaje, con los datos de la tabla~\ref{tab:m1}.
+        \item Montar el circuito utilizando el generador de funciones en lugar de una fuente de voltaje, con los datos de la tabla~\ref{tab:m1}.
 
         % >>> TODO (LLENAR): verifica en el generador si la amplitud se define como Vp o Vpp, y
         % que la carga esté configurada como "Hi-Z" (la resistencia de 75 kΩ es mucho mayor que
         % 50 Ω; con la carga mal configurada la amplitud real puede ser el doble de la mostrada).
         % Anota aquí la configuración usada si lo consideras relevante.
 
-        \begin{figure}[ht!]
-            \centering
-            \begin{circuitikz}[american]
-                \draw (0,0) to[sV, l=$V_S$] (0,3)
-                      -- (3,3) to[R, l=$R$] (3,0)
-                      -- (0,0) node[ground] {};
-            \end{circuitikz}
-            \caption{Circuito de los montajes 1 y 2}\label{fig:montaje}
-        \end{figure}
+        % >>> TODO (FIGURA): Esquema del circuito de los montajes 1 y 2 (Figura 4 del manual).
+        % Debe mostrar: una fuente de voltaje senoidal V_S en serie con una resistencia R, con el
+        % circuito cerrado y un símbolo de tierra en la parte inferior.
+        % Pie de figura: «Circuito de los montajes 1 y 2». Etiqueta: \label{fig:montaje}.
+        % Opcional: foto o esquema del montaje real en protoboard (generador, osciloscopio y multímetro conectados a R).
+        % Código original (descomenta para restaurar):
+        % \begin{figure}[ht!]
+        %     \centering
+        %     \begin{circuitikz}[american]
+        %         \draw (0,0) to[sV, l=$V_S$] (0,3)
+        %               -- (3,3) to[R, l=$R$] (3,0)
+        %               -- (0,0) node[ground] {};
+        %     \end{circuitikz}
+        %     \caption{Circuito de los montajes 1 y 2}\label{fig:montaje}
+        % \end{figure}
 
         \begin{table}[ht!]
             \centering
@@ -233,7 +251,7 @@
                 Voltaje pico   & \SI{7}{\volt}              \\
                 Función        & Senoidal                   \\
                 Frecuencia     & \SI{50}{\hertz}            \\
-                Resistencia    & \SI{75}{\kilo\ohm}         \\
+                Resistencia    & \SI{100}{\kilo\ohm}         \\
                 \bottomrule
             \end{tabular}
             \caption{Datos del montaje 1}\label{tab:m1}
@@ -243,8 +261,6 @@
 
         % >>> TODO (LLENAR): si lo deseas, agrega una foto o captura del montaje real:
         % \imagen{./Pictures/Practica1/montaje1.jpg}{Montaje 1 implementado}{250px}
-
-        \item Capturar la forma de onda mostrada en el osciloscopio, indicando la escala en V/div y s/div (figura~\ref{fig:cap-m1} en el Anexo~\ref{anexo:capturas}).
 
         \item Utilizando la lectura del osciloscopio, realizar las siguientes mediciones:
 
@@ -274,7 +290,7 @@
     \subsection{Montaje 2}
 
     \begin{enumerate}
-        \item Montar el circuito de la figura~\ref{fig:montaje} utilizando el generador de funciones en lugar de una fuente de voltaje, con los datos de la tabla~\ref{tab:m2}.
+        \item Montar el circuito de la \figpend{} utilizando el generador de funciones en lugar de una fuente de voltaje, con los datos de la tabla~\ref{tab:m2}.
 
         \begin{table}[ht!]
             \centering
@@ -293,7 +309,7 @@
 
         \item Preparar el osciloscopio y el multímetro para realizar mediciones de voltaje en la resistencia.
 
-        \item Capturar la forma de onda mostrada en el osciloscopio, indicando la escala en V/div y s/div (figura~\ref{fig:cap-m2} en el Anexo~\ref{anexo:capturas}).
+        \item Capturar la forma de onda mostrada en el osciloscopio, indicando la escala en V/div y s/div (\figpend{} en el Anexo~\ref{anexo:capturas}).
 
         \item Utilizando la lectura del osciloscopio, realizar las siguientes mediciones:
 
@@ -325,7 +341,7 @@
 
     \subsection{Montaje 3}
 
-    Se utilizan dos circuitos similares al de la figura~\ref{fig:montaje}, con el mismo valor de $R$.
+    Se utilizan dos circuitos similares al de la \figpend{}, con el mismo valor de $R$.
 
     % >>> TODO (LLENAR): anota el valor de R utilizado en este montaje.
     El valor de resistencia utilizado en ambos circuitos fue $R = \vacio\ \si{\kilo\ohm}$.
@@ -345,9 +361,9 @@
 
         Como $\omega = 320\pi\ \si{\radian\per\second}$, ambas señales tienen una frecuencia $f = \omega/2\pi = \SI{160}{\hertz}$ y un período $T = 1/f = \SI{6.25}{\milli\second}$.
 
-        \item Capturar la lectura del osciloscopio de forma simultánea de ambas señales, con el mismo osciloscopio (figura~\ref{fig:cap-m3} en el Anexo~\ref{anexo:capturas}).
+        \item Capturar la lectura del osciloscopio de forma simultánea de ambas señales, con el mismo osciloscopio (\figpend{} en el Anexo~\ref{anexo:capturas}).
 
-        \item Con la función matemática adecuada del osciloscopio (CH1 + CH2), mostrar la señal resultante de sumar ambas señales (figura~\ref{fig:cap-m3-suma} en el Anexo~\ref{anexo:capturas}) y, a partir de ella, identificar:
+        \item Con la función matemática adecuada del osciloscopio (CH1 + CH2), mostrar la señal resultante de sumar ambas señales (\figpend{} en el Anexo~\ref{anexo:capturas}) y, a partir de ella, identificar:
 
         % >>> TODO (LLENAR): mediciones de la señal resultante (CH1 + CH2).
         \begin{table}[ht!]
@@ -397,22 +413,6 @@
 
             % >>> TODO (LLENAR): sustituir el valor experimental (primer espacio) en cada error relativo.
             Los errores relativos porcentuales son:
-
-            \[
-                E_{V_P} = \frac{\left|\,\vacio - 7\,\right|}{7} \times 100\% = \vacio\,\%
-            \]
-
-            \[
-                E_{V_{PP}} = \frac{\left|\,\vacio - 14\,\right|}{14} \times 100\% = \vacio\,\%
-            \]
-
-            \[
-                E_{V_{RMS}} = \frac{\left|\,\vacio - 4.950\,\right|}{4.950} \times 100\% = \vacio\,\%
-            \]
-
-            \[
-                E_{T} = \frac{\left|\,\vacio - 20\,\right|}{20} \times 100\% = \vacio\,\%
-            \]
         \end{quote}
 
         % >>> TODO (LLENAR): columnas "Valor experimental" y "Error" de la tabla.
@@ -456,22 +456,6 @@
 
             % >>> TODO (LLENAR): sustituir el valor experimental (primer espacio) en cada error relativo.
             Los errores relativos porcentuales son:
-
-            \[
-                E_{V_P} = \frac{\left|\,\vacio - 8\,\right|}{8} \times 100\% = \vacio\,\%
-            \]
-
-            \[
-                E_{V_{PP}} = \frac{\left|\,\vacio - 16\,\right|}{16} \times 100\% = \vacio\,\%
-            \]
-
-            \[
-                E_{V_{RMS}} = \frac{\left|\,\vacio - 4.619\,\right|}{4.619} \times 100\% = \vacio\,\%
-            \]
-
-            \[
-                E_{T} = \frac{\left|\,\vacio - 16.667\,\right|}{16.667} \times 100\% = \vacio\,\%
-            \]
         \end{quote}
 
         % >>> TODO (LLENAR): columnas "Valor experimental" y "Error" de la tabla.
@@ -562,14 +546,14 @@
 
         \begin{quote}
             % >>> TODO (LLENAR): revisar y ampliar con las fuentes que realmente consultaste.
-            % Verifica que las entradas de references.bib (Horowitz y Hill, Tektronix) coincidan
-            % con lo que usaste, o reemplázalas por tus fuentes.
+            % El manual pide dejar referencias de las fuentes consultadas; este documento no usa
+            % bibliografía automática, así que cítalas como prefieras (p. ej. en texto).
             \begin{itemize}
-                \item \textbf{Senoidal:} es la forma de onda de la red eléctrica de corriente alterna y la base del análisis de circuitos en régimen permanente. Se usa para caracterizar la respuesta en frecuencia de circuitos y amplificadores, como señal de prueba en audio y como portadora en comunicaciones~\cite{alexander2018fundamentos,horowitz2015art}.
-                \item \textbf{Cuadrada y rectangular:} se usa como señal de reloj en circuitos digitales, para estudiar la respuesta transitoria y el ancho de banda de circuitos (una onda cuadrada contiene armónicos de alta frecuencia), para compensar las puntas de prueba del osciloscopio y como señal de control tipo PWM en fuentes conmutadas~\cite{horowitz2015art,tektronix2009xyz}.
-                \item \textbf{Triangular y diente de sierra:} se usa como señal de barrido (la base de tiempo de un osciloscopio es una rampa), para generar señales PWM al compararlas con una referencia, en osciladores controlados por voltaje, en pruebas de linealidad y en síntesis de sonido~\cite{horowitz2015art,tektronix2009xyz}.
-                \item \textbf{Escalón y pulso:} se usan para estudiar la respuesta transitoria de circuitos (por ejemplo, la carga y descarga de circuitos RC, RL y RLC), como señales de disparo (trigger) y de temporización, y para probar sistemas de control~\cite{alexander2018fundamentos,horowitz2015art}.
-                \item \textbf{TTL:} es una señal cuadrada con niveles lógicos compatibles con la familia TTL (aproximadamente \SI{0}{\volt} y \SI{5}{\volt}), utilizada para excitar y probar circuitos digitales, contadores, microcontroladores y como reloj de sincronización~\cite{horowitz2015art}.
+                \item \textbf{Senoidal:} es la forma de onda de la red eléctrica de corriente alterna y la base del análisis de circuitos en régimen permanente. Se usa para caracterizar la respuesta en frecuencia de circuitos y amplificadores, como señal de prueba en audio y como portadora en comunicaciones.
+                \item \textbf{Cuadrada y rectangular:} se usa como señal de reloj en circuitos digitales, para estudiar la respuesta transitoria y el ancho de banda de circuitos (una onda cuadrada contiene armónicos de alta frecuencia), para compensar las puntas de prueba del osciloscopio y como señal de control tipo PWM en fuentes conmutadas.
+                \item \textbf{Triangular y diente de sierra:} se usa como señal de barrido (la base de tiempo de un osciloscopio es una rampa), para generar señales PWM al compararlas con una referencia, en osciladores controlados por voltaje, en pruebas de linealidad y en síntesis de sonido.
+                \item \textbf{Escalón y pulso:} se usan para estudiar la respuesta transitoria de circuitos (por ejemplo, la carga y descarga de circuitos RC, RL y RLC), como señales de disparo (trigger) y de temporización, y para probar sistemas de control.
+                \item \textbf{TTL:} es una señal cuadrada con niveles lógicos compatibles con la familia TTL (aproximadamente \SI{0}{\volt} y \SI{5}{\volt}), utilizada para excitar y probar circuitos digitales, contadores, microcontroladores y como reloj de sincronización.
             \end{itemize}
         \end{quote}
 
@@ -579,7 +563,7 @@
             % >>> TODO (LLENAR): revisar y complementar con las fuentes consultadas.
             El \textbf{voltaje pico} ($V_P$) es el mayor valor instantáneo que alcanza la señal medido respecto a su nivel de referencia (cero, en una señal sin componente continua). El \textbf{voltaje pico a pico} ($V_{PP}$) es la diferencia entre el valor máximo y el valor mínimo de la señal; para una señal simétrica, $V_{PP} = 2V_P$. Ambos son valores instantáneos extremos y se leen directamente en la pantalla del osciloscopio.
 
-            El \textbf{voltaje eficaz} ($V_{RMS}$), en cambio, es un valor «promedio» en términos de energía: equivale al voltaje de corriente directa que disiparía la misma potencia en una resistencia~\cite{alexander2018fundamentos}. Depende de la forma de onda completa y no solo de su máximo: para una senoide $V_{RMS} = V_P/\sqrt{2} \approx 0.707\,V_P$ y para una onda triangular $V_{RMS} = V_P/\sqrt{3} \approx 0.577\,V_P$. Por ejemplo, la red de \SI{120}{\volt} eficaces tiene un valor pico de aproximadamente \SI{170}{\volt}. El multímetro suele indicar el valor eficaz, mientras que el osciloscopio permite leer los valores pico y pico a pico.
+            El \textbf{voltaje eficaz} ($V_{RMS}$), en cambio, es un valor «promedio» en términos de energía: equivale al voltaje de corriente directa que disiparía la misma potencia en una resistencia. Depende de la forma de onda completa y no solo de su máximo: para una senoide $V_{RMS} = V_P/\sqrt{2} \approx 0.707\,V_P$ y para una onda triangular $V_{RMS} = V_P/\sqrt{3} \approx 0.577\,V_P$. Por ejemplo, la red de \SI{120}{\volt} eficaces tiene un valor pico de aproximadamente \SI{170}{\volt}. El multímetro suele indicar el valor eficaz, mientras que el osciloscopio permite leer los valores pico y pico a pico.
         \end{quote}
     \end{enumerate}
 
@@ -598,72 +582,44 @@
         \item \vacio\ (conclusión sobre el manejo del generador de funciones y del osciloscopio, y las dificultades o fuentes de error encontradas en la práctica).
     \end{enumerate}
 
-    \nocite{unah2026lie311p1}
-    \printbibliography{}
-
     \newpage
     \section{Anexos}
 
-    \subsection{Demostración analítica de $V_p$ y $V_{RMS}$}\label{anexo:demostracion}
+    \imagen{./imagen/poto1}{}{300px}
+    \imagen{./imagen/poto2}{}{300px}
+    \imagen{./imagen/poto3}{}{300px}
 
-    \subsubsection{Señal senoidal}
-
-    Sea $X(t) = X_p\sin(\omega t)$ con $\theta = 0$ y un período constante arbitrario $T = 2\pi/\omega$. A partir de la ecuación~\eqref{eq:rms}:
-
-    \[
-        X_{RMS}^2 = \frac{1}{T}\int_{0}^{T} X_p^2\sin^2(\omega t)\,dt
-        = \frac{X_p^2}{T}\int_{0}^{T} \frac{1 - \cos(2\omega t)}{2}\,dt
-    \]
-
-    donde se usó la identidad $\sin^2\alpha = \dfrac{1 - \cos 2\alpha}{2}$. Integrando:
-
-    \[
-        X_{RMS}^2 = \frac{X_p^2}{2T}\left[t - \frac{\sin(2\omega t)}{2\omega}\right]_{0}^{T}
-        = \frac{X_p^2}{2T}\left[T - \frac{\sin(2\omega T)}{2\omega}\right]
-    \]
-
-    Como $\omega T = 2\pi$, se tiene $\sin(2\omega T) = \sin(4\pi) = 0$, y por tanto:
-
-    \[
-        X_{RMS}^2 = \frac{X_p^2}{2T}\,T = \frac{X_p^2}{2}
-        \quad\Longrightarrow\quad
-        X_{RMS} = \frac{X_p}{\sqrt{2}}
-        \quad\Longrightarrow\quad
-        \boxed{X_p = \sqrt{2}\,X_{RMS}}
-    \]
-
-    El resultado es independiente del valor de $T$ elegido.
-
-    \subsubsection{Señal triangular}
-
-    Una onda triangular simétrica de valor pico $X_p$ y período $T$ está formada por tramos lineales de duración $T/4$ que van de $0$ a $X_p$ (y análogamente en los demás cuartos de período, cambiando solo el signo o el sentido). Por simetría, el valor cuadrático medio en un período es igual al de un solo tramo. En el primer cuarto, $X(t) = \dfrac{4X_p}{T}\,t$ para $0 \le t \le T/4$:
-
-    \[
-        X_{RMS}^2 = \frac{1}{T/4}\int_{0}^{T/4}\left(\frac{4X_p}{T}\,t\right)^2 dt
-        = \frac{4}{T}\cdot\frac{16X_p^2}{T^2}\cdot\frac{(T/4)^3}{3}
-        = \frac{X_p^2}{3}
-    \]
-
-    \[
-        X_{RMS} = \frac{X_p}{\sqrt{3}}
-        \quad\Longrightarrow\quad
-        \boxed{X_p = \sqrt{3}\,X_{RMS}}
-    \]
-
-    \subsection{Capturas del osciloscopio}\label{anexo:capturas}
-
-    % >>> TODO (LLENAR): reemplazar cada \capturapendiente por la captura real, por ejemplo:
+    % >>> TODO (LLENAR): insertar aquí las capturas reales (ver los comentarios TODO (FIGURA) de abajo), por ejemplo:
     % \imagen{./Pictures/Practica1/cap_m1.png}{Captura del montaje 1 (V/div = ..., s/div = ...)}{475px}
     % Recuerda indicar siempre la escala (V/div y s/div) en cada captura.
-    % Si reemplazas el recuadro, las referencias \ref{fig:cap-m1}, etc. dejarán de funcionar
-    % a menos que agregues \label{fig:cap-m1} (y los demás) al pie de la nueva figura.
+    % Al restaurar cada figura, cambia \figpend{} por figura~\ref{fig:etiqueta} en el texto.
 
-    \capturapendiente{Montaje 1: señal senoidal en $R$}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m1}
+    % >>> TODO (FIGURA): Captura del osciloscopio del montaje 1 (senoidal de 7 V pico, 50 Hz, en R = 75 kΩ).
+    % Debe verse la forma de onda completa en pantalla con la escala indicada (V/div y s/div), idealmente con cursores o mediciones de Vp, Vpp y período.
+    % Pie de figura: «Montaje 1: señal senoidal en R». Etiqueta: \label{fig:cap-m1}.
+    % Insertar con: \imagen{./Pictures/Practica1/cap-m1.png}{<pie de figura>}{475px}
+    % (y agregar \label{fig:cap-m1} dentro del pie). Código del recuadro vacío original:
+    % \capturapendiente{Montaje 1: señal senoidal en $R$}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m1}
 
-    \capturapendiente{Montaje 2: señal triangular en $R$}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m2}
+    % >>> TODO (FIGURA): Captura del osciloscopio del montaje 2 (triangular de 8 V pico, 60 Hz, en R = 75 kΩ).
+    % Debe verse la forma de onda completa con la escala indicada (V/div y s/div) y las mediciones de Vp, Vpp y período.
+    % Pie de figura: «Montaje 2: señal triangular en R». Etiqueta: \label{fig:cap-m2}.
+    % Insertar con: \imagen{./Pictures/Practica1/cap-m2.png}{<pie de figura>}{475px}
+    % (y agregar \label{fig:cap-m2} dentro del pie). Código del recuadro vacío original:
+    % \capturapendiente{Montaje 2: señal triangular en $R$}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m2}
 
-    \capturapendiente{Montaje 3: canal 1 y canal 2 de forma simultánea}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m3}
+    % >>> TODO (FIGURA): Captura del osciloscopio del montaje 3 con CH1 y CH2 simultáneos (2 sen(320πt) V y 4 sen(320πt) V).
+    % Deben verse ambas senoides en la misma pantalla, en fase, con la escala de cada canal (V/div) y la base de tiempo (s/div).
+    % Pie de figura: «Montaje 3: canal 1 y canal 2 de forma simultánea». Etiqueta: \label{fig:cap-m3}.
+    % Insertar con: \imagen{./Pictures/Practica1/cap-m3.png}{<pie de figura>}{475px}
+    % (y agregar \label{fig:cap-m3} dentro del pie). Código del recuadro vacío original:
+    % \capturapendiente{Montaje 3: canal 1 y canal 2 de forma simultánea}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m3}
 
-    \capturapendiente{Montaje 3: señal resultante de la suma (CH1 + CH2)}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m3-suma}
+    % >>> TODO (FIGURA): Captura del osciloscopio de la señal resultante de la suma CH1 + CH2 (función Math del osciloscopio).
+    % Debe verse una senoide de 6 V pico (12 V pico a pico) y 6.25 ms de período, con la escala indicada y las mediciones.
+    % Pie de figura: «Montaje 3: señal resultante de la suma (CH1 + CH2)». Etiqueta: \label{fig:cap-m3-suma}.
+    % Insertar con: \imagen{./Pictures/Practica1/cap-m3-suma.png}{<pie de figura>}{475px}
+    % (y agregar \label{fig:cap-m3-suma} dentro del pie). Código del recuadro vacío original:
+    % \capturapendiente{Montaje 3: señal resultante de la suma (CH1 + CH2)}{V/div: \vacio[1.2cm] \quad s/div: \vacio[1.2cm]}{fig:cap-m3-suma}
 
 \end{document}
