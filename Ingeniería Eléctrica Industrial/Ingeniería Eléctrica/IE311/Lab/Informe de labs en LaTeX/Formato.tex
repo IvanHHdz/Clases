@@ -21,6 +21,7 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{xcolor}
+\usepackage[american]{circuitikz}
 
 % Diseño de página, separación de párrafos y enlaces.
 \usepackage{geometry}
@@ -47,7 +48,8 @@
 \setlength{\parskip}{6pt}
 \setlist{itemsep=2pt, topsep=3pt}
 \captionsetup{font=small, labelfont=bf}
-\sisetup{locale=DE, per-mode=symbol, detect-all}
+% Usa punto como separador decimal en las cantidades de siunitx.
+\sisetup{locale=US, per-mode=symbol, detect-all}
 
 % Datos editables. Se redefinen en Documento.tex con \renewcommand. Se declaran
 % antes del encabezado porque este último los utiliza.

@@ -14,6 +14,8 @@
 % Matemáticas, unidades, tablas e imágenes.
 \usepackage{amsmath,amssymb}
 \usepackage{siunitx}                 % Ej.: \SI{10}{\volt}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{array}
@@ -48,7 +50,8 @@
 \setlength{\parskip}{6pt}
 \setlist{itemsep=2pt, topsep=3pt}
 \captionsetup{font=small, labelfont=bf}
-\sisetup{locale=DE, per-mode=symbol, detect-all}
+% Usa punto como separador decimal en las cantidades de siunitx.
+\sisetup{locale=US, per-mode=symbol, detect-all}
 
 % Datos editables. Se redefinen en Documento.tex con \renewcommand. Se declaran
 % antes del encabezado porque este último los utiliza.
@@ -69,7 +72,7 @@
 \newcommand{\imagen}[3][]{%
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.88\textwidth]{#2}
+        \includegraphics[width=0.75\textwidth]{#2}
         \caption{#3}
         \if\relax\detokenize{#1}\relax\else\label{#1}\fi
     \end{figure}%
