@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 
 \input{Formato.tex}
 
@@ -8,74 +8,108 @@
     \portada{}
     \newpage
 
-    \section{Introducción}
-    \textit{Presente brevemente el Congreso de Ciencias, indique el propósito de esta memoria y explique el criterio utilizado para seleccionar las conferencias o cursos incluidos.}
-
-    \section{Modelos Matemáticos Discretos}
+    \section{Modelos Matemáticos Discretos}~\label{tema:ecu_en_diff}
     \textbf{Expositor:} Miguel Piñar
 
     \subsection{Descripción general}
-    \textit{Describa el contexto de la conferencia, el tema abordado, su importancia y los principales aspectos desarrollados.}
+    Este taller, desarrollado el lunes y martes de 9am a 12m, abordó diversos conceptos fundamentales del modelado de sistemas discretos y del análisis de los mismos. 
+
+    Partiendo de la descripción de las ecuaciones en diferencias, uno de los métodos esenciales para la descripción de fenómenos discretos, la resolución de las mismas. Luego se llegó al uso de sistemas de ecuaciones en diferencias, mismos que son resueltos haciendo uso de las técnicas ya conocidas de resolución de sistemas de ecuaciones en álgebra lineal. 
+    
+    No obstante estos sistemas llegan a escalar de manera tan rápida que se vuelve más eficiente calcular paso a paso que resolver el sistema como tal, por lo mismo el enfoque del análisis cambia de resolver el sistema a asegurar que tal sistema es convergente o estable. Para esto, se hace uso del teorema de Perron-Frobenius, el cual nos permite determinar la estabilidad de un sistema de ecuaciones en diferencias a partir de los valores propios de la matriz que lo representa.
 
     \subsection{Objetivo principal}
-    \textit{Explique el propósito central de la conferencia.}
+    El objetivo principal del taller fue introducir a los participantes en el modelado de sistemas discretos, proporcionando herramientas y técnicas para analizar la estabilidad y convergencia de dichos sistemas mediante el uso de ecuaciones en diferencias y el teorema de Perron-Frobenius.
+
+    Eso y servir para comprender mejor la conferencia sobre el algoritmo del motor de búsqueda original de Google~\ref{tema:google}.
 
     \subsection{Principales hallazgos o resultados}
-    \textit{Describa los resultados, conclusiones, aportaciones o conocimientos más relevantes presentados.}
+    Desde mi punto, hubieron muchos hallazgos en este taller, pues habían diversos temas de los cuales desconocía. Uno de esos que me gustaría recalcar son las ecuaciones en diferencia y el análisis correspondiente a las mismas. Además del teorema de Perron-Frobenius, el cual me pareció muy interesante y útil para determinar la convergencia de los sistemas.
+
+    También me pareció muy interesante la forma en que relacionaron las propias ecuaciones en diferencia con el sistema de ecuaciones en diferencia. Siendo esta una idea muy similar y hasta análoga a lo que se suele hacer con ecuaciones normales y los sistemas de ecuaciones.
+
+    Para hacerlo más tangible, esto es:
+    \begin{align*}
+        &y = a x &\text{(ecuación)}\\
+        &\mathbf{Y} = \mathbf{A} \mathbf{X} &\text{(sistema de ecuaciones)}
+    \end{align*}
+    Y en el caso discreto:
+    \begin{align*}
+        &x_{n+1} = a x_n &\text{(ecuación en diferencia)}\\
+        &\mathbf{X_{n+1}} = \mathbf{A} \mathbf{X_n} &\text{(sistema de ecuaciones en diferencia)}
+    \end{align*}
+
+    Por otro lado, el taller me permitió reforzar algunas ideas previamente aprendidas. Tales como la diagonalización de matrices, los autovalores y autovectores, y ciertos conceptos de cadenas de Markov que fueron presentados para hablar del comportamiento asintótico de sistemas discretos.
 
     \subsection{Reflexión personal}
-    \textit{Explique qué conocimientos adquirió y cuál es su importancia o aplicación en su formación académica o profesional.}
+    Personalmente considero que uno de los puntos más valiosos del taller fue poder conocer multiples temas que o desconocía o no había profundizado lo suficiente.
 
-    \section{Las matemáticas tras el éxito de Google}
+    Un caso que me resultó particularmente interesante fue el análisis y resolución de ecuaciones en diferencia, pues era un tema que ignoraba y que me parece que puede tener multiples aplicaciones y usos. Además de la profundización de conceptos en los que carecía de profundización suficiente y que mediante este taller logré afianzar. Como es el caso de los polinomios característicos, los autovalores y autovectores, y la diagonalización de matrices.
+
+    Por último, me parece muy valiosa la introducción al teorema de Perron-Frobenius, el cual me parece que puede tener multiples aplicaciones y usos en el análisis de sistemas discretos. Así como la relación que se tiene con las cadenas de Markov. Además de las múltiples aplicaciones que toda esta teoría puede tener en distintos ambitos y lo útil que, a mi parecer, puede llegar a ser.
+
+    \section{Las matemáticas tras el éxito de Google}~\label{tema:google}
     \textit{Título alternativo: Cinco cosas que Google no quiere que sepas}
 
     \textbf{Expositor:} Miguel Piñar
 
     \subsection{Descripción general}
-    \textit{Describa el contexto de la conferencia, el tema abordado, su importancia y los principales aspectos desarrollados.}
+    En esta conferencia se abordó un poco de la historia de Google, particularmente de su algoritmo de busqueda e indexación de sitios web para el buscador original de Google. Se explicó cómo el algoritmo PageRank, basado en la teoría de grafos y en el análisis de enlaces entre páginas web, permitió a Google ofrecer resultados de búsqueda más relevantes y precisos.
 
     \subsection{Objetivo principal}
-    \textit{Explique el propósito central de la conferencia.}
+    Uno de los objetivos principales de la conferencia era mostrar como algo que en principio podía parecer sin mucha relevancia o utilidad, como eran las cadenas de Markov y el teorema de Perron-Frobenius, resultaron ser fundamentales para el desarrollo del algoritmo de búsqueda de Google y su éxito en el mercado.
+
+    Esto conecta con el taller de Modelos Matemáticos Discretos~\ref{tema:ecu_en_diff}, pues fueron las mismas ideas y herramientas matemáticas las que permitieron el desarrollo del algoritmo de búsqueda de Google, y que fueron presentadas en el taller previo. Esto ya que, después de todo, el algoritmo de búsqueda de Google se basaba en ordenar y asignar pesos a las páginas webs haciendo uso de un vector de probabilidades, mismo vector que era el autovector del autovalor $1$ de la matriz estocástica de probabilidades que representaba el grafo de enlaces entre páginas web. Y que, por lo tanto, era un caso particular de una cadena de Markov.
 
     \subsection{Principales hallazgos o resultados}
-    \textit{Describa los resultados, conclusiones, aportaciones o conocimientos más relevantes presentados.}
+    El principal hallazgo de la conferencia fue la conexión entre las matemáticas y el éxito de Google. La conferencia mostró cómo conceptos matemáticos aparentemente abstractos, como las cadenas de Markov y la teoría de grafos, fueron fundamentales para el desarrollo del algoritmo PageRank, que revolucionó la forma en que se realiza la búsqueda en Internet.
+
+    También me pareció destacable la solución con la que lograron resolver el problema de la convergencia ocasionado por nodos colgantes en la web. Esto es, páginas que no tenían enlaces a otras páginas o conjuntos cerrados de los cuales no se podía salir siguiendo los enlaces. La solución fue agregar un factor de amortiguamiento, en combinación lineal con la matriz de probabilidades original, que permitía que el vector de probabilidades convergiera a un autovector del autovalor $1$ de la matriz estocástica resultante.
+
+    Esto es:
+    \begin{align*}
+        \mathbf{M^*} = \alpha \mathbf{M} + (1-\alpha) \mathbf{L}
+    \end{align*}
+    Donde $\mathbf{M}$ es la matriz de probabilidades original, $\mathbf{L}$ es una matriz de probabilidades que representa un grafo completamente conectado, y $\alpha$ es un factor de amortiguamiento que controla la influencia de cada matriz en la combinación lineal. Siendo esta una de las cosas que aún no se conocen del algoritmo original: el valor exacto de $\alpha$, siendo solo un aproximado por ingeniería inversa el valor de $\alpha = 0.86$.
 
     \subsection{Reflexión personal}
-    \textit{Explique qué conocimientos adquirió y cuál es su importancia o aplicación en su formación académica o profesional.}
+    Considero que uno de los puntos más valiosos de la conferencia fue apreciar el cómo algunos conceptos matemáticos abstractos, ya sean las cadenas de Markov, la teoría de grafos, el teorema de Perron-Frobenius, los autovalores y autovectores, entre otros, pueden llegar a tener aplicaciones muy impactantes en la vida cotidiana y en el desarrollo de tecnologías que usamos a diario, como es el caso del buscador de Google.
 
-    \section{Impacto del taller ``Prepárate para la PHUMA'' en el aprendizaje matemático}
+    Por último, me parece remarcable la creatividad del equipo de Google para resolver el problema de los nodos colgantes, al proponer utilizar una matriz completamente conectada haciendo la idea de que cualquier persona puede siempre simplemente escribir la dirección de otra página para salir del bucle sin necesidad de que la página en que esté tenga un enlace a la que desea llegar.
+
+    \section{Impacto del taller ``Prepárate para la PHUMA''}
     \textbf{Título completo:} Impacto del taller ``Prepárate para la PHUMA'' en el aprendizaje matemático de los estudiantes del Instituto Perla del Ulúa: un análisis mediante indicadores estadísticos
 
-    \textbf{Expositores:} Carmen Flores, Omar Pineda y Lino Ávila
+    \textbf{Expositores:} Carmen Flores, Omar Pineda \& Lino Ávila
 
     \subsection{Descripción general}
-    \textit{Describa el contexto de la investigación, el taller desarrollado, la población estudiada y los principales aspectos metodológicos presentados.}
+    Consistió principalmente de una presentación de los resultados obtenidos en un estudio realizado por los expositores sobre el impacto del taller ``Prepárate para la PHUMA'' en el aprendizaje matemático de los estudiantes del Instituto Perla del Ulúa. Se presentaron diversos indicadores estadísticos que permitieron evaluar la efectividad del taller y su influencia en el rendimiento académico de los estudiantes.
 
     \subsection{Objetivo principal}
-    \textit{Explique el propósito central de la investigación o presentación.}
+    El objetivo principal de la conferencia fue mostrar los resultados obtenidos tras el taller ``Prepárate para la PHUMA'' y cómo estos resultados reflejan el impacto del taller en el aprendizaje matemático de los estudiantes del Instituto Perla del Ulúa, utilizando indicadores estadísticos para respaldar las conclusiones.
+
+    Particularmente, se buscaba mostrar que dicho taller logró tener un impacto positivo a pesar de la poca preparación que tuvo y relativo apoyo con el que contó el mismo. Remarcando el cómo proyectos de la misma índole pueden llegar a tener un impacto importante en la comunidad, específicamente en el aprendizaje matemático de los aspirantes que se evaluarán luego con la prueba PHUMA.\@
 
     \subsection{Principales hallazgos o resultados}
-    \textit{Describa los indicadores estadísticos, resultados, conclusiones y aportaciones más relevantes.}
+    Del contenido considero que vale la pena resaltar, no solo la utilidad de estos talleres en el aprendizaje matemático de los estudiantes, sino también la importancia de la investigación y el análisis estadístico para evaluar la efectividad de programas educativos. Los resultados presentados mostraron que el taller tuvo un impacto positivo en el rendimiento académico de los estudiantes, lo que sugiere que iniciativas similares podrían ser beneficiosas en otros contextos educativos.
+
+    Y a pesar que la muestra de análisis fue relativamente pequeña, el análisis estadístico nos deja un precedente no solo de que estos programas pueden tener un impacto positivo, sino también cómo medir dicho impacto.
+
+    Esto pues utilizaron indicadores estadísticos que vale la pena señalar. Pues comenzaron realizando una prueba antes del taller, una prueba diagnóstica (\textit{pretest}) y otra prueba evaluativa (\textit{postest}) al final del taller.
+
+    Y no solo se evaluó la media aritmética de ambas pruebas, sino también la desviación estándar de las mismas. Y además, se realizó un análisis de \textit{t} de Student, de \textit{d} de Cohen y de ganancia normalizada de Hake, para evaluar la significancia estadística de los resultados obtenidos y la magnitud del efecto del taller en el aprendizaje matemático de los estudiantes.
+
+    Esto no solo mostró si el taller fue o no útil, sino también cuán útil fue. Mostrando, por ejemplo, en qué medida los estudiantes lograron aprovechar la mejora que tenían disponible (ganancia normalizada de Hake) y la magnitud real de los cambios alcanzados por el taller. Esto por medio de fórmulas como:
+
+    \begin{align*}
+        &g = \frac{M_{post} - M_{pre}}{P_{max} - M_{pre}} & \text{(ganancia normalizada de Hake)}\\[5pt]
+        &d = \frac{M_{post} - M_{pre}}{S_{D}} & \text{(d de Cohen)}
+    \end{align*}
 
     \subsection{Reflexión personal}
-    \textit{Explique qué conocimientos adquirió y cuál es la importancia o aplicación de lo aprendido en su formación académica o profesional.}
+    A mi en lo particular me pareció interesante el método que utilizaron para medir la eficiencia del taller. Era un método que yo desconocía y me pareció que era un método no solo correcto sino particularmente útil para lo que se buscaba.
 
-    \section{Modelado teórico y simulación estadística de variables biológicas y de salud}
-    \textbf{Título completo:} Modelado teórico y simulación estadística de variables biológicas y de salud mediante distribuciones de probabilidad asimétricas inspiradas en la Física
-
-    \textbf{Expositor:} Marcos Orellana
-
-    \subsection{Descripción general}
-    \textit{Describa el problema abordado, los modelos teóricos, las distribuciones de probabilidad y las simulaciones presentadas.}
-
-    \subsection{Objetivo principal}
-    \textit{Explique el propósito central de la conferencia.}
-
-    \subsection{Principales hallazgos o resultados}
-    \textit{Describa los resultados, conclusiones, aportaciones o conocimientos más relevantes presentados.}
-
-    \subsection{Reflexión personal}
-    \textit{Explique qué conocimientos adquirió y cuál es su importancia o aplicación en su formación académica o profesional.}
+    Me parece que este tipo de análisis estadístico, particularmente el de la ganancia normalizada de Hake y el de la \textit{d} de Cohen, valen completamente la pena ser realizados y que podrían aplicarse a una gran cantidad de proyectos e iniciativas similares a las del taller presentado por los expositores en la conferencia.
 
     \section{Gemas de la Física teórica}
     \textit{Título alternativo: El código secreto del universo: la raíz cuadrada de la gravedad, de las ecuaciones de Maxwell a la doble copia}
@@ -83,19 +117,44 @@
     \textbf{Expositor:} Bryan Larios
 
     \subsection{Descripción general}
-    \textit{Describa el contexto de la conferencia, los conceptos de Física teórica abordados y los principales aspectos desarrollados.}
+    En esta conferencia se abordaron diversos conceptos de la física teórica, particularmente aquellos relacionados con la teoría de cuerdas y la doble copia. Se presentaron ideas sobre cómo ciertos principios matemáticos subyacentes pueden explicar fenómenos físicos complejos y cómo estos principios pueden ser aplicados para entender mejor el universo.
+
+    Particularmente, se partió con un poco de historia sobre la física teórica, desde la teoría de Maxwell hasta la teoría de cuerdas, pasando por la teoría de la relatividad y la mecánica cuántica. Se explicó cómo estas teorías han evolucionado y cómo los conceptos matemáticos han sido fundamentales para su desarrollo.
 
     \subsection{Objetivo principal}
-    \textit{Explique el propósito central de la conferencia.}
+    El objetivo principal de la conferencia fue mostrar cómo los conceptos matemáticos y físicos se entrelazan para explicar fenómenos complejos en el universo, y cómo la teoría de cuerdas y la doble copia ofrecen nuevas perspectivas para entender la naturaleza fundamental de la realidad.
 
     \subsection{Principales hallazgos o resultados}
-    \textit{Describa los resultados, conclusiones, aportaciones o conocimientos más relevantes presentados.}
+    En general, la conferencia presentó una visión fascinante de cómo las matemáticas y la física teórica se combinan para ofrecer explicaciones profundas sobre el universo. Se describió el lenguaje matemático subyacente no solo de los temas más avanzados, sino también de aquellos fundamentales que se fueron formando en el camino de la física teórica, desde Maxwell hasta la teoría de cuerdas. 
+
+    Mencionando como la luz es una onda electromagnética como nos mostró Maxwell. Luego la teoría de la relatividad propuesta por Einstein. Como las cuatro ecuaciones de Maxwell, mismas que ya comprimian muchas otras ecuaciones que se utilizaron con anterioridad para explicar los fenómenos electromagnéticos, logran comprimirse en una única ecuación capaz de explicar los fenómenos tanto eléctricos como magnéticos con total presición.
+
+    Luego llega la mecánica cuántica, la cual nos permite explicar fenómenos que no pueden ser explicados por la física clásica, como el comportamiento de las partículas subatómicas. Y toda la teoría matemática que la acompaña, como la teoría de operadores y la teoría de Hilbert, que son fundamentales para entender la mecánica cuántica. Tenemos también los diagramas de Feynman, los cuales nos permiten visualizar las interacciones entre partículas subatómicas y calcular probabilidades de eventos cuánticos.
+
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[thick]
+            \draw[->] (-3,1) -- (0,0);
+            \draw[<-] (-3,-1) -- (0,0);
+            \draw[decorate,decoration={snake,amplitude=1.5mm,segment length=4mm}] (0,0) -- (2,0);
+            \draw[->] (2,0) -- (5,1);
+            \draw[<-] (2,0) -- (5,-1);
+            \fill (0,0) circle (2pt);
+            \fill (2,0) circle (2pt);
+            \node[left] at (-3,1) {$e^-$};
+            \node[left] at (-3,-1) {$e^+$};
+            \node[right] at (5,1) {$\mu^-$};
+            \node[right] at (5,-1) {$\mu^+$};
+            \node[above] at (1,0) {$\gamma^*$};
+        \end{tikzpicture}
+        \caption{Aniquilación de un electrón y un positrón que produce un par muón-antimuón mediante un fotón virtual.}
+    \end{figure}
+
+    Para finalmente llegar a la teoría de cuerdas, la cual propone que las partículas fundamentales no son puntos, sino cuerdas unidimensionales que vibran a diferentes frecuencias. Esta teoría busca unificar la relatividad general y la mecánica cuántica, ofreciendo una descripción coherente de todas las fuerzas fundamentales de la naturaleza.
 
     \subsection{Reflexión personal}
-    \textit{Explique qué conocimientos adquirió y cuál es su importancia o aplicación en su formación académica o profesional.}
+    Considero que la conferencia fue muy interesante, pues me permitió tener una mirada general de distintas partes de la física teórica. No obstante, carezco de suficiente conocimiento en física para poder entender con claridad buena parte de lo comentado.
 
-    \section{Conclusiones generales}
-    \textit{Integre las principales conclusiones de la memoria y explique cómo las conferencias seleccionadas contribuyeron a su formación académica o profesional.}
-
+    Aún así, me pareció muy interesante la forma en que se conectan las distintas teorías y cómo los conceptos matemáticos subyacentes son fundamentales para entender los fenómenos físicos. Me gustaría profundizar más en estos temas en el futuro, especialmente en la mecánica cuántica, pues me parece un área muy interesante, para así poder comprender mejor las ideas presentadas en la conferencia.
 
 \end{document} 
