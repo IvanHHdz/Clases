@@ -1,0 +1,367 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usetheme{Rochester}
+\usecolortheme{beaver}
+\usefonttheme{serif}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{theorems}[numbered]
+\newtheorem{proposicion}{Proposición}
+\newtheorem{teorema}{Teorema}
+\newtheorem{definicion}{Definición}
+\newtheorem{observacion}{Observación}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Zn}{\mathbb Z_n}
+\newcommand{\U}{U(n)}
+\newcommand{\modn}[1]{\pmod{#1}}
+
+\title[Aplicaciones de los productos directos]{Aplicaciones de los productos directos}
+\subtitle{Seguridad de datos, criptografía de clave pública y firmas digitales}
+\author[L. Hernández]{Lester Iván Hernández Hernández\\\small 20242000637\\[2mm]
+Jason Dionicio Ventura\\\small 20172031480}
+\institute[UNAH--Campus Cortés]{Estructuras Algebraicas I (MM-421)\\
+Universidad Nacional Autónoma de Honduras (UNAH), Campus Cortés\\
+Docente: Lic. Edwin Hernández}
+\date{Martes 17 de noviembre de 2026}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Objetivo y mapa de ideas}
+  \begin{itemize}
+    \item Modelar cadenas de datos mediante productos internos directos de grupos cíclicos.
+    \item Entender por qué la aritmética modular permite cifrar y descifrar.
+    \item Ver cómo la inversión de algoritmos produce autenticidad, no solo secreto.
+  \end{itemize}
+  \vfill
+  \begin{center}
+    $(\mathbb Z_2)^n \longrightarrow$ OTP \qquad
+    $U(n)\cong U(p)\oplus U(q) \longrightarrow$ RSA \qquad
+    $D_A/E_A \longrightarrow$ firma digital
+  \end{center}
+\end{frame}
+
+\begin{frame}{La conexión algebraica común}
+  \begin{itemize}
+    \item Un producto interno directo $G_1\oplus\cdots\oplus G_k$ opera componente a componente:
+    \[
+      (a_1,\ldots,a_k)(b_1,\ldots,b_k)=(a_1b_1,\ldots,a_kb_k).
+    \]
+    \item En $(\mathbb Z_2)^n$ la operación es suma módulo $2$; cada bit es una coordenada.
+    \item En $U(n)$ la operación es multiplicación módulo $n$. Si $n=pq$ con primos distintos,
+    \[
+      U(n)\cong U(p)\oplus U(q)\cong \mathbb Z_{p-1}\oplus\mathbb Z_{q-1}
+    \]
+    cuando se identifican los grupos cíclicos apropiados.
+  \end{itemize}
+\end{frame}
+
+\section{Data Security}
+
+\begin{frame}{Data Security: el problema motivador}
+  \begin{itemize}
+    \item Una transacción necesita viajar por un canal que puede ser observado.
+    \item Si enviamos el mensaje directamente, un interceptor obtiene la información.
+    \item Un cifrado simple también puede revelar patrones si la clave se reutiliza.
+    \item Solución algebraica: sumar una cadena aleatoria del mismo tamaño y usarla una sola vez.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Definición formal: libreta de un solo uso}
+  Sea $M\in(\mathbb Z_2)^n$ el mensaje y sea $K\in(\mathbb Z_2)^n$ una clave aleatoria.
+  \[
+    C=M+K,\qquad \text{Descifrado}(C)=C+K.
+  \]
+  \begin{definicion}[Cifrado OTP]
+    El cifrado de libreta de un solo uso es la transformación
+    $E_K:(\mathbb Z_2)^n\to(\mathbb Z_2)^n$, $E_K(M)=M+K$,
+    donde $K$ se genera uniformemente y no se vuelve a utilizar. La abreviatura
+    \textbf{OTP} viene del inglés \textit{One-Time Pad}.
+  \end{definicion}
+  La suma es componente a componente; por tanto, es exactamente la operación del producto directo $(\mathbb Z_2)^n$.
+\end{frame}
+
+\begin{frame}{Ejemplo resuelto: cifrar}
+  Mensaje de 10 bits y clave aleatoria:
+  \[
+    M=1101010110,\qquad K=0110011001.
+  \]
+  Sumamos cada coordenada módulo $2$:
+  \[
+  \begin{array}{lrrrrrrrrrr}
+  M:&1&1&0&1&0&1&0&1&1&0\\
+  K:&0&1&1&0&0&1&1&0&0&1\\ \midrule
+  C:&1&0&1&1&0&0&1&1&1&1
+  \end{array}
+  \]
+  Por tanto, se transmite $C=1011001111$, no $M$.
+\end{frame}
+
+\begin{frame}{Ejemplo resuelto: descifrar y justificar}
+  El receptor conoce $K$ y calcula:
+  \[
+  C+K=1011001111+0110011001=1101010110=M.
+  \]
+  \begin{proposicion}
+    Para todo $M,K\in(\mathbb Z_2)^n$, $E_K(E_K(M))=M$.
+  \end{proposicion}
+  \begin{proof}
+    $E_K(E_K(M))=(M+K)+K=M+(K+K)=M+0=M$, porque cada coordenada satisface $1+1=0$ en $\mathbb Z_2$.
+  \end{proof}
+\end{frame}
+
+\begin{frame}{¿Por qué la clave debe usarse una sola vez?}
+  Si se reutilizan $K$ para dos mensajes,
+  \[
+    C_1=M_1+K,\qquad C_2=M_2+K,
+  \]
+  entonces un interceptor puede calcular
+  \[
+    C_1+C_2=M_1+M_2.
+  \]
+  La clave desaparece y aparecen relaciones entre los mensajes. La seguridad perfecta del OTP requiere:
+  \begin{enumerate}
+    \item clave uniformemente aleatoria;
+    \item longitud de clave igual a la del mensaje;
+    \item distribución y reutilización imposibles de predecir.
+  \end{enumerate}
+\end{frame}
+
+\section{Public Key Cryptography}
+
+\begin{frame}{Criptografía de clave pública: el problema}
+  En un sistema simétrico, emisor y receptor deben compartir una clave secreta antes de comunicarse.
+  \begin{block}{Pregunta central}
+    ¿Cómo puede un receptor publicar la manera de cifrar sin publicar la manera de descifrar?
+  \end{block}
+  RSA (Rivest, Shamir y Adleman) aprovecha la asimetría computacional:
+  multiplicar primos grandes es fácil, factorizar su producto es difícil.
+\end{frame}
+
+\begin{frame}{Construcción RSA}
+  El receptor elige primos distintos $p,q$ y define $n=pq$ y
+  $m=\operatorname{mcm}(p-1,q-1)$, donde \textbf{mcm} significa mínimo común múltiplo.
+  \begin{enumerate}
+    \item Escoge $e$ con $\gcd(e,m)=1$.
+    \item Calcula $d$ tal que $ed\equiv1\modn{m}$.
+    \item Publica $(n,e)$ y conserva $p,q,d$.
+  \end{enumerate}
+  Para un bloque $M\in U(n)$:
+  \[
+    R=M^e\modn{n},\qquad M=R^d\modn{n}.
+  \]
+  El grupo $U(n)$ explica por qué la exponenciación es invertible.
+\end{frame}
+
+\begin{frame}{Ejemplo RSA: generación de claves}
+  Tomemos un ejemplo pequeño, solo para poder hacer las cuentas:
+  \[
+    p=11,\quad q=17,\quad n=187,\quad m=\operatorname{mcm}(10,16)=80.
+  \]
+  Elegimos $e=3$, pues $\gcd(3,80)=1$. El inverso de $3$ en $U(80)$ es
+  \[
+    d=27,\qquad ed=3\cdot27=81\equiv1\modn{80}.
+  \]
+  \begin{block}{Claves}
+    Pública: $(187,3)$. \qquad Privada: $27$ (y la factorización $187=11\cdot17$).
+  \end{block}
+\end{frame}
+
+\begin{frame}{Ejemplo RSA: cifrado paso a paso}
+  Sea $M=42$. Como $\gcd(42,187)=1$, $M\in U(187)$.
+  \[
+    R=42^3\modn{187}.
+  \]
+  Calculamos:
+  \[
+    42^2=1764\equiv81\modn{187},\qquad
+    42^3\equiv81\cdot42=3402\equiv36\modn{187}.
+  \]
+  El mensaje transmitido es, entonces, $R=36$.
+\end{frame}
+
+\begin{frame}{Ejemplo RSA: descifrado por exponenciación rápida}
+  Calculamos $36^{27}\modn{187}$ usando $27=16+8+2+1$:
+  \[
+  \begin{array}{c|ccccc}
+  \text{potencia}&36^1&36^2&36^4&36^8&36^{16}\\ \midrule
+  \text{módulo }187&36&174&169&137&69
+  \end{array}
+  \]
+  Entonces
+  \[
+    36^{27}\equiv36^{16}36^8 36^2 36
+    \equiv69\cdot137\cdot174\cdot36\equiv42\modn{187}.
+  \]
+  Recuperamos exactamente $M=42$.
+\end{frame}
+
+\begin{frame}{Demostración: por qué RSA funciona}
+  Como $n=pq$ y $M\in U(n)$, el teorema chino del resto da
+  \[
+    U(n)\cong U(p)\oplus U(q)\cong\mathbb Z_{p-1}\oplus\mathbb Z_{q-1}.
+  \]
+  Si $m=\operatorname{mcm}(p-1,q-1)$, entonces para $x\in U(n)$:
+  \[
+    x^m\leftrightarrow\bigl(x_1^m,x_2^m\bigr)=(1,1),
+  \]
+  porque $p-1\mid m$ y $q-1\mid m$.
+  Por tanto, $x^m=1$ en $U(n)$.
+\end{frame}
+
+\begin{frame}{Demostración RSA: inversión de exponentes}
+  Puesto que $ed\equiv1\modn{m}$, existe $k\in\Z$ tal que $ed=1+km$.
+  Para $M\in U(n)$:
+  \[
+    R^d=(M^e)^d=M^{ed}=M^{1+km}=M(M^m)^k=M\cdot1^k=M.
+  \]
+  La demostración usa exactamente la estructura de grupo y el producto directo.
+  \begin{alertblock}{Alcance}
+    Esta exposición cita como hecho criptográfico que factorizar productos de primos grandes es difícil; no es una consecuencia de la teoría de grupos.
+  \end{alertblock}
+\end{frame}
+
+\section{Digital Signatures}
+
+\begin{frame}{Firmas digitales: autenticidad}
+  Cifrar garantiza secreto, pero no responde por sí solo: «¿quién envió este mensaje?»
+  \begin{itemize}
+    \item Un banco necesita distinguir una orden auténtica de una orden falsificada.
+    \item La firma debe ser verificable públicamente.
+    \item Solo la persona firmante debe poder producir una firma válida.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Definición y protocolo}
+  Para A, $E_A$ es pública y $D_A$ es privada; para B, $E_B$ es pública y $D_B$ es privada.
+  A envía el mensaje firmado y confidencial:
+  \[
+    T=E_B(D_A(M)).
+  \]
+  B aplica $D_B$ y luego $E_A$:
+  \[
+    E_A(D_B(T))=E_A(D_B(E_B(D_A(M))))=E_A(D_A(M))=M.
+  \]
+  El orden importa: A prueba autoría con $D_A$ y B obtiene secreto con $E_B$.
+\end{frame}
+
+\begin{frame}{Ejemplo: firma RSA de un resumen}
+  A usa $n_A=187$, $e_A=3$, $d_A=27$; B usa $n_B=221$, $e_B=5$, $d_B=29$.
+  Para un mensaje, ambos calculan el resumen $h=50$.
+  \[
+    s=h^{d_A}=50^{27}\modn{187}=118.
+  \]
+  A protege la firma para B:
+  \[
+    T=s^{e_B}=118^5\modn{221}=118.
+  \]
+  B descifra con $d_B$: $T^{d_B}\modn{221}=118$.
+\end{frame}
+
+\begin{frame}{Verificación y demostración}
+  B verifica la firma aplicando la clave pública de A:
+  \[
+    s^{e_A}=118^3\modn{187}=50=h.
+  \]
+  \begin{proposicion}
+    Si $e_A d_A\equiv1\modn{m_A}$, entonces una firma $s=h^{d_A}$ satisface $s^{e_A}=h$ para $h\in U(n_A)$.
+  \end{proposicion}
+  \begin{proof}
+    $s^{e_A}=(h^{d_A})^{e_A}=h^{d_Ae_A}=h^{1+km_A}=h(h^{m_A})^k=h$,
+    por el mismo argumento de RSA.
+  \end{proof}
+\end{frame}
+
+\begin{frame}{Qué garantiza y qué no garantiza una firma}
+  \begin{columns}[T]
+    \column{.48\textwidth}
+    \textbf{Sí garantiza, bajo las hipótesis del esquema:}
+    \begin{itemize}
+      \item integridad del mensaje resumido;
+      \item evidencia de posesión de la clave privada;
+      \item verificación pública.
+    \end{itemize}
+    \column{.48\textwidth}
+    \textbf{No resuelve por sí sola:}
+    \begin{itemize}
+      \item robo de la clave privada;
+      \item colisiones o debilidades del resumen;
+      \item distribución inicial de claves.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\section{Problema de aplicación computacional}
+
+\begin{frame}{Problema de aplicación computacional}
+  Una institución recibe $10\,000$ mensajes. Cada mensaje contiene un bloque $M_i<n$, una firma $s_i$ y la clave pública RSA $(n,e)$.
+  \begin{block}{Entrada y salida}
+    Entrada: un entero $N=10\,000$, los enteros $n=3233$, $e=17$ y $N$ parejas $(M_i,s_i)$, con $0<M_i<n$.\\
+    Salida: los índices $i$ para los que $s_i^e\not\equiv M_i\modn{n}$ y el total de firmas inválidas.
+  \end{block}
+  En este ejercicio cada bloque $M_i$ se firma directamente, sin una función resumen externa, para que todo pueda resolverse en un único programa.
+\end{frame}
+
+\begin{frame}{Parámetros del ejercicio}
+  \[
+    n=3233=61\cdot53,\qquad e=17.
+  \]
+  \begin{itemize}
+    \item Estos valores corresponden a una clave pública RSA de demostración.
+    \item El programa solo necesita $n$ y $e$; no necesita conocer los factores $61$ y $53$ ni la clave privada.
+    \item Se procesan $10\,000$ parejas, suficientes para que la automatización sea necesaria sin requerir bibliotecas criptográficas externas.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Pseudocódigo del verificador}
+  \begin{enumerate}
+    \item Leer $N$, $n$, $e$.
+    \item Repetir $N$ veces: leer $(M,s)$ y calcular $v=\operatorname{potencia\_modular}(s,e,n)$.
+    \item Si $v\ne M$, guardar el índice de la pareja.
+    \item Imprimir los índices guardados y su cantidad.
+  \end{enumerate}
+  \vfill
+  La función \texttt{potencia\_modular} puede implementarse con el método de cuadrados sucesivos; en Python o C++ cabe en un mismo programa pequeño.
+\end{frame}
+
+\begin{frame}{Tema aplicado y algoritmo}
+  \textbf{Tema:} firmas digitales; la igualdad que se comprueba es la verificación RSA del bloque firmado.
+  \begin{enumerate}
+    \item Leer cada pareja $(M_i,s_i)$.
+    \item Calcular $v_i=s_i^{17}\modn{3233}$ mediante exponenciación binaria.
+    \item Marcar $i$ como inválido si $v_i\ne M_i$.
+  \end{enumerate}
+  No se incluye código: basta implementar multiplicación modular segura y exponenciación por cuadrados.
+\end{frame}
+
+\begin{frame}{Corrección y complejidad aproximada}
+  \begin{itemize}
+    \item Si una firma fue producida por la clave privada correspondiente, la demostración RSA da $s_i^{17}\equiv M_i\modn{3233}$; el algoritmo acepta.
+    \item Si la igualdad falla, el par no satisface la condición de verificación; el algoritmo lo rechaza.
+    \item Para $N$ mensajes y exponentes de $b$ bits, la exponenciación binaria usa $O(b)$ multiplicaciones modulares por mensaje: $O(Nb)$ multiplicaciones, ignorando el costo de multiplicar enteros.
+    \item Aquí $N=10\,000$ y $17$ tiene solo cinco bits: el programa es corto, pero revisar todas las firmas a mano no es razonable.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Bibliografía}
+  \begin{thebibliography}{9}
+    \bibitem{gallian}
+    Joseph A. Gallian, \textit{Contemporary Abstract Algebra}, 9.ª ed., Cengage Learning, 2015, capítulo 8, sección ``Applications'', pp. 162--167.
+    \bibitem{rsa}
+    R. L. Rivest, A. Shamir y L. Adleman, ``A Method for Obtaining Digital Signatures and Public-Key Cryptosystems'', \textit{Communications of the ACM}, 21(2), 1978, pp. 120--126.
+  \end{thebibliography}
+  \vfill
+  \centering\small
+  Los ejemplos numéricos de esta presentación fueron construidos para la exposición y no reproducen los ejemplos del libro.
+\end{frame}
+
+\end{document}
