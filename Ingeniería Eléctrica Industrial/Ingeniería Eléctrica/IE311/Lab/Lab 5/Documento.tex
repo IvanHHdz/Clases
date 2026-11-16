@@ -1,0 +1,292 @@
+% Informe de laboratorio -- Laboratorio de Circuitos Eléctricos II
+\documentclass[12pt,a4paper]{article}
+\input{Formato.tex}
+\renewcommand{\numeroPractica}{5}
+\renewcommand{\nombrepractica}{Potencia AC y corrección del factor de potencia}
+% SUPUESTO: Se tomó como identificador oficial la Práctica 5 del manual, aunque
+% la Presentación.pdf la denomina Práctica 2; el manual fue la fuente principal.
+
+\begin{document}
+
+\section{Introducción}
+En los circuitos de corriente alterna, la potencia permite describir cómo se intercambia y se aprovecha la energía eléctrica. El análisis conjunto de la potencia activa, reactiva y aparente permite distinguir el trabajo útil de la energía asociada con los campos eléctricos y magnéticos. Esta separación es especialmente importante en cargas inductivas, como los motores, porque un factor de potencia reducido incrementa la corriente requerida para entregar una misma potencia activa y puede aumentar las pérdidas en conductores y transformadores. En esta práctica se determinaron las magnitudes del triángulo de potencia de un motor de corriente alterna y se estudió la corrección del factor de potencia mediante un capacitor conectado en paralelo. Así, las mediciones se relacionaron con las expresiones fasoriales de potencia compleja y con el cálculo del capacitor necesario para alcanzar un factor de potencia de 0.99.
+
+\section{Objetivos}
+\begin{itemsinforme}
+    \item Identificar las distintas formas de potencia presentes en los circuitos de corriente alterna.
+    \item Construir e interpretar el triángulo de potencia.
+    \item Comprender el significado y la utilidad del factor de potencia.
+    \item Obtener las potencias activa, reactiva y aparente a partir de los valores de corriente, tensión y factor de potencia.
+    \item Aplicar un procedimiento para mejorar el factor de potencia de una carga.
+    \item Determinar la capacitancia necesaria para compensar el factor de potencia mediante un capacitor.
+\end{itemsinforme}
+
+\section{Materiales y equipo}
+\begin{itemize}
+    \item Medidor de Potencia.
+    \item Tablero de corrección del factor de potencia monofásico.
+    \item Motor AC.\@
+\end{itemize}
+
+\section{Marco teórico}
+\subsection{Potencia Instantánea}
+La potencia instantánea es la potencia que absorbe un elemento en un momento determinado. Se obtiene multiplicando el voltaje y la corriente instantáneos en sus terminales, bajo la convención pasiva de signos.
+\begin{align}
+    p(t) &= v(t)i(t) \\
+    p(t) &= V\cos(\omega t + \phi_V)I\cos(\omega t + \phi_I) \\
+    p(t) &= VI\cos(\phi_V - \phi_I) + VI\cos(2\omega t + \phi_V + \phi_I)
+\end{align}
+La expresión muestra dos componentes: una constante, dependiente de la diferencia de fase, y otra senoidal cuya frecuencia es el doble de la frecuencia de voltaje y corriente.
+
+\subsection{Potencia Promedio}
+Como la potencia instantánea cambia con el tiempo, resulta más práctico utilizar la potencia promedio, que corresponde a su valor medio durante un periodo y se expresa en watts.
+\begin{align}
+    P_{\mathrm{prom}} &= \frac{1}{T}\int_0^T p(t)\,dt \\
+    P_{\mathrm{prom}} &= VI\cos(\phi_V - \phi_I) \\
+    P_{\mathrm{prom}} &= VI^{*} = VI\angle(\phi_V - \phi_I)
+\end{align}
+La potencia promedio es constante y puede calcularse usando valores en el dominio del tiempo o de la frecuencia.
+
+Una carga resistiva absorbe potencia continuamente, mientras que una carga reactiva (L o C) tiene potencia promedio nula. El instrumento que mide la potencia promedio es el vatímetro.
+
+\subsection{Potencia Aparente}
+La potencia aparente representa la potencia compleja de una red eléctrica. Se denota con $S$ y se mide en volt-amperes (VA).
+\begin{equation}
+    S\angle\phi_S = VI^{*}
+\end{equation}
+
+\subsection{Potencia Activa}
+La potencia activa es la potencia real consumida por el circuito y está asociada con los elementos resistivos. Se representa con $P$, se mide en watts (W) y produce trabajo efectivo.
+\begin{equation}
+    P = V_R I_R
+\end{equation}
+
+\subsection{Potencia Reactiva}
+La potencia reactiva corresponde a la parte imaginaria asociada con capacitores e inductores. Se representa con $Q$ y se mide en volt-amperes reactivos (VAR). Aunque no produce trabajo efectivo, es necesaria para establecer los campos eléctricos y magnéticos de motores, transformadores y equipos de refrigeración.
+\begin{equation}
+    Q = V_X I_X
+\end{equation}
+
+\subsection{Triángulo de Potencia}
+Las potencias forman un triángulo rectángulo llamado triángulo de potencia, mostrado en la Figura~\ref{fig:p5-triangulo}. A partir de él se relacionan las potencias mediante trigonometría.
+\begin{align}
+    S &= P \pm jQ & P &= S\cos\phi_S & Q &= S\sin\phi_S
+\end{align}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.05]
+        \draw (0,0) -- (5,0) node[below] {$P$ (W)};
+        \draw (0,0) -- (0,3.2) node[left] {$Q$ (VAR)};
+        \draw[very thick] (0,0) -- (4.2,2.5) node[midway,above] {$S$ (VA)  };
+        \draw[dashed] (4.2,2.5) -- (4.2,0);
+        \draw (0.55,0) arc (0:30.7:0.55);
+        \node at (0.85,0.28) {$\phi_S$};
+    \end{tikzpicture}
+    \caption{Triángulo de potencia para carga RL.}~\label{fig:p5-triangulo}
+\end{figure}
+
+\subsection{Factor de Potencia}
+El factor de potencia es un valor adimensional que indica qué proporción de la energía eléctrica se convierte en trabajo útil.
+\begin{equation}
+    fp = \frac{P}{S} = \cos\phi_S
+\end{equation}
+Respecto al voltaje, el factor de potencia puede ser en adelanto o en atraso. En el primer caso la corriente adelanta al voltaje y la carga presenta comportamiento capacitivo; en el segundo, la corriente se atrasa y el comportamiento es inductivo.
+
+\subsection{Corrección del Factor de Potencia}
+Un factor de potencia bajo significa que una menor parte de la energía se convierte en trabajo útil y ocasiona problemas técnicos y económicos, entre ellos:
+\begin{itemize}
+    \item Mayor corriente y, por tanto, mayores pérdidas por efecto Joule.
+    \item Mayor caída de tensión y una posible reducción de la potencia entregada a las cargas.
+    \item Posibles penalizaciones económicas por parte del productor o distribuidor de energía eléctrica.
+\end{itemize}
+Una forma sencilla y económica de elevar el factor de potencia es instalar un condensador en paralelo con la carga, como se muestra en la Figura~\ref{fig:p5-correccion}.
+
+El condensador absorbe una corriente reactiva capacitiva adelantada 90° respecto a la tensión. Esta corriente se opone a la componente reactiva inductiva de la carga y disminuye la corriente y la potencia reactivas totales.
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}
+        \draw(0,0) to[sV,l=$V$] (0,4) -- (2,4) to[R,l={carga}] (2,0) -- (0,0);
+        \draw(2,4) -- (4,4) to[C,l=$C$] (4,0) -- (2,0);
+    \end{circuitikz}
+    \caption{Corrección de factor de potencia mediante un capacitor en paralelo.}~\label{fig:p5-correccion}
+\end{figure}
+
+Con la potencia activa (kW) y los factores de potencia inicial y final, $\cos(\phi_1)$ y $\cos(\phi_2)$, se determina la potencia reactiva de compensación y el capacitor requerido mediante:
+\begin{align}
+    Q_C &= P(\tan(\phi') - \tan(\phi)) \\
+    C &= \frac{Q_C}{2\pi f V^2}
+\end{align}
+
+\section{Procedimiento experimental}
+\subsection{Montaje 1}
+\begin{enumerate}
+    \item Ubíquese en el tablero de conexiones que se muestra en la Figura~\ref{img:montaje1}.
+    
+    \imagen[img:montaje1]{./img/img1.jpg}{Tablero de conexiones}
+
+    \item Energice el tablero de conexiones activando el disyuntor termo-magnético y proceda con el arranque del motor y de las mediciones del tablero obtenga:
+    \begin{itemize}
+        \item Potencia activa: \SI{262.9}{\watt}.
+        \item Voltaje RMS:\@ \SI{124}{\volt}.
+        \item Corriente RMS:\@ \SI{2.52}{\ampere}.
+        \item Factor de potencia: $0.83$.
+        \item Potencia aparente: \SI{312.5}{\volt\ampere}
+        \item Potencia reactiva: \SI{169}{\volt\ampere{R}}
+    \end{itemize}
+
+    Cálculo de la potencia aparente y reactiva:
+    \begin{align*}
+        S &= V_{RMS}I_{RMS} = (\SI{124}{\volt})(\SI{2.52}{\ampere})=\SI{312.5}{\volt\ampere},\\
+        Q &= \sqrt{S^2-P^2}=\sqrt{{(\SI{312.5}{\volt\ampere})}^2-{(\SI{262.9}{\watt})}^2}=\SI{169}{\volt\ampere{R}}.
+    \end{align*}
+
+    \item Haciendo uso de los datos obtenidos en el inciso anterior dibuje el triángulo de potencias.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=0.9]
+            \draw[-{Latex},very thick] (0,0) -- (4.0,0)
+                node[midway,below=4pt] {$P=262.9\,\mathrm{W}$};
+            \draw[-{Latex},very thick] (4.0,0) -- (4.0,2.57)
+                node[midway,right=4pt] {$Q=169\,\mathrm{VAR}$};
+            \draw[-{Latex},very thick] (0,0) -- (4.0,2.57)
+                node[midway,above left=2pt] {$S=312.5\,\mathrm{VA}$};
+            \draw (0.55,0) arc (0:32.7:0.55);
+            \node at (1,0.3) {$\phi_S$};
+        \end{tikzpicture}
+        \caption{Triángulo de potencia obtenido antes de la corrección.}
+~\label{fig:p5-triangulo-medido}
+    \end{figure}
+
+    \item A partir de los valores obtenidos en el inciso 2 calcule cuanto reactivo (potencia reactiva) se requiere para obtener un factor de potencia de 0.99.
+    
+    \begin{quote}
+        Para corregir el factor de potencia se calcularon los ángulos inicial y final:
+        \begin{align*}
+            \phi_1 &= \cos^{-1}(0.83)=33.90^\circ,\\
+            \phi_2 &= \cos^{-1}(0.99)=8.11^\circ.
+        \end{align*}
+        La potencia reactiva que debe suministrar el capacitor se obtuvo mediante:
+        \begin{align*}
+            Q_C &= P\left[\tan(\phi_1)-\tan(\phi_2)\right] \\
+                &= (\SI{262.9}{\watt})\left[\tan(33.90^\circ)-\tan(8.11^\circ)\right] \\
+                &= \SI{139.2}{\volt\ampere{R}}.
+        \end{align*}
+    \end{quote}
+
+    \item A partir de la potencia reactiva calcule el valor del capacitor con el cual se logrará corregir el factor de potencia a 0.99.
+    \begin{quote}
+        Tomando en consideración que la frecuencia era de \SI{60}{\hertz}, el valor del capacitor se calculó mediante:
+        \begin{align*}
+            C &= \frac{Q_C}{2\pi fV^2} \\
+              &= \frac{\SI{139.2}{\volt\ampere{R}}}{2\pi(\SI{60}{\hertz}){(\SI{124}{\volt})}^2} \\
+              &= \SI{0.00002401}{\farad} = \SI{24.01}{\micro\farad}.
+        \end{align*}
+    \end{quote}
+
+    \item Energice el tablero de conexiones activando el disyuntor termo-magnético y conecte el capacitor, proceda con el arranque del motor y de las mediciones del tablero obtenga:
+    \begin{itemize}
+        \item Potencia activa: \SI{267.5}{\watt}.
+        \item Voltaje RMS:\@ \SI{124}{\volt}.
+        \item Corriente RMS:\@ \SI{2.16}{\ampere}.
+        \item Factor de potencia: $0.99$.
+        \item Potencia aparente: \SI{267.8}{\volt\ampere}
+        \item Potencia reactiva: \SI{12.67}{\volt\ampere{R}}
+    \end{itemize}
+
+    Cálculo de la potencia aparente y reactiva:
+    \begin{align*}
+        S &= V_{RMS}I_{RMS} = (\SI{124}{\volt})(\SI{2.16}{\ampere})=\SI{267.8}{\volt\ampere},\\
+        Q &= \sqrt{S^2-P^2}=\sqrt{{(\SI{267.8}{\volt\ampere})}^2-{(\SI{267.5}{\watt})}^2}=\SI{12.67}{\volt\ampere{R}}.
+    \end{align*}
+
+    \item Dibuje el triángulo de potencias con el factor de potencias ya corregido.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[xscale=0.5,yscale=0.5]
+            \draw[-{Latex},very thick] (0,0) -- (17.0,0)
+                node[midway,below=4pt] {$P=267.5\,\mathrm{W}$};
+            \draw[-{Latex},very thick] (17.0,0) -- (17.0,0.805)
+                node[midway,right=4pt] {$Q=12.67\,\mathrm{VAR}$};
+            \draw[-{Latex},very thick] (0,0) -- (17.0,0.805)
+                node[midway,above=6pt] {$S=267.8\,\mathrm{VA}$};
+            \draw (1.2,0) arc (0:2.71:1.2);
+            \node at (1.7,0.6) {$\phi_S$};
+        \end{tikzpicture}
+        \caption{Triángulo de potencia obtenido después de la corrección.}~\label{fig:p5-triangulo-corregido}
+    \end{figure}
+\end{enumerate}
+
+\section{Análisis de resultados}
+\begin{enumerate}
+    \item En los pasos 2 y 7 usted midió el factor de potencia, calcúlelos de forma teórica y compárelos haciendo uso del error relativo porcentual (Explique sus respuestas).
+    
+    \begin{quote}
+        Para la potencia inicial el factor de potencia teórico es:
+        \begin{align*}
+            f{p_\text{teorico}} &= \frac{P}{S}\\
+            &=\frac{262.9}{312.5}\\
+            &=0.841
+        \end{align*}
+
+        Por lo que el error relativo porcentual es de:
+
+        \begin{align*}
+            E_{fp,\%}&=\frac{|f{p_\text{teorico}}-f{p_\text{experimental}}|}{|f{p_\text{teorico}}|}\times100\,\text{\%}\\
+            &=\frac{|0.841-0.83|}{|0.841|}\times100\,\text{\%}\\
+            &=1.31\,\text{\%}
+        \end{align*}
+
+        Para la potencia corregida el factor de potencia teórico es:
+        \begin{align*}
+            f{p_\text{teorico}} &= \frac{P}{S}\\
+            &=\frac{267.5}{267.8}\\
+            &=0.999
+        \end{align*}
+
+        Por lo que el error relativo porcentual es de:
+
+        \begin{align*}
+            E_{fp,\%}&=\frac{|f{p_\text{teorico}}-f{p_\text{experimental}}|}{|f{p_\text{teorico}}|}\times100\,\text{\%}\\
+            &=\frac{|0.999-0.99|}{|0.999|}\times100\,\text{\%}\\
+            &=0.9\,\text{\%}
+        \end{align*}
+    \end{quote}
+    
+    \item Compare cualitativamente la potencia activa obtenida en los pasos 2 y 7 con los valores de potencia aparente (S = V I). ¿A qué se debe la variación? ¿Cómo se ve esta variación reflejada en el factor de potencia?
+    
+    \begin{quote}
+        La potencia activa se comparó con la potencia aparente calculada como $S=VI$. La diferencia se relacionó con la potencia reactiva de la carga; al corregirla, la relación $P/S$ cambió de \rellenar{fp1} a \rellenar{fp2}. % TODO[ANALISIS]: Completar la explicación con los datos medidos y la variación observada.
+    \end{quote}
+
+    \item \textbf{Explique por qué se utilizan capacitores para la corrección del factor de potencia.}
+    Se utilizaron capacitores porque suministraron potencia reactiva capacitiva, opuesta a la potencia reactiva inductiva del motor, y redujeron la potencia reactiva total demandada de la red.
+
+    \item \textbf{En el paso 7 se conectó un capacitor a la carga, explique por qué el elemento reactivo se conectó en paralelo para corregir el factor de potencia y no en serie.}
+    Se conectó en paralelo para compensar localmente la potencia reactiva de la carga sin interrumpir la tensión de alimentación ni modificar la corriente de operación de la carga por una impedancia serie adicional.
+
+    \item \textbf{Investigue otro método que ayuda a la corrección del factor de potencia.}
+    % TODO[REFERENCIA]: Investigar y citar una fuente sobre otro método de corrección del factor de potencia.
+    % -> Describir el método de compensadores síncronos, filtros activos u otra alternativa técnicamente válida.
+    \rellenar{método investigado y referencia}
+
+    \item \textbf{Explique la importancia de tener un factor de potencia cercano a la unidad, y que repercusiones tiene en la transmisión.}
+    Un factor de potencia cercano a la unidad permite transmitir una mayor proporción de potencia activa con menor corriente para una misma tensión. Por ello se reducen las pérdidas por efecto Joule y las caídas de tensión en la transmisión. La repercusión observada en esta práctica fue \rellenar{relación entre corriente, potencia aparente y factor de potencia}.
+    % TODO[ANALISIS]: Sustentar la explicación con la comparación de I_1 e I_2 y de S_1 y S_2.
+
+    \item \textbf{Investigue las normas de regulación de factor de potencia en el país y las sanciones por su incumplimiento.}
+    % TODO[REFERENCIA]: Investigar y citar la normativa hondureña vigente sobre factor de potencia y sus sanciones.
+    % -> Indicar organismo, límite regulatorio, usuarios alcanzados y sanción aplicable, con fuente oficial y fecha de consulta.
+    \rellenar{norma vigente, límite y sanciones con referencia}
+\end{enumerate}
+
+\section{Conclusiones}
+\begin{itemsinforme}
+    \item Se definieron y relacionaron las potencias activa, reactiva y aparente mediante las mediciones del motor, obteniéndose \rellenar{valores de P, Q y S antes de la corrección}. % TODO[ANALISIS]: Relacionar los resultados con el objetivo de definir los tipos de potencia.
+    \item Se determinó el triángulo de potencia antes y después de la compensación, con \rellenar{valores de P, Q, S y ángulos}. % TODO[ANALISIS]: Completar con los resultados de ambos triángulos.
+    \item Se calculó el capacitor requerido para alcanzar un factor de potencia de 0.99 y se verificó experimentalmente con un valor medido de \rellenar{fp corregido}. % TODO[ANALISIS]: Comparar el factor de potencia medido con 0.99 y explicar el error.
+    \item La corrección modificó la potencia reactiva y la corriente de la instalación en \rellenar{variación observada}, según las mediciones registradas. % TODO[ANALISIS]: Concluir únicamente a partir de los datos obtenidos.
+\end{itemsinforme}
+
+\section{Bibliografía}
+\printbibliography[heading=none]
+\end{document}
