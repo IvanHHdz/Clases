@@ -250,43 +250,70 @@ Con la potencia activa (kW) y los factores de potencia inicial y final, $\cos(\p
             &=\frac{|0.999-0.99|}{|0.999|}\times100\,\text{\%}\\
             &=0.9\,\text{\%}
         \end{align*}
+
+        Como podemos apreciar en el cálculo de los errores porcentuales de cada uno de los factores de potencia comparando los valores medidos por el tablero y los calculados teóricamente, se puede observar que ambos errores son menores al 2\%, lo que indica que los valores medidos por el tablero son confiables y cercanos a los valores teóricos.
     \end{quote}
     
     \item Compare cualitativamente la potencia activa obtenida en los pasos 2 y 7 con los valores de potencia aparente (S = V I). ¿A qué se debe la variación? ¿Cómo se ve esta variación reflejada en el factor de potencia?
     
     \begin{quote}
-        La potencia activa se comparó con la potencia aparente calculada como $S=VI$. La diferencia se relacionó con la potencia reactiva de la carga; al corregirla, la relación $P/S$ cambió de \rellenar{fp1} a \rellenar{fp2}. % TODO[ANALISIS]: Completar la explicación con los datos medidos y la variación observada.
+        En el caso antes de la corrección, se midieron valores mucho más altos para la potencia aparente que para la potencia activa. Esto debido a la potencia reactiva existente, misma que hacía aumentar la potencia aparente.
+
+        Luego de la correcciónn, la potencia reactiva es mucho menos comparada al valor anterior, por lo que la potencia aparente y la potencia activa son casi iguales, lo que hace que el factor de potencia se acerque a 1.
     \end{quote}
 
-    \item \textbf{Explique por qué se utilizan capacitores para la corrección del factor de potencia.}
-    Se utilizaron capacitores porque suministraron potencia reactiva capacitiva, opuesta a la potencia reactiva inductiva del motor, y redujeron la potencia reactiva total demandada de la red.
+    \item Explique por qué se utilizan capacitores para la corrección del factor de potencia.
+    
+    \begin{quote}
+            Se utilizaron capacitores porque suministraron potencia reactiva capacitiva, opuesta a la potencia reactiva inductiva del motor, contrarrestando esta y disminuyendo la potencia reactiva total.
+    \end{quote}
 
-    \item \textbf{En el paso 7 se conectó un capacitor a la carga, explique por qué el elemento reactivo se conectó en paralelo para corregir el factor de potencia y no en serie.}
-    Se conectó en paralelo para compensar localmente la potencia reactiva de la carga sin interrumpir la tensión de alimentación ni modificar la corriente de operación de la carga por una impedancia serie adicional.
+    \item En el paso 7 se conectó un capacitor a la carga, explique por qué el elemento reactivo se conectó en paralelo para corregir el factor de potencia y no en serie.
+    
+    \begin{quote}
+        Se conectó en paralelo para no disminuir el voltaje en la carga (el motor).
 
-    \item \textbf{Investigue otro método que ayuda a la corrección del factor de potencia.}
-    % TODO[REFERENCIA]: Investigar y citar una fuente sobre otro método de corrección del factor de potencia.
-    % -> Describir el método de compensadores síncronos, filtros activos u otra alternativa técnicamente válida.
-    \rellenar{método investigado y referencia}
+        Si se conectara en serie, el capacitor disminuiría el voltaje en la carga y por tanto la potencia activa entregada a la misma.
+    \end{quote}
 
-    \item \textbf{Explique la importancia de tener un factor de potencia cercano a la unidad, y que repercusiones tiene en la transmisión.}
-    Un factor de potencia cercano a la unidad permite transmitir una mayor proporción de potencia activa con menor corriente para una misma tensión. Por ello se reducen las pérdidas por efecto Joule y las caídas de tensión en la transmisión. La repercusión observada en esta práctica fue \rellenar{relación entre corriente, potencia aparente y factor de potencia}.
-    % TODO[ANALISIS]: Sustentar la explicación con la comparación de I_1 e I_2 y de S_1 y S_2.
+    \item Investigue otro método que ayuda a la corrección del factor de potencia.
 
-    \item \textbf{Investigue las normas de regulación de factor de potencia en el país y las sanciones por su incumplimiento.}
-    % TODO[REFERENCIA]: Investigar y citar la normativa hondureña vigente sobre factor de potencia y sus sanciones.
-    % -> Indicar organismo, límite regulatorio, usuarios alcanzados y sanción aplicable, con fuente oficial y fecha de consulta.
-    \rellenar{norma vigente, límite y sanciones con referencia}
+    \begin{quote}
+        Otro método de corrección del factor de potencia es utilizar un compensador síncrono. Este consiste en un motor síncrono que funciona sin carga mecánica y se sobreexcita para suministrar potencia reactiva capacitiva. De esta manera compensa la potencia reactiva inductiva de motores y transformadores, disminuye la corriente demandada de la red y mejora el factor de potencia. A diferencia de un capacitor fijo, permite regular la compensación según las variaciones de la carga.
+    \end{quote}
+
+    \item Explique la importancia de tener un factor de potencia cercano a la unidad, y que repercusiones tiene en la transmisión.
+    
+    \begin{quote}
+        Un factor de potencia cercano a la unidad permite transmitir una mayor proporción de potencia activa con menor corriente para una misma tensión. Por ello se reducen las pérdidas por efecto Joule y las caídas de tensión en la transmisión.
+    \end{quote}
+
+    \item Investigue las normas de regulación de factor de potencia en el país y las sanciones por su incumplimiento.
+    
+    \begin{quote}
+        En Honduras, la Comisión Reguladora de Energía Eléctrica (CREE), mediante la Norma Técnica de Calidad de Distribución, establece que el control del factor de potencia se realiza mensualmente a partir de la energía activa y reactiva registradas. Esta disposición aplica a los Consumidores Calificados y a los usuarios conectados a la red de distribución, con excepción de los usuarios residenciales. El factor de potencia equivalente mensual debe ser como mínimo $0.90$ atrasado. Cuando se incumple este límite, la empresa distribuidora calcula una penalización por bajo factor de potencia mediante
+        \[
+            P_{FP_e}=C_e\max(0.90-FP_e,0),
+        \]
+        donde $C_e$ es el cargo por energía correspondiente al período de medición y $FP_e$ es el factor de potencia equivalente mensual. Por tanto, la consecuencia económica del incumplimiento es un recargo en la facturación, proporcional a la desviación por debajo de $0.90$ y a la energía consumida.
+    \end{quote}
+    
 \end{enumerate}
 
 \section{Conclusiones}
 \begin{itemsinforme}
-    \item Se definieron y relacionaron las potencias activa, reactiva y aparente mediante las mediciones del motor, obteniéndose \rellenar{valores de P, Q y S antes de la corrección}. % TODO[ANALISIS]: Relacionar los resultados con el objetivo de definir los tipos de potencia.
-    \item Se determinó el triángulo de potencia antes y después de la compensación, con \rellenar{valores de P, Q, S y ángulos}. % TODO[ANALISIS]: Completar con los resultados de ambos triángulos.
-    \item Se calculó el capacitor requerido para alcanzar un factor de potencia de 0.99 y se verificó experimentalmente con un valor medido de \rellenar{fp corregido}. % TODO[ANALISIS]: Comparar el factor de potencia medido con 0.99 y explicar el error.
-    \item La corrección modificó la potencia reactiva y la corriente de la instalación en \rellenar{variación observada}, según las mediciones registradas. % TODO[ANALISIS]: Concluir únicamente a partir de los datos obtenidos.
+    \item Se reforzaron los conceptos de las potencias presentes en circuitos AC:\@ potencia activa, reactiva y aparente, mediante la práctica, asi como se pudo profundizar en la interpretación y significado de las mismas.
+    \item Se profundizó en la interpretación del factor de potencia y en el significado del triángulo de potencia. Esto mediante el análisis para la corrección del factor de potencia, comprendiendo la importancia de ambos conceptos en la eficiencia de la transmisión de energía eléctrica.
+    \item Se puso en práctica el proceso de corrección del factor de potencia mediante el cálculo directo de la potencia reactiva necesaria para la corrección y el valor del capacitor requerido para realizar la corrección.
 \end{itemsinforme}
 
 \section{Bibliografía}
+\nocite{*}
 \printbibliography[heading=none]
+
+\section{Anexos}
+
+\imagen[an:1]{./img/img2.jpg}{Tablero antes de la corrección.}
+\imagen[an:2]{./img/img3.jpg}{Tablero después de la corrección.}
+
 \end{document}
