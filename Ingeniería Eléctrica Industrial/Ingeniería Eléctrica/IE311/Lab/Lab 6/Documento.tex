@@ -1,0 +1,406 @@
+\documentclass[12pt,a4paper]{article}
+\input{Formato.tex}
+\renewcommand{\numeroPractica}{6}
+\renewcommand{\nombrepractica}{Circuitos trifásicos balanceados y transformadores}
+\begin{document}
+\section{Introducción}
+Los transformadores permiten transferir energía eléctrica alterna entre circuitos con diferentes niveles de tensión, conservando la frecuencia de la fuente. Son importantes en la producción, transmisión y distribución de energía. En esta práctica se relacionó el transformador monofásico con un sistema trifásico balanceado. Se determinaron relaciones de voltaje, corriente y vueltas, y se analizaron conexiones delta y estrella mediante tres transformadores monofásicos. En esta práctica se compararon las mediciones con el modelo ideal, donde la potencia de entrada y salida es igual. También se estudiaron las relaciones entre magnitudes de línea y de fase, además de la potencia activa, reactiva y aparente del sistema trifásico equilibrado.
+\section{Objetivos}
+\begin{itemsinforme}
+\item Comprender el funcionamiento básico del transformador.
+\item Determinar la relación de vueltas de un transformador.
+\item Estudiar una alimentación trifásica.
+\item Obtener un sistema trifásico de transformadores a partir de tres transformadores monofásicos.
+\item Realizar conexiones delta y estrella a partir de transformadores.
+\item Comprobar las relaciones de voltaje y corriente en las conexiones delta y estrella.
+\end{itemsinforme}
+\section{Materiales y equipo}
+\begin{itemize}
+\item Multímetros digitales. 
+\item Amperímetros de pinza. 
+\item Alimentación trifásica de 210 V.
+\item Transformadores monofásicos nominales 240/24 V. 
+\item Conectores de banana. 
+\item Cargas de 8~$\Omega$.
+\end{itemize}
+% TODO[DATOS]: Agregar modelo y rango de los instrumentos utilizados.
+\section{Marco teórico}
+\subsection{Transformador}
+Un transformador es un dispositivo que cambia la potencia eléctrica alterna con un nivel de voltaje a potencia eléctrica alterna con otro nivel de voltaje mediante la acción de un campo magnético. Consta de dos o más bobinas de alambre conductor enrolladas alrededor de un núcleo ferromagnético común. Estas bobinas (normalmente) no están conectadas en forma directa. La única conexión entre las bobinas es el flujo magnético común que se encuentra dentro del núcleo.
+
+Uno de los devanados del transformador se conecta a una fuente de energía eléctrica alterna y el segundo (y quizá el tercero) suministra energía eléctrica a las cargas. El devanado del transformador que se conecta a la fuente de potencia se llama devanado primario o devanado de entrada, y el devanado que se conecta a la carga se llama devanado secundario o devanado de salida. Si hay un tercer devanado en el transformador, se llama devanado terciario. El propósito principal de un transformador es convertir la potencia alterna de un nivel de voltaje en potencia alterna de la misma frecuencia, pero con otro nivel de voltaje.
+
+Los transformadores de potencia se construyen de dos maneras. Un tipo de transformador consta de una pieza de acero rectangular, laminada, con los devanados enrollados sobre dos de los lados del rectángulo. Esta clase de construcción, conocido como transformador tipo núcleo se ilustra en la figura 1. El otro consta de un núcleo laminado de tres columnas, cuyas bobinas están enrolladas en la columna central. Esta clase de construcción se conoce como transformador tipo acorazado y se ilustra en la figura 2. En cualquier caso, el núcleo se construye con delgadas láminas aisladas eléctricamente unas de otras para minimizar las corrientes parásitas.
+\subsection{Transformador ideal}
+\begin{equation*}
+\frac{v_p(t)}{v_s(t)}=\frac{N_p}{N_s}=a.
+\end{equation*}
+donde $a$ se define como la relación de transformación del transformador.
+
+La relación entre la corriente $i_p(t)$ que fluye del lado primario del transformador y la corriente $i_s(t)$ que sale del lado secundario del transformador es:
+\begin{equation*}
+N_p i_p(t)=N_s i_s(t),\qquad \frac{i_p(t)}{i_s(t)}=\frac{1}{a}.
+\end{equation*}
+En términos de cantidades fasoriales, estas ecuaciones son:
+\begin{equation*}
+\frac{V_p}{V_s}=a,\qquad \frac{I_p}{I_s}=\frac{1}{a}.
+\end{equation*}
+Nótese que el ángulo de fase de $V_p$ es el mismo que el ángulo de $V_s$ y el ángulo fasorial de $I_p$ es el mismo que el ángulo fasorial de $I_s$. La relación de vueltas del transformador ideal afecta las magnitudes de los voltajes y corrientes, pero no sus ángulos.
+\subsection{Potencia en el transformador ideal}
+\begin{equation*}
+P_{entr}=V_p I_p\cos\theta_p,\qquad P_{sal}=V_s I_s\cos\theta_s.
+\end{equation*}
+\begin{align*}
+P_{sal}&=\left(\frac{V_p}{a}\right)(aI_p)\cos\theta,\\
+P_{sal}&=V_p I_p\cos\theta=P_{entr}.
+\end{align*}
+\subsection{Transformadores trifásicos}
+Los transformadores para los circuitos trifásicos se pueden fabricar de dos maneras:
+\begin{enumerate}
+\item Tomar tres transformadores monofásicos y conectarlos en un banco trifásico.
+\item Construir transformadores trifásicos con tres grupos de devanados enrollados en un núcleo común.
+\end{enumerate}
+Un transformador trifásico consta de tres transformadores, ya sea separados o combinados sobre un solo núcleo. Los primarios y secundarios de cualquier transformador trifásico se pueden conectar independientemente en estrella (Y) o en delta (D). Esto nos da un total de cuatro conexiones posibles: Estrella-estrella (Y---Y), Estrella-delta (Y---$\Delta$), Delta-estrella ($\Delta$---Y) y Delta-delta ($\Delta$---$\Delta$).
+\subsection{Circuitos trifásicos}
+Un sistema trifásico balanceado es un sistema de generación, distribución y consumo de energía eléctrica, formado por tres voltajes monofásicos de igual magnitud y frecuencia, desfasadas 120 grados eléctricos una de la otra. Se dice que un sistema trifásico está balanceado si las corrientes en cada fase tienen la misma amplitud, la misma frecuencia y están desfasadas 120 grados eléctricos una de la otra, en caso contrario es un sistema desbalanceado.
+
+\textbf{Ventajas de un Sistema Trifásico:} La producción de las máquinas trifásicas es siempre mayor que las de las máquinas monofásicas del mismo tamaño. Para una transmisión y distribución, los sistemas trifásicos necesitan menos cobre o menos material conductor. Es posible producir campos magnéticos rotatorios con bobinados estacionarios usando el sistema trifásico. La potencia instantánea en los sistemas trifásicos es constante. Los sistemas trifásicos dan una salida constante.
+\subsection{Conexión de fuentes trifásicas}
+\textbf{Conexión de fuente en delta}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (a) at (0,2.3);
+\coordinate (b) at (3.2,0);
+\coordinate (c) at (0,0);
+\draw (a)--(b)--(c)--(a);
+\node[circle,draw,minimum size=8mm,fill=white] at (1.6,1.15) {$\sim$};
+\node[circle,draw,minimum size=8mm,fill=white] at (1.6,0) {$\sim$};
+\node[circle,draw,minimum size=8mm,fill=white] at (0,1.15) {$\sim$};
+\node[above right] at (2.05,1.55) {$V_{ab}$};
+\node[below right] at (1.75,-0.32) {$V_{bc}$};
+\node[left] at (-0.55,1.15) {$V_{ca}$};
+\draw (a)--(-0.65,2.3) node[left]{$a$};
+\draw (b)--(3.85,0) node[right]{$b$};
+\draw (c)--(-0.65,0) node[left]{$c$};
+\end{tikzpicture}
+\caption{Fuente trifásica conectada en delta.}~\label{fig:p6-fuente-delta}
+\end{figure}
+\begin{align*}
+|V_{LL}|&=|V_{fase}|=|V_{ab}|=|V_{bc}|=|V_{ca}|,\\
+V_{ab}&=|V_{LL}|\angle0^\circ,\\
+V_{bc}&=|V_{LL}|\angle-120^\circ,\\
+V_{ca}&=|V_{LL}|\angle120^\circ.
+\end{align*}
+
+\textbf{Conexión de fuente en estrella}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.8]
+\coordinate (n) at (0,0);
+\draw (n)--(0,2.4);
+\draw (n)--(-2.1,-1.5);
+\draw (n)--(2.1,-1.5);
+\node[circle,draw,minimum size=8mm,fill=white] at (0,1.2) {$\sim$};
+\node[circle,draw,minimum size=8mm,fill=white] at (-1.05,-0.75) {$\sim$};
+\node[circle,draw,minimum size=8mm,fill=white] at (1.05,-0.75) {$\sim$};
+\node[right] at (0.62,1.2) {$V_{an}$};
+\node[left] at (-1.72,-0.55) {$V_{bn}$};
+\node[right] at (1.72,-0.55) {$V_{cn}$};
+\draw (0,2.4)--(0,2.85) node[above]{$a$};
+\draw (-2.1,-1.5)--(-2.55,-1.82) node[left]{$b$};
+\draw (2.1,-1.5)--(2.55,-1.82) node[right]{$c$};
+\end{tikzpicture}
+\caption{Fuente trifásica conectada en estrella.}\label{fig:p6-fuente-estrella}
+\end{figure}
+\begin{align*}
+|V_{fase}|&=|V_{an}|=|V_{bn}|=|V_{cn}|,\\
+|V_{LL}|&=\sqrt{3}|V_{fase}|,\\
+V_{an}&=|V_{fase}|\angle0^\circ,\\
+V_{bn}&=|V_{fase}|\angle-120^\circ,\\
+V_{cn}&=|V_{fase}|\angle120^\circ,\\
+\phi_{VLL}&=\phi_{Vfase}+30^\circ,\\
+V_{ab}&=|V_{LL}|\angle30^\circ,\\
+V_{bc}&=|V_{LL}|\angle-90^\circ,\\
+V_{ca}&=|V_{LL}|\angle150^\circ.
+\end{align*}
+\subsection{Conexión de impedancias trifásicas}
+\textbf{Conexión de impedancia en delta}
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=0.8,european resistors]]
+\coordinate (a) at (0,2);
+\coordinate (b) at (3.8,2);
+\coordinate (c) at (1.9,-1.5);
+\draw (a)--(1.25,2) to[R] (2.55,2)--(b);
+\draw (b)--(3.15,0.8) to[R] (2.55,-0.3)--(c);
+\draw (c)--(1.25,-0.3) to[R] (0.65,0.8)--(a);
+\node[right] at (3.48,0.65) {$Z_b$};
+\node[left] at (0.32,0.65) {$Z_c$};
+\node[above] at (1.9,2.38) {$Z_a$};
+\draw (a)--(-0.7,2) node[left]{$a$};
+\draw (b)--(4.5,2) node[right]{$b$};
+\draw (c)--(1.9,-2.1) node[below]{$c$};
+\end{tikzpicture}
+\caption{Conexión de impedancias trifásicas en delta.}\label{fig:p6-delta}
+\end{figure}
+
+\newpage
+\textbf{Conexión de impedancia en estrella}
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=0.8,european resistors]]
+\coordinate (n) at (0,0);
+\draw (n)--(30:0.6)  to[R] (30:2.0)  --(30:3.0)  node[above right]{$a$};
+\draw (n)--(150:0.6) to[R] (150:2.0) --(150:3.0) node[above left]{$b$};
+\draw (n)--(270:0.6) to[R] (270:2.0) --(270:3.0) node[below]{$c$};
+\path (30:1.3)  ++(120:0.75) node {$Z_a$};
+\path (150:1.3) ++(60:0.75)  node {$Z_b$};
+\node[right] at (0.3,-1.3) {$Z_c$};
+\end{tikzpicture}
+\caption{Conexión de impedancias trifásicas en estrella.}\label{fig:p6-estrella}
+\end{figure}
+\subsection{Relaciones entre voltajes y corrientes}
+En los sistemas trifásicos balanceados existen unas relaciones entre los voltajes de línea a línea con respecto al voltaje de fase y las corrientes de línea con respecto a las corrientes de fase. Las relaciones dependerán de la conexión del sistema, ya sea estrella o delta.
+
+\textbf{Para conexión delta}
+\begin{align*}
+V_{LL}&=V_{fase},\\
+I_L&=\sqrt{3}I_{fase},\\
+\phi_{I_L}&=\phi_{I_{fase}}-30^\circ.
+\end{align*}
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=1.25]
+\draw[-stealth,thick] (0,0)--(2.5,0) node[right]{$I_{L1}$};
+\draw[-stealth] (0,0)--(1.3,0.75) node[above right]{$I_{\mathrm{Fase}\,1}$};
+\draw[-stealth] (0,0)--(-1.3,0.75) node[above left]{$I_{\mathrm{Fase}\,2}$};
+\draw[-stealth,thick] (0,0)--(-1.3,-2) node[below left]{$I_{L3}$};
+\draw[-stealth] (0,0)--(0,-1.1) node[below]{$I_{\mathrm{Fase}\,3}$};
+\draw[-stealth,thick] (0,0)--(-1.3,2) node[above left]{$I_{L2}$};
+\end{tikzpicture}
+\caption{Relación fasorial de corrientes en una conexión delta.}~\label{fig:p6-relaciones-delta}
+\end{figure}
+
+\textbf{Para conexión en estrella}
+\begin{align*}
+I_L&=I_{fase},\\
+V_{LL}&=\sqrt{3}V_{fase},\\
+\phi_{VLL}&=\phi_{Vfase}+30^\circ.
+\end{align*}
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=1.25]
+\draw[-stealth] (0,0)--(1.5,0) node[right]{$V_{\mathrm{Fase}\,1}$};
+\draw[-stealth] (0,0)--(-0.9,1.6) node[above]{$V_{\mathrm{Fase}\,2}$};
+\draw[-stealth] (0,0)--(-0.9,-1.6) node[below]{$V_{\mathrm{Fase}\,3}$};
+\draw[-stealth,thick] (0,0)--(2.1,1.25) node[above right]{$V_{LL1}$};
+\draw[-stealth,thick] (0,0)--(-2.1,1.25) node[above left]{$V_{LL2}$};
+\draw[-stealth,thick] (0,0)--(0,-2.1) node[below]{$V_{LL3}$};
+\end{tikzpicture}
+\caption{Relación fasorial de voltajes en una conexión estrella.}~\label{fig:p6-relaciones-estrella}
+\end{figure}
+\subsection{Potencia trifásica}
+\textbf{Potencia Trifásica}
+La potencia en circuitos trifásicos es la suma de las potencias de sus tres fases. Dado que en circuitos equilibrados las potencias activa, reactiva, aparente y compleja de las tres fases son iguales, las potencias activa, reactiva, aparente y compleja totales son iguales a tres veces las respectivas potencias de una fase.
+\begin{align*}
+P_{3\phi}&=3V_\phi I_\phi\cos(\theta_{FP})=\sqrt{3}V_L I_L\cos(\theta_{FP}),\\
+Q_{3\phi}&=\sqrt{3}V_L I_L\sin(\theta_{FP})=3V_\phi I_\phi\sin(\theta_{FP}),\\
+S_{3\phi}&=\sqrt{P_{3\phi}^{2}+Q_{3\phi}^{2}}=\sqrt{3}V_L I_L=3V_\phi I_\phi,\\
+fdp&=\frac{P}{S}=\frac{P}{\sqrt{P^2+Q^2}},\qquad S=P+jQ=3V_\phi I_\phi^*.
+\end{align*}
+No se puede generalizar la relación para las magnitudes de línea: $S\ne\sqrt{3}V_L I_L^*$. Esto es debido a que el desfase entre una de las tensiones de línea y su correspondiente intensidad de línea no es el ángulo $\theta_{FP}$.
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=1.25]
+\draw[thick] (0,0)--(4,0) node[midway,below]{$P$};
+\draw[thick] (4,0)--(4,2.5) node[midway,right]{$Q$};
+\draw[thick] (0,0)--(4,2.5) node[midway,above left]{$S$};
+\draw (0.9,0) arc (0:32:0.9);
+\node at (1.2,0.3){$\theta_{FP}$};
+\end{tikzpicture}
+\caption{Triángulo de potencias de un sistema trifásico equilibrado.}~\label{fig:p6-triangulo-potencias}
+\end{figure}
+
+\section{Procedimiento experimental}
+
+\subsection{Parte 1: Transformador}
+
+\begin{enumerate}
+    \item Verifique que el interruptor esté abierto (Apagado), con conductores realice la conexión del primario (Sin carga) de uno de los transformadores monofásicos.
+    \begin{itemize}
+        \item Accione el interruptor y mida:
+        \begin{itemize}
+            \item Voltaje en el primario: \SI{217}{\volt}
+            \item Voltaje en el secundario: \SI{23}{\volt}
+        \end{itemize}
+        \item Apague el interruptor.
+        \item Calcule la relación de vueltas experimental.
+        \begin{equation*}
+            a_1=\frac{V_p}{V_s}=\frac{217}{23}=9.435
+        \end{equation*}
+    \end{itemize}
+    \item Conecte en el secundario del transformador monofásico una carga de 8$\Omega$.
+    \begin{itemize}
+        \item Accione el interruptor y mida:
+        \begin{itemize}
+            \item Corriente en el primario: \SI{0.3}{\ampere}
+            \item Corriente en el secundario: \SI{2.7}{\ampere}
+        \end{itemize}
+        \item Apague el interruptor.
+        \item Calcule la relación de vueltas experimental.
+        \begin{align*}
+            \frac{1}{a_2}&=\frac{I_p}{I_s}\\
+            &=\frac{0.3}{2.7}\\
+            &=0.111
+        \end{align*}
+        \begin{align*}
+            a_2&=\frac{1}{0.111}\\
+            &=9.
+        \end{align*}
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Parte 2: Circuitos Trifásicos}
+
+\begin{enumerate}
+    \item Conecte los tres transformadores monofásicos de forma que sus primarios represente una conexión Delta.
+    \begin{itemize}
+        \item Verifique la conexión y encienda el interruptor.
+        \item Mida voltajes de línea a línea.
+        \begin{itemize}
+            \item $V_{a-b}$ = \SI{215.2}{\volt}
+            \item $V_{a-c}$ = \SI{217.6}{\volt}
+            \item $V_{b-c}$ = \SI{219.0}{\volt}
+        \end{itemize}
+        \item Mida voltajes de fase.
+        \begin{itemize}
+            \item $V_{a}$ = \SI{217.5}{\volt}
+            \item $V_{b}$ = \SI{215.2}{\volt}
+            \item $V_{c}$ = \SI{219.0}{\volt}
+        \end{itemize}
+    \end{itemize}
+    \item Conecte los tres transformadores monofásicos de forma que sus bobinados secundarios representen una conexión Estrella. Además, conectar las cargas de \SI{8}{\ohm} en el secundario del transformador, esta conexión debe ser en Estrella. Verifique la conexión y encienda el interruptor.
+    \begin{itemize}
+        \item Mida Voltajes de línea a línea en el secundario
+        \begin{itemize}
+            \item $V_{a-b}$ = \SI{36.50}{\volt}
+            \item $V_{a-c}$ = \SI{37.64}{\volt}
+            \item $V_{b-c}$ = \SI{38.13}{\volt}
+        \end{itemize}
+        \item Mida voltajes de fase en el secundario
+        \begin{itemize}
+            \item $V_{a}$ = \SI{21.80}{\volt}
+            \item $V_{b}$ = \SI{22.09}{\volt}
+            \item $V_{c}$ = \SI{21.84}{\volt}
+        \end{itemize}
+        \item Mida las corrientes de línea en el lado primario
+        \begin{itemize}
+            \item $I_{a-b}$ = \SI{0.5}{\ampere}
+            \item $I_{a-c}$ = \SI{0.5}{\ampere}
+            \item $I_{b-c}$ = \SI{0.5}{\ampere}
+        \end{itemize}
+        \item Mida las corrientes de fase en el lado primario
+        \begin{itemize}
+            \item $I_{a}$ = \SI{0.3}{\ampere}
+            \item $I_{b}$ = \SI{0.3}{\ampere}
+            \item $I_{c}$ = \SI{0.3}{\ampere}
+        \end{itemize}
+        \item Mida las corrientes de línea en el lado secundario
+        \begin{itemize}
+            \item $I_{a-b}$ = \SI{2.7}{\ampere}
+            \item $I_{a-c}$ = \SI{2.7}{\ampere}
+            \item $I_{b-c}$ = \SI{2.6}{\ampere}
+        \end{itemize}
+        \item Mida las corrientes de fase en el lado secundario
+        \begin{itemize}
+            \item $I_{a}$ = \SI{2.7}{\ampere}
+            \item $I_{b}$ = \SI{2.7}{\ampere}
+            \item $I_{c}$ = \SI{2.6}{\ampere}
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\section{Análisis de resultados}
+\begin{enumerate}
+    \item A partir de los datos nominales del transformador ¿Cuál es el valor de la relación de vueltas teórica?
+    \begin{quote}
+        La relación de vueltas teórica se calculó a partir de los voltajes nominales del transformador:
+        \begin{align*}
+            a_{\text{teórica}}&=\frac{V_p}{V_s}\\
+            &=\frac{\SI{240}{\volt}}{\SI{24}{\volt}}\\
+            &=10.
+        \end{align*}
+    \end{quote}
+    \item Compare a través del error experimental el valor de $a$ del inciso 1 con el obtenido en los pasos 1 y 2 de la parte 1.
+    \begin{quote}
+        El error relativo porcentual fue:
+            \begin{align*}
+                E_{a_1}&=\frac{|a_{\text{teórica}}-a_1|}{a_{\text{teórica}}}\times100\%\\
+                &=\frac{|10-9.435|}{10}\times100\%=5.65\%.
+            \end{align*}
+        Para el segundo paso se obtuvo $a_2=9$. Por tanto:
+        \begin{align*}
+            E_{a_2}&=\frac{|a_{\text{teórica}}-a_2|}{a_{\text{teórica}}}\times100\%\\
+            &=\frac{|10-9|}{10}\times100\%=10\%.
+        \end{align*}
+    \end{quote}
+    \item ¿El transformador es de tipo elevador o reductor? Investigue en que instalaciones se usan estos tipos de transformadores.
+    \begin{quote}
+        Como $V_s<V_p$ y $a>1$, el transformador utilizado es reductor. 
+        
+        Los transformadores reductores se utilizan en subestaciones de distribución, fuentes de alimentación y circuitos de control para disminuir la tensión a niveles adecuados para las cargas. Los transformadores elevadores se utilizan principalmente en las centrales eléctricas y en subestaciones de transmisión para aumentar la tensión y reducir la corriente durante el transporte de energía eléctrica.
+    \end{quote}
+    \item Compare los valores teóricos de corrientes y voltajes con las mediciones experimentales del paso 1 y 2 de la parte I.
+    \begin{quote}
+        Para el transformador ideal alimentado con la tensión real de $\SI{210}{\volt}$, el voltaje secundario esperado es de $\SI{21}{\volt}$ y la corriente primaria esperada, usando la corriente secundaria medida, es:
+        \begin{align*}
+            V_{s,\text{teórico}}&=\frac{V_p}{a}=\frac{210}{10}=\SI{21}{\volt},\\
+            I_{p,\text{teórico}}&=\frac{I_s}{a}=\frac{2.7}{10}=\SI{0.27}{\ampere}.
+        \end{align*}
+        La comparación de voltajes fue:
+        \begin{align*}
+            E_{V_s}&=\frac{|21-23|}{21}\times100\%=9.52\%,\\
+            E_{V_p}&=\frac{|210-217|}{210}\times100\%=3.33\%.
+        \end{align*}
+        Para las corrientes se obtuvo:
+        \begin{align*}
+            E_{I_p}&=\frac{|0.27-0.30|}{0.27}\times100\%=11.11\%,\\
+            E_{I_s}&=\frac{|3.0-2.7|}{3.0}\times100\%=10\%.
+        \end{align*}
+    \end{quote}
+    \item Calcule la potencia teórica en el primario y en el secundario del transformador. (Suponga que es ideal) y compárela con la potencia experimental a partir de los valores experimentales. Recuerde que la carga conectada es puramente resistiva por lo que el factor de potencia es 1.
+    \begin{quote}
+        Al considerar el transformador ideal alimentado con $\SI{210}{\volt}$ y la corriente secundaria medida, la corriente primaria teórica es $\SI{0.27}{\ampere}$. Así, las potencias teóricas son:
+        \begin{align*}
+            P_{\text{entrada, teórica}}&=V_p I_p=(210)(0.27)=\SI{56.7}{\watt},\\
+            P_{\text{salida, teórica}}&=V_s I_s=(21)(2.7)=\SI{56.7}{\watt}.
+        \end{align*}
+        Usando los valores medidos, las potencias experimentales fueron:
+        \begin{align*}
+            P_{\text{entrada, exp.}}&=(217)(0.3)=\SI{65.1}{\watt},\\
+            P_{\text{salida, exp.}}&=(23)(2.7)=\SI{62.1}{\watt}.
+        \end{align*}
+    \end{quote}
+    \item Indique las pérdidas reales del sistema.
+    \begin{quote}
+        \begin{align*}
+            P_{\text{pérdidas}}&=P_{\text{entrada, exp.}}-P_{\text{salida, exp.}}\\
+            &=\SI{65.1}{\watt}-\SI{62.1}{\watt}=\SI{3.0}{\watt}.
+        \end{align*}
+    \end{quote}
+    \item Investigue las principales pérdidas en un transformador real y como se representan en el modelo del transformador.
+    \begin{quote}
+        Las pérdidas principales de un transformador real son las pérdidas en el cobre, producidas por la resistencia de los devanados y representadas mediante resistencias en serie; las pérdidas por histéresis y por corrientes parásitas en el núcleo, representadas mediante una resistencia en paralelo; y las pérdidas adicionales asociadas al flujo de dispersión. La reactancia de dispersión se representa mediante reactancias en serie, mientras que la rama en paralelo del modelo incluye la resistencia de pérdidas del núcleo y la reactancia de magnetización.
+    \end{quote}
+    \item Investigue las ventajas de usar sistemas trifásicos sobre sistemas monofásicos.
+    \begin{quote}
+        Los sistemas trifásicos permiten transmitir mayor potencia utilizando una cantidad menor de material conductor para una misma potencia. Además, entregan una potencia instantánea más constante, producen campos magnéticos rotatorios en máquinas eléctricas y permiten alimentar cargas monofásicas y trifásicas. En las mediciones realizadas, los voltajes y corrientes de las tres fases presentaron valores cercanos entre sí, lo que evidenció un sistema aproximadamente balanceado.
+    \end{quote}
+\end{enumerate}
+\section{Conclusiones}
+\begin{itemsinforme}
+    \item Mediante la práctica se pudieron reforzar los conocimientos adquiridos de manera teórica en la clase sobre el funcionamiento básico de los transformadores. Al mismo tiempo, también se pudieron apreciar las diferencias que se tienen al trabajar con transformadores teóricos ideales y transformadores reales.
+    \item Se pudo ver de manera práctica cómo funcionan los sistemas alimentados de manera trifásica, apreciar la diferencias de los mismos con las ya estudiadas y conocidas monofásicas y entender porqué es necesario utilizar tres transformadores (monofásicos) cuando se tiene una alimentación trifásica.
+    \item Se pudieron apreciar las conexiones en trifásicos, tanto en delta como en estrella. De esta forma se reforzó el concepto de dicha conexión y se mejoró la percepción para poder reconocerla en la vida real, en vista que usualmente se tiene la idea que las conexiones delta se ven como se dibujan, siendo que en la vida real rara vez son tan ordenadas.
+\end{itemsinforme}
+
+\section{Bibliografía}
+\nocite{*}
+\printbibliography[heading=none]
+\end{document}
