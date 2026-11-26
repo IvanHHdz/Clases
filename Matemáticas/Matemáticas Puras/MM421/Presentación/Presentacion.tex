@@ -28,7 +28,7 @@ Jason Dionicio Ventura\\\small 20172031480}
 \institute[UNAH--Campus Cortés]{Estructuras Algebraicas I (MM-421)\\
 Universidad Nacional Autónoma de Honduras (UNAH), Campus Cortés\\
 Docente: Lic. Edwin Hernández}
-\date{Martes 17 de noviembre de 2026}
+\date{\today}
 
 \begin{document}
 
@@ -36,36 +36,14 @@ Docente: Lic. Edwin Hernández}
   \titlepage
 \end{frame}
 
-\begin{frame}{Objetivo y mapa de ideas}
-  \begin{itemize}
-    \item Modelar cadenas de datos mediante productos internos directos de grupos cíclicos.
-    \item Entender por qué la aritmética modular permite cifrar y descifrar.
-    \item Ver cómo la inversión de algoritmos produce autenticidad, no solo secreto.
-  \end{itemize}
-  \vfill
-  \begin{center}
-    $(\mathbb Z_2)^n \longrightarrow$ OTP \qquad
-    $U(n)\cong U(p)\oplus U(q) \longrightarrow$ RSA \qquad
-    $D_A/E_A \longrightarrow$ firma digital
-  \end{center}
-\end{frame}
-
-\begin{frame}{La conexión algebraica común}
-  \begin{itemize}
-    \item Un producto interno directo $G_1\oplus\cdots\oplus G_k$ opera componente a componente:
-    \[
-      (a_1,\ldots,a_k)(b_1,\ldots,b_k)=(a_1b_1,\ldots,a_kb_k).
-    \]
-    \item En $(\mathbb Z_2)^n$ la operación es suma módulo $2$; cada bit es una coordenada.
-    \item En $U(n)$ la operación es multiplicación módulo $n$. Si $n=pq$ con primos distintos,
-    \[
-      U(n)\cong U(p)\oplus U(q)\cong \mathbb Z_{p-1}\oplus\mathbb Z_{q-1}
-    \]
-    cuando se identifican los grupos cíclicos apropiados.
-  \end{itemize}
-\end{frame}
-
 \section{Data Security}
+
+\begin{frame}
+  \centering
+  \vfill
+  {\LARGE\bfseries Data Security}
+  \vfill
+\end{frame}
 
 \begin{frame}{Data Security: el problema motivador}
   \begin{itemize}
@@ -112,7 +90,7 @@ Docente: Lic. Edwin Hernández}
   C+K=1011001111+0110011001=1101010110=M.
   \]
   \begin{proposicion}
-    Para todo $M,K\in(\mathbb Z_2)^n$, $E_K(E_K(M))=M$.
+    Para todo $M,K{\in(\mathbb Z_2)}^n$, $E_K(E_K(M))=M$.
   \end{proposicion}
   \begin{proof}
     $E_K(E_K(M))=(M+K)+K=M+(K+K)=M+0=M$, porque cada coordenada satisface $1+1=0$ en $\mathbb Z_2$.
@@ -137,6 +115,13 @@ Docente: Lic. Edwin Hernández}
 \end{frame}
 
 \section{Public Key Cryptography}
+
+\begin{frame}
+  \centering
+  \vfill
+  {\LARGE\bfseries Criptografía de clave pública}
+  \vfill
+\end{frame}
 
 \begin{frame}{Criptografía de clave pública: el problema}
   En un sistema simétrico, emisor y receptor deben compartir una clave secreta antes de comunicarse.
@@ -232,6 +217,13 @@ Docente: Lic. Edwin Hernández}
 
 \section{Digital Signatures}
 
+\begin{frame}
+  \centering
+  \vfill
+  {\LARGE\bfseries Firmas digitales}
+  \vfill
+\end{frame}
+
 \begin{frame}{Firmas digitales: autenticidad}
   Cifrar garantiza secreto, pero no responde por sí solo: «¿quién envió este mensaje?»
   \begin{itemize}
@@ -302,54 +294,62 @@ Docente: Lic. Edwin Hernández}
 
 \section{Problema de aplicación computacional}
 
-\begin{frame}{Problema de aplicación computacional}
-  Una institución recibe $10\,000$ mensajes. Cada mensaje contiene un bloque $M_i<n$, una firma $s_i$ y la clave pública RSA $(n,e)$.
-  \begin{block}{Entrada y salida}
-    Entrada: un entero $N=10\,000$, los enteros $n=3233$, $e=17$ y $N$ parejas $(M_i,s_i)$, con $0<M_i<n$.\\
-    Salida: los índices $i$ para los que $s_i^e\not\equiv M_i\modn{n}$ y el total de firmas inválidas.
-  \end{block}
-  En este ejercicio cada bloque $M_i$ se firma directamente, sin una función resumen externa, para que todo pueda resolverse en un único programa.
+\begin{frame}
+  \centering
+  \vfill
+  {\LARGE\bfseries Problema de aplicación computacional}
+  \vfill
 \end{frame}
 
-\begin{frame}{Parámetros del ejercicio}
-  \[
-    n=3233=61\cdot53,\qquad e=17.
-  \]
+\begin{frame}{Problema de aplicación computacional}
+  Una persona desea enviar el mensaje ``hola'' usando RSA. Para mantener el ejercicio sencillo, se cifra cada carácter como un bloque independiente.
+  \begin{block}{Problema}
+    Implementar un programa que convierta cada carácter a ASCII, lo cifre con la clave pública y luego lo descifre para recuperar ``hola''.
+  \end{block}
   \begin{itemize}
-    \item Estos valores corresponden a una clave pública RSA de demostración.
-    \item El programa solo necesita $n$ y $e$; no necesita conocer los factores $61$ y $53$ ni la clave privada.
-    \item Se procesan $10\,000$ parejas, suficientes para que la automatización sea necesaria sin requerir bibliotecas criptográficas externas.
+    \item ``hola'' en binario: $01101000\;01101111\;01101100\;01100001$.
+    \item En decimal: $(104,111,108,97)$.
+    \item Cifrar y descifrar cada número por separado.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Pseudocódigo del verificador}
+\begin{frame}{Claves RSA del ejercicio}
+  Elegimos dos primos de tres cifras:
+  \[
+    p=101,\qquad q=113,\qquad n=pq=11413.
+  \]
+  Como $\operatorname{mcm}(100,112)=2800$, escogemos $e=3$ y calculamos
+  \[
+    d=1867,\qquad 3\cdot1867=5601\equiv1\modn{2800}.
+  \]
+  \begin{block}{Claves}
+    Pública: $(n,e)=(11413,3)$.\qquad Privada: $d=1867$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Cifrado y descifrado de ``hola''}
+  Para cada bloque $M$, se calcula $R=M^3\modn{11413}$ y luego $M'=R^{1867}\modn{11413}$:
+  \[
+  \begin{array}{c|c|c|c}
+  \text{carácter}&M\text{ (decimal)}&R\text{ (cifrado)}&M'\text{ (descifrado)}\\ \midrule
+  \texttt{h}&104&6390&104\\
+  \texttt{o}&111&9484&111\\
+  \texttt{l}&108&4282&108\\
+  \texttt{a}&97&11046&97
+  \end{array}
+  \]
+  Por tanto, se transmiten los bloques $(6390,9484,4282,11046)$ y el receptor recupera ``hola''.
+\end{frame}
+
+\begin{frame}{Pseudocódigo y complejidad}
   \begin{enumerate}
-    \item Leer $N$, $n$, $e$.
-    \item Repetir $N$ veces: leer $(M,s)$ y calcular $v=\operatorname{potencia\_modular}(s,e,n)$.
-    \item Si $v\ne M$, guardar el índice de la pareja.
-    \item Imprimir los índices guardados y su cantidad.
+    \item Convertir cada carácter de ``hola'' a su valor ASCII decimal.
+    \item Calcular $R=\operatorname{potencia\_modular}(M,3,11413)$.
+    \item Calcular $M'=\operatorname{potencia\_modular}(R,1867,11413)$.
+    \item Convertir cada $M'$ decimal nuevamente a carácter.
   \end{enumerate}
   \vfill
-  La función \texttt{potencia\_modular} puede implementarse con el método de cuadrados sucesivos; en Python o C++ cabe en un mismo programa pequeño.
-\end{frame}
-
-\begin{frame}{Tema aplicado y algoritmo}
-  \textbf{Tema:} firmas digitales; la igualdad que se comprueba es la verificación RSA del bloque firmado.
-  \begin{enumerate}
-    \item Leer cada pareja $(M_i,s_i)$.
-    \item Calcular $v_i=s_i^{17}\modn{3233}$ mediante exponenciación binaria.
-    \item Marcar $i$ como inválido si $v_i\ne M_i$.
-  \end{enumerate}
-  No se incluye código: basta implementar multiplicación modular segura y exponenciación por cuadrados.
-\end{frame}
-
-\begin{frame}{Corrección y complejidad aproximada}
-  \begin{itemize}
-    \item Si una firma fue producida por la clave privada correspondiente, la demostración RSA da $s_i^{17}\equiv M_i\modn{3233}$; el algoritmo acepta.
-    \item Si la igualdad falla, el par no satisface la condición de verificación; el algoritmo lo rechaza.
-    \item Para $N$ mensajes y exponentes de $b$ bits, la exponenciación binaria usa $O(b)$ multiplicaciones modulares por mensaje: $O(Nb)$ multiplicaciones, ignorando el costo de multiplicar enteros.
-    \item Aquí $N=10\,000$ y $17$ tiene solo cinco bits: el programa es corto, pero revisar todas las firmas a mano no es razonable.
-  \end{itemize}
+  La exponenciación binaria usa $O(\log e+\log d)$ multiplicaciones modulares por carácter.
 \end{frame}
 
 \begin{frame}{Bibliografía}
